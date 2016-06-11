@@ -1,0 +1,21 @@
+<header class="site-header">
+
+  <div class="container">
+
+    {% if page.url != '/' %}
+      <a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a>
+    {% endif %}
+    <nav class="site-nav float-right">
+      {% assign pages = site.pages | sort: "navindex" %}
+      {% for page in pages %}
+        {% if page.navindex && page.title %}
+          <span class="site-nav-link">
+            <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+          </span>
+        {% endif %}
+      {% endfor %}
+    </nav>
+
+  </div>
+
+</header>

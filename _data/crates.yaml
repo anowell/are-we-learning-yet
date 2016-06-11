@@ -1,0 +1,47 @@
+
+- name: leaf
+  github: autumnai/leaf
+  summary: Machine Learning Framework for Hackers
+  docs: http://autumnai.github.io/leaf
+  tags: ["neural-networks"]
+
+- name: rusty-machine
+  github: AtheMathmo/rusty-machine
+  summary: A machine learning library.
+  docs: https://athemathmo.github.io/rusty-machine/
+  tags: ["neural-networks", "bayes", "clustering"]
+
+- name: genetic
+  github: m-decoster/RsGenetic
+  summary: A library providing genetic algorithm execution.
+  docs: http://m-decoster.github.io/RsGenetic/doc/rsgenetic/index.html
+  tags: ["evolution"]
+
+- name: classifier
+  github: jackm321/Rust_Classifier
+  summary: Naive Bayes classifier
+  docs: https://jackm321.github.io/Rust_Classifier/doc/classifier/
+  tags: ["bayes"]
+
+- name: rustlearn
+  github: maciejkula/rustlearn
+  summary: A machine learning package for Rust.
+  docs: https://maciejkula.github.io/rustlearn/doc/rustlearn/
+  tags: ["decision-trees"]
+
+- name: rustml
+  github: daniel-e/rustml
+  summary: A library for doing maching learning in Rust.
+  docs: http://daniel-e.github.io/rustml/rustml/
+  tags: ["neural-networks", "clustering"]
+
+- name: nn
+  github: jackm321/RustNN
+  summary: A multilayer feedforward backpropagation neural network library.
+  docs: https://jackm321.github.io/RustNN/doc/nn/
+  tags: ["neural-networks"]
+
+- name: tensorflow
+  github: google/tensorflow-rust
+  summary: Rust language bindings for TensorFlow. This project is still under active development and not yet ready for widespread use.
+  tags: ["neural-networks", "bindings"]

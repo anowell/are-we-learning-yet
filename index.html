@@ -1,0 +1,22 @@
+---
+layout: default
+---
+
+<div>
+  <div class="hero">
+    <div class="container">
+      <h1>Are we learning yet?</h1>
+      <p style="margin-top: -20px;">The comprehensive guide to the state of machine learning in Rust</p>
+      <p class="tldr-headline">We're getting there - the ecosystem could use some help.</p>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <h3>State of Frameworks</h3>
+    {% for post in site.frameworks %}
+      <a class="button button-outline" href="{{post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+    {% endfor %}
+  </div>
+
+</div>

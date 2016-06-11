@@ -1,0 +1,17 @@
+# Site settings
+title: Are we learning yet?
+email: anowell@gmail.com
+description: >
+  The comprehensive guide to the state of machine learning in Rust.
+  This site catalogs ML frameworks, data structures, data cleaning and analysis,
+  and other tools and libraries that are essential to machine learning ecosystems.
+baseurl: "" # the subpath of the site, e.g. /blog
+url: "http://arewelearningyet.com"
+
+# Build settings
+markdown: kramdown
+
+collections:
+  frameworks:
+    output: true
+    permalink: /:path/

@@ -1,0 +1,16 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+@charset "utf-8";
+
+
+$base-font-family: Fira Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+$mono-font-family: "Source Code Pro", Menlo, Monaco, Consolas, "DejaVu Sans Mono", Inconsolata, monospace;
+
+$text-color:        #444;
+$primary-color:	    #b33;
+
+
+// Import partials from `sass_dir` (defaults to `_sass`)
+@import "milligram",
+        "base";
