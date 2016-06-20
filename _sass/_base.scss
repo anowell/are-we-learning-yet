@@ -1,3 +1,30 @@
+// body:before {
+//     content: "";
+//     position: absolute;
+//     width: 400px;
+//     height: 400px;
+//     top: -50px;
+//     right: -50px;
+//     z-index: -1;
+//     transform: rotate(30deg);
+//     opacity: 0.3;
+//     background-image: url("/images/rust-logo-quad.png");
+//     background-size: 400px 400px;
+//     background-repeat: no-repeat;
+//     background-position: right top;
+// }
+
+body {
+    font-family: Fira Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+h1 {
+    letter-spacing: -0.3rem;
+}
+h1 strong {
+    color: $primary-color;
+}
+
 .site-header {
     font-size: 2rem;
 }
@@ -6,36 +33,25 @@
   padding-left: 20px;
 }
 
-body:before {
-    content: "";
-    position: absolute;
-    width: 400px;
-    height: 400px;
-    top: -50px;
-    right: -50px;
-    z-index: -1;
-    transform: rotate(30deg);
-    opacity: 0.3;
-    background-image: url("/images/rust-logo-quad.png");
-    background-size: 400px 400px;
-    background-repeat: no-repeat;
-    background-position: right top;
-}
-
-body {
-    font-family: Fira Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
-}
-
 .hero {
     padding: 40px;
     min-height: 400px;
     margin-bottom: 40px;
+    background-color: #333;
+    color: #ccc;
+    margin-bottom: 0px;
 }
 
 .tldr-headline {
-    font-size: 4rem;
+    letter-spacing: -0.15rem;
+    font-size: 3.0rem;
     font-weight: bold;
-    margin-top: 40px;
+    margin-top: -20px;
+    text-align: center;
+    line-height: 2.75rem;
+    padding-bottom: 30px;
+    margin-bottom: 60px;
+    background-color: #333;
 }
 
 .page-content {
@@ -44,4 +60,45 @@ body {
 
 .container {
     max-width: 80.0rem;
+}
+
+.tile {
+    height: 155px;
+    margin: 10px 0;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tile-green {
+    background-color: #8eff0e;
+    color: #4b8d00;
+}
+a:hover .tile-green {
+    background-color: #81f300;
+    color: #3d7400;
+}
+
+
+// http://www.colorhexa.com/66c000
+.tile-yellow {
+    background-color: #fff273;
+    color: #bfb230;
+}
+a:hover .tile-yellow {
+    background-color: #ffee40;
+    color: #a69700;
+}
+
+
+// http://www.colorhexa.com/ed1f00
+.tile-red {
+    background-color: #ff543b;
+    color: #ba1800;
+}
+a:hover .tile-red {
+    background-color: #ff3e21;
+    color: #a11500;
 }

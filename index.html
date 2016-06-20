@@ -5,9 +5,22 @@ layout: default
 <div>
   <div class="hero">
     <div class="container">
-      <h1>Are we learning yet?</h1>
-      <p style="margin-top: -20px;">The comprehensive guide to the state of machine learning in Rust</p>
-      <p class="tldr-headline">We're getting there - the ecosystem could use some help.</p>
+      <img src="/images/rust-9000.png" style="float:right;width:300px;">
+      <h1 style="padding-top: 40px;">Are we <strong>learning</strong> yet?</h1>
+      <p style="margin-top: 60px;">
+        The comprehensive guide to
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        the state of <b style="color: #f4f846">machine learning in Rust</b>
+      </p>
+    </div>
+  </div>
+
+  <div class="tldr-headline">
+    <div class="container">
+        You can accomplish a lot,
+        <br>
+        <!--<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+        but the ecosystem isn't mature yet.</div>
     </div>
   </div>
 
@@ -15,7 +28,20 @@ layout: default
 
     <h3>State of Frameworks</h3>
     {% for post in site.frameworks %}
-      <a class="button button-outline" href="{{post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+      {% assign mod3 = forloop.index0 | modulo:3 %}
+      {% assign mod4 = forloop.index0 | modulo:4 %}
+      {% assign mod8 = forloop.index0 | modulo:8 %}
+      {% if mod3 == 0 %}
+        <div class="row">
+      {% endif %}
+        <div class="column column-25 {% if mod8 == 1 || mod8 == 6 %}column-offset-25{% endif %}">
+          <a href="{{post.url | prepend: site.baseurl }}"><div class="tile tile-{{post.color}}">
+            {{ post.title }}
+          </div></a>
+        </div>
+      {% if mod3 == 2 || forloop.last %}
+        </div>
+      {% endif %}
     {% endfor %}
   </div>
 
