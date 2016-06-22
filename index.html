@@ -31,15 +31,15 @@ layout: default
       {% assign mod3 = forloop.index0 | modulo:3 %}
       {% assign mod4 = forloop.index0 | modulo:4 %}
       {% assign mod8 = forloop.index0 | modulo:8 %}
-      {% if mod3 == 0 %}
+      {% if mod4 == 0 %}
         <div class="row">
       {% endif %}
-        <div class="column column-25 {% if mod8 == 1 || mod8 == 6 %}column-offset-25{% endif %}">
+        <div class="column column-20 {% if mod8 == 1 || mod8 == 6 %}column-offset-20{% endif %}">
           <a href="{{post.url | prepend: site.baseurl }}"><div class="tile tile-{{post.color}}">
             {{ post.title }}
           </div></a>
         </div>
-      {% if mod3 == 2 || forloop.last %}
+      {% if mod4 == 3 || forloop.last %}
         </div>
       {% endif %}
     {% endfor %}

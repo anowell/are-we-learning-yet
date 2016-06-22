@@ -3,7 +3,12 @@
   <div class="container">
 
     {% if page.url != '/' %}
-      <a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a>
+      <a class="site-title" href="{{ site.baseurl }}/">
+        <img src="/images/rust-9000.png">
+        {{ site.title }}
+      </a>
+    {% else %}
+      &nbsp;
     {% endif %}
     <nav class="site-nav float-right">
       {% assign pages = site.pages | sort: "navindex" %}
