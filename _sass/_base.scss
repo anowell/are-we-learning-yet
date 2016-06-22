@@ -14,9 +14,14 @@
 //     background-position: right top;
 // }
 
+html {
+  height: 100%;
+}
+
 body {
     font-family: Fira Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
     background-color: #eee;
+    min-height: 100%;
 }
 
 h1 {
