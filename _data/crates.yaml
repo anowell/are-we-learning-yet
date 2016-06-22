@@ -45,3 +45,63 @@
   github: google/tensorflow-rust
   summary: Rust language bindings for TensorFlow. This project is still under active development and not yet ready for widespread use.
   tags: ["neural-networks", "bindings"]
+
+- name: hal-ml
+  github: jramapuram/hal
+  summary: "A machine learning library that is able to run on Nvidia, OpenCL or CPU BLAS based compute backends."
+  tags: ["neural-networks"]
+
+- name: ndarray
+  github: bluss/rust-ndarray
+  summary: "An N-dimensional array for general elements and for numerics. Lightweight array views and slicing; views support chunking and splitting."
+  docs: https://bluss.github.io/rust-ndarray/
+  tags: ["data-structures"]
+
+- name: collenchyma
+  github: autumnai/collenchyma
+  summary: "An extensible, pluggable, backend-agnostic framework for parallel, high-performance computations on CUDA, OpenCL and common host CPU."
+  docs: http://autumnai.github.io/collenchyma
+  tags: ["scientific-computation"]
+
+- name: GSL
+  github: GuillaumeGomez/rust-GSL
+  summary: "A rust binding for the GSL (the GNU scientific library)"
+  docs: http://rust-ci.org/GuillaumeGomez/rust-GSL/doc/rgsl/
+  tags: ["scientific-computation"]
+
+- name: scirust
+  github: indigits/scirust
+  summary: "A scientific computing library"
+  docs: http://indigits.github.io/scirust/doc/scirust/index.html
+  tags: ["scientific-computation"]
+
+- name: numrs
+  github: sankha93/numrs
+  summary: "A numerical computation library for Rust."
+  docs: http://sankhs.com/numrs
+  tags: ["scientific-computation"]
+
+- name: bio
+  github: rust-bio/rust-bio
+  summary: "This library provides rigorously tested implementations of many algorithms and data structures that are useful for bioinformatics."
+  docs: https://rust-bio.github.io/rust-bio
+  tags: ["scientific-computation", "data-structures"]
+
+- name: cuticula
+  github: autumnai/cuticula
+  summary: "Data Preprocessing library for Machine Learning"
+  docs: http://autumnai.github.io/cuticula
+  tags: ["data-processing"]
+
+- name: rusty-data
+  github: AtheMathmo/rusty-data
+  summary: "A data handling library (designed for machine learning)."
+  docs: https://athemathmo.github.io/rusty-data/
+  tags: ["data-structures"]
+
+- name: rds
+  github: haxelion/rds
+  summary: "Rust Data Science, a modular and fast data science framework for rust"
+  docs: https://haxelion.github.io/rds/target/doc/rds/index.html
+  tags: ["data-structures"]
+
