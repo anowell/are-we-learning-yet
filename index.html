@@ -45,17 +45,16 @@ layout: default
       <h3>Rust Machine Learning Ecosystem</h3>
       <div class="row tiles">
         {% for post in site.topics %}
-          {% if forloop.index0 == 1 || forloop.index0 == 8 %}
+          {% if forloop.index == 4 or forloop.index == 6 %}
             <div class="column column-20">&nbsp;</div>
-          {% else %}
-            <div class="column column-20">
-              <a href="{{post.url | prepend: site.baseurl }}">
-                <div class="tile tile-{{post.color}}">
-                  {{ post.title }}
-                </div>
-              </a>
-            </div>
           {% endif %}
+          <div class="column column-20">
+            <a href="{{post.url | prepend: site.baseurl }}">
+              <div class="tile tile-{{post.color}}">
+                {{ post.title }}
+              </div>
+            </a>
+          </div>
         {% endfor %}
       </div>
     </div>
