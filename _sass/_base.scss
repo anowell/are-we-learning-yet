@@ -24,6 +24,14 @@ body {
     min-height: 100%;
 }
 
+.github-fork-ribbon {
+    &:before, &:after {
+        background-color: #eee;
+        border-color: #333;
+    }
+    &:after { color: #333; }
+}
+
 h1 {
     padding-top: 40px;
     letter-spacing: -0.3rem;
