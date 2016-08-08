@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About
-navindex: 1
+navindex: 2
 permalink: /about/
 ---
 

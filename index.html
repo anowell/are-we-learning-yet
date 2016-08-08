@@ -15,34 +15,48 @@ layout: default
     </div>
   </div>
 
-  <div class="tldr-headline">
-    <div class="container">
-        You can accomplish a lot,
-        <br>
-        <!--<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
-        but the ecosystem isn't mature yet.</div>
+
+  <div class="container" style="padding: 60px 0 40px;">
+    <div class="tldr-headline">
+        You can accomplish a lot,<br>
+        but the ecosystem isn't mature yet.
     </div>
+
+    <p>
+      Rust's performance, low-level control, and zero-cost high-level abstractions make it a compelling
+      alternative to more established ecosystems for Machine Learning.
+      While the Rust ML ecosystem is still young, several ambitious projects and a variety of building blocks have emerged.
+      At the same time, there remain plenty of opportunities to fill in the gaps with new tools.
+    </p>
+    <p>
+      TODO: Highlight a few major projects, i.e. rusty-machine, mention the well-received Leaf is in need of maintainers,
+      and maybe call out a couple other tools.
+    </p>
+    <p>
+      For help or questions with Rust ML, reach out on <a href="irc.html">#rust-machine-learning</a>.
+    </p>
   </div>
 
-  <div class="container">
+  <div class="hero">
+    <div class="container">
 
-    <h3>State of Frameworks</h3>
-    {% for post in site.frameworks %}
-      {% assign mod3 = forloop.index0 | modulo:3 %}
-      {% assign mod4 = forloop.index0 | modulo:4 %}
-      {% assign mod8 = forloop.index0 | modulo:8 %}
-      {% if mod4 == 0 %}
-        <div class="row">
-      {% endif %}
-        <div class="column column-20 {% if mod8 == 1 || mod8 == 6 %}column-offset-20{% endif %}">
-          <a href="{{post.url | prepend: site.baseurl }}"><div class="tile tile-{{post.color}}">
-            {{ post.title }}
-          </div></a>
-        </div>
-      {% if mod4 == 3 || forloop.last %}
-        </div>
-      {% endif %}
-    {% endfor %}
+      <h3>Rust Machine Learning Ecosystem</h3>
+      <div class="row tiles">
+        {% for post in site.topics %}
+          {% if forloop.index0 == 1 || forloop.index0 == 8 %}
+            <div class="column column-20">&nbsp;</div>
+          {% else %}
+            <div class="column column-20">
+              <a href="{{post.url | prepend: site.baseurl }}">
+                <div class="tile tile-{{post.color}}">
+                  {{ post.title }}
+                </div>
+              </a>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
   </div>
 
 </div>

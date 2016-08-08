@@ -25,6 +25,7 @@ body {
 }
 
 h1 {
+    padding-top: 40px;
     letter-spacing: -0.3rem;
 }
 h1 strong {
@@ -56,12 +57,10 @@ h1 strong {
     letter-spacing: -0.15rem;
     font-size: 3.0rem;
     font-weight: bold;
-    margin-top: -20px;
     text-align: center;
     line-height: 2.75rem;
-    padding-bottom: 30px;
-    margin-bottom: 60px;
-    background-color: #333;
+    padding-bottom: 40px;
+    // background-color: #333;
 }
 
 .page-content {
@@ -72,6 +71,14 @@ h1 strong {
     max-width: 80.0rem;
 }
 
+.tiles {
+    font-weight: bold;
+    flex-wrap: wrap;
+    a, a:hover, a:visited, a:active {
+        color: $text-color;
+    }
+}
+
 .tile {
     height: 130px;
     margin: 10px 0;
@@ -80,35 +87,23 @@ h1 strong {
     display: flex;
     align-items: center;
     justify-content: center;
+    border-width: 4px 1px 1px 1px;
+    border-style: solid;
+}
+
+a:hover .tile {
+    background-color: #393939;
 }
 
 .tile-green {
-    background-color: #8eff0e;
-    color: #4b8d00;
-}
-a:hover .tile-green {
-    background-color: #81f300;
-    color: #3d7400;
+    border-color: #81f300;
 }
 
-
-// http://www.colorhexa.com/66c000
 .tile-yellow {
-    background-color: #fff273;
-    color: #bfb230;
-}
-a:hover .tile-yellow {
-    background-color: #ffee40;
-    color: #a69700;
+    border-color: #ffee40;
 }
 
 
-// http://www.colorhexa.com/ed1f00
 .tile-red {
-    background-color: #ff543b;
-    color: #ba1800;
-}
-a:hover .tile-red {
-    background-color: #ff3e21;
-    color: #a11500;
+    border-color: #ff3e21;
 }

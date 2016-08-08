@@ -12,6 +12,6 @@ url: "http://arewelearningyet.com"
 markdown: kramdown
 
 collections:
-  frameworks:
+  topics:
     output: true
     permalink: /:path/

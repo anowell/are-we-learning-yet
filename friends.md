@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Friends
-navindex: 0
+navindex: 1
 permalink: /friends/
 ---
 
