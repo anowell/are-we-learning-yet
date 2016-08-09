@@ -5,4 +5,4 @@ crate_tag: scientific-computation
 color: yellow
 ---
 
-This is stuff
+TODO: Add an overview of scientific computing tools in Rust.
