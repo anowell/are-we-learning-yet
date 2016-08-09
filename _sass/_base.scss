@@ -18,10 +18,14 @@ body {
 
 h1 {
     padding-top: 40px;
-    letter-spacing: -0.3rem;
+    letter-spacing: -0.2rem;
 }
 h1 strong {
     color: $primary-color;
+}
+
+b, strong {
+  font-weight: bold;
 }
 
 .site-header {
@@ -30,6 +34,10 @@ h1 strong {
     line-height: 40px;
     img { width: 3  0px; height: 30px; }
     background-color: #333;
+}
+
+.site-footer {
+    margin: 40px 0;
 }
 
 .site-nav-link {
