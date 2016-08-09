@@ -105,3 +105,7 @@
   docs: https://haxelion.github.io/rds/target/doc/rds/index.html
   tags: ["data-structures"]
 
+- name: deeplearn
+  github: tedsta/deeplearn-rs
+  summary: "Deep neural networks in Rust"
+  tags: ["neural-networks"]
