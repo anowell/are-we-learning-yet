@@ -5,7 +5,8 @@ crate_tag: neural-networks
 color: yellow
 ---
 
-Rust has attracted attention for experimental neural networks.
+Consistent with recent deep learning trends,
+the Rust community has followed suit by building several experimental neural networks.
 
 [Leaf](https://crates.io/crates/leaf) made a huge splash in the community,
 but [the team behind Leaf moved on](https://medium.com/@mjhirn/tensorflow-wins-89b78b29aafb#.pvv7a6dm7),

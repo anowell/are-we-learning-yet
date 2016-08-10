@@ -1,8 +1,8 @@
 ---
 layout: crates
-title: Bayesian Networks
+title: Naive Bayes
 crate_tag: bayes
-color: red
+color: yellow
 ---
 
-TODO: Add an overview of Bayesian networks in Rust.
+TODO: Add an overview of Naive Bayes classifiers in Rust.

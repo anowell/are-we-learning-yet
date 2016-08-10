@@ -105,6 +105,12 @@
   docs: https://haxelion.github.io/rds/target/doc/rds/index.html
   tags: ["data-structures"]
 
+- name: fann
+  github: afck/fann-rs
+  summary: "Wrapper for the Fast Artificial Neural Networks library"
+  docs: https://afck.github.io/docs/fann-rs/fann
+  tags: ["neural-networks"]
+
 - name: deeplearn
   github: tedsta/deeplearn-rs
   summary: "Deep neural networks in Rust"
