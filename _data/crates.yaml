@@ -17,6 +17,12 @@
   docs: http://m-decoster.github.io/RsGenetic/doc/rsgenetic/index.html
   tags: ["evolution"]
 
+- name: darwin-rs
+  github: willi-kappler/darwin-rs
+  summary: Evolutionary algorithms library written in Rust.
+  docs: https://willi-kappler.github.io/darwin-rs
+  tags: ["evolution"]
+
 - name: classifier
   github: jackm321/Rust_Classifier
   summary: Naive Bayes classifier
