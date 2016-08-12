@@ -117,7 +117,49 @@
   docs: https://afck.github.io/docs/fann-rs/fann
   tags: ["neural-networks"]
 
+- name: cogset
+  github: huonw/cogset
+  summary: "Generic implementations of clustering algorithms. Includes k-means, DBSCAN and OPTICS."
+  docs: https://haxelion.github.io/rds/target/doc/rds/index.html
+  tags: ["clustering"]
+
 - name: deeplearn
   github: tedsta/deeplearn-rs
   summary: "Deep neural networks in Rust"
   tags: ["neural-networks"]
+
+- name: matrixmultiply
+  github: bluss/matrixmultiply
+  summary: "General matrix multiplication of f32 and f64 matrices in Rust. Supports matrices with general strides."
+  docs: https://bluss.github.io/matrixmultiply/
+  tags: ["scientific-computation"]
+
+- name: rulinalg
+  github: AtheMathmo/rulinalg
+  summary: "A linear algebra library."
+  docs: https://athemathmo.github.io/rulinalg/
+  tags: ["scientific-computation"]
+
+- name: blas
+  github: stainless-steel/blas
+  summary: "The package provides an interface to the Basic Linear Algebra Subprograms."
+  docs: https://stainless-steel.github.io/blas
+  tags: ["scientific-computation"]
+
+- name: lapack
+  github: stainless-steel/lapack
+  summary: "The package provides an interface to the Linear Algebra PACKage."
+  docs: https://stainless-steel.github.io/lapack
+  tags: ["scientific-computation"]
+
+- name: petgraph
+  github: bluss/petgraph
+  summary: "Graph data structure library. Provides graph types and graph algorithms."
+  docs: http://bluss.github.io/petgraph
+  tags: ["data-structures"]
+
+- name: daggy
+  github: mitchmindtree/daggy
+  summary: "A directed acyclic graph data structure library. It is Implemented on top of petgraph's Graph data structure and attempts to follow similar conventions where suitable."
+  docs: http://mitchmindtree.github.io/daggy/daggy/
+  tags: ["data-structures"]
