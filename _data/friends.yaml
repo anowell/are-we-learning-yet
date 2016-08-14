@@ -1,0 +1,4 @@
+- name: Algorithmia
+  url: https://algorithmia.com/
+  logo: algorithmia.png
+  how: "Platform support for <a href='http://blog.algorithmia.com/algorithmia-now-supports-python-3-javascript-rust-ruby/'>hosting Rust-based ML algorithms</a>."
