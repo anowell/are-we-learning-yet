@@ -430,7 +430,7 @@ a {
   text-decoration: none;
 }
 a:hover {
-  color: $text-color;
+  color: darken($primary-color, 10%);
 }
 
 dl,

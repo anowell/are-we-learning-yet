@@ -8,6 +8,12 @@ body {
     min-height: 100%;
 }
 
+.body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
 .github-fork-ribbon {
     &:before, &:after {
         background-color: #eee;
@@ -31,13 +37,13 @@ b, strong {
 .site-header {
     padding: 5px 0;
     font-size: 2rem;
-    line-height: 40px;
+    line-height: 32px;
     img { width: 3  0px; height: 30px; }
     background-color: #333;
 }
 
 .site-footer {
-    margin: 40px 0;
+    margin: 20px 0;
 }
 
 .site-nav-link {
@@ -46,7 +52,7 @@ b, strong {
 
 .hero {
     padding: 40px;
-    min-height: 400px;
+    min-height: 360px;
     margin-bottom: 40px;
     background-color: #333;
     color: #ccc;
@@ -64,7 +70,7 @@ b, strong {
 }
 
 .page-content {
-    // padding-top: 40px;
+    flex: 1;
 }
 
 .container {
