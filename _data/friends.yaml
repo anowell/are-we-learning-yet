@@ -1,4 +1,17 @@
+# Friends of Rust ML
+
+# If your organization is using Rust for machine learning,
+# or otherwise making contributions to the Rust ML ecosystem,
+# add your organization's information here to have it displayed on
+# are-we-learning-yet.com/friends
+
+# The 'how' field should be one short sentence, ideally with a link
+# providing evidence (other prospective users will be interested to
+# know details).
+
+# The actual implementation of the /friends page will happen
+# after 3 or 4 logos have been added.
 - name: Algorithmia
   url: https://algorithmia.com/
   logo: algorithmia.png
-  how: "Platform support for <a href='http://blog.algorithmia.com/algorithmia-now-supports-python-3-javascript-rust-ruby/'>hosting Rust-based ML algorithms</a>."
+  how: "Platform supports <a href='http://blog.algorithmia.com/algorithmia-now-supports-python-3-javascript-rust-ruby/'>hosting Rust-based ML algorithms</a>."
