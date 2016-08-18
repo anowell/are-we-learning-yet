@@ -67,31 +67,31 @@
   github: autumnai/collenchyma
   summary: "An extensible, pluggable, backend-agnostic framework for parallel, high-performance computations on CUDA, OpenCL and common host CPU."
   docs: http://autumnai.github.io/collenchyma
-  tags: ["scientific-computation"]
+  tags: ["scientific-computing"]
 
 - name: GSL
   github: GuillaumeGomez/rust-GSL
   summary: "A rust binding for the GSL (the GNU scientific library)"
   docs: http://rust-ci.org/GuillaumeGomez/rust-GSL/doc/rgsl/
-  tags: ["scientific-computation"]
+  tags: ["scientific-computing"]
 
 - name: scirust
   github: indigits/scirust
   summary: "A scientific computing library"
   docs: http://indigits.github.io/scirust/doc/scirust/index.html
-  tags: ["scientific-computation"]
+  tags: ["scientific-computing"]
 
 - name: numrs
   github: sankha93/numrs
   summary: "A numerical computation library for Rust."
   docs: http://sankhs.com/numrs
-  tags: ["scientific-computation"]
+  tags: ["scientific-computing"]
 
 - name: bio
   github: rust-bio/rust-bio
   summary: "This library provides rigorously tested implementations of many algorithms and data structures that are useful for bioinformatics."
   docs: https://rust-bio.github.io/rust-bio
-  tags: ["scientific-computation", "data-structures"]
+  tags: ["scientific-computing", "data-structures"]
 
 - name: cuticula
   github: autumnai/cuticula
@@ -132,25 +132,25 @@
   github: bluss/matrixmultiply
   summary: "General matrix multiplication of f32 and f64 matrices in Rust. Supports matrices with general strides."
   docs: https://bluss.github.io/matrixmultiply/
-  tags: ["scientific-computation"]
+  tags: ["scientific-computing"]
 
 - name: rulinalg
   github: AtheMathmo/rulinalg
   summary: "A linear algebra library."
   docs: https://athemathmo.github.io/rulinalg/
-  tags: ["scientific-computation"]
+  tags: ["scientific-computing"]
 
 - name: blas
   github: stainless-steel/blas
   summary: "The package provides an interface to the Basic Linear Algebra Subprograms."
   docs: https://stainless-steel.github.io/blas
-  tags: ["scientific-computation"]
+  tags: ["scientific-computing"]
 
 - name: lapack
   github: stainless-steel/lapack
   summary: "The package provides an interface to the Linear Algebra PACKage."
   docs: https://stainless-steel.github.io/lapack
-  tags: ["scientific-computation"]
+  tags: ["scientific-computing"]
 
 - name: petgraph
   github: bluss/petgraph
