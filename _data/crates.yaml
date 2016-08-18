@@ -57,6 +57,12 @@
   summary: "A machine learning library that is able to run on Nvidia, OpenCL or CPU BLAS based compute backends."
   tags: ["neural-networks"]
 
+- name: num
+  github: rust-num/num
+  summary: "A collection of numeric types and traits for Rust, including bigint, complex, rational, range iterators, generic integers, and more! "
+  docs: http://rust-num.github.io/num
+  tags: ["data-structures"]
+
 - name: ndarray
   github: bluss/rust-ndarray
   summary: "An N-dimensional array for general elements and for numerics. Lightweight array views and slicing; views support chunking and splitting."
@@ -163,3 +169,10 @@
   summary: "A directed acyclic graph data structure library. It is Implemented on top of petgraph's Graph data structure and attempts to follow similar conventions where suitable."
   docs: http://mitchmindtree.github.io/daggy/daggy/
   tags: ["data-structures"]
+
+- name: astar
+  github: TyOverby/astar
+  summary: "A generic implementation of the A* pathfinding algorithm."
+  docs: http://tyoverby.com/astar/astar/
+  tags: ["scientific-computing"]
+
