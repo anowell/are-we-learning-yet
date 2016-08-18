@@ -5,4 +5,5 @@ crate_tag: evolution
 color: red
 ---
 
-TODO: Add an overview of evolution algorithm libraries in Rust.
+Rust has a few young libraries that make it
+straight-forward to write a genetic or evolutionary algorithms.

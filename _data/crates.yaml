@@ -23,6 +23,11 @@
   docs: https://willi-kappler.github.io/darwin-rs
   tags: ["evolution"]
 
+- name: evo
+  github: mneumann/evo-rs
+  summary: "Evolutionary Algorithm Library for Rust"
+  tags: ["evolution"]
+
 - name: classifier
   github: jackm321/Rust_Classifier
   summary: Naive Bayes classifier
@@ -176,3 +181,20 @@
   docs: http://tyoverby.com/astar/astar/
   tags: ["scientific-computing"]
 
+- name: euclid
+  github: servo/euclid
+  summary: "Geometry primitives (basic linear algebra) for Rust"
+  docs: http://doc.servo.org/euclid/
+  tags: ["scientific-computing"]
+
+- name: nalgebra
+  github: sebcrozet/nalgebra
+  summary: "Linear algebra library for computer physics, computer graphics and general low-dimensional linear algebra for Rust."
+  docs: http://nalgebra.org/doc/nalgebra/index.html
+  tags: ["scientific-computing"]
+
+- name: cgmath
+  github: brendanzab/cgmath
+  summary: "A linear algebra and mathematics library for computer graphics."
+  docs: http://brendanzab.github.io/cgmath
+  tags: ["scientific-computing"]
