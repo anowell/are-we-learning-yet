@@ -101,15 +101,18 @@ a:hover .tile {
     background-color: #393939;
 }
 
+.green { color: $status-green; }
+.yellow { color: $status-yellow; }
+.red { color: $status-red; }
+
 .tile-green {
-    border-color: #81f300;
+    border-color: $status-green;
 }
 
 .tile-yellow {
-    border-color: #ffee40;
+    border-color: $status-yellow;
 }
 
-
 .tile-red {
-    border-color: #ff3e21;
+    border-color: $status-red;
 }
