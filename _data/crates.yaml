@@ -175,12 +175,6 @@
   docs: http://mitchmindtree.github.io/daggy/daggy/
   tags: ["data-structures"]
 
-- name: astar
-  github: TyOverby/astar
-  summary: "A generic implementation of the A* pathfinding algorithm."
-  docs: http://tyoverby.com/astar/astar/
-  tags: ["scientific-computing"]
-
 - name: euclid
   github: servo/euclid
   summary: "Geometry primitives (basic linear algebra) for Rust"
