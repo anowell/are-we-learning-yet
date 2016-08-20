@@ -116,3 +116,10 @@ a:hover .tile {
 .tile-red {
     border-color: $status-red;
 }
+
+.followup {
+    margin-top: 50px;
+    text-align: center;
+    padding: 20px 0;
+    border: 2px solid orange; /* TODO: using colors by name is basically never good design */
+}
