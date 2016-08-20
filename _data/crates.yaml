@@ -9,7 +9,7 @@
   github: AtheMathmo/rusty-machine
   summary: A machine learning library.
   docs: https://athemathmo.github.io/rusty-machine/
-  tags: ["neural-networks", "bayes", "clustering"]
+  tags: ["neural-networks", "linear-classifiers", "clustering"]
 
 - name: genetic
   github: m-decoster/RsGenetic
@@ -32,13 +32,13 @@
   github: jackm321/Rust_Classifier
   summary: Naive Bayes classifier
   docs: https://jackm321.github.io/Rust_Classifier/doc/classifier/
-  tags: ["bayes"]
+  tags: ["linear-classifiers"]
 
 - name: rustlearn
   github: maciejkula/rustlearn
   summary: A machine learning package for Rust.
   docs: https://maciejkula.github.io/rustlearn/doc/rustlearn/
-  tags: ["decision-trees"]
+  tags: ["linear-classifiers", "decision-trees"]
 
 - name: rustml
   github: daniel-e/rustml
