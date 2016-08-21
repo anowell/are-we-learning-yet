@@ -3,16 +3,30 @@ html {
 }
 
 body {
-    font-family: Fira Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+    margin: 0px;
     background-color: #eee;
     min-height: 100%;
-}
+    color: $text-color;
+    font-family: $base-font-family;
+    font-size: 1.6em;
+    font-weight: 300;
+    letter-spacing: 0.01em;
+    line-height: 1.6;
 
-.body {
+    // For the sticky footer
     display: flex;
     min-height: 100vh;
     flex-direction: column;
 }
+
+a {
+  color: $primary-color;
+  text-decoration: none;
+}
+a:hover {
+  color: darken($primary-color, 10%);
+}
+
 
 .github-fork-ribbon {
     &:before, &:after {
@@ -23,7 +37,7 @@ body {
 }
 
 h1 {
-    padding-top: 40px;
+    padding-top: 20px;
     letter-spacing: -0.2rem;
 }
 h1 strong {
@@ -53,7 +67,6 @@ b, strong {
 .hero {
     padding: 40px;
     min-height: 360px;
-    margin-bottom: 40px;
     background-color: #333;
     color: #ccc;
     margin-bottom: 0px;
@@ -74,7 +87,12 @@ b, strong {
 }
 
 .container {
-    max-width: 80.0rem;
+    padding: 8px;
+}
+
+.section {
+    padding-top: 60px;
+    padding-bottom: 40px;
 }
 
 .tiles {
@@ -122,4 +140,22 @@ a:hover .tile {
     text-align: center;
     padding: 20px 0;
     border: 2px solid orange; /* TODO: using colors by name is basically never good design */
+}
+
+
+@media screen and (max-width: 47.9em) {
+    .hide-xs { display: none; }
+}
+
+@media screen and (min-width: 48em) and (max-width: 63.9em) {
+    .hide-sm { display: none; }
+}
+
+@media screen and (min-width: 64em) and (max-width: 74.9em) {
+    .hide-md { display: none; }
+}
+
+@media screen and (min-width: 75em) {
+    .hide-lg { display: none; }
+    .hide-xs, .hide-sm, .hide-sm { display: flex; }
 }

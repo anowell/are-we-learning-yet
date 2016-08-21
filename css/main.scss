@@ -15,5 +15,4 @@ $status-yellow: #ffee40;
 $status-red:    #ff3e21;
 
 // Import partials from `sass_dir` (defaults to `_sass`)
-@import "milligram",
-        "base";
+@import "base";

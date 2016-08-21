@@ -10,7 +10,7 @@
     {% else %}
       &nbsp;
     {% endif %}
-    <nav class="site-nav float-right">
+    <nav class="site-nav" style="float:right;">
       {% assign pages = site.pages | sort: "navindex" %}
       {% for page in pages %}
         {% if page.navindex && page.title %}
