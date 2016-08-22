@@ -1,194 +1,105 @@
 
 - name: leaf
-  github: autumnai/leaf
-  summary: Machine Learning Framework for Hackers
-  docs: http://autumnai.github.io/leaf
-  tags: ["neural-networks"]
+  topics: ["neural-networks"]
 
 - name: rusty-machine
-  github: AtheMathmo/rusty-machine
-  summary: A machine learning library.
-  docs: https://athemathmo.github.io/rusty-machine/
-  tags: ["neural-networks", "linear-classifiers", "clustering"]
+  topics: ["neural-networks", "linear-classifiers", "clustering"]
 
 - name: genetic
-  github: m-decoster/RsGenetic
-  summary: A library providing genetic algorithm execution.
-  docs: http://m-decoster.github.io/RsGenetic/doc/rsgenetic/index.html
-  tags: ["evolution"]
+  topics: ["evolution"]
+
+- name: rsgenetic
+  topics: ["evolution"]
 
 - name: darwin-rs
-  github: willi-kappler/darwin-rs
-  summary: Evolutionary algorithms library written in Rust.
-  docs: https://willi-kappler.github.io/darwin-rs
-  tags: ["evolution"]
+  topics: ["evolution"]
 
 - name: evo
-  github: mneumann/evo-rs
-  summary: "Evolutionary Algorithm Library for Rust"
-  tags: ["evolution"]
+  topics: ["evolution"]
 
 - name: classifier
-  github: jackm321/Rust_Classifier
-  summary: Naive Bayes classifier
-  docs: https://jackm321.github.io/Rust_Classifier/doc/classifier/
-  tags: ["linear-classifiers"]
+  topics: ["linear-classifiers"]
 
 - name: rustlearn
-  github: maciejkula/rustlearn
-  summary: A machine learning package for Rust.
-  docs: https://maciejkula.github.io/rustlearn/doc/rustlearn/
-  tags: ["linear-classifiers", "decision-trees"]
+  topics: ["linear-classifiers", "decision-trees"]
 
 - name: rustml
-  github: daniel-e/rustml
-  summary: A library for doing maching learning in Rust.
-  docs: http://daniel-e.github.io/rustml/rustml/
-  tags: ["neural-networks", "clustering"]
+  topics: ["neural-networks", "clustering"]
 
 - name: nn
-  github: jackm321/RustNN
-  summary: A multilayer feedforward backpropagation neural network library.
-  docs: https://jackm321.github.io/RustNN/doc/nn/
-  tags: ["neural-networks"]
+  topics: ["neural-networks"]
 
 - name: tensorflow
-  github: google/tensorflow-rust
-  summary: Rust language bindings for TensorFlow. This project is still under active development and not yet ready for widespread use.
-  tags: ["neural-networks", "bindings"]
+  topics: ["neural-networks", "bindings"]
 
 - name: hal-ml
-  github: jramapuram/hal
-  summary: "A machine learning library that is able to run on Nvidia, OpenCL or CPU BLAS based compute backends."
-  tags: ["neural-networks"]
+  topics: ["neural-networks"]
 
 - name: num
-  github: rust-num/num
-  summary: "A collection of numeric types and traits for Rust, including bigint, complex, rational, range iterators, generic integers, and more! "
-  docs: http://rust-num.github.io/num
-  tags: ["data-structures"]
+  topics: ["data-structures"]
 
 - name: ndarray
-  github: bluss/rust-ndarray
-  summary: "An N-dimensional array for general elements and for numerics. Lightweight array views and slicing; views support chunking and splitting."
-  docs: https://bluss.github.io/rust-ndarray/
-  tags: ["data-structures"]
+  topics: ["data-structures"]
 
 - name: collenchyma
-  github: autumnai/collenchyma
-  summary: "An extensible, pluggable, backend-agnostic framework for parallel, high-performance computations on CUDA, OpenCL and common host CPU."
-  docs: http://autumnai.github.io/collenchyma
-  tags: ["scientific-computing"]
+  topics: ["scientific-computing"]
 
 - name: GSL
-  github: GuillaumeGomez/rust-GSL
-  summary: "A rust binding for the GSL (the GNU scientific library)"
-  docs: http://rust-ci.org/GuillaumeGomez/rust-GSL/doc/rgsl/
-  tags: ["scientific-computing"]
+  topics: ["scientific-computing"]
 
 - name: scirust
-  github: indigits/scirust
-  summary: "A scientific computing library"
-  docs: http://indigits.github.io/scirust/doc/scirust/index.html
-  tags: ["scientific-computing"]
+  topics: ["scientific-computing"]
 
 - name: numrs
-  github: sankha93/numrs
-  summary: "A numerical computation library for Rust."
-  docs: http://sankhs.com/numrs
-  tags: ["scientific-computing"]
+  topics: ["scientific-computing"]
 
 - name: bio
-  github: rust-bio/rust-bio
-  summary: "This library provides rigorously tested implementations of many algorithms and data structures that are useful for bioinformatics."
-  docs: https://rust-bio.github.io/rust-bio
-  tags: ["scientific-computing", "data-structures"]
+  topics: ["scientific-computing", "data-structures"]
 
 - name: cuticula
-  github: autumnai/cuticula
-  summary: "Data Preprocessing library for Machine Learning"
-  docs: http://autumnai.github.io/cuticula
-  tags: ["data-preprocessing"]
+  topics: ["data-preprocessing"]
 
 - name: rusty-data
-  github: AtheMathmo/rusty-data
-  summary: "A data handling library (designed for machine learning)."
-  docs: https://athemathmo.github.io/rusty-data/
-  tags: ["data-structures"]
+  documentation: https://athemathmo.github.io/rusty-data/
+  topics: ["data-preprocessing"]
 
 - name: rds
-  github: haxelion/rds
-  summary: "Rust Data Science, a modular and fast data science framework for rust"
-  docs: https://haxelion.github.io/rds/target/doc/rds/index.html
-  tags: ["data-structures"]
+  topics: ["data-structures"]
 
 - name: fann
-  github: afck/fann-rs
-  summary: "Wrapper for the Fast Artificial Neural Networks library"
-  docs: https://afck.github.io/docs/fann-rs/fann
-  tags: ["neural-networks"]
+  topics: ["neural-networks"]
 
 - name: cogset
-  github: huonw/cogset
-  summary: "Generic implementations of clustering algorithms. Includes k-means, DBSCAN and OPTICS."
-  docs: https://haxelion.github.io/rds/target/doc/rds/index.html
-  tags: ["clustering"]
+  topics: ["clustering"]
 
-- name: deeplearn
-  github: tedsta/deeplearn-rs
-  summary: "Deep neural networks in Rust"
-  tags: ["neural-networks"]
+- repository: https://github.com/tedsta/deeplearn-rs
+  description: "Deep neural networks in Rust"
+  topics: ["neural-networks"]
 
 - name: matrixmultiply
-  github: bluss/matrixmultiply
-  summary: "General matrix multiplication of f32 and f64 matrices in Rust. Supports matrices with general strides."
-  docs: https://bluss.github.io/matrixmultiply/
-  tags: ["scientific-computing"]
+  topics: ["scientific-computing"]
 
 - name: rulinalg
-  github: AtheMathmo/rulinalg
-  summary: "A linear algebra library."
-  docs: https://athemathmo.github.io/rulinalg/
-  tags: ["scientific-computing"]
+  topics: ["scientific-computing"]
 
 - name: blas
-  github: stainless-steel/blas
-  summary: "The package provides an interface to the Basic Linear Algebra Subprograms."
-  docs: https://stainless-steel.github.io/blas
-  tags: ["scientific-computing"]
+  topics: ["scientific-computing"]
 
 - name: lapack
-  github: stainless-steel/lapack
-  summary: "The package provides an interface to the Linear Algebra PACKage."
-  docs: https://stainless-steel.github.io/lapack
-  tags: ["scientific-computing"]
+  topics: ["scientific-computing"]
 
 - name: petgraph
-  github: bluss/petgraph
-  summary: "Graph data structure library. Provides graph types and graph algorithms."
-  docs: http://bluss.github.io/petgraph
-  tags: ["data-structures"]
+  topics: ["data-structures"]
 
 - name: daggy
-  github: mitchmindtree/daggy
-  summary: "A directed acyclic graph data structure library. It is Implemented on top of petgraph's Graph data structure and attempts to follow similar conventions where suitable."
-  docs: http://mitchmindtree.github.io/daggy/daggy/
-  tags: ["data-structures"]
+  documentation: http://mitchmindtree.github.io/daggy/daggy/
+  topics: ["data-structures"]
 
 - name: euclid
-  github: servo/euclid
-  summary: "Geometry primitives (basic linear algebra) for Rust"
-  docs: http://doc.servo.org/euclid/
-  tags: ["scientific-computing"]
+  topics: ["scientific-computing"]
 
 - name: nalgebra
-  github: sebcrozet/nalgebra
-  summary: "Linear algebra library for computer physics, computer graphics and general low-dimensional linear algebra for Rust."
-  docs: http://nalgebra.org/doc/nalgebra/index.html
-  tags: ["scientific-computing"]
+  topics: ["scientific-computing"]
 
 - name: cgmath
-  github: brendanzab/cgmath
-  summary: "A linear algebra and mathematics library for computer graphics."
-  docs: http://brendanzab.github.io/cgmath
-  tags: ["scientific-computing"]
+  topics: ["scientific-computing"]

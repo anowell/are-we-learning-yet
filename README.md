@@ -19,3 +19,9 @@ bundle exec jekyll serve
 
 Running on [localhost:4000](http://localhost:4000)
 
+To update `crates_generated.yaml` from `crates.yaml`, set `GITHUB_OAUTH_TOKEN` and run:
+
+```
+_bin/gen_crate_data.rb
+```
+
