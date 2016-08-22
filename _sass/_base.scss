@@ -44,6 +44,10 @@ h1 strong {
     color: $primary-color;
 }
 
+h3 {
+  margin-bottom: 5px;
+}
+
 b, strong {
   font-weight: bold;
 }
@@ -51,8 +55,8 @@ b, strong {
 .site-header {
     padding: 5px 0;
     font-size: 2rem;
-    line-height: 32px;
-    img { width: 3  0px; height: 30px; }
+    line-height: 24px;
+    img { width: 24px; height: 24px; }
     background-color: #333;
 }
 
@@ -63,9 +67,13 @@ b, strong {
 .site-nav-link {
   padding-left: 20px;
 }
+.site-header {
+  font-size: 24px;
+}
 
 .hero {
-    padding: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
     min-height: 360px;
     background-color: #333;
     color: #ccc;
