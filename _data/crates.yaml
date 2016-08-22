@@ -108,7 +108,7 @@
   github: autumnai/cuticula
   summary: "Data Preprocessing library for Machine Learning"
   docs: http://autumnai.github.io/cuticula
-  tags: ["data-processing"]
+  tags: ["data-preprocessing"]
 
 - name: rusty-data
   github: AtheMathmo/rusty-data
