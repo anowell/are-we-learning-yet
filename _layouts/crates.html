@@ -15,30 +15,46 @@ layout: default
   {% for crate in crates %}
     <div>
       <hr>
-      <h3>{%if crate.name %}{{crate.name}}{% else %}{{crate.github}}{% endif %}</h3>
-      {%if crate.name %}
-        <a href="https://crates.io/crates/{{crate.name}}"><img src="https://img.shields.io/crates/v/{{crate.name}}.svg?maxAge=2592000"></a>
-        <a href="https://crates.io/crates/{{crate.name}}"><img src="https://img.shields.io/crates/d/{{crate.name}}.svg?maxAge=2592000"></a>
-      {% endif %}
-      {%if crate.github %}
-        <a href="https://github.com/{{crate.github}}"><img src="https://img.shields.io/github/stars/{{crate.github}}.svg?style=social&label=Star&maxAge=2592000"></a>
-      {% endif %}
-      {%if crate.documentation %}
-        <a href="{{crate.documentation}}" style="font-size: small; vertical-align:middle;">[docs]</a>
-      {% endif %}
+      <h3>
+        {%if crate.name %}{{crate.name}}{% else %}{{crate.github}}{% endif %}
+        <span style="font-size: small; vertical-align:middle;">
+          [
+          {%if crate.name %}<a href="https://crates.io/crates/{{crate.name}}">crate</a> &middot;{% endif %}
+          {%if crate.repository %}<a href="{{crate.repository}}">repo</a> &middot;{% endif %}
+          {%if crate.documentation %}<a href="{{crate.documentation}}">docs</a>{% endif %}
+          ]
+        </span>
+      </h3>
+
+      <div style="line-height:1;">
+        {%if crate.name %}
+          <img src="https://img.shields.io/crates/v/{{crate.name}}.svg?maxAge=2592000">
+          <img src="https://img.shields.io/crates/d/{{crate.name}}.svg?maxAge=2592000">
+        {% endif %}
+        {%if crate.github %}
+          <img src="https://img.shields.io/github/stars/{{crate.github}}.svg?style=social&label=Star&maxAge=2592000">
+        {% endif %}
+      </div>
+
       <p>{{crate.description}}</p>
+
       <div style="font-size: small;">
+
+        {%if crate.name %}
+          <b>License</b>: {{crate.license}}
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        {% endif %}
         {%if crate.github %}
           <b>Last Commit</b>: {{crate.last_commit | date: "%d %b %Y"}}
-          &nbsp;&nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         {% endif %}
         {%if crate.name %}
           <b>Last Published</b>: {{crate.updated_at | date: "%d %b %Y"}}
-          &nbsp;&nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         {% endif %}
         {%if crate.github %}
           <b>Contributors</b>: {{crate.contributor_count}}
-          &nbsp;&nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <b>Open Issues</b>: {{crate.open_issues_count}}
         {% endif %}
       </div>

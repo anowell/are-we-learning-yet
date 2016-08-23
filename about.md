@@ -16,7 +16,7 @@ While there isn't a strong science behind the color-coding of ecosystem areas,
 this site is using a simple red-yellow-green to roughly indicate:
 
 <div style="background-color: #393939">
-<ul style="padding:10px 10px 5px;">
+<ul style="padding-top:10px; padding-bottom:5px;">
 <li class="red">exploratory, unstable, or major gaps</li>
 <li class="yellow">progressing, emerging, highly useful, and closing in on major gaps</li>
 <li class="green">awesome, stable, complete, active, and mature</li>

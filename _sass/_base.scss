@@ -22,9 +22,13 @@ body {
 a {
   color: $primary-color;
   text-decoration: none;
+  outline: none;
 }
 a:hover {
   color: darken($primary-color, 10%);
+}
+a:active {
+  color: darken($primary-color, 15%);
 }
 
 

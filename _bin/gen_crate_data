@@ -12,7 +12,16 @@ def die(msg)
 	exit 1
 end
 
-def cached_curl(url, headers={})
+# Clear any previously cached requests
+def clean
+  puts "Cleaning download cache..."
+  FileUtils.rm_r('/tmp/api.github.com')
+	FileUtils.rm_r('/tmp/crates.io')
+end
+
+# Fetches a URL and caches the result as a tmp file for future calls
+# This allows rerunning this script without hammerring APIs
+def cached_request(url, headers={})
   dir = url.sub(/^https?:\/\//, '/tmp/')
 	path = File.join(dir, "index.json")
 	FileUtils.mkdir_p(dir)
@@ -36,13 +45,14 @@ def cached_curl(url, headers={})
 	JSON.parse(File.read(path))
 end
 
+# Fetch stats and other interesting data from the GitHub API
 def get_repo_data(repo)
   headers = {'Authorization': "token #{GH_OAUTH_TOKEN}"} if GH_OAUTH_TOKEN
-	data = cached_curl("https://api.github.com/repos/#{repo}", headers)
+	data = cached_request("https://api.github.com/repos/#{repo}", headers)
 	unless data.empty?
 		branch = data['default_branch'] || 'master'
-		commit = cached_curl("https://api.github.com/repos/#{repo}/commits/#{branch}", headers)
-		contributors = cached_curl("https://api.github.com/repos/#{repo}/contributors", headers)
+		commit = cached_request("https://api.github.com/repos/#{repo}/commits/#{branch}", headers)
+		contributors = cached_request("https://api.github.com/repos/#{repo}/contributors", headers)
 	end
 
 	out = {}
@@ -54,8 +64,9 @@ def get_repo_data(repo)
 	out.delete_if { |k,v| v.nil? }
 end
 
+# Fetch stats and other interesting data from the crates.io API
 def get_crate_data(crate)
-	data = cached_curl("https://crates.io/api/v1/crates/#{crate}")
+	data = cached_request("https://crates.io/api/v1/crates/#{crate}")
 
 	out = {}
 	%w(description repository documentation downloads license max_version created_at updated_at).each do |k|
@@ -64,17 +75,24 @@ def get_crate_data(crate)
 	out.delete_if { |k,v| v.nil? }
 end
 
+# Read crates.yaml
 def read_crate_list
    YAML.load_file(File.join(__dir__, "../_data/crates.yaml"))
 end
 
+# Save all the collected data to crates_generated.yaml
 def save_crate_list(crates)
 	puts "Saving crate list..."
 	File.open(File.join(__dir__, "../_data/crates_generated.yaml"), 'w') do |f|
+		f.write "# This file is generated - do not edit it manually\n\n"
 		f.write crates.to_yaml
 	end
 end
 
+
+########## Begin execution ##########
+
+clean if ARGV[0] == 'clean'
 
 crates = read_crate_list.map do |crate|
 	die "ERROR: crate entry is invalid: #{crate}" unless crate['name'] || crate['repository']

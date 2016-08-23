@@ -12,16 +12,29 @@ Feedback, issues, and pull requests are welcome and appreciated for adding missi
 providing additional resources, or more generally improving the content.
 
 ## Running locally
+
+Running locally is just a matter of installing jekyll and serving the site:
+
 ```
 bundle install
 bundle exec jekyll serve
 ```
 
-Running on [localhost:4000](http://localhost:4000)
+The site should be running on [localhost:4000](http://localhost:4000)
 
-To update `crates_generated.yaml` from `crates.yaml`, set `GITHUB_OAUTH_TOKEN` and run:
+## Generating crate data
+
+`_data/crates.yaml` contains a manually curated list of crates,
+but the site is generated using `_data/crates_generated.yaml`
+which includes additional data about each crate.
+Generating updated crate data is done by running:
 
 ```
-_bin/gen_crate_data.rb
+# GitHub OAuth token avoids the inevitable 403 rate limiting errors
+export GITHUB_OAUTH_TOKEN=<YOUR_GITHUB_TOKEN>
+
+# Generate data, optionally cleaning the API cache
+_bin/gen_crate_data [clean]
 ```
 
+TODO: Move crate generation into a [Jekyll Generator Plugin](https://jekyllrb.com/docs/plugins/#generators)

@@ -1,15 +1,37 @@
+# Crates listed in this file are used to generate crates_generated.yaml
+#
+# Notes:
+# - Entries are alphabetical by crate name
+# - Any value listed in this file will take precendence over the value retrieved from crates.io or the GitHub API
+#     This is especially useful for writing more complete descriptions
+# - Crates not published to crates.io can be added by 'repository', but will lack some generated data
+# - Crates with non-Github repos are fine, but will currently lack some generated data
+# - Topics are defined are defined in the _topics directory; new topics require new topic pages
 
-- name: leaf
-  topics: ["neural-networks"]
+- name: bio
+  topics: ["scientific-computing", "data-structures"]
 
-- name: rusty-machine
-  topics: ["neural-networks", "linear-classifiers", "clustering"]
+- name: blas
+  topics: ["scientific-computing"]
 
-- name: genetic
-  topics: ["evolution"]
+- name: cgmath
+  topics: ["scientific-computing"]
 
-- name: rsgenetic
-  topics: ["evolution"]
+- name: classifier
+  topics: ["linear-classifiers"]
+
+- name: cogset
+  topics: ["clustering"]
+
+- name: collenchyma
+  topics: ["scientific-computing"]
+
+- name: cuticula
+  topics: ["data-preprocessing"]
+
+- name: daggy
+  documentation: http://mitchmindtree.github.io/daggy/daggy/
+  topics: ["data-structures"]
 
 - name: darwin-rs
   topics: ["evolution"]
@@ -17,8 +39,56 @@
 - name: evo
   topics: ["evolution"]
 
-- name: classifier
-  topics: ["linear-classifiers"]
+- name: euclid
+  topics: ["scientific-computing"]
+
+- name: fann
+  topics: ["neural-networks"]
+
+- name: genetic
+  topics: ["evolution"]
+
+- name: GSL
+  topics: ["scientific-computing"]
+
+- name: hal-ml
+  topics: ["neural-networks"]
+
+- name: lapack
+  topics: ["scientific-computing"]
+
+- name: leaf
+  topics: ["neural-networks"]
+
+- name: matrixmultiply
+  topics: ["scientific-computing"]
+
+- name: nalgebra
+  topics: ["scientific-computing"]
+
+- name: ndarray
+  topics: ["data-structures"]
+
+- name: nn
+  topics: ["neural-networks"]
+
+- name: num
+  topics: ["data-structures"]
+
+- name: numrs
+  topics: ["scientific-computing"]
+
+- name: petgraph
+  topics: ["data-structures"]
+
+- name: rds
+  topics: ["data-structures"]
+
+- name: rsgenetic
+  topics: ["evolution"]
+
+- name: rulinalg
+  topics: ["scientific-computing"]
 
 - name: rustlearn
   topics: ["linear-classifiers", "decision-trees"]
@@ -26,80 +96,19 @@
 - name: rustml
   topics: ["neural-networks", "clustering"]
 
-- name: nn
-  topics: ["neural-networks"]
-
-- name: tensorflow
-  topics: ["neural-networks", "bindings"]
-
-- name: hal-ml
-  topics: ["neural-networks"]
-
-- name: num
-  topics: ["data-structures"]
-
-- name: ndarray
-  topics: ["data-structures"]
-
-- name: collenchyma
-  topics: ["scientific-computing"]
-
-- name: GSL
-  topics: ["scientific-computing"]
-
-- name: scirust
-  topics: ["scientific-computing"]
-
-- name: numrs
-  topics: ["scientific-computing"]
-
-- name: bio
-  topics: ["scientific-computing", "data-structures"]
-
-- name: cuticula
-  topics: ["data-preprocessing"]
-
 - name: rusty-data
   documentation: https://athemathmo.github.io/rusty-data/
   topics: ["data-preprocessing"]
 
-- name: rds
-  topics: ["data-structures"]
+- name: rusty-machine
+  topics: ["neural-networks", "linear-classifiers", "clustering"]
 
-- name: fann
-  topics: ["neural-networks"]
+- name: scirust
+  topics: ["scientific-computing"]
 
-- name: cogset
-  topics: ["clustering"]
+- name: tensorflow
+  topics: ["neural-networks", "bindings"]
 
 - repository: https://github.com/tedsta/deeplearn-rs
   description: "Deep neural networks in Rust"
   topics: ["neural-networks"]
-
-- name: matrixmultiply
-  topics: ["scientific-computing"]
-
-- name: rulinalg
-  topics: ["scientific-computing"]
-
-- name: blas
-  topics: ["scientific-computing"]
-
-- name: lapack
-  topics: ["scientific-computing"]
-
-- name: petgraph
-  topics: ["data-structures"]
-
-- name: daggy
-  documentation: http://mitchmindtree.github.io/daggy/daggy/
-  topics: ["data-structures"]
-
-- name: euclid
-  topics: ["scientific-computing"]
-
-- name: nalgebra
-  topics: ["scientific-computing"]
-
-- name: cgmath
-  topics: ["scientific-computing"]

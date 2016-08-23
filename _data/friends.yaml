@@ -11,6 +11,7 @@
 
 # The actual implementation of the /friends page will happen
 # after 3 or 4 logos have been added.
+
 - name: Algorithmia
   url: https://algorithmia.com/
   logo: algorithmia.png
