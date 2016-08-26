@@ -112,6 +112,12 @@
 - name: timely
   topics: ["data-preprocessing"]
 
+- repository: https://github.com/pengowen123/eant2
+  description: "EANT2 is an Evolutionary algorithm that uses the Common Genetic Encoding (CGE) to encode neural networks and CMA-ES as a weight optimizer. EANT2 evolves the topology of the Neural Network and CMA-ES tries to find the optimal weights for each topology."
+  documentation: https://pengowen123.github.io/eant2/eant2/index.html
+  license: GPL-3.0
+  topics: ["evolution"]
+
 - repository: https://github.com/tedsta/deeplearn-rs
   description: "Deep neural networks in Rust"
   topics: ["neural-networks"]

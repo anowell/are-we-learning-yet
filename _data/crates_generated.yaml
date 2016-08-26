@@ -571,6 +571,20 @@
   topics:
   - data-preprocessing
   github: frankmcsherry/timely-dataflow
+- stargazers_count: 2
+  open_issues_count: 0
+  last_commit: '2016-08-21T01:39:52Z'
+  contributor_count: 2
+  repository: https://github.com/pengowen123/eant2
+  description: EANT2 is an Evolutionary algorithm that uses the Common Genetic Encoding
+    (CGE) to encode neural networks and CMA-ES as a weight optimizer. EANT2 evolves
+    the topology of the Neural Network and CMA-ES tries to find the optimal weights
+    for each topology.
+  documentation: https://pengowen123.github.io/eant2/eant2/index.html
+  license: GPL-3.0
+  topics:
+  - evolution
+  github: pengowen123/eant2
 - stargazers_count: 115
   open_issues_count: 1
   last_commit: '2016-07-01T20:41:12Z'
