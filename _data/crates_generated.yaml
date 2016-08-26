@@ -3,13 +3,13 @@
 ---
 - stargazers_count: 216
   open_issues_count: 13
-  last_commit: '2016-08-20T12:30:42Z'
+  last_commit: '2016-08-24T06:23:44Z'
   contributor_count: 14
   description: A bioinformatics library for Rust. This library provides implementations
     of many algorithms and data structures that are useful for bioinformatics.
   repository: https://github.com/rust-bio/rust-bio
   documentation: https://rust-bio.github.io/rust-bio/bio/index.html
-  downloads: 2838
+  downloads: 2903
   license: MIT
   max_version: 0.9.0
   created_at: '2015-01-31T14:15:34Z'
@@ -26,7 +26,7 @@
   description: The package provides an interface to the Basic Linear Algebra Subprograms.
   repository: https://github.com/stainless-steel/blas
   documentation: https://stainless-steel.github.io/blas
-  downloads: 5890
+  downloads: 5923
   license: Apache-2.0/MIT
   max_version: 0.15.1
   created_at: '2014-11-20T21:08:39Z'
@@ -35,14 +35,14 @@
   topics:
   - scientific-computing
   github: stainless-steel/blas
-- stargazers_count: 187
+- stargazers_count: 188
   open_issues_count: 23
-  last_commit: '2016-08-17T15:03:07Z'
+  last_commit: '2016-08-25T12:34:38Z'
   contributor_count: 30
   description: A linear algebra and mathematics library for computer graphics.
   repository: https://github.com/brendanzab/cgmath
   documentation: http://brendanzab.github.io/cgmath
-  downloads: 47132
+  downloads: 47458
   license: Apache-2.0
   max_version: 0.11.0
   created_at: '2014-11-12T19:18:40Z'
@@ -60,7 +60,7 @@
 '
   repository: https://github.com/jackm321/Rust_Classifier
   documentation: https://jackm321.github.io/Rust_Classifier/doc/classifier/
-  downloads: 673
+  downloads: 677
   license: Apache-2.0
   max_version: 0.0.3
   created_at: '2015-04-04T02:15:59Z'
@@ -79,7 +79,7 @@
 '
   repository: https://github.com/huonw/cogset
   documentation: http://huonw.github.io/cogset/cogset/
-  downloads: 666
+  downloads: 670
   license: MIT/Apache-2.0
   max_version: 0.2.0
   created_at: '2015-04-10T04:08:59Z'
@@ -88,14 +88,14 @@
   topics:
   - clustering
   github: huonw/cogset
-- stargazers_count: 274
+- stargazers_count: 275
   open_issues_count: 21
   last_commit: '2016-04-10T14:02:46Z'
   contributor_count: 9
   description: high-performance computation on any hardware
   repository: https://github.com/autumnai/collenchyma
   documentation: http://autumnai.github.io/collenchyma
-  downloads: 4857
+  downloads: 4894
   license: MIT OR Apache-2.0
   max_version: 0.0.8
   created_at: '2015-11-18T16:17:55Z'
@@ -111,7 +111,7 @@
   description: Data Preprocessing library for Machine Learning
   repository: https://github.com/autumnai/cuticula
   documentation: http://autumnai.github.io/cuticula
-  downloads: 635
+  downloads: 639
   license: MIT OR Apache-2.0
   max_version: 0.2.0
   created_at: '2015-10-29T22:15:02Z'
@@ -128,7 +128,7 @@
     on top of petgraph's Graph data structure and attempts to follow similar conventions
     where suitable.
   repository: https://github.com/mitchmindtree/daggy.git
-  downloads: 9322
+  downloads: 9441
   license: MIT/Apache-2.0
   max_version: 0.4.0
   created_at: '2015-10-08T16:29:50Z'
@@ -139,13 +139,13 @@
   - data-structures
   github: mitchmindtree/daggy
 - stargazers_count: 16
-  open_issues_count: 1
+  open_issues_count: 6
   last_commit: '2016-08-16T13:42:11Z'
   contributor_count: 4
   description: Evolutionary algorithms library written in Rust.
   repository: https://github.com/willi-kappler/darwin-rs
   documentation: https://willi-kappler.github.io/darwin-rs
-  downloads: 149
+  downloads: 153
   license: MIT
   max_version: 0.2.0
   created_at: '2016-06-11T21:03:39Z'
@@ -160,7 +160,7 @@
   contributor_count: 1
   description: Evolutionary Algorithm Library for Rust
   repository: https://github.com/mneumann/evo-rs
-  downloads: 402
+  downloads: 406
   license: MIT
   max_version: 0.0.1
   created_at: '2015-10-28T22:26:31Z'
@@ -170,13 +170,13 @@
   - evolution
   github: mneumann/evo-rs
 - stargazers_count: 73
-  open_issues_count: 12
+  open_issues_count: 14
   last_commit: '2016-08-20T02:33:27Z'
   contributor_count: 30
   description: Geometry primitives
   repository: https://github.com/servo/euclid
   documentation: http://doc.servo.org/euclid/
-  downloads: 62491
+  downloads: 62926
   license: MIT / Apache-2.0
   max_version: 0.10.1
   created_at: '2015-06-17T15:24:40Z'
@@ -194,7 +194,7 @@
 '
   repository: https://github.com/afck/fann-rs
   documentation: https://afck.github.io/docs/fann-rs/fann
-  downloads: 768
+  downloads: 772
   license: LGPL-3.0
   max_version: 0.1.6
   created_at: '2015-06-27T11:29:06Z'
@@ -205,7 +205,7 @@
   github: afck/fann-rs
 - description: a little lib to use genetic algorithm
   repository: https://github.com/Kerosene2000/genetic-rs
-  downloads: 619
+  downloads: 623
   license: AML
   max_version: 0.2.1
   created_at: '2015-07-06T19:11:01Z'
@@ -221,7 +221,7 @@
   description: A rust binding for the GSL (the GNU scientific library)
   repository: https://github.com/GuillaumeGomez/rust-GSL
   documentation: http://rust-ci.org/GuillaumeGomez/rust-GSL/doc/rgsl/
-  downloads: 2036
+  downloads: 2079
   license: GPL-3.0+
   max_version: 0.4.28
   created_at: '2014-11-20T21:05:12Z'
@@ -232,7 +232,7 @@
   github: GuillaumeGomez/rust-GSL
 - stargazers_count: 24
   open_issues_count: 4
-  last_commit: '2016-08-22T18:21:21Z'
+  last_commit: '2016-08-23T21:58:26Z'
   contributor_count: 1
   description: 'HAL: a machine learning library that is able to run on Nvidia, OpenCL
     or CPU BLAS based compute backends. It currently provides stackable classical
@@ -243,7 +243,7 @@
     and Adaptive Computation time based LSTM''s. HAL also comes with the ability to
     plot and do many basic math operations on arrays.'
   repository: https://github.com/jramapuram/hal
-  downloads: 126
+  downloads: 130
   license: BSD-3-Clause
   max_version: 0.2.0
   created_at: '2016-06-17T11:25:44Z'
@@ -259,7 +259,7 @@
   description: The package provides an interface to the Linear Algebra PACKage.
   repository: https://github.com/stainless-steel/lapack
   documentation: https://stainless-steel.github.io/lapack
-  downloads: 6137
+  downloads: 6173
   license: Apache-2.0/MIT
   max_version: 0.11.0
   created_at: '2014-11-20T21:10:21Z'
@@ -268,14 +268,14 @@
   topics:
   - scientific-computing
   github: stainless-steel/lapack
-- stargazers_count: 4313
+- stargazers_count: 4320
   open_issues_count: 28
   last_commit: '2016-04-27T18:23:25Z'
   contributor_count: 14
   description: Machine Learning Framework for Hackers
   repository: https://github.com/autumnai/leaf
   documentation: http://autumnai.github.io/leaf
-  downloads: 1093
+  downloads: 1102
   license: MIT OR Apache-2.0
   max_version: 0.2.1
   created_at: '2015-11-02T17:45:30Z'
@@ -294,7 +294,7 @@
     friend here.
   repository: https://github.com/bluss/matrixmultiply/
   documentation: https://bluss.github.io/matrixmultiply/
-  downloads: 4554
+  downloads: 4703
   license: MIT/Apache-2.0
   max_version: 0.1.9
   created_at: '2016-03-28T21:26:28Z'
@@ -303,15 +303,15 @@
   topics:
   - scientific-computing
   github: bluss/matrixmultiply
-- stargazers_count: 294
-  open_issues_count: 20
-  last_commit: '2016-08-21T20:01:39Z'
+- stargazers_count: 295
+  open_issues_count: 21
+  last_commit: '2016-08-24T21:32:40Z'
   contributor_count: 30
   description: Linear algebra library for computer physics, computer graphics and
     general low-dimensional linear algebra for Rust.
   repository: https://github.com/sebcrozet/nalgebra
   documentation: http://nalgebra.org/doc/nalgebra/index.html
-  downloads: 49258
+  downloads: 49642
   license: BSD-3-Clause
   max_version: 0.9.0
   created_at: '2014-11-22T18:53:15Z'
@@ -320,7 +320,7 @@
   topics:
   - scientific-computing
   github: sebcrozet/nalgebra
-- stargazers_count: 152
+- stargazers_count: 154
   open_issues_count: 37
   last_commit: '2016-08-19T16:28:16Z'
   contributor_count: 9
@@ -328,7 +328,7 @@
     array views and slicing; views support chunking and splitting.
   repository: https://github.com/bluss/rust-ndarray
   documentation: https://bluss.github.io/rust-ndarray/
-  downloads: 10976
+  downloads: 11356
   license: MIT/Apache-2.0
   max_version: 0.6.2
   created_at: '2015-12-20T22:11:24Z'
@@ -346,7 +346,7 @@
 '
   repository: https://github.com/jackm321/RustNN
   documentation: https://jackm321.github.io/RustNN/doc/nn/
-  downloads: 965
+  downloads: 970
   license: Apache-2.0
   max_version: 0.1.6
   created_at: '2015-03-17T22:52:12Z'
@@ -364,7 +364,7 @@
     complex, rational, range iterators, generic integers, and more!
   repository: https://github.com/rust-num/num
   documentation: http://rust-num.github.io/num
-  downloads: 907122
+  downloads: 914617
   license: MIT/Apache-2.0
   max_version: 0.1.35
   created_at: '2014-11-11T05:37:31Z'
@@ -380,7 +380,7 @@
   description: A numerical computations library for Rust
   repository: https://github.com/sankha93/numrs
   documentation: http://sankhs.com/numrs
-  downloads: 428
+  downloads: 432
   license: MIT
   max_version: 0.2.0
   created_at: '2015-09-20T07:13:32Z'
@@ -396,7 +396,7 @@
   description: Graph data structure library. Provides graph types and graph algorithms.
   repository: https://github.com/bluss/petgraph
   documentation: http://bluss.github.io/petgraph
-  downloads: 26369
+  downloads: 26722
   license: MIT/Apache-2.0
   max_version: 0.2.7
   created_at: '2015-01-11T20:07:47Z'
@@ -412,7 +412,7 @@
   description: Rust Data Science
   repository: https://github.com/haxelion/rds
   documentation: https://haxelion.github.io/rds/target/doc/rds/index.html
-  downloads: 174
+  downloads: 178
   license: LGPL-3.0
   max_version: 0.0.3
   created_at: '2016-06-06T14:59:27Z'
@@ -428,7 +428,7 @@
   description: A library providing genetic algorithm execution.
   repository: https://github.com/m-decoster/RsGenetic
   documentation: http://m-decoster.github.io/RsGenetic
-  downloads: 905
+  downloads: 909
   license: Apache-2.0
   max_version: 1.6.0
   created_at: '2015-12-12T11:42:20Z'
@@ -437,14 +437,14 @@
   topics:
   - evolution
   github: m-decoster/RsGenetic
-- stargazers_count: 46
+- stargazers_count: 47
   open_issues_count: 12
   last_commit: '2016-07-29T15:36:29Z'
   contributor_count: 3
   description: A linear algebra library.
   repository: https://github.com/AtheMathmo/rulinalg
   documentation: https://AtheMathmo.github.io/rulinalg/
-  downloads: 520
+  downloads: 566
   license: MIT
   max_version: 0.2.2
   created_at: '2016-07-08T21:49:00Z'
@@ -453,14 +453,14 @@
   topics:
   - scientific-computing
   github: AtheMathmo/rulinalg
-- stargazers_count: 177
-  open_issues_count: 3
+- stargazers_count: 178
+  open_issues_count: 5
   last_commit: '2016-08-13T04:00:09Z'
   contributor_count: 2
   description: A machine learning package for Rust.
   repository: https://github.com/maciejkula/rustlearn
   documentation: https://maciejkula.github.io/rustlearn/doc/rustlearn/
-  downloads: 491
+  downloads: 496
   license: Apache-2.0
   max_version: 0.4.0
   created_at: '2015-12-06T21:58:35Z'
@@ -470,7 +470,7 @@
   - linear-classifiers
   - decision-trees
   github: maciejkula/rustlearn
-- stargazers_count: 11
+- stargazers_count: 12
   open_issues_count: 1
   last_commit: '2016-01-16T19:36:04Z'
   contributor_count: 1
@@ -479,7 +479,7 @@
 '
   repository: https://github.com/daniel-e/rustml
   documentation: http://daniel-e.github.io/rustml/rustml/
-  downloads: 671
+  downloads: 675
   license: MIT/Apache-2.0
   max_version: 0.0.5
   created_at: '2015-07-06T14:04:21Z'
@@ -495,7 +495,7 @@
   contributor_count: 1
   description: A data handling library (designed for machine learning).
   repository: https://github.com/AtheMathmo/rusty-data
-  downloads: 374
+  downloads: 378
   license: MIT
   max_version: 0.0.3
   created_at: '2016-01-04T17:10:44Z'
@@ -505,14 +505,14 @@
   topics:
   - data-preprocessing
   github: AtheMathmo/rusty-data
-- stargazers_count: 244
+- stargazers_count: 246
   open_issues_count: 9
   last_commit: '2016-08-12T03:14:43Z'
   contributor_count: 10
   description: A machine learning library.
   repository: https://github.com/AtheMathmo/rusty-machine
   documentation: https://AtheMathmo.github.io/rusty-machine/
-  downloads: 1178
+  downloads: 1219
   license: MIT
   max_version: 0.4.4
   created_at: '2015-12-09T17:16:21Z'
@@ -530,7 +530,7 @@
   description: A scientific computing library
   repository: https://github.com/indigits/scirust
   documentation: http://indigits.github.io/scirust/doc/scirust/index.html
-  downloads: 667
+  downloads: 671
   license: Apache-2.0
   max_version: 0.0.5
   created_at: '2014-11-26T16:14:11Z'
@@ -539,13 +539,13 @@
   topics:
   - scientific-computing
   github: indigits/scirust
-- stargazers_count: 135
+- stargazers_count: 138
   open_issues_count: 6
   last_commit: '2016-08-06T22:52:03Z'
   contributor_count: 3
   description: Rust language bindings for TensorFlow.
   repository: https://github.com/google/tensorflow-rust
-  downloads: 226
+  downloads: 230
   license: Apache-2.0
   max_version: 0.0.4
   created_at: '2016-05-05T03:24:32Z'
