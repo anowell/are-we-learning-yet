@@ -109,6 +109,9 @@
 - name: tensorflow
   topics: ["neural-networks", "bindings"]
 
+- name: timely
+  topics: ["data-preprocessing"]
+
 - repository: https://github.com/tedsta/deeplearn-rs
   description: "Deep neural networks in Rust"
   topics: ["neural-networks"]
