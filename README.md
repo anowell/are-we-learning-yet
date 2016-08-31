@@ -17,6 +17,10 @@ Running locally is just a matter of installing jekyll and serving the site:
 
 ```
 bundle install
+
+# GitHub OAuth token avoids 403 rate limiting errors while generated crate data
+export GITHUB_OAUTH_TOKEN=<YOUR_GITHUB_TOKEN>
+
 bundle exec jekyll serve
 ```
 
@@ -25,16 +29,8 @@ The site should be running on [localhost:4000](http://localhost:4000)
 ## Generating crate data
 
 `_data/crates.yaml` contains a manually curated list of crates,
-but the site is generated using `_data/crates_generated.yaml`
-which includes additional data about each crate.
-Generating updated crate data is done by running:
+but a plugin will fetch additional data from crates.io
+and the GitHub API. All fetched and generated data is cached
+to speed up site generation and avoid hammerring APIs.
 
-```
-# GitHub OAuth token avoids the inevitable 403 rate limiting errors
-export GITHUB_OAUTH_TOKEN=<YOUR_GITHUB_TOKEN>
-
-# Generate data, optionally cleaning the API cache
-_bin/gen_crate_data [clean]
-```
-
-TODO: Move crate generation into a [Jekyll Generator Plugin](https://jekyllrb.com/docs/plugins/#generators)
+To force regeneration of all data, simply blow away the `_tmp` directory.
