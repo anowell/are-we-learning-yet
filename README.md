@@ -29,8 +29,8 @@ The site should be running on [localhost:4000](http://localhost:4000)
 ## Generating crate data
 
 `_data/crates.yaml` contains a manually curated list of crates,
-but a plugin will fetch additional data from crates.io
+but the `crate_gen.rb` plugin will fetch additional data from crates.io
 and the GitHub API. All fetched and generated data is cached
 to speed up site generation and avoid hammerring APIs.
 
-To force regeneration of all data, simply blow away the `_tmp` directory.
+To force regeneration of all data, remove all cached data with `rake clean`.
