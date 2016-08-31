@@ -1,5 +1,18 @@
 <footer class="site-footer">
   <div class="container">
-    <div style="text-align: center;">2016 - Are we learning yet?</div>
+
+    <nav class="site-nav" style="text-align: center; font-size: smaller;">
+      {% assign pages = site.pages | sort: "navindex" %}
+      {% for page in pages %}
+        {% if page.navindex && page.title %}
+          <span style="padding: 15px;">
+            <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+          </span>
+        {% endif %}
+      {% endfor %}
+    </nav>
+
+    <div style="text-align: center; font-size: small;">2016 - Are we learning yet?</div>
+
   </div>
 </footer>

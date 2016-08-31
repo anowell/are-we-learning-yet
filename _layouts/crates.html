@@ -41,21 +41,17 @@ layout: default
       <div style="font-size: small;">
 
         {%if crate.license %}
-          <b>License</b>: {{crate.license}}
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <span class="crate-stat"><b>License</b>: {{crate.license}}</span>
         {% endif %}
         {%if crate.github %}
-          <b>Last Commit</b>: {{crate.last_commit | date: "%d %b %Y"}}
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <span class="crate-stat"><b>Last Commit</b>: {{crate.last_commit | date: "%d %b %Y"}}</span>
         {% endif %}
         {%if crate.name %}
-          <b>Last Published</b>: {{crate.updated_at | date: "%d %b %Y"}}
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <span class="crate-stat"><b>Last Published</b>: {{crate.updated_at | date: "%d %b %Y"}}</span>
         {% endif %}
         {%if crate.github %}
-          <b>Contributors</b>: {{crate.contributor_count}}
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <b>Open Issues</b>: {{crate.open_issues_count}}
+          <span class="crate-stat"><b>Contributors</b>: {{crate.contributor_count}}</span>
+          <span class="crate-stat"><b>Open Issues</b>: {{crate.open_issues_count}}</span>
         {% endif %}
       </div>
     </div>

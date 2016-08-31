@@ -5,7 +5,9 @@
 
   <body>
 
-    {% include header.html %}
+    {% if page.url != '/' %}
+      {% include header.html %}
+    {% endif %}
 
     <div class="page-content">
       {{ content }}
