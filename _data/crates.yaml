@@ -8,11 +8,14 @@
 # - Crates with non-Github repos are fine, but will currently lack some generated data
 # - Topics are defined are defined in the _topics directory; new topics require new topic pages
 
+- name: arrayfire
+  topics: ["gpu-computing"]
+
 - name: bio
   topics: ["scientific-computing", "data-structures"]
 
 - name: blas
-  topics: ["scientific-computing"]
+  topics: ["scientific-computing", "gpu-computing"]
 
 - name: cgmath
   topics: ["scientific-computing"]
@@ -23,8 +26,15 @@
 - name: cogset
   topics: ["clustering"]
 
+- name: cublas
+  description: "safe Rust wrapper for CUDA's cuBLAS"
+  topics: ["scientific-computing", "gpu-computing"]
+
+- name: cudnn
+  topics: ["gpu-computing"]
+
 - name: collenchyma
-  topics: ["scientific-computing"]
+  topics: ["scientific-computing", "gpu-computing"]
 
 - name: cuticula
   topics: ["data-preprocessing"]
@@ -78,6 +88,9 @@
 - name: numrs
   topics: ["scientific-computing"]
 
+- name: ocl
+  topics: ["gpu-computing"]
+
 - name: petgraph
   topics: ["data-structures"]
 
@@ -112,6 +125,14 @@
 - name: timely
   topics: ["data-preprocessing"]
 
+- name: vulkano
+  topics: ["gpu-computing"]
+
+- repository: https://github.com/luqmana/rust-opencl
+  description: "OpenCL bindings for Rust."
+  license: MIT/Apache-2.0
+  topics: ["gpu-computing"]
+
 - repository: https://github.com/pengowen123/eant2
   description: "EANT2 is an Evolutionary algorithm that uses the Common Genetic Encoding (CGE) to encode neural networks and CMA-ES as a weight optimizer. EANT2 evolves the topology of the Neural Network and CMA-ES tries to find the optimal weights for each topology."
   documentation: https://pengowen123.github.io/eant2/eant2/index.html
@@ -120,4 +141,5 @@
 
 - repository: https://github.com/tedsta/deeplearn-rs
   description: "Deep neural networks in Rust"
+  license: MIT
   topics: ["neural-networks"]

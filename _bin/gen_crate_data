@@ -103,6 +103,8 @@ crates = read_crate_list.map do |crate|
 	if crate['name']
 		crate_data = get_crate_data(crate['name'])
 		crate = crate_data.merge(crate)
+
+		crate['documentation'] = "https://docs.rs/crate/#{crate['name']}" unless crate['documentation']
 	else
 	  puts "WARNING: No crates.io name specified for #{crate['repository']}"
 	end
