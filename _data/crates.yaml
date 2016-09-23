@@ -36,6 +36,9 @@
 - name: collenchyma
   topics: ["scientific-computing", "gpu-computing"]
 
+- name: csv
+  topics: ["data-preprocessing"]
+
 - name: cuticula
   topics: ["data-preprocessing"]
 
