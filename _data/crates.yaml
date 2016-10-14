@@ -122,6 +122,9 @@
 - name: scirust
   topics: ["scientific-computing"]
 
+- name: statrs
+  topics: ["scientific-computing"]
+
 - name: tensorflow
   topics: ["neural-networks", "bindings"]
 
