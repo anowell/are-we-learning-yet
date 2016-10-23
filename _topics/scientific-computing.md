@@ -19,4 +19,4 @@ tracking this [here](https://github.com/murarth/rusti/issues/43).
 Also, check out some of these resources:
 
 - [A gemmed rabbit hole](http://bluss.github.io/rust/2016/03/28/a-gemmed-rabbit-hole/) - concerning matrix multiplication
-- [Linear Algebra in Rust](http://athemathmo.github.io/2016/03/23/linear-algebra-in-rust.html) - intro the the module that became [rulinalg](https://crates.io/crates/rulinalg)
+- [Linear Algebra in Rust](http://athemathmo.github.io/2016/03/23/linear-algebra-in-rust.html) - intro to the module that became [rulinalg](https://crates.io/crates/rulinalg)
