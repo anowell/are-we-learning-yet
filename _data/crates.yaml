@@ -49,6 +49,9 @@
 - name: darwin-rs
   topics: ["evolution"]
 
+- name: densearray
+  topics: ["data-structures"]
+
 - name: evo
   topics: ["evolution"]
 
