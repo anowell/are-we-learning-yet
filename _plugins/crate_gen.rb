@@ -59,7 +59,12 @@ module Jekyll
 
     # Fetches a URL and caches the result as a tmp file for future calls
     # This allows rerunning this script without hammerring APIs
-    def cached_request(url, headers={})
+    def cached_request(url, headers={}, limit=3)
+      if limit == 0
+        puts "Error: reached retry limit"
+        return {}
+      end
+
       dir = url.sub(/^https?:\/\//, File.join(__dir__, "../_tmp/"))
       path = File.join(dir, "index.json")
       FileUtils.mkdir_p(dir)
@@ -75,6 +80,9 @@ module Jekyll
           File.open(path, 'w') do |f|
             f.write data
           end
+        elsif res.is_a?(Net::HTTPRedirection)
+          puts "#{res.code}: #{res.message} for #{url} (will retry redirect)"
+          return cached_request(res['location'], headers, limit - 1)
         else
           puts "#{res.code}: #{res.message} for #{url}"
           return {}
