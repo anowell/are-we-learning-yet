@@ -14,7 +14,7 @@ and talks like [this one](https://air.mozilla.org/rust-berlin-machine-learning-l
 But [the team behind Leaf moved on](https://medium.com/@mjhirn/tensorflow-wins-89b78b29aafb#.pvv7a6dm7),
 and despite over 4k GitHub stars has [yet to find a new maintainer](https://github.com/autumnai/leaf/issues/108).
 
-Taking a page from python's skikit-learn project, [rusty-machine](https://crates.io/crates/rusty-machine)
+Taking a page from python's scikit-learn project, [rusty-machine](https://crates.io/crates/rusty-machine)
 is one of the most actively developed ML crates in the Rust ecosystem. It also powers
 [Learning Machines](https://learning-machines.herokuapp.com/), a set of interactive tutorials on machine learning,
 and [this presentation](http://athemathmo.github.io/2016/07/28/rusty-machine-talk.html#/) provides a solid introduction.
