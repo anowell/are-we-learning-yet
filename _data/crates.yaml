@@ -140,6 +140,9 @@
 - name: statrs
   topics: ["scientific-computing"]
 
+- name: sprs
+  topics: ["data-structures", "scientific-computing"]
+
 - name: tensorflow
   topics: ["neural-networks", "bindings"]
 
