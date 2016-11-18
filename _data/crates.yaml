@@ -47,13 +47,13 @@
   topics: ["data-structures"]
 
 - name: darwin-rs
-  topics: ["evolution"]
+  topics: ["metaheuristics"]
 
 - name: densearray
   topics: ["data-structures"]
 
 - name: evo
-  topics: ["evolution"]
+  topics: ["metaheuristics"]
 
 - name: euclid
   topics: ["scientific-computing"]
@@ -62,7 +62,7 @@
   topics: ["neural-networks"]
 
 - name: genetic
-  topics: ["evolution"]
+  topics: ["metaheuristics"]
 
 - name: GSL
   topics: ["scientific-computing"]
@@ -81,6 +81,9 @@
 
 - name: matrixmultiply
   topics: ["scientific-computing"]
+
+- name: metaheuristics
+  topics: ["metaheuristics"]
 
 - name: nalgebra
   topics: ["scientific-computing"]
@@ -113,7 +116,7 @@
   topics: ["data-structures"]
 
 - name: rsgenetic
-  topics: ["evolution"]
+  topics: ["metaheuristics"]
 
 - name: rulinalg
   topics: ["scientific-computing"]
@@ -152,10 +155,10 @@
   topics: ["gpu-computing"]
 
 - repository: https://github.com/pengowen123/eant2
-  description: "EANT2 is an Evolutionary algorithm that uses the Common Genetic Encoding (CGE) to encode neural networks and CMA-ES as a weight optimizer. EANT2 evolves the topology of the Neural Network and CMA-ES tries to find the optimal weights for each topology."
+  description: "EANT2 is an metaheuristicsary algorithm that uses the Common Genetic Encoding (CGE) to encode neural networks and CMA-ES as a weight optimizer. EANT2 evolves the topology of the Neural Network and CMA-ES tries to find the optimal weights for each topology."
   documentation: https://pengowen123.github.io/eant2/eant2/index.html
   license: GPL-3.0
-  topics: ["evolution"]
+  topics: ["metaheuristics"]
 
 - repository: https://github.com/tedsta/deeplearn-rs
   description: "Deep neural networks in Rust"
