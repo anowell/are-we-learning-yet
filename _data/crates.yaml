@@ -76,6 +76,9 @@
 - name: leaf
   topics: ["neural-networks"]
 
+- name: linxal
+  topics: ["scientific-computing"]
+
 - name: matrixmultiply
   topics: ["scientific-computing"]
 
@@ -85,10 +88,16 @@
 - name: ndarray
   topics: ["data-structures"]
 
+- name: ndarray-linalg
+  topics: ["scientific-computing"]
+
 - name: nn
   topics: ["neural-networks"]
 
 - name: num
+  topics: ["data-structures"]
+
+- name: numeric
   topics: ["data-structures"]
 
 - name: numrs
