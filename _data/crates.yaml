@@ -149,6 +149,10 @@
 - name: timely
   topics: ["data-preprocessing"]
 
+- name: utah
+  repository: https://github.com/pegasos1/utah
+  topics: ["data-structures"]
+
 - name: vulkano
   topics: ["gpu-computing"]
 
