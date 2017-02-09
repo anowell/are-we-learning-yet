@@ -8,6 +8,9 @@
 # - Crates with non-Github repos are fine, but will currently lack some generated data
 # - Topics are defined are defined in the _topics directory; new topics require new topic pages
 
+- name: alumina
+  topics: ["neural-networks"]
+
 - name: arrayfire
   topics: ["gpu-computing"]
 
