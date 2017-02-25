@@ -118,6 +118,9 @@
 - name: rds
   topics: ["data-structures"]
 
+- name: roulette-wheel
+  topics: ["data-structures"]
+
 - name: rsgenetic
   topics: ["metaheuristics"]
 
