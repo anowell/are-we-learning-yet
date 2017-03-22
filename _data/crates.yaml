@@ -112,6 +112,12 @@
 - name: ocl
   topics: ["gpu-computing"]
 
+- name: parenchyma
+  topics: ["scientific-computing", "gpu-computing"]
+
+- name: collenchyma
+  topics: ["scientific-computing", "gpu-computing"]
+
 - name: petgraph
   topics: ["data-structures"]
 
