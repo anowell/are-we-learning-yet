@@ -121,6 +121,9 @@
 - name: petgraph
   topics: ["data-structures"]
 
+- name: prophet
+  topics: ["neural-networks"]
+
 - name: rds
   topics: ["data-structures"]
 
