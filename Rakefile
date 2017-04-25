@@ -81,6 +81,6 @@ end
 
 desc "Clean cached crate data"
 task :clean do
-  FileUtils.rm_r File.join(PROJECT_ROOT, '_tmp')
+  FileUtils.rm_rf File.join(PROJECT_ROOT, '_tmp')
 end
 
