@@ -20,6 +20,9 @@
 - name: blas
   topics: ["scientific-computing", "gpu-computing"]
 
+- name: bvh
+  topics: ["data-structures"]
+
 - name: cgmath
   topics: ["scientific-computing"]
 
