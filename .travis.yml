@@ -4,11 +4,11 @@ sudo: false
 
 script:
   - bundle install
-  - bundle exec rake clean
-  - bundle exec rake build
+  - rake clean
+  - rake build
 
 deploy:
   provider: script
-  script: bundle exec rake publish
+  script: rake publish
   on:
     branch: master

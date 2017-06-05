@@ -2,3 +2,5 @@ _site
 _tmp
 .sass-cache
 .jekyll-metadata
+vendor
+.bundle
