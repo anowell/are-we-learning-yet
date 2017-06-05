@@ -1,0 +1,14 @@
+language: ruby
+cache: bundler
+sudo: false
+
+script:
+  - bundle install
+  - bundle exec rake clean
+  - bundle exec rake build
+
+deploy:
+  provider: script
+  script: bundle exec rake publish
+  on:
+    branch: master
