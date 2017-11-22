@@ -32,6 +32,9 @@
 - name: cogset
   topics: ["clustering"]
 
+- name: cntk
+  topics: ["neural-networks"]
+
 - name: cublas
   description: "safe Rust wrapper for CUDA's cuBLAS"
   topics: ["scientific-computing", "gpu-computing"]
