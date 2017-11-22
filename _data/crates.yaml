@@ -103,6 +103,9 @@
 - name: ndarray-linalg
   topics: ["scientific-computing"]
 
+- name: neuroflow
+  topics: ["neural-networks"]
+
 - name: nn
   topics: ["neural-networks"]
 
