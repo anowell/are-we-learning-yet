@@ -8,7 +8,10 @@ script:
   - rake build
 
 deploy:
-  provider: script
-  script: rake publish
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_DEPLOY_TOKEN
+  local_dir: '_site'
+  fqdn: www.arewelearningyet.com
   on:
     branch: master
