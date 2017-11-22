@@ -29,11 +29,20 @@
 - name: classifier
   topics: ["linear-classifiers"]
 
+- name: coaster
+  topics: ["scientific-computing", "gpu-computing"]
+
 - name: cogset
   topics: ["clustering"]
 
+- name: collenchyma
+  topics: ["scientific-computing", "gpu-computing"]
+
 - name: cntk
   topics: ["neural-networks"]
+
+- name: csv
+  topics: ["data-preprocessing"]
 
 - name: cublas
   description: "safe Rust wrapper for CUDA's cuBLAS"
@@ -41,12 +50,6 @@
 
 - name: cudnn
   topics: ["gpu-computing"]
-
-- name: collenchyma
-  topics: ["scientific-computing", "gpu-computing"]
-
-- name: csv
-  topics: ["data-preprocessing"]
 
 - name: cuticula
   topics: ["data-preprocessing"]
@@ -77,6 +80,9 @@
   topics: ["scientific-computing"]
 
 - name: hal-ml
+  topics: ["neural-networks"]
+
+- name: juice
   topics: ["neural-networks"]
 
 - name: lapack
@@ -122,9 +128,6 @@
   topics: ["gpu-computing"]
 
 - name: parenchyma
-  topics: ["scientific-computing", "gpu-computing"]
-
-- name: collenchyma
   topics: ["scientific-computing", "gpu-computing"]
 
 - name: petgraph
