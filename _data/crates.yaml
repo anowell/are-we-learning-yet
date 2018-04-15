@@ -148,8 +148,14 @@
 - name: rsgenetic
   topics: ["metaheuristics"]
 
+- name: rsrl
+  topics: ["reinforcement"]
+
 - name: rulinalg
   topics: ["scientific-computing"]
+
+- name: rurel
+  topics: ["reinforcement"]
 
 - name: rustlearn
   topics: ["linear-classifiers", "decision-trees"]
@@ -206,3 +212,7 @@
   description: "Deep neural networks in Rust"
   license: MIT
   topics: ["neural-networks"]
+
+- repository: https://github.com/NivenT/REnforce
+  description: "Reinforcement library written in Rust"
+  topics: ["reinforcement"]
