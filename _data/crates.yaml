@@ -160,6 +160,9 @@
 - name: rustlearn
   topics: ["linear-classifiers", "decision-trees"]
 
+- name: rusticsom
+  topics: ["clustering"]
+
 - name: rustml
   topics: ["neural-networks", "clustering"]
 
