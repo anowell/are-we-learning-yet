@@ -139,6 +139,9 @@
 - name: prophet
   topics: ["neural-networks"]
 
+- name: qcgpu
+  topics: ["scientific-computing"]
+
 - name: rds
   topics: ["data-structures"]
 
