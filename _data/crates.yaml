@@ -76,6 +76,9 @@
 - name: euclid
   topics: ["scientific-computing"]
 
+- name: faiss
+  topics: ["clustering", "data-structures"]
+
 - name: fann
   topics: ["neural-networks"]
 
