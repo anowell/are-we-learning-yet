@@ -203,6 +203,10 @@
 
 - name: vulkano
   topics: ["gpu-computing"]
+  
+- name: xgboost
+  topics: ["decision-trees"]
+  description: "Rust bindings for the XGBoost gradient boosted trees library."
 
 - repository: https://github.com/torchrs/torchrs
   description: "Torch.rs (torturous) is a set of Rust bindings for torch intended to provide an API very close to that of PyTorch."
