@@ -13,6 +13,9 @@
 
 - name: arff
   topics: ["data-preprocessing"]
+  
+- name: argmin
+  topics: ["scientific-computing", "metaheuristics"]
 
 - name: arrayfire
   topics: ["gpu-computing"]
