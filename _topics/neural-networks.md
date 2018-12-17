@@ -17,6 +17,6 @@ before [being orphaned](https://medium.com/@mjhirn/tensorflow-wins-89b78b29aafb#
 
 And of course, there are [Tensorflow bindings](https://crates.io/crates/tensorflow).
 
-Other neural network libraries have been created, but often exist as experimental projects.
-Some of the projects listed hear appear to be inactive, but are still listed to serve as an inspiration
+Other neural network libraries have been created but are often experimental.
+Some of the projects listed here appear to be inactive, but are still listed to serve as an inspiration
 for any future projects.

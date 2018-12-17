@@ -5,7 +5,7 @@ crate_tag: scientific-computing
 color: yellow
 ---
 
-Several crates have populated scientific computing space
+Several crates have populated the scientific computing space
 especially regarding matrix operations and linear algebra.
 But it's still too early to know which crates will emerge as
 central to a robust scientific computing ecosystem.
