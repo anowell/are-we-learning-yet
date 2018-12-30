@@ -166,6 +166,13 @@
 - name: rds
   topics: ["data-structures"]
 
+- name: revonet
+  repository: https://github.com/yurytsoy/revonet
+  description: "Implementation of real-coded genetic algorithm for solving optimization problems and training of neural networks."
+  documentation: https://docs.rs/revonet/0.2.1/revonet/
+  license: GPL-3.0
+  topics: ["metaheuristics", "neural-networks"]
+
 - name: roulette-wheel
   topics: ["data-structures"]
 
