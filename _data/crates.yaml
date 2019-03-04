@@ -209,6 +209,9 @@
 - name: sprs
   topics: ["data-structures", "scientific-computing"]
 
+- name: tch
+  topics: ["neural-networks", "bindings"]
+
 - name: tensorflow
   topics: ["neural-networks", "bindings"]
 
