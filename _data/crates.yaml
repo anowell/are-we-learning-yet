@@ -217,6 +217,9 @@
 
 - name: timely
   topics: ["data-preprocessing"]
+  
+- name: tvm
+  topics: ["neural-networks", "bindings"]
 
 - name: utah
   repository: https://github.com/pegasos1/utah
