@@ -154,6 +154,9 @@
 - name: parenchyma
   topics: ["scientific-computing", "gpu-computing"]
 
+- name: peroxide
+  topics: ["scientific-computing"]
+
 - name: petgraph
   topics: ["data-structures"]
 
