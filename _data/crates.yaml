@@ -78,6 +78,9 @@
 
 - name: densearray
   topics: ["data-structures"]
+  
+- name: em
+  topics: ["scientific-computing", "gpu-computing"]
 
 - name: evo
   topics: ["metaheuristics"]
