@@ -26,6 +26,9 @@
 - name: blas
   topics: ["scientific-computing", "gpu-computing"]
 
+- name: blasoxide
+  topics: ["scientific-computing"]
+
 - name: bvh
   topics: ["data-structures"]
 
