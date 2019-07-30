@@ -212,6 +212,9 @@
 - name: scirust
   topics: ["scientific-computing"]
 
+- name: simplers_optimization
+  topics: ["metaheuristics"]
+
 - name: statrs
   topics: ["scientific-computing"]
 
