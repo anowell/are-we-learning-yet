@@ -4,7 +4,7 @@ layout: default
 <article class="container post">
 
   <header class="post-header">
-    <h1 class="post-title">{{ page.title }}</h1>
+    <h1 class="post-title">{% if page.title_html %}{{ page.title_html }}{% else %}{{ page.title | escape }}{% endif %}</h1>
   </header>
 
   <div class="post-content">
@@ -32,7 +32,7 @@ layout: default
           <img src="https://img.shields.io/crates/d/{{crate.name}}.svg?maxAge=2592000">
         {% endif %}
         {%if crate.github %}
-          <img src="https://img.shields.io/github/stars/{{crate.github}}.svg?style=social&label=Star&maxAge=2592000">
+          <img src="https://img.shields.io/github/stars/{{crate.github}}.svg?style=social&amp;label=Star&amp;maxAge=2592000">
         {% endif %}
       </div>
 
@@ -59,7 +59,7 @@ layout: default
 
   <div class="followup">
     Do you know of a crate that is missing?
-    <a href="https://github.com/anowell/are-we-learning-yet/issues/new?title=Add+crate:+CRATE&body=Please+add+crate+to+category:+{{ page.title }}+%0A%0APro-tip%3a+a+quick+PR+to+_data/crates.yaml+often+gets+merged+quicker." target="_blank">
+    <a href="https://github.com/anowell/are-we-learning-yet/issues/new?title=Add+crate:+CRATE&amp;body=Please+add+crate+to+category:+{{ page.title | url_encode }}+%0A%0APro-tip%3a+a+quick+PR+to+_data/crates.yaml+often+gets+merged+quicker." target="_blank">
       Create an issue
     </a>
     or a PR.

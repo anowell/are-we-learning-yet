@@ -63,7 +63,7 @@ skip_tiles: [3,9]
           <div class="col-md-2 col-sm-4 col-xs-6">
             <a href="{{post.url | prepend: site.baseurl }}">
               <div class="tile tile-{{post.color}}">
-                {{ post.title }}
+                {% if post.title_html %}{{ post.title_html }}{% else %}{{ post.title | escape }}{% endif %}
               </div>
             </a>
           </div>

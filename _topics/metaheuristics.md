@@ -1,6 +1,7 @@
 ---
 layout: crates
-title: Meta&shy;heuristics
+title: Metaheuristics
+title_html: Meta&shy;heuristics
 crate_tag: metaheuristics
 color: red
 ---

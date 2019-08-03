@@ -6,7 +6,7 @@
       {% for page in pages %}
         {% if page.navindex && page.title %}
           <span style="padding: 15px;">
-            <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+            <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{% if page.title_html %}{{ page.title_html }}{% else %}{{ page.title | escape }}{% endif %}</a>
           </span>
         {% endif %}
       {% endfor %}
