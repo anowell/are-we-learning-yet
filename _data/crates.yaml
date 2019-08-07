@@ -172,6 +172,9 @@
 - name: qcgpu
   topics: ["scientific-computing"]
 
+- name: rettle
+  topics: ["data-preprocessing"]
+
 - name: rds
   topics: ["data-structures"]
 
