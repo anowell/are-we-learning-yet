@@ -175,6 +175,9 @@
 - name: rds
   topics: ["data-structures"]
 
+- name: rettle
+  topics: ["data-preprocessing"]
+
 - name: revonet
   topics: ["metaheuristics", "neural-networks"]
 
