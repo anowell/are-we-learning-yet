@@ -8,6 +8,9 @@
 # - Crates with non-Github repos are fine, but will currently lack some generated data
 # - Topics are defined are defined in the _topics directory; new topics require new topic pages
 
+- name: accel
+  topics: ["scientific-computing", "gpu-computing"]
+
 - name: alumina
   topics: ["neural-networks"]
 
@@ -55,6 +58,9 @@
 
 - name: cublas
   description: "safe Rust wrapper for CUDA's cuBLAS"
+  topics: ["scientific-computing", "gpu-computing"]
+  
+- name: cuda
   topics: ["scientific-computing", "gpu-computing"]
 
 - name: cudnn
@@ -195,6 +201,9 @@
 
 - name: rurel
   topics: ["reinforcement"]
+  
+- name: rustacuda
+  topics: ["scientific-computing", "gpu-computing"]
 
 - name: rustlearn
   topics: ["linear-classifiers", "decision-trees"]
