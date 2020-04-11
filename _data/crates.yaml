@@ -82,11 +82,21 @@
 - name: densearray
   topics: ["data-structures"]
   
-- name: emu_core
-  repository: https://github.com/calebwin/em
-  description: "A low-level modular, extensible GPGPU compute library with cross-platform support"
-  documentation: https://calebwin.github.io/eant2/emu
+- name: em
+  description: "A macro for executing a subset of Rust with OpenCL"
   topics: ["gpu-computing", "scientific-computing"]
+  
+- name: emu_core
+  repository: https://github.com/calebwin/emu
+  description: "A low-level modular, extensible GPGPU compute library with cross-platform support"
+  documentation: https://calebwin.github.io/emu
+  topics: ["gpu-computing", "scientific-computing"]
+  
+- name: emu_core
+  repository: https://github.com/calebwin/emu
+  description: "A wrapper type for storing/manipulating data on a GPU"
+  documentation: https://calebwin.github.io/emu
+  topics: ["data-structures"]
 
 - name: evo
   topics: ["metaheuristics"]
