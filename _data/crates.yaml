@@ -170,6 +170,9 @@
 - name: openml
   topics: ["data-preprocessing"]
 
+- name: oxigen
+  topics: ["metaheuristics"]
+
 - name: parenchyma
   topics: ["scientific-computing", "gpu-computing"]
 
