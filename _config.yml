@@ -14,9 +14,7 @@ markdown: kramdown
 exclude:
   - README.md
   - _tmp
-  - Gemfile
   - LICENSE
-  - vendor
 
 collections:
   topics:

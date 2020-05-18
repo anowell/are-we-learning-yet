@@ -13,7 +13,7 @@
 
 - name: arff
   topics: ["data-preprocessing"]
-  
+
 - name: argmin
   topics: ["scientific-computing", "metaheuristics"]
 
@@ -40,6 +40,9 @@
 
 - name: coaster
   topics: ["scientific-computing", "gpu-computing"]
+
+- name: cogent
+  topics: ["neural-networks"]
 
 - name: cogset
   topics: ["clustering"]
@@ -81,9 +84,22 @@
 
 - name: densearray
   topics: ["data-structures"]
-  
+
 - name: em
-  topics: ["scientific-computing", "gpu-computing"]
+  description: "A macro for executing a subset of Rust with OpenCL"
+  topics: ["gpu-computing", "scientific-computing"]
+  
+- name: emu_core
+  repository: https://github.com/calebwin/emu
+  description: "A low-level modular, extensible GPGPU compute library with cross-platform support"
+  documentation: https://calebwin.github.io/emu
+  topics: ["gpu-computing", "scientific-computing"]
+  
+- name: emu_core
+  repository: https://github.com/calebwin/emu
+  description: "A wrapper type for storing/manipulating data on a GPU"
+  documentation: https://calebwin.github.io/emu
+  topics: ["data-structures"]
 
 - name: evo
   topics: ["metaheuristics"]
@@ -132,7 +148,7 @@
 
 - name: ndarray-linalg
   topics: ["scientific-computing"]
-  
+
 - name: ndarray-stats
   topics: ["scientific-computing"]
 
@@ -156,6 +172,9 @@
 
 - name: openml
   topics: ["data-preprocessing"]
+
+- name: oxigen
+  topics: ["metaheuristics"]
 
 - name: parenchyma
   topics: ["scientific-computing", "gpu-computing"]
@@ -227,12 +246,15 @@
 - name: tch
   topics: ["neural-networks", "bindings"]
 
+- name: tokenizers
+  topics: ["data-preprocessing"]
+
 - name: tensorflow
   topics: ["neural-networks", "bindings"]
 
 - name: timely
   topics: ["data-preprocessing"]
-  
+
 - name: tflite
   topics: ["neural-networks", "bindings"]
 
@@ -245,7 +267,7 @@
 
 - name: vulkano
   topics: ["gpu-computing"]
-  
+
 - name: xgboost
   topics: ["decision-trees"]
   description: "Rust bindings for the XGBoost gradient boosted trees library."
