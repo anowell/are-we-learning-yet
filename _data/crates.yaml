@@ -255,6 +255,9 @@
 - name: timely
   topics: ["data-preprocessing"]
 
+- name: tflite
+  topics: ["neural-networks", "bindings"]
+
 - name: tvm
   topics: ["neural-networks", "bindings"]
 
