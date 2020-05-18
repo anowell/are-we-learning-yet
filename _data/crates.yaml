@@ -13,7 +13,7 @@
 
 - name: arff
   topics: ["data-preprocessing"]
-  
+
 - name: argmin
   topics: ["scientific-computing", "metaheuristics"]
 
@@ -84,7 +84,7 @@
 
 - name: densearray
   topics: ["data-structures"]
-  
+
 - name: em
   description: "A macro for executing a subset of Rust with OpenCL"
   topics: ["gpu-computing", "scientific-computing"]
@@ -148,7 +148,7 @@
 
 - name: ndarray-linalg
   topics: ["scientific-computing"]
-  
+
 - name: ndarray-stats
   topics: ["scientific-computing"]
 
@@ -246,12 +246,15 @@
 - name: tch
   topics: ["neural-networks", "bindings"]
 
+- name: tokenizers
+  topics: ["data-preprocessing"]
+
 - name: tensorflow
   topics: ["neural-networks", "bindings"]
 
 - name: timely
   topics: ["data-preprocessing"]
-  
+
 - name: tvm
   topics: ["neural-networks", "bindings"]
 
@@ -261,7 +264,7 @@
 
 - name: vulkano
   topics: ["gpu-computing"]
-  
+
 - name: xgboost
   topics: ["decision-trees"]
   description: "Rust bindings for the XGBoost gradient boosted trees library."
