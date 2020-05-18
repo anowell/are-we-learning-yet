@@ -41,6 +41,9 @@
 - name: coaster
   topics: ["scientific-computing", "gpu-computing"]
 
+- name: cogent
+  topics: ["neural-networks"]
+
 - name: cogset
   topics: ["clustering"]
 
