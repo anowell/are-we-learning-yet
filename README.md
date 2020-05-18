@@ -34,3 +34,11 @@ and the GitHub API. All fetched and generated data is cached
 to speed up site generation and avoid hammerring APIs.
 
 To force regeneration of all data, remove all cached data with `rake clean`.
+
+## Publishing
+
+[arewelearningyet.com](arewelearningyet.com) is served by Github Pages.
+Every merge into master is automatically published by
+[this Travis CI job](https://travis-ci.org/github/anowell/are-we-learning-yet).
+Additionally, to ensure crate statistics (download counts and stars)
+are regularly updated, the Travis publish task is also run as a weekly cron job.
