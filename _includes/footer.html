@@ -2,6 +2,9 @@
   <div class="container">
 
     <nav class="site-nav" style="text-align: center; font-size: smaller;">
+      <span style="padding: 15px;">
+        <a class="page-link" href="https://rust-ml.zulipchat.com" target="_blank">Chat</a>
+      </span>
       {% assign pages = site.pages | sort: "navindex" %}
       {% for page in pages %}
         {% if page.navindex && page.title %}
