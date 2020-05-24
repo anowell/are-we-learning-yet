@@ -137,6 +137,9 @@
 - name: leaf
   topics: ["neural-networks"]
 
+- name: linfa
+  topics: ["clustering"]
+
 - name: linxal
   topics: ["scientific-computing"]
 
