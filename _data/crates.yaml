@@ -85,9 +85,6 @@
 - name: datafusion
   topics: ["data-preprocessing"]
 
-- name: forester
-  topics: ["decision-trees"]
-
 - name: densearray
   topics: ["data-structures"]
 
@@ -118,6 +115,9 @@
 
 - name: fann
   topics: ["neural-networks"]
+
+- name: forester
+  topics: ["decision-trees"]
 
 - name: genetic
   topics: ["metaheuristics"]
