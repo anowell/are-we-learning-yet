@@ -286,12 +286,6 @@
 - name: vulkano
   topics: ["gpu-computing"]
 
-- name: whitenoise_runtime
-  topics: ["data-preprocessing"]
-
-- name: whitenoise_validator
-  topics: ["data-preprocessing"]
-
 - name: xgboost
   topics: ["decision-trees"]
   description: "Rust bindings for the XGBoost gradient boosted trees library."
@@ -320,3 +314,8 @@
 - repository: https://github.com/NivenT/REnforce
   description: "Reinforcement library written in Rust"
   topics: ["reinforcement"]
+
+- repository: https://github.com/opendifferentialprivacy/whitenoise-core
+  description: "Differential privacy validator and runtime"
+  license: MIT
+  topics: ["data-preprocessing"]
