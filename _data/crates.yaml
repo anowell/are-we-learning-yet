@@ -88,6 +88,9 @@
 - name: densearray
   topics: ["data-structures"]
 
+- name: drug
+  topics: ["neural-networks"]
+
 - name: em
   description: "A macro for executing a subset of Rust with OpenCL"
   topics: ["gpu-computing", "scientific-computing"]
