@@ -85,11 +85,11 @@
 - name: datafusion
   topics: ["data-preprocessing"]
 
-- name: forester
-  topics: ["decision-trees"]
-
 - name: densearray
   topics: ["data-structures"]
+
+- name: drug
+  topics: ["neural-networks"]
 
 - name: em
   description: "A macro for executing a subset of Rust with OpenCL"
@@ -119,6 +119,9 @@
 - name: fann
   topics: ["neural-networks"]
 
+- name: forester
+  topics: ["decision-trees"]
+
 - name: genetic
   topics: ["metaheuristics"]
 
@@ -127,6 +130,9 @@
 
 - name: hal-ml
   topics: ["neural-networks"]
+
+- name: hdf5
+  topics: ["data-preprocessing"]
 
 - name: juice
   topics: ["neural-networks"]
@@ -308,3 +314,8 @@
 - repository: https://github.com/NivenT/REnforce
   description: "Reinforcement library written in Rust"
   topics: ["reinforcement"]
+
+- repository: https://github.com/opendifferentialprivacy/whitenoise-core
+  description: "Differential privacy validator and runtime"
+  license: MIT
+  topics: ["data-preprocessing"]
