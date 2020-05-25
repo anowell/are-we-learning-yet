@@ -128,6 +128,9 @@
 - name: hal-ml
   topics: ["neural-networks"]
 
+- name: hdf5
+  topics: ["data-preprocessing"]
+
 - name: juice
   topics: ["neural-networks"]
 
@@ -279,6 +282,12 @@
 
 - name: vulkano
   topics: ["gpu-computing"]
+
+- name: whitenoise_runtime
+  topics: ["data-preprocessing"]
+
+- name: whitenoise_validator
+  topics: ["data-preprocessing"]
 
 - name: xgboost
   topics: ["decision-trees"]
