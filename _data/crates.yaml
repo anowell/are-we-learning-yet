@@ -23,6 +23,9 @@
 - name: arrayfire
   topics: ["gpu-computing"]
 
+- name: autograd
+  topics: ["scientific-computing", "metaheuristics"]
+
 - name: bio
   topics: ["scientific-computing", "data-structures"]
 
@@ -229,6 +232,9 @@
 
 - name: rurel
   topics: ["reinforcement"]
+
+- name: rust-bert
+  topics: ["NLP"]
   
 - name: rustacuda
   topics: ["scientific-computing", "gpu-computing"]
