@@ -319,3 +319,8 @@
   description: "Differential privacy validator and runtime"
   license: MIT
   topics: ["data-preprocessing"]
+
+- repository: https://github.com/whizsid/kddbscan-rs
+  description: "A k -Deviation Density Based Clustering Algorithm"
+  license: MIT
+  topics: ["clustering"]
