@@ -154,8 +154,8 @@
 
 - name: metaheuristics
   topics: ["metaheuristics"]
-  
-  - name: mop
+
+- name: mop
   topics: ["metaheuristics", "scientific-computing"]
 
 - name: nalgebra
