@@ -23,6 +23,9 @@
 - name: arrayfire
   topics: ["gpu-computing"]
 
+- name: autograd
+  topics: ["neural-networks"]
+
 - name: bio
   topics: ["scientific-computing", "data-structures"]
 
@@ -62,7 +65,7 @@
 - name: cublas
   description: "safe Rust wrapper for CUDA's cuBLAS"
   topics: ["scientific-computing", "gpu-computing"]
-  
+
 - name: cuda
   topics: ["scientific-computing", "gpu-computing"]
 
@@ -94,13 +97,13 @@
 - name: em
   description: "A macro for executing a subset of Rust with OpenCL"
   topics: ["gpu-computing", "scientific-computing"]
-  
+
 - name: emu_core
   repository: https://github.com/calebwin/emu
   description: "A low-level modular, extensible GPGPU compute library with cross-platform support"
   documentation: https://calebwin.github.io/emu
   topics: ["gpu-computing", "scientific-computing"]
-  
+
 - name: emu_core
   repository: https://github.com/calebwin/emu
   description: "A wrapper type for storing/manipulating data on a GPU"
@@ -136,6 +139,9 @@
 
 - name: juice
   topics: ["neural-networks"]
+
+- name: kmeans-colors
+  topics: ["clustering","scientific-computing"]
 
 - name: lapack
   topics: ["scientific-computing"]
@@ -235,7 +241,7 @@
 
 - name: rurel
   topics: ["reinforcement"]
-  
+
 - name: rustacuda
   topics: ["scientific-computing", "gpu-computing"]
 
@@ -247,6 +253,9 @@
 
 - name: rustml
   topics: ["neural-networks", "clustering"]
+
+- name: rust-bert
+  topics: ["nlp"]
 
 - name: rusty-data
   documentation: https://athemathmo.github.io/rusty-data/
@@ -295,6 +304,9 @@
 - name: xgboost
   topics: ["decision-trees"]
   description: "Rust bindings for the XGBoost gradient boosted trees library."
+
+- name: wgpu
+  topics: ["gpu-computing"]
 
 - repository: https://github.com/torchrs/torchrs
   description: "Torch.rs (torturous) is a set of Rust bindings for torch intended to provide an API very close to that of PyTorch."
