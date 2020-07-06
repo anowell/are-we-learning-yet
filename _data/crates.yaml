@@ -26,6 +26,9 @@
 - name: autograd
   topics: ["neural-networks"]
 
+- name: autograph
+  topics: ["neural-networks"]
+
 - name: bio
   topics: ["scientific-computing", "data-structures"]
 
