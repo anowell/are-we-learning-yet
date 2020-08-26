@@ -215,6 +215,9 @@
 - name: petgraph
   topics: ["data-structures"]
 
+- name: polars
+  topics: ["data-preprocessing", "data-structures"]
+
 - name: prophet
   topics: ["neural-networks"]
 
