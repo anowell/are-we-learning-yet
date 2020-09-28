@@ -314,6 +314,12 @@
 - name: wgpu
   topics: ["gpu-computing"]
 
+- name: smartcore
+  repository: https://github.com/smartcorelib/smartcore
+  description: "A comprehensive library for machine learning and numerical computing. The library provides a set of tools for linear algebra, numerical computing, optimization, and enables a generic, powerful yet still efficient approach to machine learning."
+  documentation: https://smartcorelib.org/
+  topics: ["data-structures", "linear-classifiers", "clustering", "scientific-computing", "decision-trees"]
+
 - repository: https://github.com/torchrs/torchrs
   description: "Torch.rs (torturous) is a set of Rust bindings for torch intended to provide an API very close to that of PyTorch."
   license: BSD-2-Clause
