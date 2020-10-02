@@ -2,7 +2,7 @@
 layout: crates
 title: Data Processing
 crate_tag: data-preprocessing
-color: red
+color: yellow
 ---
 
 Pre-processing data often simplifies ML training.

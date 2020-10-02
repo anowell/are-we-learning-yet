@@ -2,7 +2,7 @@
 layout: crates
 title: Decision Trees
 crate_tag: decision-trees
-color: red
+color: green
 ---
 
 There isn't a lot of decision tree activity in Rust,
