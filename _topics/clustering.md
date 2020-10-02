@@ -2,7 +2,7 @@
 layout: crates
 title: Clustering
 crate_tag: clustering
-color: red
+color: green
 ---
 
 The Rust machine learning ecosystem is a bit shallow on cluster analysis,
