@@ -11,7 +11,7 @@ layout: default
     {{ content }}
   </div>
 
-  {% assign crates = site.data.crates_generated | where_exp:"item", "item.topics contains page.crate_tag" | sort: 'stargazers_count' | reverse %}
+  {% assign crates = site.data.crates_generated | where_exp:"item", "item.topics contains page.crate_tag" | sort: 'score' | reverse %}
   {% for crate in crates %}
     <div>
       <hr>
@@ -30,6 +30,7 @@ layout: default
         {%if crate.name %}
           <img src="https://img.shields.io/crates/v/{{crate.name}}.svg?maxAge=2592000">
           <img src="https://img.shields.io/crates/d/{{crate.name}}.svg?maxAge=2592000">
+          <img src="https://img.shields.io/crates/dr/{{crate.name}}.svg?maxAge=2592000">
         {% endif %}
         {%if crate.github %}
           <img src="https://img.shields.io/github/stars/{{crate.github}}.svg?style=social&amp;label=Star&amp;maxAge=2592000">
