@@ -143,6 +143,9 @@
 - name: juice
   topics: ["neural-networks"]
 
+- name: kddbscan
+  topics: ["clustering"]
+
 - name: kmeans-colors
   topics: ["clustering","scientific-computing"]
 
@@ -276,6 +279,10 @@
 - name: simplers_optimization
   topics: ["metaheuristics"]
 
+- name: smartcore
+  documentation: https://smartcorelib.org/
+  topics: ["data-structures", "linear-classifiers", "clustering", "scientific-computing", "decision-trees"]
+
 - name: statrs
   topics: ["scientific-computing"]
 
@@ -301,7 +308,7 @@
   topics: ["neural-networks", "bindings"]
 
 - name: utah
-  repository: https://github.com/pegasos1/utah
+  repository: https://github.com/kernelmachine/utah
   topics: ["data-structures"]
 
 - name: vulkano
@@ -313,12 +320,6 @@
 
 - name: wgpu
   topics: ["gpu-computing"]
-
-- name: smartcore
-  repository: https://github.com/smartcorelib/smartcore
-  description: "A comprehensive library for machine learning and numerical computing. The library provides a set of tools for linear algebra, numerical computing, optimization, and enables a generic, powerful yet still efficient approach to machine learning."
-  documentation: https://smartcorelib.org/
-  topics: ["data-structures", "linear-classifiers", "clustering", "scientific-computing", "decision-trees"]
 
 - repository: https://github.com/torchrs/torchrs
   description: "Torch.rs (torturous) is a set of Rust bindings for torch intended to provide an API very close to that of PyTorch."
@@ -350,7 +351,3 @@
   license: MIT
   topics: ["data-preprocessing"]
 
-- repository: https://github.com/whizsid/kddbscan-rs
-  description: "A k -Deviation Density Based Clustering Algorithm"
-  license: MIT
-  topics: ["clustering"]

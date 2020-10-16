@@ -2,6 +2,7 @@ require 'fileutils'
 require 'json'
 require 'yaml'
 require 'net/http'
+require 'date'
 
 module Jekyll
   class CrateGenerator < Generator
@@ -53,8 +54,47 @@ module Jekyll
           puts "WARNING: No GitHub repository specified for crate #{crate['name']}"
         end
 
+        crate['score'] = score(crate)
         crate
       end
+    end
+
+    # The aim here is to calculate a score that combines popularity and active maintenance
+    # As this function evolves, consider how it rewards/punishes:
+    # - stable core crates that require minimal maintenance
+    # - crates that are downloaded as a transitive dependency to a popular project
+    # - crates not on crates.io, github, etc...
+    # - and the many ways that scoring can inevitably be gamed
+    def score(crate)
+      unless crate['updated_at']
+        # crate is not published to crates.io
+        return 0
+      end
+
+      recent_downloads = crate['recent_downloads'] || 0
+
+      # In calculating last_activity, we only scrape last_commit for github-based crates
+      # so this is unfair to projects that host source elsewhere.
+      # This is slightly mitigated by falling back to the last crate publish date
+      last_activity = crate['updated_at']
+      if crate['last_commit'] && (crate['last_commit'] > last_activity)
+        last_activity = crate['last_commit']
+      end
+
+      inactive_days = (Date.today - last_activity.to_date).to_i
+
+      # This is really simple, but basically calls any crate with activity in 6 months as maintained
+      # trying to recognize that some crates may actually be stable enough to require infrequent changes
+      # From 6-12 months, it's maintenance state is less certain, and after a year without activity, it's likely unmaintained
+      if inactive_days <= 180
+        coefficient = 1
+      elsif inactive_days <= 365
+        coefficient = 0.5
+      else
+        coefficient = 0.1
+      end
+
+      (coefficient * recent_downloads).to_i
     end
 
     # Fetches a URL and caches the result as a tmp file for future calls
@@ -103,9 +143,12 @@ module Jekyll
 
       out = {}
       %w(stargazers_count open_issues_count).each do |k|
-        out[k] ||= data[k]
+        out[k] = data[k]
       end
-      out['last_commit'] = commit&.dig('commit', 'committer', 'date')
+      last_commit = commit&.dig('commit', 'committer', 'date')
+      if last_commit
+        out['last_commit'] = Time.parse(last_commit)
+      end
       out['contributor_count'] = contributors&.length
       out.delete_if { |k,v| v.nil? }
     end
@@ -115,8 +158,11 @@ module Jekyll
       data = cached_request("https://crates.io/api/v1/crates/#{crate}")
 
       out = {}
-      %w(description repository documentation downloads license max_version created_at updated_at).each do |k|
+      %w(description repository documentation downloads recent_downloads license max_version).each do |k|
         out[k] = data.dig('crate', k)
+      end
+      %w(created_at updated_at).each do |k|
+        out[k] = Time.parse(data.dig('crate', k))
       end
       out.delete_if { |k,v| v.nil? }
     end
