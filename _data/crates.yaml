@@ -23,6 +23,9 @@
 - name: arrayfire
   topics: ["gpu-computing"]
 
+- name: arrow
+  topics: ["data-preprocessing", "data-structures"]
+
 - name: autograd
   topics: ["neural-networks"]
 
