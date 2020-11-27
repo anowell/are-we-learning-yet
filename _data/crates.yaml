@@ -128,6 +128,9 @@
 - name: fann
   topics: ["neural-networks"]
 
+- name: finalfusion
+  topics: ["natural-language-processing", "data-structures"]
+
 - name: forester
   topics: ["decision-trees"]
 
@@ -259,6 +262,9 @@
 
 - name: rurel
   topics: ["reinforcement"]
+
+- name: rust2vec
+  topics: ["natural-language-processing", "data-structures"]
 
 - name: rustacuda
   topics: ["scientific-computing", "gpu-computing"]
