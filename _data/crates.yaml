@@ -226,6 +226,9 @@
 
 - name: prophet
   topics: ["neural-networks"]
+  
+- name: puruspe
+  topics: ["scientific-computing"]
 
 - name: qcgpu
   topics: ["scientific-computing"]
