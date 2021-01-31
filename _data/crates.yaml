@@ -337,11 +337,6 @@
   license: GPL-3.0
   topics: ["metaheuristics"]
 
-- repository: https://github.com/tedsta/deeplearn-rs
-  description: "Deep neural networks in Rust"
-  license: MIT
-  topics: ["neural-networks"]
-
 - repository: https://github.com/NivenT/REnforce
   description: "Reinforcement library written in Rust"
   topics: ["reinforcement"]
