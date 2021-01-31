@@ -321,11 +321,6 @@
 - name: wgpu
   topics: ["gpu-computing"]
 
-- repository: https://github.com/torchrs/torchrs
-  description: "Torch.rs (torturous) is a set of Rust bindings for torch intended to provide an API very close to that of PyTorch."
-  license: BSD-2-Clause
-  topics: ["neural-networks"]
-
 - repository: https://github.com/luqmana/rust-opencl
   description: "OpenCL bindings for Rust."
   license: MIT/Apache-2.0
