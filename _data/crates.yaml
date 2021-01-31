@@ -273,9 +273,6 @@
   documentation: https://athemathmo.github.io/rusty-data/
   topics: ["data-preprocessing"]
 
-- name: rusty-machine
-  topics: ["neural-networks", "linear-classifiers", "clustering"]
-
 - name: scirust
   topics: ["scientific-computing"]
 
