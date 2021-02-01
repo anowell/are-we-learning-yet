@@ -191,6 +191,9 @@
 - name: neuroflow
   topics: ["neural-networks"]
 
+- name: ngt
+  topics: ["data-structures"]
+
 - name: nn
   topics: ["neural-networks"]
 
