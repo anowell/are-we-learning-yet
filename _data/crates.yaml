@@ -191,6 +191,9 @@
 - name: neuroflow
   topics: ["neural-networks"]
 
+- name: neuronika
+  topics: ["neural-networks", "scientific-computing"]
+
 - name: nn
   topics: ["neural-networks"]
 
