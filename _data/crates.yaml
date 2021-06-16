@@ -152,6 +152,9 @@
 - name: kmeans-colors
   topics: ["clustering","scientific-computing"]
 
+- name: kmedoids
+  topics: ["clustering"]
+
 - name: lapack
   topics: ["scientific-computing"]
 
