@@ -162,7 +162,11 @@ module Jekyll
         out[k] = data.dig('crate', k)
       end
       %w(created_at updated_at).each do |k|
-        out[k] = Time.parse(data.dig('crate', k))
+        begin
+          out[k] = Time.parse(data.dig('crate', k))
+        rescue TypeError => ex
+          # do nothing
+        end
       end
       out.delete_if { |k,v| v.nil? }
     end
