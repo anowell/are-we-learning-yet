@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    uses: ./.github/workflows/build.yml@v1
+    uses: anowell/are-we-learning-yet/.github/workflows/build.yml@v1
 
   deploy:
     needs: build
