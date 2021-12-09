@@ -1,7 +1,10 @@
 _site
 _tmp
+_data/crates_generated.yaml
 .sass-cache
 .jekyll-cache
 .jekyll-metadata
 vendor
 .bundle
+.env
+

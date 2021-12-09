@@ -1,7 +1,6 @@
 ---
-layout: page
+layout: page.liquid
 title: About
-navindex: 2
 permalink: /about/
 ---
 

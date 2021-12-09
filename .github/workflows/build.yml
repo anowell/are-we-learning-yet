@@ -1,0 +1,115 @@
+on: [pull_request]
+
+name: Build
+
+jobs:
+  check:
+    name: Check & Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Use cargo cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            _scraper/target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Install stable toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+
+      - name: Run cargo check
+        uses: actions-rs/cargo@v1
+        with:
+          command: check
+          args: --manifest-path _scraper/Cargo.toml
+
+      - name: Run cargo fmt
+        uses: actions-rs/cargo@v1
+        with:
+          command: fmt
+          args: --manifest-path _scraper/Cargo.toml --all -- --check
+
+      - name: Run cargo clippy
+        uses: actions-rs/cargo@v1
+        with:
+          command: clippy
+          args: --manifest-path _scraper/Cargo.toml -- -D warnings
+
+  scraper:
+    name: Site Generation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Use cargo cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            _scraper/target/
+          key: ${{ runner.os }}-cargo-release-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+
+      -
+        name: Use daily cache of scraper data
+        uses: actions/cache@v2
+        with:
+          path: _tmp
+          key: scraper-data-cache-${{ steps.date.outputs.date }}
+
+
+      - name: Install stable toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+
+      - name: Build Scraper
+        uses: actions-rs/cargo@v1
+        with:
+          command: build
+          args: --manifest-path _scraper/Cargo.toml --release
+
+      - name: Run Scraper
+        run: _scraper/target/release/scraper _data/crates.yaml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # - name: Install Cobalt
+      #   run: |
+      #     curl -LSfs https://raw.githubusercontent.com/crate-ci/gh-install/master/v1/install.sh | \
+      #       sh -s -- \
+      #       --git cobalt-org/cobalt.rs \
+      #       --crate cobalt \
+      #       --force \
+      #       --target x86_64-unknown-linux-gnu \
+      #       --tag v0.17.5
+      #     echo COBALT_BIN=~/.cargo/bin/cobalt >> $GITHUB_ENV
+
+      - name: Install Cobalt (temporary until v0.17.5 is published)
+        run: |
+          cargo install --git https://github.com/cobalt-org/cobalt.rs \
+            --rev 6047852d62aa505a4dc6a82715485d465be5c596
+          echo COBALT_BIN=~/.cargo/bin/cobalt >> $GITHUB_ENV
+
+      - name: Build Site
+        run: ${{ env.COBALT_BIN }} build
