@@ -129,7 +129,7 @@
   topics: ["neural-networks"]
 
 - name: finalfusion
-  topics: ["natural-language-processing", "data-structures"]
+  topics: ["nlp", "data-structures"]
 
 - name: forester
   topics: ["decision-trees"]
@@ -264,7 +264,7 @@
   topics: ["reinforcement"]
 
 - name: rust2vec
-  topics: ["natural-language-processing", "data-structures"]
+  topics: ["nlp", "data-structures"]
 
 - name: rustacuda
   topics: ["scientific-computing", "gpu-computing"]
