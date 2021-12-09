@@ -111,7 +111,8 @@ jobs:
 
       - name: Install Cobalt (temporary until v0.17.5 is published)
         run: |
-          cargo install --git https://github.com/cobalt-org/cobalt.rs \
+          test -f ~/.cargo/bin/cobalt || cargo install \
+            --git https://github.com/cobalt-org/cobalt.rs \
             --rev 6047852d62aa505a4dc6a82715485d465be5c596
           echo COBALT_BIN=~/.cargo/bin/cobalt >> $GITHUB_ENV
 
