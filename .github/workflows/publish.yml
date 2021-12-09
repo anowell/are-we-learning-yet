@@ -5,15 +5,16 @@ on:
     branches:
       - master
   schedule:
-    - cron:  '30 23 * * 0'
+    - cron: "30 23 * * 0"
 
 jobs:
+  build:
+    uses: ./.github/workflows/build.yml@v1
+
   deploy:
+    needs: build
     runs-on: ubuntu-latest
-
     steps:
-      - uses: ./.github/workflows/build.yml@v1
-
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
