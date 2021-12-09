@@ -194,6 +194,9 @@
 - name: neuronika
   topics: ["neural-networks", "scientific-computing"]
 
+- name: ngt
+  topics: ["data-structures"]
+  
 - name: nn
   topics: ["neural-networks"]
 
