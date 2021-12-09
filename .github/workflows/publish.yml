@@ -1,19 +1,19 @@
 name: Publish
 
 on:
-  workflow_run:
-    workflows: [Build] # Reuse the name of your tests workflow
-    branches: master
-    types: [completed]
+  push:
+    branches:
+      - master
+  schedule:
+    - cron:  '30 23 * * 0'
 
 jobs:
   deploy:
-    # `if` required because a workflow run is triggered regardless of
-    # the result of the previous workflow (see the documentation page)
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
-
     runs-on: ubuntu-latest
+
     steps:
+      - uses: ./.github/workflows/build.yml@v1
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
