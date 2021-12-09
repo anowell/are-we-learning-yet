@@ -1,6 +1,7 @@
 ---
 layout: crates.liquid
 title: Reinforcement Learning
+permalink: /reinforcement
 data: {
     crate_tag: reinforcement,
     color: red,

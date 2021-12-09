@@ -1,6 +1,7 @@
 ---
 layout: crates.liquid
 title: GPU Computing
+permalink: /gpu-computing
 data: {
     crate_tag: gpu-computing,
     color: red,

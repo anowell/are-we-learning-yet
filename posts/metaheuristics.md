@@ -1,6 +1,7 @@
 ---
 layout: crates.liquid
 title: Metaheuristics
+permalink: /metaheuristics
 data: {
     crate_tag: metaheuristics,
     color: red,

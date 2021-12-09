@@ -1,6 +1,7 @@
 ---
 layout: crates.liquid
 title: Data Processing
+permalink: /data-preprocessing
 data: {
     crate_tag: data-preprocessing,
     color: yellow,

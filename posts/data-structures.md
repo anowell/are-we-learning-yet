@@ -1,6 +1,7 @@
 ---
 layout: crates.liquid
 title: Data Structures
+permalink: /data-structures
 data: {
     crate_tag: data-structures,
     color: yellow,

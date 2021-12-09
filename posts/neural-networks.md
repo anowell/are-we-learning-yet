@@ -1,6 +1,7 @@
 ---
 layout: crates.liquid
 title: Neural Networks
+permalink: /neural-networks
 data: {
     crate_tag: neural-networks,
     color: yellow,

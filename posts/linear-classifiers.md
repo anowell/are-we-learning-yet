@@ -1,6 +1,7 @@
 ---
 layout: crates.liquid
 title: Linear Classifiers
+permalink: /linear-classifiers
 data: {
     crate_tag: linear-classifiers,
     color: green,

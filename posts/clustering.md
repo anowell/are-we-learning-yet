@@ -1,6 +1,7 @@
 ---
 layout: crates.liquid
 title: Clustering
+permalink: /clustering
 data: {
     crate_tag: clustering,
     color: green,

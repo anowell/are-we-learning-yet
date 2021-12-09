@@ -1,6 +1,7 @@
 ---
 layout: crates.liquid
 title: Scientific Computing
+permalink: /scientific-computing
 data: {
     crate_tag: scientific-computing,
     color: yellow,
