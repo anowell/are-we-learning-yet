@@ -13,8 +13,15 @@ providing additional resources, or more generally improving the content.
 
 ## Running locally
 
-Requires [cobalt](https://cobalt-org.github.io/) `>=0.17.5`
-Recommend [just](https://github.com/casey/just) as a task runner (or using the commands in the [Justfile](Justfile))
+- Requires [cobalt](https://cobalt-org.github.io/) `>=0.17.5`
+    - The most recent official release is `0.17.4`; installation from the main git repo using
+```sh
+# Installing cobalt-bin from the Git repository
+cargo install --git https://github.com/cobalt-org/cobalt.rs \
+              --rev 6047852d62aa505a4dc6a82715485d465be5c596
+```
+
+- Recommend [just](https://github.com/casey/just) as a task runner (or using the commands in the [Justfile](Justfile))
 
 
 ```

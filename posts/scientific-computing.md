@@ -8,10 +8,8 @@ data: {
 }
 ---
 
-Several crates have populated the scientific computing space
-especially regarding matrix operations and linear algebra.
-But it's still too early to know which crates will emerge as
-central to a robust scientific computing ecosystem.
+Several crates have populated the scientific computing space, including
+linear algebra and matrix operations, numerical optimization, and more. 
 
 Given the value of iterative analysis in scientific computing,
 it's worth checking out [Evcxr REPL](https://github.com/google/evcxr/blob/master/evcxr_repl/).

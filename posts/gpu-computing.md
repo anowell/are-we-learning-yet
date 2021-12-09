@@ -8,5 +8,9 @@ data: {
 }
 ---
 
-GPUs are increasingly used for machine learning tasks like training so having a
-good ecosystem around GPU programming is important to a good ML ecosystem.
+GPUs are widely used in machine learning tasks including both training
+and inference, making them key components a performant machine learning
+ecosystem. Rust's GPU support, particularly around Geneneral-Purpose 
+GPU (GPGPU) and compute shaders is incomplete, but a number of efforts
+including the [WebGPU](https://wgpu.rs/) ecosystem, as well as 
+CUDA and OpenCL are making progress. 

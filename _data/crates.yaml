@@ -32,6 +32,9 @@
 - name: autograph
   topics: ["neural-networks"]
 
+- name: bacon-sci
+  topics: ["scientific-computing"]
+
 - name: bio
   topics: ["scientific-computing", "data-structures"]
 
@@ -70,10 +73,13 @@
 
 - name: cublas
   description: "safe Rust wrapper for CUDA's cuBLAS"
-  topics: ["scientific-computing", "gpu-computing"]
+  topics: ["gpu-computing"]
 
 - name: cuda
-  topics: ["scientific-computing", "gpu-computing"]
+  topics: ["gpu-computing"]
+
+- name: cuda-std
+  topics: ["gpu-computing"]
 
 - name: cudnn
   topics: ["gpu-computing"]
@@ -203,6 +209,9 @@
 - name: neuronika
   topics: ["neural-networks", "scientific-computing"]
 
+- name: newton_rootfinder
+  topics: ["scientific-computing"]
+
 - name: ngt
   topics: ["data-structures"]
   
@@ -323,6 +332,9 @@
   topics: ["data-preprocessing"]
 
 - name: tflite
+  topics: ["neural-networks"]
+
+- name: tract
   topics: ["neural-networks"]
 
 - name: tvm
