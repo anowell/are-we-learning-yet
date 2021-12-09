@@ -1,8 +1,8 @@
+use anyhow::Result;
+use serde::{de::DeserializeOwned, Serialize};
 use std::fs::{self, File};
 use std::io::BufReader;
 use std::path::{Path, PathBuf};
-use anyhow::Result;
-use serde::{Serialize, de::DeserializeOwned};
 
 const CACHE_DIR: &str = "_tmp";
 
@@ -35,4 +35,3 @@ pub fn write_cache<S: Serialize>(cache_path: &Path, data: S) -> Result<()> {
     serde_json::to_writer(&mut cache_file, &data)?;
     Ok(())
 }
-

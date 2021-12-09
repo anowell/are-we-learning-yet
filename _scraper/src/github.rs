@@ -1,10 +1,10 @@
+use crate::util::{cache_path, read_cache, write_cache};
 use anyhow::{anyhow, Context, Result};
 use chrono::{DateTime, Utc};
 use octocrab::Octocrab;
+use serde::{Deserialize, Serialize};
 use serde_json::{from_value, Value};
 use std::env;
-use crate::util::{cache_path, read_cache, write_cache};
-use serde::{Serialize, Deserialize};
 
 #[derive(Debug, Clone, Serialize)]
 pub struct RepoData {
@@ -24,7 +24,7 @@ pub struct GraphqlError {
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(untagged)]
 enum GraphqlResponse {
-    Error{ errors: Vec<GraphqlError> },
+    Error { errors: Vec<GraphqlError> },
     Value(Value),
 }
 
@@ -47,7 +47,7 @@ pub struct Github {
 
 impl Github {
     pub fn new() -> Result<Github> {
-        let token = env::var("GITHUB_OAUTH_TOKEN").context("GITHUB_OAUTH_TOKEN has not been set")?;
+        let token = env::var("GITHUB_TOKEN").context("GITHUB_TOKEN has not been set")?;
         let client = octocrab::OctocrabBuilder::new()
             .personal_token(token)
             .build()?;
@@ -72,10 +72,11 @@ impl Github {
 
         // Hopefully temporary: see https://github.com/XAMPPRocky/octocrab/issues/78
         match response {
-            GraphqlResponse::Error{ errors } => Err(anyhow!("{}", errors[0].message.as_ref().unwrap())),
+            GraphqlResponse::Error { errors } => {
+                Err(anyhow!("{}", errors[0].message.as_ref().unwrap()))
+            }
             GraphqlResponse::Value(v) => Ok(v),
         }
-
     }
 
     // TODO: use cache where available

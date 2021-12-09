@@ -20,9 +20,9 @@ Recommend [just](https://github.com/casey/just) as a task runner (or using the c
 ```
 # GitHub OAuth token avoids 403 rate limiting errors while generated crate data
 # Tip: set in `.env` file and `just` will pick it up automatically
-export GITHUB_OAUTH_TOKEN=<YOUR_GITHUB_TOKEN>
+export GITHUB_TOKEN=<YOUR_GITHUB_TOKEN>
 
-# Scrape crate/repo data for sitegen 
+# Scrape crate/repo data for sitegen
 just scrape
 
 # Start a dev server on port 3000
@@ -43,9 +43,7 @@ To force regeneration of all data, remove all cached data with `just clean`.
 ## Publishing
 
 [arewelearningyet.com](arewelearningyet.com) is served by Github Pages.
-Every merge into master is automatically published by a Travis CI job.
-The publish job may take a few minutes to complete, but you can always check the progress
-and status at [travis-ci.org/github/anowell/are-we-learning-yet](https://travis-ci.org/github/anowell/are-we-learning-yet)
+Every merge into master is automatically published by a Github Actions job.
 
 Additionally, to ensure crate statistics (download counts and stars)
-are regularly updated, the Travis publish task is also run as a weekly cron job.
+are regularly updated, the publishing task is also run as a weekly cron job.
