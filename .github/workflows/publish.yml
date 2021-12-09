@@ -19,11 +19,10 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: site-archive
+          path: _site
 
       - name: _site directory exists
-        uses: andstor/file-existence-action@v1
-        with:
-          files: _site
+        run: test -d _site
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
