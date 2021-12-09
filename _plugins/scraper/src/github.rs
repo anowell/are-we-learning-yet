@@ -44,7 +44,7 @@ pub struct Github {
 
 impl Github {
     pub fn new() -> Result<Github> {
-        let token = env::var("GITHUB_OAUTH_TOKEN").context("GH_OAUTH_TOKEN has not been set")?;
+        let token = env::var("GITHUB_OAUTH_TOKEN").context("GITHUB_OAUTH_TOKEN has not been set")?;
         let client = octocrab::OctocrabBuilder::new()
             .personal_token(token)
             .build()?;

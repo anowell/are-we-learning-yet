@@ -74,5 +74,5 @@ async fn main() -> Result<()> {
     };
 
 
-    write_yaml("_tmp/crates_generated.yaml", generated)
+    write_yaml("_data/crates_generated.yaml", generated)
 }
