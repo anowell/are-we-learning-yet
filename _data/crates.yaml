@@ -191,9 +191,12 @@
 - name: neuroflow
   topics: ["neural-networks"]
 
+- name: neuronika
+  topics: ["neural-networks", "scientific-computing"]
+
 - name: ngt
   topics: ["data-structures"]
-
+  
 - name: nn
   topics: ["neural-networks"]
 
@@ -296,22 +299,22 @@
   topics: ["data-structures", "scientific-computing"]
 
 - name: tch
-  topics: ["neural-networks", "bindings"]
+  topics: ["neural-networks"]
 
 - name: tokenizers
   topics: ["data-preprocessing"]
 
 - name: tensorflow
-  topics: ["neural-networks", "bindings"]
+  topics: ["neural-networks"]
 
 - name: timely
   topics: ["data-preprocessing"]
 
 - name: tflite
-  topics: ["neural-networks", "bindings"]
+  topics: ["neural-networks"]
 
 - name: tvm
-  topics: ["neural-networks", "bindings"]
+  topics: ["neural-networks"]
 
 - name: utah
   repository: https://github.com/kernelmachine/utah

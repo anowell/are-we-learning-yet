@@ -1,7 +1,6 @@
 ---
-layout: page
+layout: page.liquid
 title: Friends
-navindex: 1
 permalink: /friends/
 ---
 

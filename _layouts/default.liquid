@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+  {% include "head.liquid" %}
+
+  <body>
+
+    {% if page.permalink != 'index.html' %}
+      {% include "header.liquid" %}
+    {% endif %}
+    <div class="page-content">
+      {{ page.content }}
+    </div>
+
+    {% include "footer.liquid" %}
+
+  </body>
+
+</html>
