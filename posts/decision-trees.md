@@ -1,8 +1,10 @@
 ---
-layout: crates
+layout: crates.liquid
 title: Decision Trees
-crate_tag: decision-trees
-color: green
+data: {
+    crate_tag: decision-trees,
+    color: green,
+}
 ---
 
 There isn't a lot of decision tree activity in Rust,

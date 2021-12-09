@@ -1,8 +1,10 @@
 ---
-layout: crates
+layout: crates.liquid
 title: Data Processing
-crate_tag: data-preprocessing
-color: yellow
+data: {
+    crate_tag: data-preprocessing,
+    color: yellow,
+}
 ---
 
 Pre-processing data often simplifies ML training.

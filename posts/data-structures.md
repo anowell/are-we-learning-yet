@@ -1,8 +1,10 @@
 ---
-layout: crates
+layout: crates.liquid
 title: Data Structures
-crate_tag: data-structures
-color: yellow
+data: {
+    crate_tag: data-structures,
+    color: yellow,
+}
 ---
 
 The Rust ecosystem is full of a data structure implementations

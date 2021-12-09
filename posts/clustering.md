@@ -1,8 +1,10 @@
 ---
-layout: crates
+layout: crates.liquid
 title: Clustering
-crate_tag: clustering
-color: green
+data: {
+    crate_tag: clustering,
+    color: green,
+}
 ---
 
 The Rust machine learning ecosystem is a bit shallow on cluster analysis,

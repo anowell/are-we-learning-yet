@@ -1,8 +1,10 @@
 ---
-layout: crates
+layout: crates.liquid
 title: GPU Computing
-crate_tag: gpu-computing
-color: red
+data: {
+    crate_tag: gpu-computing,
+    color: red,
+}
 ---
 
 GPUs are increasingly used for machine learning tasks like training so having a

@@ -1,8 +1,10 @@
 ---
-layout: crates
+layout: crates.liquid
 title: Neural Networks
-crate_tag: neural-networks
-color: yellow
+data: {
+    crate_tag: neural-networks,
+    color: yellow,
+}
 ---
 
 Consistent with deep learning trends, the Rust community has built several neural network libraries.

@@ -1,11 +1,18 @@
-language: ruby
-cache: bundler
+language: rust
 sudo: false
+ cache:
+    directories:
+     - _scraper/target
+     - _tmp/
+
+before_script:
+  - cargo install --git https://github.com/cobalt-org/cobalt.rs
+  - export PATH="$PATH:/home/travis/.cargo/bin"
 
 script:
-  - bundle install
-  - rake clean
-  - rake build
+  - cd _scraper && cargo build --release
+  - _scraper/target/release/scraper _data/crates.yaml
+  - cobalt build
 
 deploy:
   provider: pages

@@ -1,8 +1,10 @@
 ---
-layout: crates
+layout: crates.liquid
 title: Scientific Computing
-crate_tag: scientific-computing
-color: yellow
+data: {
+    crate_tag: scientific-computing,
+    color: yellow,
+}
 ---
 
 Several crates have populated the scientific computing space

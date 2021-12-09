@@ -37,10 +37,10 @@ pub struct GeneratedCrateInfo {
     pub topics: Vec<Topic>,
     pub score: Option<u64>,
 
-    #[serde(rename = "crate")]
+    #[serde(rename = "meta", skip_serializing_if = "Option::is_none")]
     pub krate: Option<Crate>,
 
-    #[serde(rename = "repo")]
+    #[serde(rename = "repo", skip_serializing_if = "Option::is_none")]
     pub repo: Option<RepoData>,
 }
 

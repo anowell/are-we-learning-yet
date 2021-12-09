@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+{% include "head.liquid" %}
+
+<body>
+  {% include "header.liquid" %}
+
+  <article class="container post">
+
+    <header class="post-header">
+      <h1 class="post-title">{{ page.title }}</h1>
+    </header>
+
+    <div class="post-content">
+      {{ page.content }}
+    </div>
+
+    {% assign crates = site.data.crates_generated | sort: 'score' | reverse %}
+    {% for crate in crates %}
+    {% if crate.topics contains page.data.crate_tag %}
+    <div>
+      <hr>
+      <h3>
+        {%if crate.meta %}
+          {{crate.meta.name}}
+          <span style="font-size: small; vertical-align:middle;">
+            [
+            {%if crate.meta.name %}<a href="https://crates.io/crates/{{crate.meta.name}}">crate</a> &middot;{% endif %}
+            {%if crate.meta.repository %}<a href="{{crate.meta.repository}}">repo</a> &middot;{% endif %}
+            {%if crate.meta.documentation %}<a href="{{crate.meta.documentation}}">docs</a>{% endif %}
+            ]
+          </span>
+        {% elsif crate.repo %}
+          {{crate.repo.name}}
+          <span style="font-size: small; vertical-align:middle;">
+            [
+            {%if crate.repo.name %}<a href="https://github.com/{{crate.repo.name}}">repo</a>{% endif %}
+            ]
+        {% endif %}
+      </h3>
+
+      <div style="line-height:1;">
+        {%if crate.meta.name %}
+        <img src="https://img.shields.io/crates/v/{{crate.meta.name}}.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/d/{{crate.meta.name}}.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/dr/{{crate.meta.name}}.svg?maxAge=2592000">
+        {% endif %}
+        {%if crate.repo %}
+        <img
+          src="https://img.shields.io/github/stars/{{crate.repo.name}}.svg?style=social&amp;label=Star&amp;maxAge=2592000">
+        {% endif %}
+      </div>
+
+      {%if crate.meta %}
+      <p>{{crate.meta.description}}</p>
+      {% endif %}
+
+      <div style="font-size: small;">
+
+        {%if crate.meta.license %}
+        <span class="crate-stat"><b>License</b>: {{crate.meta.license}}</span>
+        {% endif %}
+        {%if crate.repo %}
+        <span class="crate-stat"><b>Last Commit</b>: {{crate.repo.last_commit | split: "T" | first}}</span>
+        {% endif %}
+        {%if crate.meta.name %}
+        <span class="crate-stat"><b>Last Published</b>: {{crate.meta.updated_at | split: "T" | first}}</span>
+        {% endif %}
+        {% comment %} {%if crate.repo %}
+        <span class="crate-stat"><b>Contributors</b>: {{crate.repo.contributor_count}}</span>
+        <span class="crate-stat"><b>Open Issues</b>: {{crate.repo.open_issues_count}}</span>
+        {% endif %} {% endcomment %}
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+
+    <div class="followup">
+      Do you know of a crate that is missing?
+      <a href="https://github.com/anowell/are-we-learning-yet/issues/new?title=Add+crate:+CRATE&amp;body=Please+add+crate+to+category:+{{ page.title | url_encode }}+%0A%0APro-tip%3a+a+quick+PR+to+_data/crates.yaml+often+gets+merged+quicker."
+        target="_blank">
+        Create an issue
+      </a>
+      or a PR.
+      <br>
+      Looking for something you didn't find? Try asking
+      <a href="https://rust-ml.zulipchat.com">on Zulip chat</a>.
+    </div>
+
+
+  </article>
+  {% include "footer.liquid" %}
+
+</body>
+
+</html>

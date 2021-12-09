@@ -8,9 +8,11 @@ use serde::{Serialize, Deserialize};
 
 #[derive(Debug, Clone, Serialize)]
 pub struct RepoData {
+    pub name: String,
     pub stargazers_count: u32,
     pub last_commit: DateTime<Utc>,
     // pub contributor_count: Option<u32>,
+    // pub open_issues_count: Option<u32>,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -27,9 +29,10 @@ enum GraphqlResponse {
 }
 
 impl RepoData {
-    fn from_graphql_data(val: &Value) -> Result<RepoData> {
+    fn from_graphql_data(name: &str, val: &Value) -> Result<RepoData> {
         let repo = &val["data"]["repository"];
         let repo_data = RepoData {
+            name: name.to_string(),
             stargazers_count: from_value(repo["stargazers"]["totalCount"].clone())?,
             last_commit: from_value(repo["pushedAt"].clone())?,
             // contributor_count: from_value(repo["collaborators"]["totalCount"].clone())?,
@@ -88,6 +91,6 @@ impl Github {
             }
         };
 
-        RepoData::from_graphql_data(&data)
+        RepoData::from_graphql_data(&format!("{}/{}", username, repo), &data)
     }
 }

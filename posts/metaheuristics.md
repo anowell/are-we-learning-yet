@@ -1,8 +1,10 @@
 ---
-layout: crates
+layout: crates.liquid
 title: Metaheuristics
-crate_tag: metaheuristics
-color: red
+data: {
+    crate_tag: metaheuristics,
+    color: red,
+}
 ---
 
 Metaheuristics aim to generate or select a heuristic for an optimization problem,
