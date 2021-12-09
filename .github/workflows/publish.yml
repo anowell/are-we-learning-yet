@@ -22,7 +22,7 @@ jobs:
           path: _site
 
       - name: _site directory exists
-        run: test -d _site
+        run: test -d _site && ls -R _site
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
