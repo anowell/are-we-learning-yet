@@ -5,4 +5,4 @@ site:
     The comprehensive guide to the state of machine learning in Rust.
     This site catalogs ML frameworks, data structures, data cleaning and analysis,
     and other tools and libraries that are essential to machine learning ecosystems.
-  base_url: "http://arewelearningyet.com"
+  base_url: "https://arewelearningyet.com"
