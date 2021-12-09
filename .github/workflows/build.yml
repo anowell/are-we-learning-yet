@@ -117,3 +117,9 @@ jobs:
 
       - name: Build Site
         run: ${{ env.COBALT_BIN }} build
+
+      - name: Upload built site archive
+        uses: actions/upload-artifact@v2
+        with:
+          name: site-archive
+          path: _site

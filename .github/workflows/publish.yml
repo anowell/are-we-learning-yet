@@ -15,6 +15,16 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Download built site archive
+        uses: actions/download-artifact@v2
+        with:
+          name: site-archive
+
+      - name: _site directory exists
+        uses: dothq/file-or-directory-exists@latest
+        with:
+          input: _site
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
