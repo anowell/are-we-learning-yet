@@ -13,8 +13,8 @@ providing additional resources, or more generally improving the content.
 
 ## Running locally
 
-Requires [cobalt](https://cobalt-org.github.io/) `>=0.17.5`
-Recommend [just](https://github.com/casey/just) as a task runner (or using the commands in the [Justfile](Justfile))
+- Requires [`cobalt >=0.17.5`](https://cobalt-org.github.io/)
+- Recommend [`just`](https://github.com/casey/just) as a task runner (or using the commands in the [Justfile](Justfile))
 
 
 ```
