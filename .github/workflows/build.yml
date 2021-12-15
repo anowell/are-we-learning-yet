@@ -98,22 +98,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # - name: Install Cobalt
-      #   run: |
-      #     curl -LSfs https://raw.githubusercontent.com/crate-ci/gh-install/master/v1/install.sh | \
-      #       sh -s -- \
-      #       --git cobalt-org/cobalt.rs \
-      #       --crate cobalt \
-      #       --force \
-      #       --target x86_64-unknown-linux-gnu \
-      #       --tag v0.17.5
-      #     echo COBALT_BIN=~/.cargo/bin/cobalt >> $GITHUB_ENV
-
-      - name: Install Cobalt (temporary until v0.17.5 is published)
+      - name: Install Cobalt
         run: |
-          test -f ~/.cargo/bin/cobalt || cargo install \
-            --git https://github.com/cobalt-org/cobalt.rs \
-            --rev 6047852d62aa505a4dc6a82715485d465be5c596
+          curl -LSfs https://raw.githubusercontent.com/crate-ci/gh-install/master/v1/install.sh | \
+            sh -s -- \
+            --git cobalt-org/cobalt.rs \
+            --crate cobalt \
+            --force \
+            --target x86_64-unknown-linux-gnu \
+            --tag v0.17.5
           echo COBALT_BIN=~/.cargo/bin/cobalt >> $GITHUB_ENV
 
       - name: Build Site
