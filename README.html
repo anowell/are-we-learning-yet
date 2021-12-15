@@ -4,8 +4,8 @@
 <p>Inspired by <a href="http://arewewebyet.org/">Are We Web Yet?</a>, this project aims to catalog the the Rust ML ecosystem.</p>
 <h2>Contributing</h2>
 <p>Feedback, issues, and pull requests are welcome and appreciated for adding missing crates,
-providing additional resources, or more generally improving the content.</p>
-<h2>Running locally</h2>
+providing additional resources, or improving the content.</p>
+<h3>Running locally</h3>
 <ul>
 <li>Requires <a href="https://cobalt-org.github.io/"><code>cobalt &gt;=0.17.5</code></a></li>
 <li>Recommend <a href="https://github.com/casey/just"><code>just</code></a> as a task runner (or using the commands in the <a href="Justfile">Justfile</a>)</li>
@@ -22,14 +22,23 @@ providing additional resources, or more generally improving the content.</p>
 </span><span style="color:#c0c5ce;">cobalt serve
 </span></pre>
 <p>The site should be running on <a href="http://localhost:3000">localhost:3000</a></p>
-<h2>Generating crate data</h2>
-<p><code>_data/crates.yaml</code> contains a manually curated list of crates,
-but the <a href="scraper">scraper</a> tool will fetch additional data from crates.io
-and the GitHub API. All fetched and generated data is cached
-to speed up site generation and avoid abusing APIs.</p>
-<p>To force regeneration of all data, remove all cached data with <code>just clean</code>.</p>
-<h2>Publishing</h2>
+<h3>How it works</h3>
+<p>The repo consists of 2 key parts:</p>
+<ul>
+<li><strong>the scraper tool</strong> is responsible for reading <a href="_data/crates.yaml">crates.yaml</a>, fetching
+additional metadata about the crate from crates.io and the GitHub API, and generating a score used for ordering crates.
+The fetched data is cached in a <code>_tmp</code> directory to speed up repeated site generation and avoid abusing the APIs,
+and the scraper outputs <code>_data/crates_generated.yaml</code> which is used by the cobalt site generation. To force regeneration
+of all crate data, remove the cached data with <code>just clean</code>. For more details, see the <a href="_scraper">scraper README</a>.</li>
+<li><strong>the site content</strong> is the rest of the repo which follows the layout established by <a href="https://cobalt-org.github.io/">cobalt.rs</a>.
+Cobalt uses this content to generate a static site into a <code>_site</code> directory (<code>cobalt build</code>) and can also start a local development
+server that rebuilds the site anytime content changes (<code>cobalt serve</code>). For more details, see 
+<a href="https://cobalt-org.github.io/">cobalt.rs</a> documentation.</li>
+</ul>
+<p>Note: <code>cobalt serve</code> does not trigger the scraper to rerun when <code>crates.yaml</code> (or the scraper) changes. Currently you must rerun <code>just scrape</code>
+to update <code>crates_generated.yaml</code>.</p>
+<h3>Publishing</h3>
 <p><a href="arewelearningyet.com">arewelearningyet.com</a> is served by Github Pages.
-Every merge into master is automatically published by a Github Actions job.</p>
+Every merge into master is automatically published by a <a href=".github/workflows">Github Actions job</a>.</p>
 <p>Additionally, to ensure crate statistics (download counts and stars)
 are regularly updated, the publishing task is also run as a weekly cron job.</p>
