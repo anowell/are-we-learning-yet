@@ -26,6 +26,9 @@
 - name: arrow
   topics: ["data-preprocessing", "data-structures"]
 
+- name: auto-diff
+  topics: ["neural-networks"]
+
 - name: autograd
   topics: ["neural-networks"]
 
