@@ -56,8 +56,7 @@ async fn main() -> Result<()> {
         let repo_opt: Option<Url> = gen
             .krate
             .as_ref()
-            .map(|k| k.repository.as_ref().map(|r| Url::parse(r).unwrap()))
-            .flatten()
+            .and_then(|k| k.repository.as_ref().map(|r| Url::parse(r).unwrap()))
             .clone();
         if let Some(repo) = repo_opt {
             if repo.host_str() == Some("github.com") {
