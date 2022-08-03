@@ -52,6 +52,9 @@
 
 - name: cgmath
   topics: ["scientific-computing"]
+  
+- name: clarabel
+  topics: ["scientific-computing"]
 
 - name: classifier
   topics: ["linear-classifiers"]
