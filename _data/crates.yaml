@@ -55,7 +55,7 @@
   
 - name: clarabel
   topics: ["scientific-computing"]
-  documentation: https://github.com/oxfordcontrol/ClarabelDocs
+  documentation: https://oxfordcontrol.github.io/ClarabelDocs/
 
 - name: classifier
   topics: ["linear-classifiers"]
