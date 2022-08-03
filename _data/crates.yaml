@@ -52,6 +52,10 @@
 
 - name: cgmath
   topics: ["scientific-computing"]
+  
+- name: clarabel
+  topics: ["scientific-computing"]
+  documentation: https://oxfordcontrol.github.io/ClarabelDocs/
 
 - name: classifier
   topics: ["linear-classifiers"]
