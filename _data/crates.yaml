@@ -109,6 +109,9 @@
 
 - name: densearray
   topics: ["data-structures"]
+  
+- name: dfdx
+  topics: ["neural-networks", "reinforcement-learning", "linear-classifiers"]
 
 - name: drug
   topics: ["neural-networks"]
