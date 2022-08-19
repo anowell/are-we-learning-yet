@@ -111,7 +111,7 @@
   topics: ["data-structures"]
   
 - name: dfdx
-  topics: ["neural-networks", "reinforcement-learning", "linear-classifiers"]
+  topics: ["neural-networks", "reinforcement", "linear-classifiers"]
 
 - name: drug
   topics: ["neural-networks"]
