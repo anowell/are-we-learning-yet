@@ -399,7 +399,6 @@
   license: BSD
   topics: ["neural-networks", "linear-classifiers"]
   
-- repository: https://github.com/webonnx/wonnx
-  description: "Wonnx is a GPU-accelerated ONNX inference run-time written 100% in Rust, ready for the web."
-  license: MIT
+- name: wonnx
   topics: ["neural-networks", "gpu-computing"]
+  
