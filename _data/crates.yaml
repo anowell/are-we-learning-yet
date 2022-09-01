@@ -364,6 +364,9 @@
 - name: wgpu
   topics: ["gpu-computing"]
 
+- name: wonnx
+  topics: ["neural-networks", "gpu-computing"]  
+
 - repository: https://github.com/torchrs/torchrs
   description: "Torch.rs (torturous) is a set of Rust bindings for torch intended to provide an API very close to that of PyTorch."
   license: BSD-2-Clause
@@ -398,7 +401,3 @@
   description: "Fast logistic regression and field-aware factorization machines in Rust"
   license: BSD
   topics: ["neural-networks", "linear-classifiers"]
-  
-- name: wonnx
-  topics: ["neural-networks", "gpu-computing"]
-  
