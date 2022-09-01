@@ -364,6 +364,9 @@
 - name: wgpu
   topics: ["gpu-computing"]
 
+- name: wonnx
+  topics: ["neural-networks", "gpu-computing"]  
+
 - repository: https://github.com/torchrs/torchrs
   description: "Torch.rs (torturous) is a set of Rust bindings for torch intended to provide an API very close to that of PyTorch."
   license: BSD-2-Clause
@@ -393,7 +396,6 @@
   description: "Differential privacy validator and runtime"
   license: MIT
   topics: ["data-preprocessing"]
-
 
 - repository: https://github.com/outbrain/fwumious_wabbit
   description: "Fast logistic regression and field-aware factorization machines in Rust"
