@@ -46,6 +46,9 @@
 
 - name: blasoxide
   topics: ["scientific-computing"]
+  
+- name: burn
+  topics: ["neural-networks"]
 
 - name: bvh
   topics: ["data-structures"]
@@ -288,12 +291,15 @@
 - name: rurel
   topics: ["reinforcement"]
 
+- name: rust-gpu
+  topics: ["gpu-computing"]
+
 - name: rust2vec
   topics: ["nlp", "data-structures"]
 
 - name: rustacuda
   topics: ["scientific-computing", "gpu-computing"]
-
+  
 - name: rustlearn
   topics: ["linear-classifiers", "decision-trees"]
 
