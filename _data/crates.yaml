@@ -291,9 +291,6 @@
 - name: rurel
   topics: ["reinforcement"]
 
-- name: rust-gpu
-  topics: ["gpu-computing"]
-
 - name: rust2vec
   topics: ["nlp", "data-structures"]
 
@@ -316,6 +313,11 @@
   documentation: https://athemathmo.github.io/rusty-data/
   topics: ["data-preprocessing"]
 
+- name: rust-gpu
+  repository: https://github.com/embarkstudios/rust-gpu
+  description: "Making Rust a first-class language and ecosystem for GPU graphics & compute shaders"
+  topics: ["gpu-computing"]
+  
 - name: rusty-machine
   topics: ["neural-networks", "linear-classifiers", "clustering"]
 
