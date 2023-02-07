@@ -11,6 +11,9 @@
 - name: accel
   topics: ["scientific-computing", "gpu-computing"]
 
+- name: ai-dataloader
+  topics: ["data-preprocessing"]
+
 - name: alumina
   topics: ["neural-networks"]
 
@@ -46,7 +49,7 @@
 
 - name: blasoxide
   topics: ["scientific-computing"]
-  
+
 - name: burn
   topics: ["neural-networks"]
 
@@ -55,7 +58,7 @@
 
 - name: cgmath
   topics: ["scientific-computing"]
-  
+
 - name: clarabel
   topics: ["scientific-computing"]
   documentation: https://oxfordcontrol.github.io/ClarabelDocs/
@@ -112,7 +115,7 @@
 
 - name: densearray
   topics: ["data-structures"]
-  
+
 - name: dfdx
   topics: ["neural-networks", "reinforcement", "linear-classifiers"]
 
@@ -227,7 +230,7 @@
 
 - name: ngt
   topics: ["data-structures"]
-  
+
 - name: nn
   topics: ["neural-networks"]
 
@@ -296,7 +299,7 @@
 
 - name: rustacuda
   topics: ["scientific-computing", "gpu-computing"]
-  
+
 - name: rustlearn
   topics: ["linear-classifiers", "decision-trees"]
 
@@ -317,7 +320,7 @@
   repository: https://github.com/embarkstudios/rust-gpu
   description: "Making Rust a first-class language and ecosystem for GPU graphics & compute shaders"
   topics: ["gpu-computing"]
-  
+
 - name: rusty-machine
   topics: ["neural-networks", "linear-classifiers", "clustering"]
 
@@ -373,7 +376,7 @@
   topics: ["gpu-computing"]
 
 - name: wonnx
-  topics: ["neural-networks", "gpu-computing"]  
+  topics: ["neural-networks", "gpu-computing"]
 
 - repository: https://github.com/torchrs/torchrs
   description: "Torch.rs (torturous) is a set of Rust bindings for torch intended to provide an API very close to that of PyTorch."
