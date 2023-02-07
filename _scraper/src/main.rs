@@ -25,15 +25,15 @@ async fn main() -> Result<()> {
     let crates_io = CratesIo::new()?;
 
     let input: Vec<InputCrateInfo> =
-        read_yaml(&path).with_context(|| format!("Error reading {}", path))?;
+        read_yaml(&path).with_context(|| format!("Error reading {path}"))?;
     let mut generated = Vec::new();
     for krate in input {
         if let Some(name) = &krate.name {
-            println!("Processing crate {}", name);
+            println!("Processing crate {name}");
         } else if let Some(repo) = &krate.repository {
-            println!("Processing repo {}", repo);
+            println!("Processing repo {repo}");
         } else {
-            println!("Invalid entry: {:#?}", krate);
+            println!("Invalid entry: {krate:#?}");
             continue;
         }
 
@@ -45,7 +45,7 @@ async fn main() -> Result<()> {
                     gen.krate = Some(data);
                 }
                 Err(err) => {
-                    eprintln!("Error getting crate data for {} - {}", crate_name, err);
+                    eprintln!("Error getting crate data for {crate_name} - {err}");
                 }
             }
         }
