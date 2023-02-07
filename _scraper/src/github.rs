@@ -57,14 +57,13 @@ impl Github {
     async fn fetch_remote_repo_data(&self, username: &str, repo: &str) -> Result<Value> {
         let query = format!(
             r#"query {{
-              repository(owner:"{}", name:"{}") {{
+              repository(owner:"{username}", name:"{repo}") {{
                 stargazers {{
                   totalCount
                 }}
                 pushedAt
               }}
-            }}"#,
-            username, repo
+            }}"#
         );
         let response: GraphqlResponse = self.client.graphql(&query).await?;
 
@@ -81,7 +80,7 @@ impl Github {
 
     // TODO: use cache where available
     pub async fn get_repo_data(&self, username: &str, repo: &str) -> Result<RepoData> {
-        let cache_path = cache_path("github", &format!("{}--{}", username, repo))?;
+        let cache_path = cache_path("github", &format!("{username}--{repo}"))?;
 
         let data = match read_cache(&cache_path) {
             Ok(data) => data,
@@ -92,6 +91,6 @@ impl Github {
             }
         };
 
-        RepoData::from_graphql_data(&format!("{}/{}", username, repo), &data)
+        RepoData::from_graphql_data(&format!("{username}/{repo}"), &data)
     }
 }
