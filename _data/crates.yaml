@@ -187,7 +187,8 @@
   topics: ["neural-networks"]
 
 - name: linfa
-  topics: ["clustering"]
+  documentation: "https://rust-ml.github.io/linfa/"
+  topics: ["clustering", "decision-trees", "linear-classifiers"]
 
 - name: linxal
   topics: ["scientific-computing"]
