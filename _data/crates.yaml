@@ -94,6 +94,9 @@
 - name: cuda-std
   topics: ["gpu-computing"]
 
+- name: cudarc
+  topics: ["gpu-computing"]
+
 - name: cudnn
   topics: ["gpu-computing"]
 
@@ -117,7 +120,7 @@
   topics: ["data-structures"]
 
 - name: dfdx
-  topics: ["neural-networks", "reinforcement", "linear-classifiers"]
+  topics: ["neural-networks", "reinforcement", "linear-classifiers", "gpu-computing", "scientific-computing"]
 
 - name: drug
   topics: ["neural-networks"]
