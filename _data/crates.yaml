@@ -66,6 +66,9 @@
 - name: classifier
   topics: ["linear-classifiers"]
 
+- name: clustering
+  topics: ["clustering"]
+
 - name: coaster
   topics: ["scientific-computing", "gpu-computing"]
 
