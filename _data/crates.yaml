@@ -125,6 +125,9 @@
 - name: drug
   topics: ["neural-networks"]
 
+- name: egobox
+  topics: ["scientific-computing", "metaheuristics"]
+
 - name: em
   description: "A macro for executing a subset of Rust with OpenCL"
   topics: ["gpu-computing", "scientific-computing"]
