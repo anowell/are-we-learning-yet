@@ -199,6 +199,12 @@
 - name: linxal
   topics: ["scientific-computing"]
 
+- name: llm
+  topics: ["nlp"]
+
+- name: llm-chain
+  topics: ["nlp"]
+
 - name: matrixmultiply
   topics: ["scientific-computing"]
 
