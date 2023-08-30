@@ -56,6 +56,11 @@
 - name: bvh
   topics: ["data-structures"]
 
+- name: candle-core
+  repository: https://github.com/huggingface/candle
+  description: "Minimalist ML framework with CUDA acceleration and quantization support"
+  topics: ["neural-networks"]
+  
 - name: cgmath
   topics: ["scientific-computing"]
 
