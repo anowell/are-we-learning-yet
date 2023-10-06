@@ -431,5 +431,5 @@
 
 - repository: https://github.com/outbrain/fwumious_wabbit
   description: "Fast logistic regression and field-aware factorization machines in Rust"
-  license: BSD
+  license: BSD-3-Clause
   topics: ["neural-networks", "linear-classifiers"]
