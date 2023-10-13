@@ -77,6 +77,9 @@
 - name: coaster
   topics: ["scientific-computing", "gpu-computing"]
 
+- name: cobyla
+  topics: ["scientific-computing", "metaheuristics"]
+
 - name: cogent
   topics: ["neural-networks"]
 
@@ -350,6 +353,9 @@
 
 - name: simplers_optimization
   topics: ["metaheuristics"]
+
+- name: slsqp
+  topics: ["scientific-computing", "metaheuristics"]
 
 - name: smartcore
   documentation: https://smartcorelib.org/
