@@ -14,6 +14,7 @@ pub enum Topic {
     DataPreprocessing,
     DataStructures,
     Clustering,
+    ComputationalCausality,
     DecisionTrees,
     LinearClassifiers,
     Reinforcement,

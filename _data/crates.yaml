@@ -127,6 +127,11 @@
 - name: datafusion
   topics: ["data-preprocessing"]
 
+- name: deep_causality
+  description: "Computational causality library. Provides causality graph, collections, context and causal reasoning."
+  documentation: "https://docs.rs/deep_causality"
+  topics: ["computational-causality", "data-structures","scientific-computing"]
+
 - name: densearray
   topics: ["data-structures"]
 
