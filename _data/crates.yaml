@@ -312,6 +312,9 @@
 - name: rsrl
   topics: ["reinforcement"]
 
+- name: rstats
+  topics: ["scientific-computing"]
+
 - name: rulinalg
   topics: ["scientific-computing"]
 
@@ -383,6 +386,9 @@
   topics: ["neural-networks"]
 
 - name: tract
+  topics: ["neural-networks"]
+
+- name: triton
   topics: ["neural-networks"]
 
 - name: tvm
