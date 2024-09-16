@@ -11,6 +11,7 @@ pub enum Topic {
     GpuComputing,
     NeuralNetworks,
     Metaheuristics,
+    Mlops,
     DataPreprocessing,
     DataStructures,
     Clustering,
