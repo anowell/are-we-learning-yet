@@ -60,7 +60,7 @@
   repository: https://github.com/huggingface/candle
   description: "Minimalist ML framework with CUDA acceleration and quantization support"
   topics: ["neural-networks"]
-  
+
 - name: cgmath
   topics: ["scientific-computing"]
 
@@ -131,7 +131,14 @@
   topics: ["data-structures"]
 
 - name: dfdx
-  topics: ["neural-networks", "reinforcement", "linear-classifiers", "gpu-computing", "scientific-computing"]
+  topics:
+    [
+      "neural-networks",
+      "reinforcement",
+      "linear-classifiers",
+      "gpu-computing",
+      "scientific-computing",
+    ]
 
 - name: drug
   topics: ["neural-networks"]
@@ -192,7 +199,7 @@
   topics: ["clustering"]
 
 - name: kmeans-colors
-  topics: ["clustering","scientific-computing"]
+  topics: ["clustering", "scientific-computing"]
 
 - name: kmedoids
   topics: ["clustering"]
@@ -362,7 +369,14 @@
 
 - name: smartcore
   documentation: https://smartcorelib.org/
-  topics: ["data-structures", "linear-classifiers", "clustering", "scientific-computing", "decision-trees"]
+  topics:
+    [
+      "data-structures",
+      "linear-classifiers",
+      "clustering",
+      "scientific-computing",
+      "decision-trees",
+    ]
 
 - name: statrs
   topics: ["scientific-computing"]
@@ -446,3 +460,18 @@
   description: "Fast logistic regression and field-aware factorization machines in Rust"
   license: BSD-3-Clause
   topics: ["neural-networks", "linear-classifiers"]
+
+- repository: https://github.com/tensorzero/tensorzero
+  description: "data & learning flywheel for LLMs that unifies inference, observability, optimization, and experimentation"
+  license: Apache-2.0
+  topics: ["mlops"]
+
+- repository: https://github.com/evilsocket/cake
+  description: "Distributed LLM and StableDiffusion inference for mobile, desktop and server."
+  license: GPL-3.0
+  topics: ["mlops"]
+
+- repository: https://github.com/qdrant/qdrant
+  description: "High-performance, massive-scale Vector Database for the next generation of AI."
+  license: Apache-2.0
+  topics: ["mlops"]
