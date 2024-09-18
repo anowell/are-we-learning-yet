@@ -351,7 +351,7 @@
   topics: ["data-preprocessing"]
 
 - name: rust-gpu
-  repository: https://github.com/embarkstudios/rust-gpu
+  repository: https://github.com/rust-gpu/rust-gpu
   description: "Making Rust a first-class language and ecosystem for GPU graphics & compute shaders"
   topics: ["gpu-computing"]
 
