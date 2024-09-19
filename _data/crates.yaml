@@ -92,6 +92,11 @@
 - name: cntk
   topics: ["neural-networks"]
 
+- name: convolutions_rs
+  repository: https://github.com/Conzel/convolutions-rs
+  topics: ["neural-networks"]
+  description: "Torch-compatible convolutions crate implemented in pure rust."
+
 - name: csv
   topics: ["data-preprocessing"]
 
