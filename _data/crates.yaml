@@ -234,6 +234,9 @@
 - name: metaheuristics
   topics: ["metaheuristics"]
 
+- name: mininn
+  topics: ["neural-networks"]
+
 - name: mop
   topics: ["metaheuristics", "scientific-computing"]
 
