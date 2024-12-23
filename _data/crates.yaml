@@ -100,6 +100,10 @@
 - name: csv
   topics: ["data-preprocessing"]
 
+- name: cubecl
+  description: "Multi-platform high-performance compute language extension for Rust."
+  topics: ["gpu-computing"]
+
 - name: cublas
   description: "safe Rust wrapper for CUDA's cuBLAS"
   topics: ["gpu-computing"]
