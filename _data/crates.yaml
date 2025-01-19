@@ -431,6 +431,30 @@
 - name: wonnx
   topics: ["neural-networks", "gpu-computing"]
 
+- name: luminal
+  topics: ["neural-networks"]
+
+- name: unda
+  topics: ["neural-networks"]
+
+- name: custos
+  topics: ["neural-networks"]
+
+- name: zyx
+  topics: ["neural-networks"]
+
+- name: ort
+  topics: ["neural-networks"]
+
+- name: Kyanite
+  topics: ["neural-networks"]
+
+- name: cubecl
+  topics: ["gpu-computing"]
+
+- name: krnl
+  topics: ["gpu-computing"]
+
 - repository: https://github.com/torchrs/torchrs
   description: "Torch.rs (torturous) is a set of Rust bindings for torch intended to provide an API very close to that of PyTorch."
   license: BSD-2-Clause
@@ -480,3 +504,18 @@
   description: "High-performance, massive-scale Vector Database for the next generation of AI."
   license: Apache-2.0
   topics: ["mlops"]
+
+- repository: https://github.com/EricLBuehler/mistral.rs
+  description: "Blazingly fast LLM inference."
+  license: MIT
+  topics: ["neural-networks"]
+
+- repository: https://github.com/InfiniTensor/InfiniLM
+  description: "A handwriting transformer model project developed from YdrMaster/llama2.rs"
+  license: MIT
+  topics: ["neural-networks"]
+
+- repository: https://github.com/YdrMaster/operators-rs
+  description: "Multi-hardware support operator library"
+  license: MIT
+  topics: ["neural-networks"]
