@@ -135,7 +135,7 @@
 - name: densearray
   topics: ["data-structures"]
 
-- name: delta
+- name: deltaml
   topics: ["neural-networks"]
 
 - name: dfdx
