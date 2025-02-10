@@ -315,6 +315,9 @@
 
 - name: qcgpu
   topics: ["scientific-computing"]
+  
+- name: qdrant
+  topics: ["clustering", "data-structures"]
 
 - name: rds
   topics: ["data-structures"]
