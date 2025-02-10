@@ -417,6 +417,9 @@
 - name: tract
   topics: ["neural-networks"]
 
+- name: transformrs
+  topics: ["nlp"]
+
 - name: triton_grow
   repository: https://github.com/BradenEverson/triton
   topics: ["neural-networks"]
