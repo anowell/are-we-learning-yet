@@ -459,6 +459,11 @@
 - name: ort
   topics: ["neural-networks"]
 
+- repository: 'https://github.com/lucasjinreal/Kokoros'
+  name: Kokoros
+  description: 'Kokoro in Rust. Insanely fast, realtime TTS with high quality you ever have.'
+  topics: ["nlp"]
+
 - name: Kyanite
   topics: ["neural-networks"]
 
