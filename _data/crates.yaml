@@ -195,6 +195,12 @@
 - name: genetic
   topics: ["metaheuristics"]
 
+- name: globalsearch
+  topics: ["metaheuristics"]
+  repository: https://github.com/GermanHeim/globalsearch-rs
+  description: "Global optimization with scatter search and local NLP solvers written in Rust"
+  license: MIT
+
 - name: GSL
   topics: ["scientific-computing"]
 
