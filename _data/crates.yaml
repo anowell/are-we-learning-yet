@@ -361,6 +361,11 @@
 - name: rust-bert
   topics: ["nlp"]
 
+- name: rust-cuda
+  repository: https://github.com/Rust-GPU/Rust-CUDA
+  description: "Ecosystem of libraries and tools for writing and executing fast GPU code fully in Rust."
+  topics: ["gpu-computing"]
+
 - name: rusty-data
   documentation: https://athemathmo.github.io/rusty-data/
   topics: ["data-preprocessing"]
