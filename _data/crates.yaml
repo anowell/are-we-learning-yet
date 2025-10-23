@@ -527,6 +527,11 @@
   description: "A handwriting transformer model project developed from YdrMaster/llama2.rs"
   license: MIT
   topics: ["neural-networks"]
+  
+- repository: https://github.com/rlarson20/Volta
+  description: "A PyTorch-inspired tensor and autograd engine"
+  license: MIT
+  topics: ["neural-networks"]
 
 - repository: https://github.com/YdrMaster/operators-rs
   description: "Multi-hardware support operator library"
