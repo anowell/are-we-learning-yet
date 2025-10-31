@@ -26,26 +26,26 @@ jobs:
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
 
       - name: Install stable toolchain
-        uses: actions-rs/toolchain@v2
+        uses: actions-rs/toolchain@v1
         with:
           profile: minimal
           toolchain: stable
           override: true
 
       - name: Run cargo check
-        uses: actions-rs/cargo@v2
+        uses: actions-rs/cargo@v1
         with:
           command: check
           args: --manifest-path _scraper/Cargo.toml
 
       - name: Run cargo fmt
-        uses: actions-rs/cargo@v2
+        uses: actions-rs/cargo@v1
         with:
           command: fmt
           args: --manifest-path _scraper/Cargo.toml --all -- --check
 
       - name: Run cargo clippy
-        uses: actions-rs/cargo@v2
+        uses: actions-rs/cargo@v1
         with:
           command: clippy
           args: --manifest-path _scraper/Cargo.toml -- -D warnings
@@ -79,14 +79,14 @@ jobs:
           key: scraper-data-cache-${{ steps.date.outputs.date }}
 
       - name: Install stable toolchain
-        uses: actions-rs/toolchain@v2
+        uses: actions-rs/toolchain@v1
         with:
           profile: minimal
           toolchain: stable
           override: true
 
       - name: Build Scraper
-        uses: actions-rs/cargo@v2
+        uses: actions-rs/cargo@v1
         with:
           command: build
           args: --manifest-path _scraper/Cargo.toml --release
