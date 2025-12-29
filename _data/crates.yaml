@@ -51,7 +51,7 @@
   topics: ["scientific-computing"]
 
 - name: burn
-  topics: ["neural-networks"]
+  topics: ["neural-networks", "gpu-computing", "nlp"]
 
 - name: bvh
   topics: ["data-structures"]
