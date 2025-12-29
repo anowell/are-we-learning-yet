@@ -16,3 +16,13 @@
   url: https://algorithmia.com/
   logo: algorithmia.png
   how: "Platform supports <a href='http://blog.algorithmia.com/algorithmia-now-supports-python-3-javascript-rust-ruby/'>hosting Rust-based ML algorithms</a>."
+
+- name: TensorZero
+  url: https://www.tensorzero.com/
+  logo: tensorzero.png
+  how: "Develops an <a href='https://github.com/tensorzero/tensorzero'>open-source Rust-based stack</a> for industrial-grade LLM applications."
+
+- name: Tracel
+  url: https://tracel.ai/
+  logo: tracel.png
+  how: "Develops <a href='https://burn.dev'>Burn</a>, a Rust-based comprehensive deep learning framework."
