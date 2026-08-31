@@ -10,6 +10,8 @@ pub struct RepoData {
     pub name: String,
     pub stargazers_count: u32,
     pub last_commit: DateTime<Utc>,
+    // No serde default: an older cache entry must miss and refetch rather than read as `false`.
+    pub archived: bool,
 }
 
 // octocrab's own Display for a failed request is just "GitHub"; the status and
@@ -52,6 +54,7 @@ impl Github {
             last_commit: repository
                 .pushed_at
                 .ok_or_else(|| anyhow!("no push timestamp returned"))?,
+            archived: repository.archived.unwrap_or(false),
         })
     }
 

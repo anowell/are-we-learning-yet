@@ -31,12 +31,15 @@
             {%if crate.meta.documentation %}<a href="{{crate.meta.documentation}}">docs</a>{% endif %}
             ]
           </span>
+          {%if crate.repo.archived %}<span class="crate-archived">archived</span>{% endif %}
         {% elsif crate.repo %}
           {{crate.repo.name}}
           <span style="font-size: small; vertical-align:middle;">
             [
             {%if crate.repo.name %}<a href="https://github.com/{{crate.repo.name}}">repo</a>{% endif %}
             ]
+          </span>
+          {%if crate.repo.archived %}<span class="crate-archived">archived</span>{% endif %}
         {% endif %}
       </h3>
 

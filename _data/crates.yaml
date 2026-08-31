@@ -47,9 +47,6 @@
 - name: blas
   topics: ["scientific-computing", "gpu-computing"]
 
-- name: blasoxide
-  topics: ["scientific-computing"]
-
 - name: burn
   topics: ["neural-networks"]
 
@@ -139,9 +136,6 @@
 - name: densearray
   topics: ["data-structures"]
 
-- name: deltaml
-  topics: ["neural-networks"]
-
 - name: dfdx
   topics:
     [
@@ -155,7 +149,7 @@
 - name: drug
   topics: ["neural-networks"]
 
-- name: egobox
+- name: egobox-ego
   topics: ["scientific-computing", "metaheuristics"]
 
 - name: em
@@ -166,13 +160,7 @@
   repository: https://github.com/calebwin/emu
   description: "A low-level modular, extensible GPGPU compute library with cross-platform support"
   documentation: https://calebwin.github.io/emu
-  topics: ["gpu-computing", "scientific-computing"]
-
-- name: emu_core
-  repository: https://github.com/calebwin/emu
-  description: "A wrapper type for storing/manipulating data on a GPU"
-  documentation: https://calebwin.github.io/emu
-  topics: ["data-structures"]
+  topics: ["gpu-computing", "scientific-computing", "data-structures"]
 
 - name: evo
   topics: ["metaheuristics"]
@@ -191,9 +179,6 @@
 
 - name: forester
   topics: ["decision-trees"]
-
-- name: genetic
-  topics: ["metaheuristics"]
 
 - name: GSL
   topics: ["scientific-computing"]
@@ -244,9 +229,6 @@
 - name: mininn
   topics: ["neural-networks"]
 
-- name: mop
-  topics: ["metaheuristics", "scientific-computing"]
-
 - name: nalgebra
   topics: ["scientific-computing"]
 
@@ -261,9 +243,6 @@
 
 - name: ndarray-stats
   topics: ["scientific-computing"]
-
-- name: ndsparse
-  topics: ["data-structures"]
 
 - name: neuroflow
   topics: ["neural-networks"]
@@ -314,10 +293,8 @@
   topics: ["neural-networks"]
 
 - name: qcgpu
+  repository: https://github.com/libtangle/qcgpu-version-0.1.0
   topics: ["scientific-computing"]
-
-- name: rds
-  topics: ["data-structures"]
 
 - name: rettle
   topics: ["data-preprocessing"]
@@ -364,11 +341,6 @@
 - name: rusty-data
   documentation: https://athemathmo.github.io/rusty-data/
   topics: ["data-preprocessing"]
-
-- name: rust-gpu
-  repository: https://github.com/rust-gpu/rust-gpu
-  description: "Making Rust a first-class language and ecosystem for GPU graphics & compute shaders"
-  topics: ["gpu-computing"]
 
 - name: rusty-machine
   topics: ["neural-networks", "linear-classifiers", "clustering"]
@@ -420,10 +392,6 @@
 - name: transformrs
   topics: ["nlp"]
 
-- name: triton_grow
-  repository: https://github.com/BradenEverson/triton
-  topics: ["neural-networks"]
-
 - name: tvm
   topics: ["neural-networks"]
 
@@ -445,9 +413,7 @@
   topics: ["neural-networks", "gpu-computing"]
 
 - name: luminal
-  topics: ["neural-networks"]
-
-- name: unda
+  repository: https://github.com/luminal-ai/luminal
   topics: ["neural-networks"]
 
 - name: custos
@@ -461,9 +427,6 @@
 
 - name: Kyanite
   topics: ["neural-networks"]
-
-- name: cubecl
-  topics: ["gpu-computing"]
 
 - name: krnl
   topics: ["gpu-computing"]
@@ -531,4 +494,14 @@
 - repository: https://github.com/YdrMaster/operators-rs
   description: "Multi-hardware support operator library"
   license: MIT
+  topics: ["neural-networks"]
+
+- repository: https://github.com/rust-gpu/rust-gpu
+  description: "Making Rust a first-class language and ecosystem for GPU graphics & compute shaders"
+  license: MIT OR Apache-2.0
+  topics: ["gpu-computing"]
+
+- repository: https://github.com/blackportal-ai/delta
+  description: "An open-source machine learning framework in Rust"
+  license: BSD-3-Clause
   topics: ["neural-networks"]

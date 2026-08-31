@@ -9,7 +9,13 @@ use crates::CratesIo;
 use data::{GeneratedCrateInfo, InputCrateInfo};
 use github::Github;
 use std::env;
+use url::Url;
 use util::{read_yaml, write_yaml};
+
+// Some crates.io repository URLs carry a `www.` prefix, which would otherwise skip scraping.
+fn is_github(repo: &Url) -> bool {
+    matches!(repo.host_str(), Some("github.com" | "www.github.com"))
+}
 
 #[tokio::main]
 async fn main() -> Result<()> {
@@ -45,7 +51,7 @@ async fn main() -> Result<()> {
         entry.apply_overrides(&krate);
 
         if let Some(repo) = entry.repository(&krate)
-            && repo.host_str() == Some("github.com")
+            && is_github(&repo)
         {
             let mut parts = repo.path().trim_start_matches('/').split('/');
             match (parts.next(), parts.next()) {
