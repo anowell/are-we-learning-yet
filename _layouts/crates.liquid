@@ -58,8 +58,8 @@
 
       <div style="font-size: small;">
 
-        {%if crate.meta.license %}
-        <span class="crate-stat"><b>License</b>: {{crate.meta.license}}</span>
+        {%if crate.license %}
+        <span class="crate-stat"><b>License</b>: {{crate.license}}</span>
         {% endif %}
         {%if crate.repo %}
         <span class="crate-stat"><b>Last Commit</b>: {{crate.repo.last_commit | split: "T" | first}}</span>

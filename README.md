@@ -13,23 +13,29 @@ providing additional resources, or improving the content.
 
 ### Running locally
 
-- Requires [`cobalt >=0.17.5`](https://cobalt-org.github.io/)
+- Requires [`cobalt >=0.20.0`](https://cobalt-org.github.io/) (CI builds with 0.20.4)
+- Requires a Rust toolchain (1.85 or newer) to build the scraper
 - Recommend [`just`](https://github.com/casey/just) as a task runner (or using the commands in the [Justfile](Justfile))
 
 
 ```
-# GitHub OAuth token avoids 403 rate limiting errors while generated crate data
-# Tip: set in `.env` file and `just` will pick it up automatically
+# GitHub OAuth token avoids 403 rate limiting errors while generating crate data
+# Tip: set it in a `.env` file and `just` will pick it up automatically
 export GITHUB_TOKEN=<YOUR_GITHUB_TOKEN>
 
 # Scrape crate/repo data for sitegen
 just scrape
 
 # Start a dev server on port 3000
-cobalt serve
+just serve
 ```
 
 The site should be running on [localhost:3000](http://localhost:3000)
+
+Other recipes: `just build` (scrape + `cobalt build`), `just check` (the same fmt/clippy gate CI runs),
+and `just clean` (drop generated data and the cached API responses).
+
+Note that plain `cobalt serve` picks an arbitrary free port; `just serve` passes `--port 3000`.
 
 ### How it works
 
@@ -54,3 +60,4 @@ Every merge into master is automatically published by a [Github Actions job](.gi
 
 Additionally, to ensure crate statistics (download counts and stars)
 are regularly updated, the publishing task is also run as a weekly cron job.
+It can also be triggered by hand from the Actions tab (`workflow_dispatch`).

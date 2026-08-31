@@ -1,3 +1,4 @@
+use crate::crates::CrateData;
 use crate::github::RepoData;
 use chrono::{DateTime, Utc};
 use crates_io_api::Crate;
@@ -38,6 +39,9 @@ pub struct GeneratedCrateInfo {
     pub topics: Vec<Topic>,
     pub score: Option<u64>,
 
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub license: Option<String>,
+
     #[serde(rename = "meta", skip_serializing_if = "Option::is_none")]
     pub krate: Option<Crate>,
 
@@ -50,6 +54,7 @@ impl From<&InputCrateInfo> for GeneratedCrateInfo {
         GeneratedCrateInfo {
             topics: input.topics.clone(),
             score: None,
+            license: None,
             krate: None,
             repo: None,
         }
@@ -63,32 +68,47 @@ fn replace_opt<T: Clone>(original: &mut Option<T>, extra: &Option<T>) {
     }
 }
 
-// Helper to allow specific fields from crates.yml
-// to override the values returned by the Crates.io API
-pub fn override_crate_data(krate: &mut Crate, input: &InputCrateInfo) {
-    replace_opt(&mut krate.license, &input.license);
-    replace_opt(&mut krate.documentation, &input.documentation);
-    if krate.documentation.is_none() {
-        krate.documentation = Some(format!("https://docs.rs/crate/{}", krate.name));
-    }
-    replace_opt(
-        &mut krate.repository,
-        &input.repository.as_ref().map(|r| r.to_string()),
-    );
-    replace_opt(&mut krate.description, &input.description);
-}
-
 impl GeneratedCrateInfo {
+    pub fn set_crate_data(&mut self, data: CrateData) {
+        self.license = data.license;
+        self.krate = Some(data.krate);
+    }
+
+    pub fn apply_overrides(&mut self, input: &InputCrateInfo) {
+        replace_opt(&mut self.license, &input.license);
+
+        let Some(krate) = self.krate.as_mut() else {
+            return;
+        };
+        replace_opt(&mut krate.documentation, &input.documentation);
+        if krate.documentation.is_none() {
+            krate.documentation = Some(format!("https://docs.rs/crate/{}", krate.name));
+        }
+        replace_opt(
+            &mut krate.repository,
+            &input.repository.as_ref().map(Url::to_string),
+        );
+        replace_opt(&mut krate.description, &input.description);
+    }
+
+    pub fn repository(&self, input: &InputCrateInfo) -> Option<Url> {
+        self.krate
+            .as_ref()
+            .and_then(|k| k.repository.as_deref())
+            .and_then(|r| Url::parse(r).ok())
+            .or_else(|| input.repository.clone())
+    }
+
     //   In calculating last_activity, we only scrape last_commit for github-based crates
     //   so this is unfair to projects that host source elsewhere.
     //   This is slightly mitigated by falling back to the last crate publish date
     fn last_activity(&self) -> Option<DateTime<Utc>> {
         let mut last_activity = self.krate.as_ref().map(|k| k.updated_at);
 
-        if let Some(last_commit) = self.repo.as_ref().map(|r| r.last_commit) {
-            if Some(last_commit) > last_activity {
-                last_activity = Some(last_commit);
-            }
+        if let Some(last_commit) = self.repo.as_ref().map(|r| r.last_commit)
+            && Some(last_commit) > last_activity
+        {
+            last_activity = Some(last_commit);
         }
 
         last_activity
