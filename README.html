@@ -7,21 +7,25 @@
 providing additional resources, or improving the content.</p>
 <h3>Running locally</h3>
 <ul>
-<li>Requires <a href="https://cobalt-org.github.io/"><code>cobalt &gt;=0.17.5</code></a></li>
+<li>Requires <a href="https://cobalt-org.github.io/"><code>cobalt &gt;=0.20.0</code></a> (CI builds with 0.20.4)</li>
+<li>Requires a Rust toolchain (1.85 or newer) to build the scraper</li>
 <li>Recommend <a href="https://github.com/casey/just"><code>just</code></a> as a task runner (or using the commands in the <a href="Justfile">Justfile</a>)</li>
 </ul>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;"># GitHub OAuth token avoids 403 rate limiting errors while generated crate data
-</span><span style="color:#c0c5ce;"># Tip: set in `.env` file and `just` will pick it up automatically
+<code><span style="color:#c0c5ce;"># GitHub OAuth token avoids 403 rate limiting errors while generating crate data
+</span><span style="color:#c0c5ce;"># Tip: set it in a `.env` file and `just` will pick it up automatically
 </span><span style="color:#c0c5ce;">export GITHUB_TOKEN=&lt;YOUR_GITHUB_TOKEN&gt;
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;"># Scrape crate/repo data for sitegen
 </span><span style="color:#c0c5ce;">just scrape
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;"># Start a dev server on port 3000
-</span><span style="color:#c0c5ce;">cobalt serve
-</span></pre>
+</span><span style="color:#c0c5ce;">just serve
+</span></code></pre>
 <p>The site should be running on <a href="http://localhost:3000">localhost:3000</a></p>
+<p>Other recipes: <code>just build</code> (scrape + <code>cobalt build</code>), <code>just check</code> (the same fmt/clippy gate CI runs),
+and <code>just clean</code> (drop generated data and the cached API responses).</p>
+<p>Note that plain <code>cobalt serve</code> picks an arbitrary free port; <code>just serve</code> passes <code>--port 3000</code>.</p>
 <h3>How it works</h3>
 <p>The repo consists of 2 key parts:</p>
 <ul>
@@ -32,7 +36,7 @@ and the scraper outputs <code>_data/crates_generated.yaml</code> which is used b
 of all crate data, remove the cached data with <code>just clean</code>. For more details, see the <a href="_scraper">scraper README</a>.</li>
 <li><strong>the site content</strong> is the rest of the repo which follows the layout established by <a href="https://cobalt-org.github.io/">cobalt.rs</a>.
 Cobalt uses this content to generate a static site into a <code>_site</code> directory (<code>cobalt build</code>) and can also start a local development
-server that rebuilds the site anytime content changes (<code>cobalt serve</code>). For more details, see 
+server that rebuilds the site anytime content changes (<code>cobalt serve</code>). For more details, see
 <a href="https://cobalt-org.github.io/">cobalt.rs</a> documentation.</li>
 </ul>
 <p>Note: <code>cobalt serve</code> does not trigger the scraper to rerun when <code>crates.yaml</code> (or the scraper) changes. Currently you must rerun <code>just scrape</code>
@@ -41,4 +45,5 @@ to update <code>crates_generated.yaml</code>.</p>
 <p><a href="arewelearningyet.com">arewelearningyet.com</a> is served by Github Pages.
 Every merge into master is automatically published by a <a href=".github/workflows">Github Actions job</a>.</p>
 <p>Additionally, to ensure crate statistics (download counts and stars)
-are regularly updated, the publishing task is also run as a weekly cron job.</p>
+are regularly updated, the publishing task is also run as a weekly cron job.
+It can also be triggered by hand from the Actions tab (<code>workflow_dispatch</code>).</p>

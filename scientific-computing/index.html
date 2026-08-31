@@ -7,12 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Scientific Computing</title>
-  <meta name="description" content="Several crates have populated the scientific computing space, includinglinear algebra and matrix operations, numerical optimization, and more. ">
+  <meta name="description" content="Several crates have populated the scientific computing space, includinglinear algebra and matrix operations, numerical optimization, and more.">
 
   <link rel="stylesheet" href="/css/flexboxgrid.min.css">
   <link rel="stylesheet" href="/css/main.css">
 
-  <link rel="canonical" href="https://arewelearningyet.comscientific-computing">
+  <link rel="canonical" href="https://arewelearningyet.com/scientific-computing">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
@@ -44,7 +44,7 @@
 
     <div class="post-content">
       <p>Several crates have populated the scientific computing space, including
-linear algebra and matrix operations, numerical optimization, and more. </p>
+linear algebra and matrix operations, numerical optimization, and more.</p>
 <p>Given the value of iterative analysis in scientific computing,
 it's worth checking out <a href="https://github.com/google/evcxr/blob/master/evcxr_repl/">Evcxr REPL</a>.
 There is also a <a href="https://github.com/google/evcxr/tree/master/evcxr_jupyter/">Jupyter backend for Rust</a>.</p>
@@ -60,56 +60,6 @@ There is also a <a href="https://github.com/google/evcxr/tree/master/evcxr_jupyt
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    <div>
-      <hr>
-      <h3>
-        
-          nalgebra
-          <span style="font-size: small; vertical-align:middle;">
-            [
-            <a href="https://crates.io/crates/nalgebra">crate</a> &middot;
-            <a href="https://github.com/dimforge/nalgebra">repo</a> &middot;
-            <a href="https://www.nalgebra.org/docs">docs</a>
-            ]
-          </span>
-        
-      </h3>
-
-      <div style="line-height:1;">
-        
-        <img src="https://img.shields.io/crates/v/nalgebra.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/d/nalgebra.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/dr/nalgebra.svg?maxAge=2592000">
-        
-        
-        <img
-          src="https://img.shields.io/github/stars/dimforge/nalgebra.svg?style=social&amp;label=Star&amp;maxAge=2592000">
-        
-      </div>
-
-      
-      <p>General-purpose linear algebra library with transformations and statically-sized or dynamically-sized matrices.</p>
-      
-
-      <div style="font-size: small;">
-
-        
-        
-        <span class="crate-stat"><b>Last Commit</b>: 2025-02-20</span>
-        
-        
-        <span class="crate-stat"><b>Last Published</b>: 2024-10-29</span>
-        
-        
-      </div>
-    </div>
     
     
     
@@ -143,7 +93,7 @@ There is also a <a href="https://github.com/google/evcxr/tree/master/evcxr_jupyt
       </div>
 
       
-      <p>General matrix multiplication for f32 and f64 matrices. Operates on matrices with general layout (they can use arbitrary row and column stride). Detects and uses AVX or SSE2 on x86 platforms transparently for higher performance. Uses a microkernel strategy, so that the implementation is easy to parallelize and optimize.
+      <p>General matrix multiplication for f32 and f64 matrices. Operates on matrices with general layout (they can use arbitrary row and column stride). Detects and uses SIMD features on x86/x86-64 and AArch64 transparently for higher performance. Uses a microkernel strategy, so that the implementation is easy to parallelize and optimize.
 
 Supports multithreading.</p>
       
@@ -151,17 +101,17 @@ Supports multithreading.</p>
       <div style="font-size: small;">
 
         
+        <span class="crate-stat"><b>License</b>: MIT/Apache-2.0</span>
         
-        <span class="crate-stat"><b>Last Commit</b>: 2024-07-27</span>
+        
+        <span class="crate-stat"><b>Last Commit</b>: 2026-07-14</span>
         
         
-        <span class="crate-stat"><b>Last Published</b>: 2024-07-27</span>
+        <span class="crate-stat"><b>Last Published</b>: 2026-07-14</span>
         
         
       </div>
     </div>
-    
-    
     
     
     
@@ -201,15 +151,71 @@ Supports multithreading.</p>
       <div style="font-size: small;">
 
         
+        <span class="crate-stat"><b>License</b>: MIT OR Apache-2.0</span>
         
-        <span class="crate-stat"><b>Last Commit</b>: 2025-02-19</span>
+        
+        <span class="crate-stat"><b>Last Commit</b>: 2026-03-17</span>
         
         
-        <span class="crate-stat"><b>Last Published</b>: 2024-08-28</span>
+        <span class="crate-stat"><b>Last Published</b>: 2026-03-18</span>
         
         
       </div>
     </div>
+    
+    
+    
+    
+    
+    <div>
+      <hr>
+      <h3>
+        
+          nalgebra
+          <span style="font-size: small; vertical-align:middle;">
+            [
+            <a href="https://crates.io/crates/nalgebra">crate</a> &middot;
+            <a href="https://github.com/dimforge/nalgebra">repo</a> &middot;
+            <a href="https://www.nalgebra.rs/docs">docs</a>
+            ]
+          </span>
+        
+      </h3>
+
+      <div style="line-height:1;">
+        
+        <img src="https://img.shields.io/crates/v/nalgebra.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/d/nalgebra.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/dr/nalgebra.svg?maxAge=2592000">
+        
+        
+        <img
+          src="https://img.shields.io/github/stars/dimforge/nalgebra.svg?style=social&amp;label=Star&amp;maxAge=2592000">
+        
+      </div>
+
+      
+      <p>General-purpose linear algebra library with transformations and statically-sized or dynamically-sized matrices.</p>
+      
+
+      <div style="font-size: small;">
+
+        
+        <span class="crate-stat"><b>License</b>: Apache-2.0</span>
+        
+        
+        <span class="crate-stat"><b>Last Commit</b>: 2026-06-30</span>
+        
+        
+        <span class="crate-stat"><b>Last Published</b>: 2026-05-24</span>
+        
+        
+      </div>
+    </div>
+    
+    
+    
+    
     
     
     
@@ -247,65 +253,25 @@ Supports multithreading.</p>
       <div style="font-size: small;">
 
         
-        
-        <span class="crate-stat"><b>Last Commit</b>: 2025-02-24</span>
-        
-        
-        <span class="crate-stat"><b>Last Published</b>: 2024-12-03</span>
+        <span class="crate-stat"><b>License</b>: MIT</span>
         
         
-      </div>
-    </div>
-    
-    
-    
-    
-    
-    
-    
-    <div>
-      <hr>
-      <h3>
-        
-          cgmath
-          <span style="font-size: small; vertical-align:middle;">
-            [
-            <a href="https://crates.io/crates/cgmath">crate</a> &middot;
-            <a href="https://github.com/rustgd/cgmath">repo</a> &middot;
-            <a href="https://docs.rs/cgmath">docs</a>
-            ]
-          </span>
-        
-      </h3>
-
-      <div style="line-height:1;">
-        
-        <img src="https://img.shields.io/crates/v/cgmath.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/d/cgmath.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/dr/cgmath.svg?maxAge=2592000">
+        <span class="crate-stat"><b>Last Commit</b>: 2026-08-26</span>
         
         
-        <img
-          src="https://img.shields.io/github/stars/rustgd/cgmath.svg?style=social&amp;label=Star&amp;maxAge=2592000">
-        
-      </div>
-
-      
-      <p>A linear algebra and mathematics library for computer graphics.</p>
-      
-
-      <div style="font-size: small;">
-
-        
-        
-        <span class="crate-stat"><b>Last Commit</b>: 2024-12-07</span>
-        
-        
-        <span class="crate-stat"><b>Last Published</b>: 2021-01-03</span>
+        <span class="crate-stat"><b>Last Published</b>: 2026-08-11</span>
         
         
       </div>
     </div>
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -345,17 +311,67 @@ Supports multithreading.</p>
       <div style="font-size: small;">
 
         
+        <span class="crate-stat"><b>License</b>: MIT OR Apache-2.0</span>
         
-        <span class="crate-stat"><b>Last Commit</b>: 2025-01-31</span>
+        
+        <span class="crate-stat"><b>Last Commit</b>: 2026-07-28</span>
         
         
-        <span class="crate-stat"><b>Last Published</b>: 2025-01-20</span>
+        <span class="crate-stat"><b>Last Published</b>: 2026-07-26</span>
         
         
       </div>
     </div>
     
     
+    
+    
+    
+    <div>
+      <hr>
+      <h3>
+        
+          clarabel
+          <span style="font-size: small; vertical-align:middle;">
+            [
+            <a href="https://crates.io/crates/clarabel">crate</a> &middot;
+            <a href="https://github.com/oxfordcontrol/Clarabel.rs">repo</a> &middot;
+            <a href="https://oxfordcontrol.github.io/ClarabelDocs/">docs</a>
+            ]
+          </span>
+        
+      </h3>
+
+      <div style="line-height:1;">
+        
+        <img src="https://img.shields.io/crates/v/clarabel.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/d/clarabel.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/dr/clarabel.svg?maxAge=2592000">
+        
+        
+        <img
+          src="https://img.shields.io/github/stars/oxfordcontrol/Clarabel.rs.svg?style=social&amp;label=Star&amp;maxAge=2592000">
+        
+      </div>
+
+      
+      <p>Clarabel Conic Interior Point Solver for Rust / Python</p>
+      
+
+      <div style="font-size: small;">
+
+        
+        <span class="crate-stat"><b>License</b>: Apache-2.0</span>
+        
+        
+        <span class="crate-stat"><b>Last Commit</b>: 2026-04-13</span>
+        
+        
+        <span class="crate-stat"><b>Last Published</b>: 2025-06-11</span>
+        
+        
+      </div>
+    </div>
     
     
     
@@ -387,65 +403,19 @@ Supports multithreading.</p>
       </div>
 
       
-      <p>Statistical routines for ArrayBase, the n-dimensional array data structure provided by ndarray.</p>
+      <p>Statistical routines for the n-dimensional array data structures provided by ndarray.</p>
       
 
       <div style="font-size: small;">
 
         
-        
-        <span class="crate-stat"><b>Last Commit</b>: 2024-08-24</span>
-        
-        
-        <span class="crate-stat"><b>Last Published</b>: 2024-08-24</span>
+        <span class="crate-stat"><b>License</b>: MIT/Apache-2.0</span>
         
         
-      </div>
-    </div>
-    
-    
-    
-    
-    
-    <div>
-      <hr>
-      <h3>
-        
-          peroxide
-          <span style="font-size: small; vertical-align:middle;">
-            [
-            <a href="https://crates.io/crates/peroxide">crate</a> &middot;
-            <a href="https://github.com/Axect/Peroxide">repo</a> &middot;
-            <a href="https://axect.github.io/Peroxide_Doc">docs</a>
-            ]
-          </span>
-        
-      </h3>
-
-      <div style="line-height:1;">
-        
-        <img src="https://img.shields.io/crates/v/peroxide.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/d/peroxide.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/dr/peroxide.svg?maxAge=2592000">
+        <span class="crate-stat"><b>Last Commit</b>: 2025-12-28</span>
         
         
-        <img
-          src="https://img.shields.io/github/stars/Axect/Peroxide.svg?style=social&amp;label=Star&amp;maxAge=2592000">
-        
-      </div>
-
-      
-      <p>Rust comprehensive scientific computation library contains linear algebra, numerical analysis, statistics and machine learning tools with farmiliar syntax</p>
-      
-
-      <div style="font-size: small;">
-
-        
-        
-        <span class="crate-stat"><b>Last Commit</b>: 2025-02-06</span>
-        
-        
-        <span class="crate-stat"><b>Last Published</b>: 2025-02-06</span>
+        <span class="crate-stat"><b>Last Published</b>: 2025-12-28</span>
         
         
       </div>
@@ -487,15 +457,19 @@ Supports multithreading.</p>
       <div style="font-size: small;">
 
         
+        <span class="crate-stat"><b>License</b>: MIT OR Apache-2.0</span>
         
-        <span class="crate-stat"><b>Last Commit</b>: 2025-02-10</span>
+        
+        <span class="crate-stat"><b>Last Commit</b>: 2025-11-07</span>
         
         
-        <span class="crate-stat"><b>Last Published</b>: 2024-02-27</span>
+        <span class="crate-stat"><b>Last Published</b>: 2025-09-28</span>
         
         
       </div>
     </div>
+    
+    
     
     
     
@@ -535,11 +509,13 @@ Supports multithreading.</p>
       <div style="font-size: small;">
 
         
+        <span class="crate-stat"><b>License</b>: MIT OR Apache-2.0</span>
         
-        <span class="crate-stat"><b>Last Commit</b>: 2025-01-29</span>
+        
+        <span class="crate-stat"><b>Last Commit</b>: 2026-06-02</span>
         
         
-        <span class="crate-stat"><b>Last Published</b>: 2025-01-29</span>
+        <span class="crate-stat"><b>Last Published</b>: 2026-01-12</span>
         
         
       </div>
@@ -551,16 +527,18 @@ Supports multithreading.</p>
     
     
     
+    
+    
     <div>
       <hr>
       <h3>
         
-          lapack
+          peroxide
           <span style="font-size: small; vertical-align:middle;">
             [
-            <a href="https://crates.io/crates/lapack">crate</a> &middot;
-            <a href="https://github.com/blas-lapack-rs/lapack">repo</a> &middot;
-            <a href="https://docs.rs/lapack">docs</a>
+            <a href="https://crates.io/crates/peroxide">crate</a> &middot;
+            <a href="https://github.com/Axect/Peroxide">repo</a> &middot;
+            <a href="https://docs.rs/peroxide">docs</a>
             ]
           </span>
         
@@ -568,28 +546,176 @@ Supports multithreading.</p>
 
       <div style="line-height:1;">
         
-        <img src="https://img.shields.io/crates/v/lapack.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/d/lapack.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/dr/lapack.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/v/peroxide.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/d/peroxide.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/dr/peroxide.svg?maxAge=2592000">
         
         
         <img
-          src="https://img.shields.io/github/stars/blas-lapack-rs/lapack.svg?style=social&amp;label=Star&amp;maxAge=2592000">
+          src="https://img.shields.io/github/stars/Axect/Peroxide.svg?style=social&amp;label=Star&amp;maxAge=2592000">
         
       </div>
 
       
-      <p>The package provides wrappers for LAPACK (Fortran).</p>
+      <p>Rust comprehensive scientific computation library contains linear algebra, numerical analysis, statistics and machine learning tools with familiar syntax</p>
       
 
       <div style="font-size: small;">
 
         
+        <span class="crate-stat"><b>License</b>: MIT OR Apache-2.0</span>
         
-        <span class="crate-stat"><b>Last Commit</b>: 2025-02-08</span>
+        
+        <span class="crate-stat"><b>Last Commit</b>: 2026-08-10</span>
         
         
-        <span class="crate-stat"><b>Last Published</b>: 2025-02-08</span>
+        <span class="crate-stat"><b>Last Published</b>: 2026-08-02</span>
+        
+        
+      </div>
+    </div>
+    
+    
+    
+    <div>
+      <hr>
+      <h3>
+        
+          smartcore
+          <span style="font-size: small; vertical-align:middle;">
+            [
+            <a href="https://crates.io/crates/smartcore">crate</a> &middot;
+            <a href="https://github.com/smartcorelib/smartcore">repo</a> &middot;
+            <a href="https://smartcorelib.org/">docs</a>
+            ]
+          </span>
+        
+      </h3>
+
+      <div style="line-height:1;">
+        
+        <img src="https://img.shields.io/crates/v/smartcore.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/d/smartcore.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/dr/smartcore.svg?maxAge=2592000">
+        
+        
+        <img
+          src="https://img.shields.io/github/stars/smartcorelib/smartcore.svg?style=social&amp;label=Star&amp;maxAge=2592000">
+        
+      </div>
+
+      
+      <p>Machine Learning in Rust.</p>
+      
+
+      <div style="font-size: small;">
+
+        
+        <span class="crate-stat"><b>License</b>: Apache-2.0</span>
+        
+        
+        <span class="crate-stat"><b>Last Commit</b>: 2026-08-26</span>
+        
+        
+        <span class="crate-stat"><b>Last Published</b>: 2026-08-26</span>
+        
+        
+      </div>
+    </div>
+    
+    
+    
+    
+    
+    <div>
+      <hr>
+      <h3>
+        
+          cgmath
+          <span style="font-size: small; vertical-align:middle;">
+            [
+            <a href="https://crates.io/crates/cgmath">crate</a> &middot;
+            <a href="https://github.com/rustgd/cgmath">repo</a> &middot;
+            <a href="https://docs.rs/cgmath">docs</a>
+            ]
+          </span>
+        
+      </h3>
+
+      <div style="line-height:1;">
+        
+        <img src="https://img.shields.io/crates/v/cgmath.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/d/cgmath.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/dr/cgmath.svg?maxAge=2592000">
+        
+        
+        <img
+          src="https://img.shields.io/github/stars/rustgd/cgmath.svg?style=social&amp;label=Star&amp;maxAge=2592000">
+        
+      </div>
+
+      
+      <p>A linear algebra and mathematics library for computer graphics.</p>
+      
+
+      <div style="font-size: small;">
+
+        
+        <span class="crate-stat"><b>License</b>: Apache-2.0</span>
+        
+        
+        <span class="crate-stat"><b>Last Commit</b>: 2024-12-07</span>
+        
+        
+        <span class="crate-stat"><b>Last Published</b>: 2021-01-03</span>
+        
+        
+      </div>
+    </div>
+    
+    
+    
+    <div>
+      <hr>
+      <h3>
+        
+          cobyla
+          <span style="font-size: small; vertical-align:middle;">
+            [
+            <a href="https://crates.io/crates/cobyla">crate</a> &middot;
+            <a href="https://github.com/relf/cobyla/">repo</a> &middot;
+            <a href="https://docs.rs/cobyla">docs</a>
+            ]
+          </span>
+        
+      </h3>
+
+      <div style="line-height:1;">
+        
+        <img src="https://img.shields.io/crates/v/cobyla.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/d/cobyla.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/dr/cobyla.svg?maxAge=2592000">
+        
+        
+        <img
+          src="https://img.shields.io/github/stars/relf/cobyla.svg?style=social&amp;label=Star&amp;maxAge=2592000">
+        
+      </div>
+
+      
+      <p>COBYLA optimizer for Rust</p>
+      
+
+      <div style="font-size: small;">
+
+        
+        <span class="crate-stat"><b>License</b>: non-standard</span>
+        
+        
+        <span class="crate-stat"><b>Last Commit</b>: 2026-08-24</span>
+        
+        
+        <span class="crate-stat"><b>Last Published</b>: 2026-08-24</span>
         
         
       </div>
@@ -631,11 +757,122 @@ Supports multithreading.</p>
       <div style="font-size: small;">
 
         
+        <span class="crate-stat"><b>License</b>: MIT</span>
         
-        <span class="crate-stat"><b>Last Commit</b>: 2025-02-27</span>
+        
+        <span class="crate-stat"><b>Last Commit</b>: 2026-07-27</span>
         
         
-        <span class="crate-stat"><b>Last Published</b>: 2025-02-26</span>
+        <span class="crate-stat"><b>Last Published</b>: 2026-06-29</span>
+        
+        
+      </div>
+    </div>
+    
+    
+    
+    
+    
+    <div>
+      <hr>
+      <h3>
+        
+          kmeans_colors
+          <span style="font-size: small; vertical-align:middle;">
+            [
+            <a href="https://crates.io/crates/kmeans_colors">crate</a> &middot;
+            <a href="https://github.com/okaneco/kmeans-colors">repo</a> &middot;
+            <a href="https://docs.rs/crate/kmeans_colors">docs</a>
+            ]
+          </span>
+        
+      </h3>
+
+      <div style="line-height:1;">
+        
+        <img src="https://img.shields.io/crates/v/kmeans_colors.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/d/kmeans_colors.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/dr/kmeans_colors.svg?maxAge=2592000">
+        
+        
+        <img
+          src="https://img.shields.io/github/stars/okaneco/kmeans-colors.svg?style=social&amp;label=Star&amp;maxAge=2592000">
+        
+      </div>
+
+      
+      <p>Simple k-means clustering to find dominant colors in images.
+Backed by a generic k-means implementation offered as a standalone library.</p>
+      
+
+      <div style="font-size: small;">
+
+        
+        <span class="crate-stat"><b>License</b>: MIT OR Apache-2.0</span>
+        
+        
+        <span class="crate-stat"><b>Last Commit</b>: 2025-09-08</span>
+        
+        
+        <span class="crate-stat"><b>Last Published</b>: 2025-09-08</span>
+        
+        
+      </div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div>
+      <hr>
+      <h3>
+        
+          lapack
+          <span style="font-size: small; vertical-align:middle;">
+            [
+            <a href="https://crates.io/crates/lapack">crate</a> &middot;
+            <a href="https://github.com/blas-lapack-rs/lapack">repo</a> &middot;
+            <a href="https://docs.rs/lapack">docs</a>
+            ]
+          </span>
+        
+      </h3>
+
+      <div style="line-height:1;">
+        
+        <img src="https://img.shields.io/crates/v/lapack.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/d/lapack.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/dr/lapack.svg?maxAge=2592000">
+        
+        
+        <img
+          src="https://img.shields.io/github/stars/blas-lapack-rs/lapack.svg?style=social&amp;label=Star&amp;maxAge=2592000">
+        
+      </div>
+
+      
+      <p>The package provides wrappers for LAPACK (Fortran).</p>
+      
+
+      <div style="font-size: small;">
+
+        
+        <span class="crate-stat"><b>License</b>: Apache-2.0 OR MIT</span>
+        
+        
+        <span class="crate-stat"><b>Last Commit</b>: 2025-02-08</span>
+        
+        
+        <span class="crate-stat"><b>Last Published</b>: 2025-02-08</span>
         
         
       </div>
@@ -681,6 +918,8 @@ Supports multithreading.</p>
       <div style="font-size: small;">
 
         
+        <span class="crate-stat"><b>License</b>: Apache-2.0 OR MIT</span>
+        
         
         <span class="crate-stat"><b>Last Commit</b>: 2025-02-08</span>
         
@@ -699,12 +938,12 @@ Supports multithreading.</p>
       <hr>
       <h3>
         
-          clarabel
+          slsqp
           <span style="font-size: small; vertical-align:middle;">
             [
-            <a href="https://crates.io/crates/clarabel">crate</a> &middot;
-            <a href="https://github.com/oxfordcontrol/Clarabel.rs">repo</a> &middot;
-            <a href="https://oxfordcontrol.github.io/ClarabelDocs/">docs</a>
+            <a href="https://crates.io/crates/slsqp">crate</a> &middot;
+            <a href="https://github.com/relf/slsqp/">repo</a> &middot;
+            <a href="https://docs.rs/slsqp">docs</a>
             ]
           </span>
         
@@ -712,86 +951,30 @@ Supports multithreading.</p>
 
       <div style="line-height:1;">
         
-        <img src="https://img.shields.io/crates/v/clarabel.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/d/clarabel.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/dr/clarabel.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/v/slsqp.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/d/slsqp.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/dr/slsqp.svg?maxAge=2592000">
         
         
         <img
-          src="https://img.shields.io/github/stars/oxfordcontrol/Clarabel.svg?style=social&amp;label=Star&amp;maxAge=2592000">
+          src="https://img.shields.io/github/stars/relf/slsqp.svg?style=social&amp;label=Star&amp;maxAge=2592000">
         
       </div>
 
       
-      <p>Clarabel Conic Interior Point Solver for Rust / Python</p>
+      <p>SLSQP optimizer for Rust</p>
       
 
       <div style="font-size: small;">
 
         
-        
-        <span class="crate-stat"><b>Last Commit</b>: 2024-06-01</span>
-        
-        
-        <span class="crate-stat"><b>Last Published</b>: 2025-02-02</span>
+        <span class="crate-stat"><b>License</b>: non-standard</span>
         
         
-      </div>
-    </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <div>
-      <hr>
-      <h3>
-        
-          smartcore
-          <span style="font-size: small; vertical-align:middle;">
-            [
-            <a href="https://crates.io/crates/smartcore">crate</a> &middot;
-            <a href="https://github.com/smartcorelib/smartcore">repo</a> &middot;
-            <a href="https://smartcorelib.org/">docs</a>
-            ]
-          </span>
-        
-      </h3>
-
-      <div style="line-height:1;">
-        
-        <img src="https://img.shields.io/crates/v/smartcore.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/d/smartcore.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/dr/smartcore.svg?maxAge=2592000">
+        <span class="crate-stat"><b>Last Commit</b>: 2026-08-24</span>
         
         
-        <img
-          src="https://img.shields.io/github/stars/smartcorelib/smartcore.svg?style=social&amp;label=Star&amp;maxAge=2592000">
-        
-      </div>
-
-      
-      <p>Machine Learning in Rust.</p>
-      
-
-      <div style="font-size: small;">
-
-        
-        
-        <span class="crate-stat"><b>Last Commit</b>: 2025-02-04</span>
-        
-        
-        <span class="crate-stat"><b>Last Published</b>: 2024-11-26</span>
+        <span class="crate-stat"><b>Last Published</b>: 2026-08-24</span>
         
         
       </div>
@@ -833,11 +1016,61 @@ Supports multithreading.</p>
       <div style="font-size: small;">
 
         
+        <span class="crate-stat"><b>License</b>: Apache-2.0</span>
         
-        <span class="crate-stat"><b>Last Commit</b>: 2024-07-20</span>
+        
+        <span class="crate-stat"><b>Last Commit</b>: 2026-08-22</span>
         
         
-        <span class="crate-stat"><b>Last Published</b>: 2024-07-20</span>
+        <span class="crate-stat"><b>Last Published</b>: 2026-08-22</span>
+        
+        
+      </div>
+    </div>
+    
+    
+    
+    <div>
+      <hr>
+      <h3>
+        
+          rulinalg
+          <span style="font-size: small; vertical-align:middle;">
+            [
+            <a href="https://crates.io/crates/rulinalg">crate</a> &middot;
+            <a href="https://github.com/AtheMathmo/rulinalg">repo</a> &middot;
+            <a href="https://AtheMathmo.github.io/rulinalg/">docs</a>
+            ]
+          </span>
+        
+      </h3>
+
+      <div style="line-height:1;">
+        
+        <img src="https://img.shields.io/crates/v/rulinalg.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/d/rulinalg.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/dr/rulinalg.svg?maxAge=2592000">
+        
+        
+        <img
+          src="https://img.shields.io/github/stars/AtheMathmo/rulinalg.svg?style=social&amp;label=Star&amp;maxAge=2592000">
+        
+      </div>
+
+      
+      <p>A linear algebra library.</p>
+      
+
+      <div style="font-size: small;">
+
+        
+        <span class="crate-stat"><b>License</b>: MIT</span>
+        
+        
+        <span class="crate-stat"><b>Last Commit</b>: 2022-05-18</span>
+        
+        
+        <span class="crate-stat"><b>Last Published</b>: 2017-02-17</span>
         
         
       </div>
@@ -881,6 +1114,8 @@ Supports multithreading.</p>
       <div style="font-size: small;">
 
         
+        <span class="crate-stat"><b>License</b>: GPL-3.0+</span>
+        
         
         <span class="crate-stat"><b>Last Commit</b>: 2025-01-27</span>
         
@@ -893,22 +1128,16 @@ Supports multithreading.</p>
     
     
     
-    
-    
-    
-    
-    
-    
     <div>
       <hr>
       <h3>
         
-          egobox
+          rustacuda
           <span style="font-size: small; vertical-align:middle;">
             [
-            <a href="https://crates.io/crates/egobox">crate</a> &middot;
-            <a href="https://github.com/relf/egobox">repo</a> &middot;
-            <a href="https://docs.rs/crate/egobox">docs</a>
+            <a href="https://crates.io/crates/rustacuda">crate</a> &middot;
+            <a href="https://github.com/bheisler/RustaCUDA">repo</a> &middot;
+            <a href="https://docs.rs/crate/rustacuda">docs</a>
             ]
           </span>
         
@@ -916,77 +1145,30 @@ Supports multithreading.</p>
 
       <div style="line-height:1;">
         
-        <img src="https://img.shields.io/crates/v/egobox.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/d/egobox.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/dr/egobox.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/v/rustacuda.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/d/rustacuda.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/dr/rustacuda.svg?maxAge=2592000">
         
         
         <img
-          src="https://img.shields.io/github/stars/relf/egobox.svg?style=social&amp;label=Star&amp;maxAge=2592000">
+          src="https://img.shields.io/github/stars/bheisler/RustaCUDA.svg?style=social&amp;label=Star&amp;maxAge=2592000">
         
       </div>
 
       
-      <p>A toolbox for efficient global optimization</p>
+      <p>CUDA Driver API Wrapper</p>
       
 
       <div style="font-size: small;">
 
         
-        
-        <span class="crate-stat"><b>Last Commit</b>: 2025-02-14</span>
-        
-        
-        <span class="crate-stat"><b>Last Published</b>: 2024-10-01</span>
+        <span class="crate-stat"><b>License</b>: Apache-2.0 OR MIT</span>
         
         
-      </div>
-    </div>
-    
-    
-    
-    
-    
-    <div>
-      <hr>
-      <h3>
-        
-          kmeans_colors
-          <span style="font-size: small; vertical-align:middle;">
-            [
-            <a href="https://crates.io/crates/kmeans_colors">crate</a> &middot;
-            <a href="https://github.com/okaneco/kmeans-colors">repo</a> &middot;
-            <a href="https://docs.rs/crate/kmeans_colors">docs</a>
-            ]
-          </span>
-        
-      </h3>
-
-      <div style="line-height:1;">
-        
-        <img src="https://img.shields.io/crates/v/kmeans_colors.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/d/kmeans_colors.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/dr/kmeans_colors.svg?maxAge=2592000">
+        <span class="crate-stat"><b>Last Commit</b>: 2022-05-04</span>
         
         
-        <img
-          src="https://img.shields.io/github/stars/okaneco/kmeans-colors.svg?style=social&amp;label=Star&amp;maxAge=2592000">
-        
-      </div>
-
-      
-      <p>Simple k-means clustering to find dominant colors in images.
-Backed by a generic k-means implementation offered as a standalone library.</p>
-      
-
-      <div style="font-size: small;">
-
-        
-        
-        <span class="crate-stat"><b>Last Commit</b>: 2023-08-17</span>
-        
-        
-        <span class="crate-stat"><b>Last Published</b>: 2023-07-23</span>
+        <span class="crate-stat"><b>Last Published</b>: 2021-07-28</span>
         
         
       </div>
@@ -1003,190 +1185,6 @@ Backed by a generic k-means implementation offered as a standalone library.</p>
     
     
     
-    
-    
-    
-    <div>
-      <hr>
-      <h3>
-        
-          newton_rootfinder
-          <span style="font-size: small; vertical-align:middle;">
-            [
-            <a href="https://crates.io/crates/newton_rootfinder">crate</a> &middot;
-            <a href="https://github.com/Nateckert/newton_rootfinder">repo</a> &middot;
-            <a href="https://docs.rs/newton_rootfinder/">docs</a>
-            ]
-          </span>
-        
-      </h3>
-
-      <div style="line-height:1;">
-        
-        <img src="https://img.shields.io/crates/v/newton_rootfinder.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/d/newton_rootfinder.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/dr/newton_rootfinder.svg?maxAge=2592000">
-        
-        
-        <img
-          src="https://img.shields.io/github/stars/Nateckert/newton_rootfinder.svg?style=social&amp;label=Star&amp;maxAge=2592000">
-        
-      </div>
-
-      
-      <p>Newton based methods for root finding</p>
-      
-
-      <div style="font-size: small;">
-
-        
-        
-        <span class="crate-stat"><b>Last Commit</b>: 2024-10-17</span>
-        
-        
-        <span class="crate-stat"><b>Last Published</b>: 2024-10-17</span>
-        
-        
-      </div>
-    </div>
-    
-    
-    
-    <div>
-      <hr>
-      <h3>
-        
-          bacon-sci
-          <span style="font-size: small; vertical-align:middle;">
-            [
-            <a href="https://crates.io/crates/bacon-sci">crate</a> &middot;
-            <a href="https://github.com/aftix/bacon">repo</a> &middot;
-            <a href="https://docs.rs/crate/bacon-sci">docs</a>
-            ]
-          </span>
-        
-      </h3>
-
-      <div style="line-height:1;">
-        
-        <img src="https://img.shields.io/crates/v/bacon-sci.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/d/bacon-sci.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/dr/bacon-sci.svg?maxAge=2592000">
-        
-        
-        <img
-          src="https://img.shields.io/github/stars/aftix/bacon.svg?style=social&amp;label=Star&amp;maxAge=2592000">
-        
-      </div>
-
-      
-      <p>Scientific computing in Rust</p>
-      
-
-      <div style="font-size: small;">
-
-        
-        
-        <span class="crate-stat"><b>Last Commit</b>: 2024-03-02</span>
-        
-        
-        <span class="crate-stat"><b>Last Published</b>: 2024-03-02</span>
-        
-        
-      </div>
-    </div>
-    
-    
-    
-    <div>
-      <hr>
-      <h3>
-        
-          mop
-          <span style="font-size: small; vertical-align:middle;">
-            [
-            <a href="https://crates.io/crates/mop">crate</a> &middot;
-            <a href="https://github.com/c410-f3r/mop">repo</a> &middot;
-            <a href="https://docs.rs/crate/mop">docs</a>
-            ]
-          </span>
-        
-      </h3>
-
-      <div style="line-height:1;">
-        
-        <img src="https://img.shields.io/crates/v/mop.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/d/mop.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/dr/mop.svg?maxAge=2592000">
-        
-        
-        <img
-          src="https://img.shields.io/github/stars/c410-f3r/mop.svg?style=social&amp;label=Star&amp;maxAge=2592000">
-        
-      </div>
-
-      
-      <p>Flexible and modular single or multi-objective solver for contiguous and discrete problems</p>
-      
-
-      <div style="font-size: small;">
-
-        
-        
-        <span class="crate-stat"><b>Last Commit</b>: 2025-02-20</span>
-        
-        
-        <span class="crate-stat"><b>Last Published</b>: 2020-08-16</span>
-        
-        
-      </div>
-    </div>
-    
-    
-    
-    <div>
-      <hr>
-      <h3>
-        
-          rulinalg
-          <span style="font-size: small; vertical-align:middle;">
-            [
-            <a href="https://crates.io/crates/rulinalg">crate</a> &middot;
-            <a href="https://github.com/AtheMathmo/rulinalg">repo</a> &middot;
-            <a href="https://AtheMathmo.github.io/rulinalg/">docs</a>
-            ]
-          </span>
-        
-      </h3>
-
-      <div style="line-height:1;">
-        
-        <img src="https://img.shields.io/crates/v/rulinalg.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/d/rulinalg.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/dr/rulinalg.svg?maxAge=2592000">
-        
-        
-        <img
-          src="https://img.shields.io/github/stars/AtheMathmo/rulinalg.svg?style=social&amp;label=Star&amp;maxAge=2592000">
-        
-      </div>
-
-      
-      <p>A linear algebra library.</p>
-      
-
-      <div style="font-size: small;">
-
-        
-        
-        <span class="crate-stat"><b>Last Commit</b>: 2022-05-18</span>
-        
-        
-        <span class="crate-stat"><b>Last Published</b>: 2017-02-17</span>
-        
-        
-      </div>
-    </div>
     
     
     
@@ -1228,6 +1226,8 @@ Backed by a generic k-means implementation offered as a standalone library.</p>
       <div style="font-size: small;">
 
         
+        <span class="crate-stat"><b>License</b>: MIT OR Apache-2.0</span>
+        
         
         <span class="crate-stat"><b>Last Commit</b>: 2024-07-23</span>
         
@@ -1246,12 +1246,12 @@ Backed by a generic k-means implementation offered as a standalone library.</p>
       <hr>
       <h3>
         
-          cobyla
+          bacon-sci
           <span style="font-size: small; vertical-align:middle;">
             [
-            <a href="https://crates.io/crates/cobyla">crate</a> &middot;
-            <a href="https://github.com/relf/cobyla/">repo</a> &middot;
-            <a href="https://docs.rs/cobyla">docs</a>
+            <a href="https://crates.io/crates/bacon-sci">crate</a> &middot;
+            <a href="https://github.com/aftix/bacon">repo</a> &middot;
+            <a href="https://docs.rs/crate/bacon-sci">docs</a>
             ]
           </span>
         
@@ -1259,74 +1259,30 @@ Backed by a generic k-means implementation offered as a standalone library.</p>
 
       <div style="line-height:1;">
         
-        <img src="https://img.shields.io/crates/v/cobyla.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/d/cobyla.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/dr/cobyla.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/v/bacon-sci.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/d/bacon-sci.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/dr/bacon-sci.svg?maxAge=2592000">
         
         
         <img
-          src="https://img.shields.io/github/stars/relf/cobyla.svg?style=social&amp;label=Star&amp;maxAge=2592000">
+          src="https://img.shields.io/github/stars/aftix/bacon.svg?style=social&amp;label=Star&amp;maxAge=2592000">
         
       </div>
 
       
-      <p>COBYLA optimizer for Rust</p>
+      <p>Scientific computing in Rust</p>
       
 
       <div style="font-size: small;">
 
         
-        
-        <span class="crate-stat"><b>Last Commit</b>: 2024-04-22</span>
-        
-        
-        <span class="crate-stat"><b>Last Published</b>: 2024-04-22</span>
+        <span class="crate-stat"><b>License</b>: MIT</span>
         
         
-      </div>
-    </div>
-    
-    
-    
-    <div>
-      <hr>
-      <h3>
-        
-          slsqp
-          <span style="font-size: small; vertical-align:middle;">
-            [
-            <a href="https://crates.io/crates/slsqp">crate</a> &middot;
-            <a href="https://github.com/relf/slsqp/">repo</a> &middot;
-            <a href="https://docs.rs/slsqp">docs</a>
-            ]
-          </span>
-        
-      </h3>
-
-      <div style="line-height:1;">
-        
-        <img src="https://img.shields.io/crates/v/slsqp.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/d/slsqp.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/dr/slsqp.svg?maxAge=2592000">
+        <span class="crate-stat"><b>Last Commit</b>: 2025-09-17</span>
         
         
-        <img
-          src="https://img.shields.io/github/stars/relf/slsqp.svg?style=social&amp;label=Star&amp;maxAge=2592000">
-        
-      </div>
-
-      
-      <p>SLSQP optimizer for Rust</p>
-      
-
-      <div style="font-size: small;">
-
-        
-        
-        <span class="crate-stat"><b>Last Commit</b>: 2024-04-02</span>
-        
-        
-        <span class="crate-stat"><b>Last Published</b>: 2023-10-19</span>
+        <span class="crate-stat"><b>Last Published</b>: 2025-09-17</span>
         
         
       </div>
@@ -1337,198 +1293,6 @@ Backed by a generic k-means implementation offered as a standalone library.</p>
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    <div>
-      <hr>
-      <h3>
-        
-          ndarray-glm
-          <span style="font-size: small; vertical-align:middle;">
-            [
-            <a href="https://crates.io/crates/ndarray-glm">crate</a> &middot;
-            <a href="https://github.com/felix-clark/ndarray-glm">repo</a> &middot;
-            <a href="https://docs.rs/crate/ndarray-glm">docs</a>
-            ]
-          </span>
-        
-      </h3>
-
-      <div style="line-height:1;">
-        
-        <img src="https://img.shields.io/crates/v/ndarray-glm.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/d/ndarray-glm.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/dr/ndarray-glm.svg?maxAge=2592000">
-        
-        
-        <img
-          src="https://img.shields.io/github/stars/felix-clark/ndarray-glm.svg?style=social&amp;label=Star&amp;maxAge=2592000">
-        
-      </div>
-
-      
-      <p>Performs regression for generalized linear models using IRLS on data stored in arrays.</p>
-      
-
-      <div style="font-size: small;">
-
-        
-        
-        <span class="crate-stat"><b>Last Commit</b>: 2024-05-11</span>
-        
-        
-        <span class="crate-stat"><b>Last Published</b>: 2023-02-09</span>
-        
-        
-      </div>
-    </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <div>
-      <hr>
-      <h3>
-        
-          rustacuda
-          <span style="font-size: small; vertical-align:middle;">
-            [
-            <a href="https://crates.io/crates/rustacuda">crate</a> &middot;
-            <a href="https://github.com/bheisler/RustaCUDA">repo</a> &middot;
-            <a href="https://docs.rs/crate/rustacuda">docs</a>
-            ]
-          </span>
-        
-      </h3>
-
-      <div style="line-height:1;">
-        
-        <img src="https://img.shields.io/crates/v/rustacuda.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/d/rustacuda.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/dr/rustacuda.svg?maxAge=2592000">
-        
-        
-        <img
-          src="https://img.shields.io/github/stars/bheisler/RustaCUDA.svg?style=social&amp;label=Star&amp;maxAge=2592000">
-        
-      </div>
-
-      
-      <p>CUDA Driver API Wrapper</p>
-      
-
-      <div style="font-size: small;">
-
-        
-        
-        <span class="crate-stat"><b>Last Commit</b>: 2022-05-04</span>
-        
-        
-        <span class="crate-stat"><b>Last Published</b>: 2021-07-28</span>
-        
-        
-      </div>
-    </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <div>
-      <hr>
-      <h3>
-        
-          linxal
-          <span style="font-size: small; vertical-align:middle;">
-            [
-            <a href="https://crates.io/crates/linxal">crate</a> &middot;
-            <a href="https://github.com/masonium/linxal">repo</a> &middot;
-            <a href="https://docs.rs/linxal/">docs</a>
-            ]
-          </span>
-        
-      </h3>
-
-      <div style="line-height:1;">
-        
-        <img src="https://img.shields.io/crates/v/linxal.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/d/linxal.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/dr/linxal.svg?maxAge=2592000">
-        
-        
-        <img
-          src="https://img.shields.io/github/stars/masonium/linxal.svg?style=social&amp;label=Star&amp;maxAge=2592000">
-        
-      </div>
-
-      
-      <p>Linear Algebra package with rust-ndarray interface</p>
-      
-
-      <div style="font-size: small;">
-
-        
-        
-        <span class="crate-stat"><b>Last Commit</b>: 2017-08-26</span>
-        
-        
-        <span class="crate-stat"><b>Last Published</b>: 2017-04-17</span>
-        
-        
-      </div>
-    </div>
     
     
     
@@ -1576,6 +1340,8 @@ Backed by a generic k-means implementation offered as a standalone library.</p>
       <div style="font-size: small;">
 
         
+        <span class="crate-stat"><b>License</b>: MIT OR Apache-2.0</span>
+        
         
         <span class="crate-stat"><b>Last Commit</b>: 2016-04-23</span>
         
@@ -1590,22 +1356,16 @@ Backed by a generic k-means implementation offered as a standalone library.</p>
     
     
     
-    
-    
-    
-    
-    
-    
     <div>
       <hr>
       <h3>
         
-          blasoxide
+          newton_rootfinder
           <span style="font-size: small; vertical-align:middle;">
             [
-            <a href="https://crates.io/crates/blasoxide">crate</a> &middot;
-            <a href="https://github.com/oezgurmakkurt/blasoxide">repo</a> &middot;
-            <a href="https://docs.rs/crate/blasoxide">docs</a>
+            <a href="https://crates.io/crates/newton_rootfinder">crate</a> &middot;
+            <a href="https://github.com/Nateckert/newton_rootfinder">repo</a> &middot;
+            <a href="https://docs.rs/newton_rootfinder/">docs</a>
             ]
           </span>
         
@@ -1613,161 +1373,128 @@ Backed by a generic k-means implementation offered as a standalone library.</p>
 
       <div style="line-height:1;">
         
-        <img src="https://img.shields.io/crates/v/blasoxide.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/d/blasoxide.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/dr/blasoxide.svg?maxAge=2592000">
-        
-        
-      </div>
-
-      
-      <p>BLAS implementation in rust</p>
-      
-
-      <div style="font-size: small;">
-
-        
-        
-        
-        <span class="crate-stat"><b>Last Published</b>: 2019-06-12</span>
-        
-        
-      </div>
-    </div>
-    
-    
-    
-    <div>
-      <hr>
-      <h3>
-        
-          em
-          <span style="font-size: small; vertical-align:middle;">
-            [
-            <a href="https://crates.io/crates/em">crate</a> &middot;
-            <a href="https://www.github.com/calebwin/emu">repo</a> &middot;
-            <a href="https://docs.rs/em">docs</a>
-            ]
-          </span>
-        
-      </h3>
-
-      <div style="line-height:1;">
-        
-        <img src="https://img.shields.io/crates/v/em.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/d/em.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/dr/em.svg?maxAge=2592000">
-        
-        
-      </div>
-
-      
-      <p>A macro for executing a subset of Rust with OpenCL</p>
-      
-
-      <div style="font-size: small;">
-
-        
-        
-        
-        <span class="crate-stat"><b>Last Published</b>: 2019-10-21</span>
-        
-        
-      </div>
-    </div>
-    
-    
-    
-    <div>
-      <hr>
-      <h3>
-        
-          accel
-          <span style="font-size: small; vertical-align:middle;">
-            [
-            <a href="https://crates.io/crates/accel">crate</a> &middot;
-            <a href="https://gitlab.com/termoshtt/accel">repo</a> &middot;
-            <a href="https://docs.rs/accel">docs</a>
-            ]
-          </span>
-        
-      </h3>
-
-      <div style="line-height:1;">
-        
-        <img src="https://img.shields.io/crates/v/accel.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/d/accel.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/dr/accel.svg?maxAge=2592000">
-        
-        
-      </div>
-
-      
-      <p>GPGPU Framework for Rust</p>
-      
-
-      <div style="font-size: small;">
-
-        
-        
-        
-        <span class="crate-stat"><b>Last Published</b>: 2020-05-24</span>
-        
-        
-      </div>
-    </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <div>
-      <hr>
-      <h3>
-        
-          parenchyma
-          <span style="font-size: small; vertical-align:middle;">
-            [
-            <a href="https://crates.io/crates/parenchyma">crate</a> &middot;
-            <a href="https://github.com/lychee-eng/parenchyma">repo</a> &middot;
-            <a href="https://docs.rs/parenchyma">docs</a>
-            ]
-          </span>
-        
-      </h3>
-
-      <div style="line-height:1;">
-        
-        <img src="https://img.shields.io/crates/v/parenchyma.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/d/parenchyma.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/dr/parenchyma.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/v/newton_rootfinder.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/d/newton_rootfinder.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/dr/newton_rootfinder.svg?maxAge=2592000">
         
         
         <img
-          src="https://img.shields.io/github/stars/lychee-eng/parenchyma.svg?style=social&amp;label=Star&amp;maxAge=2592000">
+          src="https://img.shields.io/github/stars/Nateckert/newton_rootfinder.svg?style=social&amp;label=Star&amp;maxAge=2592000">
         
       </div>
 
       
-      <p>A high-performance computing (HPC) framework</p>
+      <p>Newton based methods for root finding</p>
+      
+
+      <div style="font-size: small;">
+
+        
+        <span class="crate-stat"><b>License</b>: MIT OR Apache-2.0</span>
+        
+        
+        <span class="crate-stat"><b>Last Commit</b>: 2024-10-17</span>
+        
+        
+        <span class="crate-stat"><b>Last Published</b>: 2024-10-17</span>
+        
+        
+      </div>
+    </div>
+    
+    
+    
+    <div>
+      <hr>
+      <h3>
+        
+          egobox
+          <span style="font-size: small; vertical-align:middle;">
+            [
+            <a href="https://crates.io/crates/egobox">crate</a> &middot;
+            <a href="https://github.com/relf/egobox/python">repo</a> &middot;
+            <a href="https://docs.rs/crate/egobox">docs</a>
+            ]
+          </span>
+        
+      </h3>
+
+      <div style="line-height:1;">
+        
+        <img src="https://img.shields.io/crates/v/egobox.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/d/egobox.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/dr/egobox.svg?maxAge=2592000">
+        
+        
+        <img
+          src="https://img.shields.io/github/stars/relf/egobox.svg?style=social&amp;label=Star&amp;maxAge=2592000">
+        
+      </div>
+
+      
+      <p>A python binding for egobox crates</p>
       
 
       <div style="font-size: small;">
 
         
         
-        <span class="crate-stat"><b>Last Commit</b>: 2018-08-23</span>
+        <span class="crate-stat"><b>Last Commit</b>: 2026-08-27</span>
         
         
-        <span class="crate-stat"><b>Last Published</b>: 2017-03-18</span>
+        <span class="crate-stat"><b>Last Published</b>: 2025-08-22</span>
+        
+        
+      </div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    <div>
+      <hr>
+      <h3>
+        
+          ndarray-glm
+          <span style="font-size: small; vertical-align:middle;">
+            [
+            <a href="https://crates.io/crates/ndarray-glm">crate</a> &middot;
+            <a href="https://github.com/felix-clark/ndarray-glm">repo</a> &middot;
+            <a href="https://docs.rs/crate/ndarray-glm">docs</a>
+            ]
+          </span>
+        
+      </h3>
+
+      <div style="line-height:1;">
+        
+        <img src="https://img.shields.io/crates/v/ndarray-glm.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/d/ndarray-glm.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/dr/ndarray-glm.svg?maxAge=2592000">
+        
+        
+        <img
+          src="https://img.shields.io/github/stars/felix-clark/ndarray-glm.svg?style=social&amp;label=Star&amp;maxAge=2592000">
+        
+      </div>
+
+      
+      <p>Performs regression for generalized linear models using IRLS on data stored in arrays.</p>
+      
+
+      <div style="font-size: small;">
+
+        
+        <span class="crate-stat"><b>License</b>: MIT</span>
+        
+        
+        <span class="crate-stat"><b>Last Commit</b>: 2026-03-02</span>
+        
+        
+        <span class="crate-stat"><b>Last Published</b>: 2026-03-02</span>
         
         
       </div>
@@ -1813,6 +1540,8 @@ Backed by a generic k-means implementation offered as a standalone library.</p>
       <div style="font-size: small;">
 
         
+        <span class="crate-stat"><b>License</b>: MIT OR Apache-2.0</span>
+        
         
         <span class="crate-stat"><b>Last Commit</b>: 2019-12-28</span>
         
@@ -1822,6 +1551,28 @@ Backed by a generic k-means implementation offered as a standalone library.</p>
         
       </div>
     </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1865,6 +1616,8 @@ Backed by a generic k-means implementation offered as a standalone library.</p>
       <div style="font-size: small;">
 
         
+        <span class="crate-stat"><b>License</b>: MIT</span>
+        
         
         <span class="crate-stat"><b>Last Commit</b>: 2023-01-20</span>
         
@@ -1877,16 +1630,20 @@ Backed by a generic k-means implementation offered as a standalone library.</p>
     
     
     
+    
+    
+    
+    
     <div>
       <hr>
       <h3>
         
-          scirust
+          accel
           <span style="font-size: small; vertical-align:middle;">
             [
-            <a href="https://crates.io/crates/scirust">crate</a> &middot;
-            <a href="https://github.com/indigits/scirust">repo</a> &middot;
-            <a href="http://indigits.github.io/scirust/doc/scirust/index.html">docs</a>
+            <a href="https://crates.io/crates/accel">crate</a> &middot;
+            <a href="https://gitlab.com/termoshtt/accel">repo</a> &middot;
+            <a href="https://docs.rs/accel">docs</a>
             ]
           </span>
         
@@ -1894,32 +1651,181 @@ Backed by a generic k-means implementation offered as a standalone library.</p>
 
       <div style="line-height:1;">
         
-        <img src="https://img.shields.io/crates/v/scirust.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/d/scirust.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/dr/scirust.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/v/accel.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/d/accel.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/dr/accel.svg?maxAge=2592000">
         
-        
-        <img
-          src="https://img.shields.io/github/stars/indigits/scirust.svg?style=social&amp;label=Star&amp;maxAge=2592000">
         
       </div>
 
       
-      <p>A scientific computing library</p>
+      <p>GPGPU Framework for Rust</p>
       
 
       <div style="font-size: small;">
 
         
+        <span class="crate-stat"><b>License</b>: MIT/Apache-2.0</span>
         
-        <span class="crate-stat"><b>Last Commit</b>: 2019-06-21</span>
         
         
-        <span class="crate-stat"><b>Last Published</b>: 2015-12-11</span>
+        <span class="crate-stat"><b>Last Published</b>: 2020-05-24</span>
         
         
       </div>
     </div>
+    
+    
+    
+    <div>
+      <hr>
+      <h3>
+        
+          mop
+          <span style="font-size: small; vertical-align:middle;">
+            [
+            <a href="https://crates.io/crates/mop">crate</a> &middot;
+            <a href="https://github.com/c410-f3r/mop">repo</a> &middot;
+            <a href="https://docs.rs/crate/mop">docs</a>
+            ]
+          </span>
+        
+      </h3>
+
+      <div style="line-height:1;">
+        
+        <img src="https://img.shields.io/crates/v/mop.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/d/mop.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/dr/mop.svg?maxAge=2592000">
+        
+        
+      </div>
+
+      
+      <p>Flexible and modular single or multi-objective solver for contiguous and discrete problems</p>
+      
+
+      <div style="font-size: small;">
+
+        
+        <span class="crate-stat"><b>License</b>: Apache-2.0</span>
+        
+        
+        
+        <span class="crate-stat"><b>Last Published</b>: 2020-08-16</span>
+        
+        
+      </div>
+    </div>
+    
+    
+    
+    <div>
+      <hr>
+      <h3>
+        
+          linxal
+          <span style="font-size: small; vertical-align:middle;">
+            [
+            <a href="https://crates.io/crates/linxal">crate</a> &middot;
+            <a href="https://github.com/masonium/linxal">repo</a> &middot;
+            <a href="https://docs.rs/linxal/">docs</a>
+            ]
+          </span>
+        
+      </h3>
+
+      <div style="line-height:1;">
+        
+        <img src="https://img.shields.io/crates/v/linxal.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/d/linxal.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/dr/linxal.svg?maxAge=2592000">
+        
+        
+        <img
+          src="https://img.shields.io/github/stars/masonium/linxal.svg?style=social&amp;label=Star&amp;maxAge=2592000">
+        
+      </div>
+
+      
+      <p>Linear Algebra package with rust-ndarray interface</p>
+      
+
+      <div style="font-size: small;">
+
+        
+        <span class="crate-stat"><b>License</b>: MIT</span>
+        
+        
+        <span class="crate-stat"><b>Last Commit</b>: 2017-08-26</span>
+        
+        
+        <span class="crate-stat"><b>Last Published</b>: 2017-04-17</span>
+        
+        
+      </div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div>
+      <hr>
+      <h3>
+        
+          em
+          <span style="font-size: small; vertical-align:middle;">
+            [
+            <a href="https://crates.io/crates/em">crate</a> &middot;
+            <a href="https://www.github.com/calebwin/emu">repo</a> &middot;
+            <a href="https://docs.rs/em">docs</a>
+            ]
+          </span>
+        
+      </h3>
+
+      <div style="line-height:1;">
+        
+        <img src="https://img.shields.io/crates/v/em.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/d/em.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/dr/em.svg?maxAge=2592000">
+        
+        
+      </div>
+
+      
+      <p>A macro for executing a subset of Rust with OpenCL</p>
+      
+
+      <div style="font-size: small;">
+
+        
+        <span class="crate-stat"><b>License</b>: MIT</span>
+        
+        
+        
+        <span class="crate-stat"><b>Last Published</b>: 2019-10-21</span>
+        
+        
+      </div>
+    </div>
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1977,11 +1883,213 @@ Backed by a generic k-means implementation offered as a standalone library.</p>
       <div style="font-size: small;">
 
         
+        <span class="crate-stat"><b>License</b>: MIT</span>
+        
         
         <span class="crate-stat"><b>Last Commit</b>: 2016-05-08</span>
         
         
         <span class="crate-stat"><b>Last Published</b>: 2016-05-08</span>
+        
+        
+      </div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    <div>
+      <hr>
+      <h3>
+        
+          blasoxide
+          <span style="font-size: small; vertical-align:middle;">
+            [
+            <a href="https://crates.io/crates/blasoxide">crate</a> &middot;
+            <a href="https://github.com/oezgurmakkurt/blasoxide">repo</a> &middot;
+            <a href="https://docs.rs/crate/blasoxide">docs</a>
+            ]
+          </span>
+        
+      </h3>
+
+      <div style="line-height:1;">
+        
+        <img src="https://img.shields.io/crates/v/blasoxide.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/d/blasoxide.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/dr/blasoxide.svg?maxAge=2592000">
+        
+        
+      </div>
+
+      
+      <p>BLAS implementation in rust</p>
+      
+
+      <div style="font-size: small;">
+
+        
+        <span class="crate-stat"><b>License</b>: MIT</span>
+        
+        
+        
+        <span class="crate-stat"><b>Last Published</b>: 2019-06-12</span>
+        
+        
+      </div>
+    </div>
+    
+    
+    
+    
+    
+    <div>
+      <hr>
+      <h3>
+        
+          qcgpu
+          <span style="font-size: small; vertical-align:middle;">
+            [
+            <a href="https://crates.io/crates/qcgpu">crate</a> &middot;
+            
+            <a href="https://qcgpu.github.io/qcgpu-rust/doc/qcgpu/index.html">docs</a>
+            ]
+          </span>
+        
+      </h3>
+
+      <div style="line-height:1;">
+        
+        <img src="https://img.shields.io/crates/v/qcgpu.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/d/qcgpu.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/dr/qcgpu.svg?maxAge=2592000">
+        
+        
+      </div>
+
+      
+      <p>Open Source, High Performance & Hardware Accelerated, Quantum Computer Simulation in Rust</p>
+      
+
+      <div style="font-size: small;">
+
+        
+        <span class="crate-stat"><b>License</b>: MIT</span>
+        
+        
+        
+        <span class="crate-stat"><b>Last Published</b>: 2018-04-04</span>
+        
+        
+      </div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div>
+      <hr>
+      <h3>
+        
+          scirust
+          <span style="font-size: small; vertical-align:middle;">
+            [
+            <a href="https://crates.io/crates/scirust">crate</a> &middot;
+            <a href="https://github.com/indigits/scirust">repo</a> &middot;
+            <a href="http://indigits.github.io/scirust/doc/scirust/index.html">docs</a>
+            ]
+          </span>
+        
+      </h3>
+
+      <div style="line-height:1;">
+        
+        <img src="https://img.shields.io/crates/v/scirust.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/d/scirust.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/dr/scirust.svg?maxAge=2592000">
+        
+        
+        <img
+          src="https://img.shields.io/github/stars/indigits/scirust.svg?style=social&amp;label=Star&amp;maxAge=2592000">
+        
+      </div>
+
+      
+      <p>A scientific computing library</p>
+      
+
+      <div style="font-size: small;">
+
+        
+        <span class="crate-stat"><b>License</b>: Apache-2.0</span>
+        
+        
+        <span class="crate-stat"><b>Last Commit</b>: 2019-06-21</span>
+        
+        
+        <span class="crate-stat"><b>Last Published</b>: 2015-12-11</span>
+        
+        
+      </div>
+    </div>
+    
+    
+    
+    <div>
+      <hr>
+      <h3>
+        
+          parenchyma
+          <span style="font-size: small; vertical-align:middle;">
+            [
+            <a href="https://crates.io/crates/parenchyma">crate</a> &middot;
+            <a href="https://github.com/lychee-eng/parenchyma">repo</a> &middot;
+            <a href="https://docs.rs/parenchyma">docs</a>
+            ]
+          </span>
+        
+      </h3>
+
+      <div style="line-height:1;">
+        
+        <img src="https://img.shields.io/crates/v/parenchyma.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/d/parenchyma.svg?maxAge=2592000">
+        <img src="https://img.shields.io/crates/dr/parenchyma.svg?maxAge=2592000">
+        
+        
+        <img
+          src="https://img.shields.io/github/stars/lychee-eng/parenchyma.svg?style=social&amp;label=Star&amp;maxAge=2592000">
+        
+      </div>
+
+      
+      <p>A high-performance computing (HPC) framework</p>
+      
+
+      <div style="font-size: small;">
+
+        
+        <span class="crate-stat"><b>License</b>: MIT/Apache-2.0</span>
+        
+        
+        <span class="crate-stat"><b>Last Commit</b>: 2018-08-23</span>
+        
+        
+        <span class="crate-stat"><b>Last Published</b>: 2017-03-18</span>
         
         
       </div>
@@ -2025,6 +2133,8 @@ Backed by a generic k-means implementation offered as a standalone library.</p>
       <div style="font-size: small;">
 
         
+        <span class="crate-stat"><b>License</b>: MPL-2.0</span>
+        
         
         <span class="crate-stat"><b>Last Commit</b>: 2022-10-10</span>
         
@@ -2041,44 +2151,7 @@ Backed by a generic k-means implementation offered as a standalone library.</p>
     
     
     
-    <div>
-      <hr>
-      <h3>
-        
-          qcgpu
-          <span style="font-size: small; vertical-align:middle;">
-            [
-            <a href="https://crates.io/crates/qcgpu">crate</a> &middot;
-            
-            <a href="https://qcgpu.github.io/qcgpu-rust/doc/qcgpu/index.html">docs</a>
-            ]
-          </span>
-        
-      </h3>
-
-      <div style="line-height:1;">
-        
-        <img src="https://img.shields.io/crates/v/qcgpu.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/d/qcgpu.svg?maxAge=2592000">
-        <img src="https://img.shields.io/crates/dr/qcgpu.svg?maxAge=2592000">
-        
-        
-      </div>
-
-      
-      <p>Open Source, High Performance & Hardware Accelerated, Quantum Computer Simulation in Rust</p>
-      
-
-      <div style="font-size: small;">
-
-        
-        
-        
-        <span class="crate-stat"><b>Last Published</b>: 2018-04-04</span>
-        
-        
-      </div>
-    </div>
+    
     
     
     
@@ -2134,7 +2207,7 @@ Backed by a generic k-means implementation offered as a standalone library.</p>
       <span style="padding: 15px;"><a class="page-link" href="/about">About</a></span>
     </nav>
 
-    <div style="text-align: center; font-size: small;">Are we learning yet? - Last updated: <a href="https://github.com/anowell/are-we-learning-yet/actions/workflows/pages/pages-build-deployment">2025-03-02</a> </div>
+    <div style="text-align: center; font-size: small;">Are we learning yet? - Last updated: <a href="https://github.com/anowell/are-we-learning-yet/actions/workflows/pages/pages-build-deployment">2026-08-31</a> </div>
 
   </div>
 </footer>
