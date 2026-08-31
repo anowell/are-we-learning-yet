@@ -14,7 +14,7 @@ scraper <path/to/crates.yaml>
 Output is always written to `_data/crates_generated.yaml`, relative to the current directory,
 so run it from the repo root (`just scrape` does this for you).
 
-`GITHUB_TOKEN` must be set; the GitHub GraphQL API rejects unauthenticated requests.
+`GITHUB_TOKEN` must be set; unauthenticated GitHub API requests get rate limited almost immediately.
 
 ### Process details
 
@@ -27,7 +27,7 @@ The current process breaks down like this:
     - Successful responses are cached in the `_tmp` directory (failures are not cached, so they are retried on the next run).
     - Crate data comes from crates.io adhering to the [crates.io scraping policy](https://crates.io/policies#crawlers) by limiting to 1 req/sec.
       crates.io only reports a license per published version, so the license of the newest stable version is resolved alongside the crate.
-    - Repo data currently comes from Github via GraphQL API (where applicable). Supporting additional repo services would be a nice addition.
+    - Repo data currently comes from Github via the REST API (where applicable), and includes whether the owner has archived the repo. Supporting additional repo services would be a nice addition.
     - Cached data is always used if it is found. To force fetching new data, remove the cached file(s).
     - Errors with a particular crate are logged, and scraper will simply move onto the next crate.
 
