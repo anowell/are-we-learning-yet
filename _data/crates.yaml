@@ -195,6 +195,12 @@
 - name: kddbscan
   topics: ["clustering"]
 
+- name: kiddo
+  repository: https://github.com/sdd/kiddo
+  description: "A high-performance, flexible, ergonomic k-d tree library."
+  documentation: https://docs.rs/kiddo/latest/kiddo/
+  topics: ["scientific-computing"]
+
 - name: kmeans-colors
   topics: ["clustering", "scientific-computing"]
 
