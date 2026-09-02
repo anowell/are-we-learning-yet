@@ -2,7 +2,18 @@
 site:
   title: Are we learning yet?
   description: >
-    The comprehensive guide to the state of machine learning in Rust.
-    This site catalogs ML frameworks, data structures, data cleaning and analysis,
-    and other tools and libraries that are essential to machine learning ecosystems.
+    A curated guide to AI and machine learning in Rust, with dead entries labeled rather
+    than dropped. Rust is where the AI industry's infrastructure is
+    written -- tokenizers, model formats, vector search, GPU runtimes, agent protocols -- and
+    a credible choice for inference and single-machine training. This site says where it is
+    not.
   base_url: "https://arewelearningyet.com"
+
+# Files at the root that are not pages. Anything not listed here is copied into `_site` verbatim
+# and served: README.md built to /README.html, and the Justfile was served whole at /Justfile --
+# 927 bytes of build recipe, down to `set dotenv-load` and the scraper's argv.
+#
+# LICENSE stays. It is the one root file a visitor has a reason to fetch.
+ignore:
+  - README.md
+  - Justfile

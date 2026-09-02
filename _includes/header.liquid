@@ -1,10 +1,23 @@
 <header class="site-header">
-
   <div class="container">
-    <a class="site-title" href="{{ site.base_url }}/">
-      <img src="/images/rust-9000.png" style="vertical-align:middle;">
-      {{ site.title }}
-    </a>    
+    <a class="site-title" href="{{ site.base_url | escape }}/">
+      <img src="/images/rust-9000-48.png" width="24" height="24" alt="">
+      {{ site.title | escape }}
+    </a>
   </div>
-
 </header>
+
+{% comment %}
+  No scroll-into-view and no drawer: both need JavaScript, and the order is the stack order the rail
+  exists to teach. The current hub comes from the permalink, which every page has -- `page.data.hub`
+  is set only on hub pages, and reading a missing key off an empty `data` is an error, not nil.
+{% endcomment %}
+{% assign here = page.permalink | remove: "/" %}
+<nav class="rail" aria-label="Topic hubs">
+  <div class="container rail-inner">
+    {% for hub in site.data.topics %}
+    <a class="rail-chip rail-chip-{{ hub.color | escape }}{% if here == hub.id %} rail-chip-current{% endif %}"
+       href="/{{ hub.id | escape }}"{% if here == hub.id %} aria-current="page"{% endif %}>{{ hub.short | escape }}</a>
+    {% endfor %}
+  </div>
+</nav>

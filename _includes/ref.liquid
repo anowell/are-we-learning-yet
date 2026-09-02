@@ -1,0 +1,55 @@
+{%- comment -%}
+  A superscript source marker for hub-page prose, and the list entry behind it. A call site is
+
+    {% assign ref_src = "NVIDIA" %}{% assign ref_date = "2026-09-08" %}
+    {% assign ref_url = "https://..." %}{% assign ref_note = "the vendor" %}{% include "ref.liquid" %}
+
+  `ref_src` and `ref_url` are required, `ref_date` and `ref_note` optional on cite.liquid's rule. All
+  five are cleared on the way out -- LIQUID `assign` IS GLOBAL AND HAS NO SCOPES, canonical note in
+  cratecard.liquid -- so a call site that forgets `ref_url` renders `[no source]` rather than
+  inheriting the one above it. Every name is initialized here through `{% unless %}`, because cobalt
+  errors on reading a name that was never assigned.
+
+  WHY THE ENTRY TRAVELS AS AN HTML COMMENT. The obvious shape -- accumulate into a string and let
+  crates.liquid print it after `{{ page.content }}` -- does not work in cobalt 0.20.4: a document and
+  its layout render against separate globals, and a layout reading a name the content assigned fails
+  the build (measured). So the finished `<li>` rides out inside the content, fenced by `<!--ref-->`
+  sentinels that crates.liquid splits on, the way prose.liquid splits on backticks. pulldown-cmark
+  passes an inline comment through verbatim, and every value is `escape`d first, which makes `-->`
+  unrepresentable. A page writing the sentinel itself would still corrupt the split, so xref.rs
+  fails the build on one.
+
+  `ref_entry_id` is the second mode, for shelf blurbs: those cannot include a template, so their
+  markers are bare `[n]` and their sources are data. It renders the `<li>` alone, with that id and
+  no back-link, touching no counter -- here rather than inlined into crates.liquid so that a source
+  entry has one definition.
+{%- endcomment -%}
+{%- unless ref_src -%}{%- assign ref_src = "" -%}{%- endunless -%}
+{%- unless ref_url -%}{%- assign ref_url = "" -%}{%- endunless -%}
+{%- unless ref_date -%}{%- assign ref_date = "" -%}{%- endunless -%}
+{%- unless ref_note -%}{%- assign ref_note = "" -%}{%- endunless -%}
+{%- unless ref_entry_id -%}{%- assign ref_entry_id = "" -%}{%- endunless -%}
+{%- unless ref_n -%}{%- assign ref_n = 0 -%}{%- endunless -%}
+{%- assign ref_src_len = ref_src | strip | size -%}
+{%- assign ref_url_len = ref_url | strip | size -%}
+{%- assign ref_date_len = ref_date | strip | size -%}
+{%- assign ref_note_len = ref_note | strip | size -%}
+{%- assign ref_entry_len = ref_entry_id | strip | size -%}
+{%- if ref_src_len > 0 and ref_url_len > 0 -%}
+  {%- if ref_entry_len > 0 -%}
+    {%- comment -%} Blurb mode: the entry only. A `[n]` marker may appear twice in one blurb, so the
+      marker carries no id and there is nothing to link back to. {%- endcomment -%}
+<li class="ref-item" id="{{ ref_entry_id | escape }}"><a class="ref-link" href="{{ ref_url | escape }}">{{ ref_src | escape }}</a>{% if ref_date_len > 0 %}<span class="ref-date">, {{ ref_date | escape }}</span>{% endif %}{% if ref_note_len > 0 %}<span class="ref-note"> &mdash; {{ ref_note | escape }}</span>{% endif %}</li>
+  {%- else -%}
+    {%- assign ref_n = ref_n | plus: 1 -%}
+    {%- capture ref_entry -%}<li class="ref-item" id="ref-{{ ref_n }}"><a class="ref-link" href="{{ ref_url | escape }}">{{ ref_src | escape }}</a>{% if ref_date_len > 0 %}<span class="ref-date">, {{ ref_date | escape }}</span>{% endif %}{% if ref_note_len > 0 %}<span class="ref-note"> &mdash; {{ ref_note | escape }}</span>{% endif %} <a class="ref-back" href="#refmark-{{ ref_n }}"><span class="visually-hidden">Back to reference {{ ref_n }} in the text</span><span aria-hidden="true">&#8617;</span></a></li>{%- endcapture -%}
+    {%- comment -%} The accessible name is "Source N: <source>", built from real text rather than an
+      `aria-label`, so it survives translation and the visible "N" is a substring of it (WCAG
+      2.5.3). `<sup>` sits inside the `<a>` so the target padding is on the link box.
+    {%- endcomment -%}
+<a class="ref-mark" id="refmark-{{ ref_n }}" href="#ref-{{ ref_n }}"><span class="visually-hidden">Source </span><sup>{{ ref_n }}</sup><span class="visually-hidden">: {{ ref_src | escape }}</span></a><!--ref--><!--{{ ref_entry }}--><!--ref-->
+  {%- endif -%}
+{%- else -%}
+<strong class="ref-missing">[no source]</strong>
+{%- endif -%}
+{%- assign ref_src = "" -%}{%- assign ref_url = "" -%}{%- assign ref_date = "" -%}{%- assign ref_note = "" -%}{%- assign ref_entry_id = "" -%}{%- assign ref_entry = "" -%}

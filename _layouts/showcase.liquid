@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+{% include "head.liquid" %}
+
+<body>
+  {% include "header.liquid" %}
+
+  <article class="container post">
+
+    <header class="post-header">
+      <h1 class="post-title">{{ page.title | escape }}</h1>
+    </header>
+
+    <div class="post-content">
+      {{ page.content }}
+    </div>
+
+    {% comment %}
+      The showcase, rendered from _data/apps_generated.yaml the way crates.liquid renders a hub.
+      Sections carry no maturity color -- a shelf color is a verdict on a problem space, and none
+      was ever computed over a group of products -- and there is no featured tier here.
+    {% endcomment %}
+    {% assign apps = site.data.apps_generated.apps | sort: 'score' | reverse %}
+    {% assign min_stars = site.data.apps_generated.bar.min_stars | divided_by: 1000 %}
+
+    {% for section in site.data.apps.sections %}
+    {% assign n_listed = 0 %}{% assign n_watch = 0 %}{% assign n_archive = 0 %}
+    {% for app in apps %}{% if app.topics contains section.id %}{% if app.tier == 'listed' %}{% assign n_listed = n_listed | plus: 1 %}{% elsif app.tier == 'watch' %}{% assign n_watch = n_watch | plus: 1 %}{% elsif app.tier == 'archive' %}{% assign n_archive = n_archive | plus: 1 %}{% endif %}{% endif %}{% endfor %}
+
+    <section class="shelf" id="{{ section.id | escape }}">
+      <div class="shelf-head">
+        <h2 class="shelf-title"><a href="#{{ section.id | escape }}">{{ section.title | escape }}</a></h2>
+      </div>
+
+      {% assign n_live = n_listed | plus: n_watch %}
+      {% if n_live == 0 %}
+      <p class="shelf-empty">
+        {% if n_archive > 0 %}Everything here is dead &mdash; if something has replaced it,
+        {% else %}Nothing listed here yet &mdash;
+        {% endif %}
+        <a href="https://github.com/anowell/are-we-learning-yet/issues/new?template=report.md">suggest something</a>.
+      </p>
+      {% endif %}
+
+      {% if n_listed > 0 %}
+      <div class="band band-listed">
+        {% for app in apps %}
+        {% if app.topics contains section.id and app.tier == 'listed' %}
+        {% include "app.liquid" %}
+        {% endif %}
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      {% if n_watch > 0 %}
+      <details class="band band-watch">
+        <summary>Below the bar ({{ n_watch }})</summary>
+        <p class="band-note">Real, and short of {{ min_stars }}k stars, or gone quiet for a
+          year.</p>
+        {% for app in apps %}
+        {% if app.topics contains section.id and app.tier == 'watch' %}
+        {% include "app.liquid" %}
+        {% endif %}
+        {% endfor %}
+      </details>
+      {% endif %}
+
+      {% if n_archive > 0 %}
+      <details class="band band-archive">
+        <summary>Archive ({{ n_archive }})</summary>
+        <p class="band-note">Kept so you stop looking for them. Archives are computed on every
+          build and reverse themselves if the reason clears.</p>
+        {% for app in apps %}
+        {% if app.topics contains section.id and app.tier == 'archive' %}
+        {% include "app.liquid" %}
+        {% endif %}
+        {% endfor %}
+      </details>
+      {% endif %}
+
+      {% if section.catalog %}
+      <p class="catalog-xref">The crates these are built from:
+        {% for link in section.catalog %}<a href="{% assign href_url = link.url %}{% include "href.liquid" %}">{{ link.title | escape }}</a>{% unless forloop.last %} &middot; {% endunless %}{% endfor %}</p>
+      {% endif %}
+    </section>
+    {% endfor %}
+
+    {% comment %}
+      Last on purpose: measured entries first, hand-typed closed-source after. Read straight out of
+      _data/apps.yaml, never through the scraper because there is no repository to read; the
+      difference is carried structurally -- no fact column -- rather than by a new color or badge.
+    {% endcomment %}
+    {% if site.data.apps.closed_source %}
+    <section class="shelf" id="closed-source">
+      <div class="shelf-head">
+        <h2 class="shelf-title"><a href="#closed-source">Significant closed source</a></h2>
+        <p class="shelf-blurb">Rust AI software with no public repository. Written by hand and not
+          measured: nothing here refreshes with the rest of the page.</p>
+      </div>
+      {% for item in site.data.apps.closed_source %}
+      <div class="crate crate-unmeasured">
+        <h3><a href="{% assign href_url = item.url %}{% include "href.liquid" %}">{{ item.name | escape }}</a></h3>
+        <div class="crate-body">
+          <p class="crate-featured-note">{% assign prose = item.note %}{% include "prose.liquid" %}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </section>
+    {% endif %}
+
+  </article>
+  {% include "footer.liquid" %}
+
+</body>
+
+</html>

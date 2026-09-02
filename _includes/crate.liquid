@@ -1,0 +1,61 @@
+{% comment %}
+  One catalog entry: measured facts in a narrow left column, hand-written prose in the right, one
+  column below 48em. Source order is prose then facts, so a phone and a screen reader get the
+  paragraph before eight rows of numbers; only the desktop grid reverses them.
+
+  The numbers are text, not `img.shields.io` badges: those were 2,698 unsized, render-blocking,
+  cross-origin requests across the ten hub pages, for figures already in the scrape.
+{% endcomment %}
+<div class="crate crate-{{ crate.tier | escape }}">
+  <h3>
+    {%- comment -%} The gutter rule is an appearance, so the word is here for a screen reader.
+    {%- endcomment -%}
+    {% if crate.tier == 'featured' %}<span class="visually-hidden">Featured: </span>{% endif %}
+    {%- if crate.meta -%}
+      {{ crate.meta.name | escape }}
+      <span class="crate-links-inline">[{% if crate.meta.name %}<a href="https://crates.io/crates/{{ crate.meta.name | escape }}">crate</a>{% endif %}{% if crate.meta.repository %} &middot; <a href="{% assign href_url = crate.meta.repository %}{% include "href.liquid" %}">repo</a>{% endif %}{% if crate.meta.documentation %} &middot; <a href="{% assign href_url = crate.meta.documentation %}{% include "href.liquid" %}">docs</a>{% endif %}]</span>
+    {%- elsif crate.repo -%}
+      {{ crate.repo.name | escape }}
+      <span class="crate-links-inline">[{% if crate.repo.url %}<a href="{% assign href_url = crate.repo.url %}{% include "href.liquid" %}">repo</a>{% endif %}]</span>
+    {%- endif -%}
+  </h3>
+
+  <div class="crate-body">
+    {% if crate.tier == 'featured' and crate.featured_note %}
+    <p class="crate-featured-note">{% assign prose = crate.featured_note %}{% include "prose.liquid" %}</p>
+    {% endif %}
+
+    {% comment %} A lapsed endorsement is rendered, not silently withdrawn: the date says how much
+      to trust it, where an invisible demotion would say nothing. {% endcomment %}
+    {% if crate.stale_since %}
+    <p class="crate-stale">Not re-verified since {{ crate.stale_since | escape }}. It was featured then;
+      nobody has checked since.</p>
+    {% endif %}
+
+    {% if crate.tier == 'archive' %}
+    <p class="crate-because">
+      <b>Archived</b>: {{ crate.because | escape | replace: '_', ' ' }}{% if crate.status_date %}, as of {{ crate.status_date | escape }}{% endif %}.
+      {% if crate.auto_archived %}Detected automatically, and it un-archives itself if that changes.{% endif %}
+      {% if crate.replacement %}Use <b>{{ crate.replacement | escape }}</b> instead.{% endif %}
+      {% if crate.evidence %}<a href="{% assign href_url = crate.evidence %}{% include "href.liquid" %}">Evidence</a>.{% endif %}
+    </p>
+    {% endif %}
+
+    {% comment %} `crate.description`, not `crate.meta.description`: `meta` is the crates.io record,
+      so guarding on it dropped every repo-only entry. The scraper resolves it. {% endcomment %}
+    {% if crate.description %}
+    <p class="crate-desc">{% assign prose = crate.description %}{% include "prose.liquid" %}</p>
+    {% endif %}
+
+    {% if crate.links %}
+    <div class="crate-links">
+      {% for link in crate.links %}
+      <a class="crate-link" href="{% assign href_url = link.url %}{% include "href.liquid" %}"><span class="crate-link-kind">{{ link.kind | escape }}</span>{{ link.title | escape | replace: "--", "—" }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+
+  {% comment %} Set explicitly, never inherited: Liquid `assign` is global; see cratecard.liquid. {% endcomment %}
+  {% assign stats_phrasing = false %}{% include "cratestats.liquid" %}
+</div>

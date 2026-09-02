@@ -1,0 +1,14 @@
+{%- comment -%}
+  One link destination out of `_data/**`, allowlisted and escaped. Liquid does not auto-escape and
+  `_data/**` is attacker-influenced by pull request: `| escape` leaves the scheme intact, so
+  `repository: javascript:alert(1)` reads as a URL in a diff and ships an executing link. data.rs
+  rejects the scheme at ingest, but apps.yaml's `catalog` and `closed_source` links and a page's
+  `redirect_to` never reach the scraper.
+{%- endcomment -%}
+{%- assign href_s8 = href_url | slice: 0, 8 -%}
+{%- assign href_s7 = href_url | slice: 0, 7 -%}
+{%- assign href_s1 = href_url | slice: 0, 1 -%}
+{%- if href_s8 == "https://" or href_s7 == "http://" or href_s1 == "/" or href_s1 == "#" -%}
+{{- href_url | escape -}}
+{%- else -%}#{%- endif -%}
+{%- assign href_url = "" -%}

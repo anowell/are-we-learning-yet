@@ -1,0 +1,277 @@
+// A crate reference in prose, and the card of numbers it reveals. The card renders inside a `<p>`,
+// so nothing in it may be flow content -- `<dl>`, `<ul>`, `<details>` all close the paragraph and
+// split the sentence. Hence spans-as-grid, and a checkbox rather than `<details>` or `:target`,
+// which scrolls the tapped word to the top and pushes a history entry.
+
+.xref-link {
+    text-decoration-style: dotted;
+    text-underline-offset: 2px;
+}
+
+// Pinned rather than bubbled: an absolute bubble needs JS or anchor positioning to stay on screen,
+// and measured, one at the end of a line in a 390px viewport reached 575px -- a page scrollbar.
+.xref-card {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 101;   // above `.github-corner` at 100
+
+    width: max-content;
+    max-width: min(320px, calc(100vw - 32px));
+    padding: 12px;
+    text-align: left;
+    white-space: normal;
+
+    // Opaque, because it sits over running text; bordered in $ink-soft rather than $rule, which at
+    // 1.20:1 on paper is under the 3:1 a non-text boundary needs.
+    background-color: $paper;
+    border: 1px solid $ink-soft;
+    border-radius: 2px;
+    color: $ink;
+
+    // Not inherited: a reference written inside `**bold**` handed the whole card 700.
+    font-weight: 400;
+
+    // `visibility`, so at rest the card is out of the accessibility tree rather than recited
+    // inside every sentence that names a crate.
+    visibility: hidden;
+    opacity: 0;
+
+    pointer-events: none;   // the card must never cover a link in the text underneath
+
+    // `visibility` is delayed out and immediate in, so the fade has something to fade.
+    transition: opacity $t-state $ease, visibility 0s $ease $t-state;
+}
+
+// `~` and not `+`: the checkbox and its label sit between the link and the card in source order.
+.xref-link:hover ~ .xref-card,
+.xref-link:focus-visible ~ .xref-card {
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 0s;
+}
+
+// `display: none`, not `visibility: hidden`, which leaves dozens of invisible tab stops on a
+// reference-heavy page. `.xref-card-link` goes too: on pointer the reference is already the link.
+.xref-toggle,
+.xref-tap,
+.xref-card-link {
+    display: none;
+}
+
+// Touch: the reference becomes a disclosure and the card carries the link on. No `:focus-visible`
+// route, because the checkbox is focusable and Space toggles it -- a keyboard still works here.
+@media (hover: none) and (pointer: coarse) {
+    .xref-link {
+        display: none;
+    }
+
+    // Clipped, not `display: none`, or the keyboard route goes too. The mixin sets no offsets, so
+    // focusing it scrolls nothing -- which is why `.xref` must never be given a `position`.
+    .xref-toggle {
+        display: inline;
+        @include visually-hidden;
+    }
+
+    // Not an `<a>`, so it inherits nothing from the global link rule and is dressed to match by
+    // hand. Vertical padding on an inline box does not grow the line box, so 24px costs nothing.
+    .xref-tap {
+        display: inline;
+        cursor: pointer;
+        color: $primary-color;
+        text-decoration: underline;
+        text-decoration-style: dotted;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 2px;
+        padding: 6px 2px;
+        margin: 0 -2px;
+    }
+
+    // The checkbox is visually hidden, so its label has to carry the ring (WCAG 2.4.7).
+    .xref-toggle:focus-visible + .xref-tap { @include ring; }
+
+    // In the flow, so two open cards push rather than collide at the same fixed 16px, and `display:
+    // none` at rest because `visibility: hidden` would reserve ~150px under every crate name. No
+    // `min-width`: in a 130px cell this renders 118px by 1786px -- unreadable, but no page scroll.
+    .xref-card {
+        display: none;
+        position: static;
+        width: auto;
+        max-width: none;
+        margin: 6px 0;
+        transition: none;
+    }
+
+    .xref-toggle:checked ~ .xref-card {
+        display: block;
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    // `inline-block`, so unlike `.xref-tap` the vertical padding is not free and grows the card by
+    // 12px -- correct here, where the 24px target (WCAG 2.5.8) has no line box to hide inside.
+    .xref-card-link {
+        display: inline-block;
+        margin-top: 6px;
+        padding: 6px 2px;
+        font-size: $fs-xs;
+    }
+}
+
+.xref-card-head {
+    display: block;
+    font-size: $fs-sm;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+// Never $status-red or $status-yellow: those are shelf verdicts, and a verdict ink on an entry is
+// the confusion the shelf colors were rescoped to stop. Position and weight do the work instead.
+.xref-notices {
+    display: block;
+    margin: 6px 0;
+    padding-left: 8px;
+    border-left: 3px solid $ink-soft;
+    font-size: $fs-xs;
+    line-height: 1.45;
+    color: $ink;
+}
+
+.xref-notice {
+    display: block;
+
+    + .xref-notice {
+        margin-top: 3px;
+    }
+}
+
+.xref-card-foot {
+    display: block;
+    font-size: $fs-xs;
+    font-style: italic;
+    color: $ink-soft;
+    margin-top: 4px;
+}
+
+// -- the two source markers ----------------------------------------------------------------------
+//
+// `.cite` names its source inline; `.ref-mark` is a superscript into the list below the block. Both
+// keep the interaction color and the underline -- quieting a link to $ink-soft would spend the one
+// distinction the design language reserves. Size is what is quieted instead. Urls are never on
+// screen: the source's name is the link text, and the accessible name with it.
+
+// A 24px target (WCAG 2.5.8) the layout is not charged for vertically. The horizontal 2px is
+// charged, and is the limit -- past it the marker drifts off the word it belongs to.
+.cite,
+.ref-mark {
+    padding: 6px 2px;
+}
+
+.cite {
+    font-size: $fs-xs;
+
+    // Re-stated because the marker is sized down: `auto` would thin it below a device pixel at 13px.
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+}
+
+.cite-mark {
+    font-size: $fs-xs;
+    vertical-align: -0.05em;   // arrow glyphs sit high; `em` so it tracks the size
+}
+
+// `text-decoration` moves to the `<sup>`: on the `<a>` the line is drawn at the anchor's own
+// baseline, which is half an em below a raised digit, and reads as a rule floating under a gap.
+.ref-mark {
+    text-decoration: none;
+
+    sup {
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 2px;
+    }
+
+    &:hover sup { text-decoration-thickness: 2px; }
+}
+
+.ref-list {
+    margin: 12px 0 0;
+    padding-left: 2.4em;
+    max-width: 68ch;
+    font-size: $fs-xs;
+    line-height: 1.5;
+    color: $ink-soft;
+
+    // A source name can be a bare domain with no space in it; at 320px inside a 2.4em indent that
+    // is what puts a scrollbar on the page.
+    overflow-wrap: anywhere;
+
+    // 8px, not 4: the `:target` ring below is drawn outside the entry and would otherwise sit on
+    // the first line of the next one.
+    li { margin-bottom: 8px; }
+
+    // The counter has to read as the same number as the marker, so it is not dimmed further.
+    li::marker { font-variant-numeric: tabular-nums; }
+}
+
+// The intro's list closes the prose and gets a footnote block's hairline; a shelf's list sits
+// inside the same head, where a rule would cut the shelf in half.
+.post-content > .ref-list {
+    border-top: 1px solid $rule;
+    padding-top: 12px;
+    margin-top: 24px;
+}
+
+// `:target` is the only state a link jump leaves behind, and without it a reader lands in a list
+// of five and has to count. No wash, unlike `.shelf:target`: $primary-color is 4.98:1 on paper and
+// a 12% rust tint under it measures 4.20:1, under the 4.5:1 a 13px link needs. Drawn outside the
+// text instead, where 3:1 applies, with `outline` so nothing on the page moves.
+.ref-item:target,
+.ref-mark:target { @include ring(2px); }
+
+.ref-item,
+.ref-mark { scroll-margin: 24px 0; }
+
+.ref-note { font-style: italic; }
+
+// The one target here that is not in a sentence: it sits alone at the end of its entry, where
+// horizontal padding costs nothing visible, so it is padded out to the 24px WCAG 2.5.8 asks for.
+.ref-back {
+    padding: 6px 6px;
+    text-decoration: none;
+
+    &:hover { text-decoration: underline; }
+}
+
+// Never expected -- `_scraper/src/xref.rs` fails the scrape first -- but loud if one gets through,
+// because a silently dead reference is worse than the typed number was.
+.xref-missing,
+.cite-missing,
+.ref-missing {
+    color: $status-red;
+    border-bottom: 2px solid $status-red;
+}
+
+// Paper is the one medium where a link cannot be followed, so it is the only one that expands a
+// url and drops the tap apparatus -- belt and braces, since print reports `hover: none` already.
+@media print {
+    .xref-card,
+    .xref-toggle,
+    .xref-tap,
+    .ref-back { display: none; }
+
+    .xref-link { display: inline; }
+
+    .cite::after {
+        content: " <" attr(href) ">";
+        font-size: $fs-xs;
+    }
+
+    .cite-mark { display: none; }
+
+    .ref-list .ref-link::after {
+        content: " <" attr(href) ">";
+        font-style: normal;
+    }
+}

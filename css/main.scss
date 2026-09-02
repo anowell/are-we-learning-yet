@@ -1,15 +1,54 @@
 @charset "utf-8";
 
+// Every color and type size on the site comes from this file; nothing below it invents one.
 
-$base-font-family: Fira Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
-$mono-font-family: "Source Code Pro", Menlo, Monaco, Consolas, "DejaVu Sans Mono", Inconsolata, monospace;
+// -- grounds and foregrounds ---------------------------------------------------------------------
+$paper:         #f4f2f0;
+$night:         #23211f;   // a surface, not a scheme: there is no dark mode
+$ink:           #23201e;   // 14.50:1 on paper
+$ink-soft:      #5c5651;   //  6.68:1 on paper
+$rule:          #d9d4d0;
+// Night has to carry its own foregrounds: $ink on $night is 1.01:1 and $primary-color is 2.89:1.
+$ink-night:     #efece9;   // 13.63:1 on night
+$ink-soft-night:#a39c95;   //  5.92:1 on night
+$primary-color: #b7410e;   //  4.98:1 on paper. Never appears on night.
+$rust-night:    #e07a4a;   //  5.39:1 on night
 
-$text-color:        #777;
-$primary-color:	    #b7410e;
+$text-color:    $ink;
 
-$status-green:  #81f300;
-$status-yellow: #ffee40;
-$status-red:    #ff3e21;
+// -- verdict ramps ------------------------------------------------------------------------------
+// Two ramps, each measured against its own ground: one ramp clearing 3:1 on both is confined to
+// luminance 0.146-0.263, capping contrast *between* verdicts at 1.60:1. Siblings never clear 3:1 of
+// each other, so the verdict word is always present as text too.
+$status-green:  #1a7a35;   // 4.85:1 on paper
+$status-yellow: #8a5a06;   // 5.30:1 on paper
+$status-red:    #b8321f;   // 5.35:1 on paper
+$night-green:   #4fbe6a;   // 6.80:1 on night
+$night-yellow:  #d9a13c;   // 6.96:1 on night
+$night-red:     #f0705c;   // 5.48:1 on night
 
-// Import partials from `sass_dir` (defaults to `_sass`)
+$provenance:    #6b8fb5;   // a named human signed this
+
+// -- type ----------------------------------------------------------------------------------------
+// System stack only: a face nobody fetches renders for whoever happens to have it installed.
+$base-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+$mono-font-family: ui-monospace, Menlo, Monaco, Consolas, "DejaVu Sans Mono", monospace;
+
+// Six sizes, nothing between.
+$fs-xxl: 40px;
+$fs-xl:  28px;
+$fs-lg:  21px;
+$fs-md:  17px;
+$fs-sm:  15px;
+$fs-xs:  13px;
+$lh-body:    1.6;
+$lh-heading: 1.15;
+
+// -- motion --------------------------------------------------------------------------------------
+$ease:      cubic-bezier(.2, 0, 0, 1);
+$t-state:   120ms;
+$t-arrive:  240ms;
+$t-wash:    600ms;
+
 @import "base";
+@import "xref";

@@ -1,0 +1,35 @@
+{%- comment -%}
+  The stat list, in the one place both printers share -- `crate.liquid` and `cratecard.liquid` -- so
+  the two cannot drift apart or from `_data/crates_generated.yaml`.
+
+  `stats_phrasing` swaps `dl/dt/dd` for spans, and is not a style choice: a reference in prose sits
+  inside a `<p>`, which the parser closes the moment it sees a `<dl>`, splitting the sentence.
+  Callers must set it every time -- Liquid `assign` is global; see cratecard.liquid.
+
+  "last commit" is the last commit by a human, not `pushed_at`, which counts bot pushes and PR
+  branches and so reports rust-bert, argmin, trieve and enarx as maintained.
+{%- endcomment -%}
+{%- if stats_phrasing -%}
+  {%- assign _list = "span" -%}{%- assign _key = "span" -%}{%- assign _val = "span" -%}
+  {%- assign _class = "crate-stats crate-stats-phrasing" -%}
+{%- else -%}
+  {%- assign _list = "dl" -%}{%- assign _key = "dt" -%}{%- assign _val = "dd" -%}
+  {%- assign _class = "crate-stats" -%}
+{%- endif -%}
+<{{ _list }} class="{{ _class }}">
+  {%- if crate.meta.max_version %}<{{ _key }}>version</{{ _key }}><{{ _val }}>{{ crate.meta.max_version | escape }}</{{ _val }}>{% endif -%}
+  {%- if crate.meta.recent_downloads -%}{%- assign dl = crate.meta.recent_downloads -%}{%- unless dl == 0 -%}
+    <{{ _key }}>downloads</{{ _key }}><{{ _val }}>{% if dl >= 1000000 %}{{ dl | divided_by: 100000.0 | round: 0 | divided_by: 10.0 }}M{% elsif dl >= 1000 %}{{ dl | divided_by: 1000 }}k{% else %}{{ dl }}{% endif %} / 90d</{{ _val }}>
+  {%- endunless -%}{%- endif -%}
+  {%- if crate.signals.stars -%}{%- assign st = crate.signals.stars -%}{%- unless st == 0 -%}
+    <{{ _key }}>stars</{{ _key }}><{{ _val }}>{% if st >= 1000 %}{{ st | divided_by: 100.0 | round: 0 | divided_by: 10.0 }}k{% else %}{{ st }}{% endif %}</{{ _val }}>
+  {%- endunless -%}{%- endif -%}
+  {%- if crate.license %}<{{ _key }}>license</{{ _key }}><{{ _val }}>{{ crate.license | escape }}</{{ _val }}>{% endif -%}
+  {%- if crate.signals.last_real_commit %}<{{ _key }}>last commit</{{ _key }}><{{ _val }}>{{ crate.signals.last_real_commit | split: "T" | first | escape }}</{{ _val }}>{% endif -%}
+  {%- if crate.meta.updated_at %}<{{ _key }}>published</{{ _key }}><{{ _val }}>{{ crate.meta.updated_at | split: "T" | first | escape }}</{{ _val }}>{% endif -%}
+  {%- comment -%} Captured, not `assign`ed: a repo-only entry has no such key, and cobalt errors on an unknown index in an `assign` where it is merely falsey inside an `if`. {%- endcomment -%}
+  {%- capture dep_owners -%}{%- if crate.signals.distinct_owner_reverse_deps -%}{%- unless crate.signals.distinct_owner_reverse_deps == 0 -%}{{ crate.signals.distinct_owner_reverse_deps | escape }} owner{%- unless crate.signals.distinct_owner_reverse_deps == 1 -%}s{%- endunless -%}{%- endunless -%}{%- endif -%}{%- endcapture -%}
+  {%- capture dep_repos -%}{%- if crate.signals.dependent_repos -%}{%- unless crate.signals.dependent_repos == 0 -%}{{ crate.signals.dependent_repos | escape }} repo{%- unless crate.signals.dependent_repos == 1 -%}s{%- endunless -%}{%- endunless -%}{%- endif -%}{%- endcapture -%}
+  {%- capture dependents -%}{{ dep_owners }}{%- if dep_owners != "" and dep_repos != "" %} &middot; {% endif -%}{{ dep_repos }}{%- endcapture -%}
+  {%- unless dependents == "" %}<{{ _key }}>dependents</{{ _key }}><{{ _val }}>{{ dependents }}</{{ _val }}>{% endunless -%}
+</{{ _list }}>

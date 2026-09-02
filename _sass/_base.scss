@@ -1,172 +1,577 @@
+// -- shared shapes -------------------------------------------------------------------------------
+// Two patterns the stylesheet needs in more than one place, and which are wrong if they drift.
+
+// One focus ring (WCAG 2.4.7) in three places, and wrong the moment they disagree.
+@mixin ring($w: 3px) {
+    outline: $w solid $primary-color;
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+// Clipped rather than `display: none`, which would take it out of the accessibility tree too.
+@mixin visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 html {
-  height: 100%;
+    height: 100%;
 }
 
 body {
-    margin: 0px;
-    background-color: #eee;
+    margin: 0;
+    background-color: $paper;
     min-height: 100%;
     color: $text-color;
     font-family: $base-font-family;
-    font-size: 1.6em;
-    font-weight: 400;
-    letter-spacing: 0.01em;
-    line-height: 1.6;
+    font-size: $fs-md;
+    line-height: $lh-body;
 
     // For the sticky footer
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+
+    // `break-word`, not `anywhere`, which shrinks intrinsic widths and would resize table columns.
+    overflow-wrap: break-word;
 }
 
+img, svg {
+    max-width: 100%;
+}
+
+// Underlined: rust ink alone is color-only meaning, and the underline is what tells a link from a
+// red verdict. Block links -- a card, a chip, a row -- are exempt below, their shape saying it.
 a {
-  color: $primary-color;
-  text-decoration: none;
-  outline: none;
-}
-a:hover {
-  color: darken($primary-color, 10%);
-}
-a:active {
-  color: darken($primary-color, 15%);
-}
-
-h1 {
-    padding-top: 20px;
-    letter-spacing: -0.2rem;
-}
-h1 strong {
     color: $primary-color;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 1px;
 }
 
-h3 {
-  margin-bottom: 5px;
+.site-title,
+.site-nav a,
+.rail-chip,
+.hub-bar-item,
+.entry-point,
+.resource-card,
+.feature-talk-title,
+.crate-link,
+.shelf-title a {
+    text-decoration: none;
+
+    &:hover { text-decoration: underline; }
+}
+a:hover  { color: darken($primary-color, 10%); }
+a:active { color: darken($primary-color, 15%); }
+
+:focus-visible { @include ring; }
+.hero :focus-visible,
+.site-header :focus-visible {
+    outline-color: $rust-night;
 }
 
-b, strong {
-  font-weight: bold;
+.visually-hidden { @include visually-hidden; }
+
+// Body's 1.6 must not cascade in: it made the h1 51.2px of glyph on an 81.92px line.
+h1, h2, h3, h4 {
+    line-height: $lh-heading;
+    letter-spacing: -0.015em;   // `em`, never `rem`: a rem value is a fixed pixel nudge at every size
+    color: $ink;
+}
+
+h1 { font-size: $fs-xxl; padding-top: 24px; }
+h2 { font-size: $fs-xl; }
+h3 { font-size: $fs-lg; margin-bottom: 4px; }
+h4 { font-size: $fs-md; }
+
+h1 strong { color: $primary-color; }
+
+b, strong { font-weight: bold; }
+
+code {
+    font-family: $mono-font-family;
+    font-size: 0.92em;
 }
 
 .site-header {
-    padding: 5px 0;
-    font-size: 20px;
-    line-height: 24px;
-    background-color: #333;
+    padding: 4px 0;
+    font-size: $fs-md;
+    background-color: $night;
+
     img {
         width: 24px;
         height: 24px;
-        margin-top: -3px;
+        vertical-align: middle;
+        margin-top: -2px;
     }
 }
 
-.site-footer {
-    margin: 10px 0 0px;
+.site-title,
+.site-title:hover,
+.site-title:visited,
+.site-title:active {
+    color: $ink-night;
 }
 
-.site-nav-link {
-  padding-left: 20px;
+.rail {
+    background-color: $paper;
+    border-bottom: 1px solid $rule;
+}
+
+// Wraps rather than scrolls: a one-line scroller put the current chip 513px off-screen on a phone.
+.rail-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 8px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.rail-chip {
+    font-size: $fs-xs;
+    line-height: 1.4;
+    color: $ink;
+    padding: 4px 6px 3px;   // 24px tall including the underline: a tap target, not a word
+    border-bottom: 3px solid;
+    white-space: nowrap;
+
+    &:hover { color: $ink; background-color: darken($paper, 4%); }
+}
+
+.rail-chip-current {
+    background-color: darken($paper, 7%);
+    font-weight: 600;
+}
+
+// Ten chips in two rows, not three, across 375px. Measured at 320, 375, 390 and 420.
+@media screen and (max-width: 47.9em) {
+    .rail-inner { gap: 2px 4px; }
+    .rail-chip { padding: 4px 3px 3px; }
+}
+
+// 320px, the narrowest viewport checked: two rows only survive if the chips give up the rest.
+@media screen and (max-width: 21em) {
+    .rail-inner { gap: 2px; padding-left: 4px; padding-right: 4px; }
+    .rail-chip { padding: 4px 1px 3px; letter-spacing: -0.01em; }
+}
+
+.site-footer {
+    margin-top: 32px;
+    border-top: 1px solid $rule;
+    padding: 16px 0;
+    font-size: $fs-sm;
+}
+
+.site-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+}
+
+.site-updated {
+    margin: 12px 0 0;
+    font-size: $fs-xs;
+    color: $ink-soft;
 }
 
 .hero {
     position: relative;
-    padding-top: 60px;
-    padding-bottom: 60px;
-    min-height: 360px;
-    background-color: #333;
-    background-image:url('/images/gears.jpg');
-    color: #ccc;
-    margin-bottom: 0px;
+    padding-top: 48px;
+    padding-bottom: 48px;
+    background-color: $night;
+    color: $ink-soft-night;
+
+    h1, h2, h3, h4 { color: $ink-night; }
+    a:not(.hub-card-link) {
+        color: $rust-night;
+
+        &:hover { color: lighten($rust-night, 8%); }
+    }
+    h1 strong, .accent { color: $rust-night; }
 }
 
 .hero h3 {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 
-.color-overlay {
-   position: absolute;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   background-color: #282828; //darken(#b7410e, 28%);
-   opacity: 0.92;
+// The 8px padding against the row's negative margin is a half-gutter; `order: 1` below puts
+// `.hero-art` last, since it is first in source.
+.hero-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -8px;
+    margin-right: -8px;
+}
+
+.hero-art,
+.hero-copy {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.hero-art {
+    text-align: center;
+}
+
+@media only screen and (min-width: 48em) {
+    .hero-art  { flex-basis: 25%; max-width: 25%; order: 1; }
+    .hero-copy { flex-basis: 75%; max-width: 75%; }
+}
+
+@media only screen and (min-width: 64em) {
+    .hero-art  { flex-basis: 33.33333333%; max-width: 33.33333333%; }
+    .hero-copy { flex-basis: 66.66666667%; max-width: 66.66666667%; }
 }
 
 .tldr-headline {
-    letter-spacing: -0.15rem;
-    font-size: 3.0rem;
+    font-size: $fs-xl;
     font-weight: bold;
+    line-height: $lh-heading;
     text-align: center;
-    line-height: 2.75rem;
-    padding-top: 20px;
-    padding-bottom: 40px;
-
+    padding: 16px 0 32px;
 }
 
 .page-content {
     flex: 1;
 }
 
+// `max-width: 100%` is the fix for horizontal page scroll: the auto margins take this off
+// `align-items: stretch`, so one wide descendant sized the column past the viewport. The three
+// widths below are flexboxgrid's, unchanged because 30 pages are measured against them.
 .container {
+    max-width: 100%;
     padding: 8px;
+    margin-left: auto;
+    margin-right: auto;
 }
+
+@media only screen and (min-width: 48em) { .container { width: 49rem; } }
+@media only screen and (min-width: 64em) { .container { width: 65rem; } }
+@media only screen and (min-width: 75em) { .container { width: 76rem; } }
 
 .section {
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding-top: 48px;
+    padding-bottom: 48px;
 }
 
-.tiles {
-    font-weight: bold;
-    flex-wrap: wrap;
-    a, a:hover, a:visited, a:active {
+.section + .section {
+    padding-top: 0;
+}
+
+.lede {
+    font-size: $fs-lg;
+    line-height: 1.5;
+}
+
+// One slab, two cards cut from it: `.entry-point` takes its 4px rust accent on the left edge,
+// `.resource-card` on top. Everything else was written twice and has to agree.
+.entry-points,
+.resource-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+    gap: 16px;
+    margin: 32px 0;
+}
+
+.resource-cards {
+    grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+    margin: 24px 0;
+}
+
+.entry-point,
+.resource-card {
+    display: block;
+    padding: 16px;
+    border: 1px solid $rule;
+    background-color: #fff;
+    color: $text-color;
+
+    &:hover {
         color: $text-color;
+        border-color: $primary-color;
     }
 }
 
-.tile {
-    height: 130px;
-    margin: 10px 0;
-    padding: 10px;
-    text-align: center;
+.entry-point {
+    border-left: 4px solid $primary-color;
+
+    &:hover { border-left-color: darken($primary-color, 10%); }
+}
+
+.resource-card {
+    border-top: 4px solid $primary-color;
+}
+
+.entry-point-title,
+.resource-card-title {
+    display: block;
+    font-weight: 600;
+    color: $primary-color;
+    margin-bottom: 4px;
+}
+
+.entry-point-title {
+    line-height: $lh-heading;
+}
+
+.entry-point-sub,
+.resource-card-sub {
+    display: block;
+    font-size: $fs-sm;
+    line-height: 1.5;
+}
+
+.catalog-xref {
+    margin: 24px 0;
+    padding: 8px 0 8px 12px;
+    border-left: 3px solid $provenance;
+    font-size: $fs-sm;
+    color: $ink-soft;
+}
+
+.fineprint {
+    font-size: $fs-xs;
+    line-height: 1.5;
+    color: $ink-soft;
+}
+
+.legend-lede {
+    margin: 0 0 8px;
+    font-size: $fs-xs;
+    line-height: 1.5;
+    max-width: 46em;
+}
+
+.legend {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    border-width: 4px 1px 1px 1px;
-    border-style: solid;
-    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 8px 32px;
+    margin: 4px 0 24px;
+    padding: 0;
+    list-style: none;
+    font-size: $fs-xs;
+    line-height: 1.4;
 }
 
-a:hover .tile {
-    color: #ccc;
+.legend li { flex: 1 1 240px; }
+
+.legend-block {
+    display: block;
+    font-size: $fs-sm;
+
+    li { margin-bottom: 4px; }
 }
 
-.green { color: $status-green; }
-.yellow { color: $status-yellow; }
-.red { color: $status-red; }
-
-.tile-green {
-    border-color: $status-green;
+.legend-key {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
-.tile-yellow {
-    border-color: $status-yellow;
+.swatch {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 8px;
+    border-radius: 1px;
 }
 
-.tile-red {
-    border-color: $status-red;
+.hub-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr));
+    gap: 20px;
+    margin-top: 8px;
 }
 
-.post-content {
-    margin-bottom: 60px;
+// No `height: 100%`: the grid already stretches the row, and 100% resolved against it then added
+// padding and border outside -- 40px past a 20px gap.
+.hub-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-top-width: 4px;
+    border-top-style: solid;
+    color: $ink-soft-night;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+.hub-card-title {
+    margin: 0 0 4px;
+    font-size: $fs-lg;   // the `bold` is the <h4>'s own
+}
+
+// The whole card is this link's target via a stretched `::after`, segments above it on `z-index:
+// 1` -- the only way to have both without nesting anchors. No hover treatment (hence the pinned
+// color and its absence from the hover-underline list): it would flicker as the pointer crosses a
+// segment, which matches `:hover` on the card but not on the link.
+.hub-card-link {
+    color: $ink-night;
+    text-decoration: none;
+
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+    }
+
+    &:hover, &:visited, &:active { color: $ink-night; }
+}
+
+.hub-card-tagline {
+    margin: 0 0 16px;
+    font-size: $fs-sm;
+    line-height: 1.45;
+    flex: 1;
+}
+
+// The verdict bar: one object in three places -- hub card, hub page (`.hub-bar`), rail chip.
+//
+// `margin-top: auto`, never `align-self: flex-end`: the card is a column flex container, so
+// `align-self` is its horizontal axis and shrink-wraps an eight-shelf bar to 14px.
+.hub-card-sections {
+    display: flex;
+    gap: 2px;
+    margin-top: auto;
+    margin-bottom: 4px;
+}
+
+// 24px of link around a 6px mark (WCAG 2.5.8), the negative margin cancelling the padding so the
+// target costs no layout; the 48px cap stops a three-shelf bar spanning a whole card.
+.seg-link,
+.hub-bar-item {
+    padding: 9px 0;
+    margin: -9px 0;
+}
+
+.seg-link {
+    position: relative;   // above the title's stretched ::after
+    z-index: 1;
+    flex: 1 1 auto;
+    max-width: 48px;
+}
+
+// `scale`, not `transform`, so it composes with one set elsewhere; origin bottom so nothing moves.
+.seg {
+    display: block;
+    height: 6px;
+    border-radius: 1px;
+    transform-origin: bottom;
+    scale: 1 1;
+    transition: scale $t-state $ease;
+}
+
+.seg-link:is(:hover, :focus-visible) .seg,
+.hub-bar-item:is(:hover, :focus-visible) .seg {
+    scale: 1 2;
+}
+
+// Every label shares one grid cell, so the row is as tall as its tallest and swapping reflows
+// nothing.
+.hub-card-counts {
+    display: grid;
+    font-size: $fs-xs;
+    line-height: 1.35;
+
+    > span {
+        grid-area: 1 / 1;
+    }
+}
+
+.counts-label {
+    visibility: hidden;
+}
+
+// Which segment is pointed at is a per-index question; that *any* of them is, is not -- so the
+// default string is retired once, outside the loop, instead of twelve times inside it.
+.hub-card:has(.hub-card-sections > .seg-link:is(:hover, :focus-visible)) .counts-default {
+    visibility: hidden;
+}
+
+// `:has()` because the segment and the label are not siblings. 12 is a hand-maintained ceiling --
+// Sass cannot read _data/topics.yaml -- and past it the 6px marks stop being separable anyway, so
+// a 13th shelf wants the bar rethought rather than the number raised.
+@for $i from 1 through 12 {
+    .hub-card:has(.hub-card-sections > .seg-link:nth-child(#{$i}):is(:hover, :focus-visible)) {
+        .counts-label:nth-of-type(#{$i + 1}) { visibility: visible; }
+    }
+}
+
+// No hover to ask with, so the card lists its shelves as static text instead.
+@media (hover: none) {
+    .hub-card-counts {
+        display: block;
+    }
+
+    .counts-label {
+        visibility: visible;
+        display: block;
+    }
+
+    .counts-default {
+        display: block;
+        margin-bottom: 2px;
+    }
+}
+
+.channels {
+    margin: 4px 0 0;
+    padding-left: 20px;
+    font-size: $fs-sm;
+    line-height: 1.5;
+
+    li { margin-bottom: 8px; }
+}
+
+// A 68ch measure for prose only: the catalog pages want the full column for their shelves.
+.post-content { margin-bottom: 48px; }
+
+.post-content > p,
+.post-content > ul,
+.post-content > ol,
+.shelf-blurb,
+.shelf-empty,
+.crate-featured-note,
+.crate-desc,
+.crate-because,
+.band-note {
+    max-width: 68ch;
+}
+
+// The secondary voice: one size down from the body, shared by every line of prose that belongs to
+// an entry or a shelf rather than to the page.
+.shelf-blurb,
+.shelf-empty,
+.crate-featured-note,
+.crate-desc {
+    font-size: $fs-sm;
 }
 
 .followup {
-    margin-top: 60px;
-    margin-bottom: 20px;
+    margin: 48px 0 16px;
+    padding: 16px;
     text-align: center;
-    padding: 20px 0;
-    border: 2px solid orange; /* TODO: using colors by name is basically never good design */
+    border: 1px solid $rule;
+    font-size: $fs-sm;
 }
 
 .github-corner {
@@ -174,37 +579,419 @@ a:hover .tile {
     z-index: 100;
 }
 
-.crate-stat {
-    padding-right: 30px;
+.hub-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    margin: 16px 0 8px;
+}
+
+.hub-bar-item {
+    max-width: 100%;
+    color: $ink;
+
+    &:hover { color: $ink; }
+
+    .seg {
+        max-width: 48px;
+        margin-bottom: 3px;
+    }
+}
+
+.hub-bar-label {
+    display: block;
+    font-size: $fs-xs;
+    line-height: 1.35;
+}
+
+.hub-bar-verdict {
     white-space: nowrap;
 }
 
-.crate-archived {
+// `--verdict` is scoped to `.shelf-head`, with no inheritance path to the entries: scoped to the
+// section it ran a green rail 3,291px down /llms/#llm-serving and every rough crate beside it read
+// as endorsed. The 16px gutter stays free for a featured entry's provenance rule.
+.shelf {
+    position: relative;
+    margin-top: 48px;
+    padding-left: 16px;
+}
+
+// A `::before` rather than a border because `:target` stands the rail up: an element arrived at
+// from a link has no previous state for a transition to start from, so it has to be a keyframe.
+.shelf-head {
+    position: relative;
+    --verdict: #{$rule};
+}
+
+.shelf-head::before {
+    content: "";
+    position: absolute;
+    left: -16px;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background-color: var(--verdict);
+    transform-origin: top;
+}
+
+.shelf:target .shelf-head::before {
+    animation: shelf-rail $t-arrive $ease both;
+}
+
+.shelf:target .shelf-title {
+    animation: shelf-wash $t-wash $ease both;
+}
+
+@keyframes shelf-rail {
+    from { scale: 1 0; }
+    to   { scale: 1 1; }
+}
+
+@keyframes shelf-wash {
+    from { background-color: color-mix(in srgb, var(--verdict) 14%, transparent); }
+    to   { background-color: transparent; }
+}
+
+// Durations go, not the state changes themselves. The wash is the exception: it ends at
+// *transparent*, so there is no end state to hold and the tint is left up until the reader moves on.
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 1ms !important;
+        transition-duration: 1ms !important;
+    }
+
+    .shelf:target .shelf-title {
+        animation: none;
+        background-color: color-mix(in srgb, var(--verdict) 14%, transparent);
+    }
+}
+
+.shelf-title {
+    margin-bottom: 4px;
+    a, a:hover, a:visited, a:active { color: $ink; }
+}
+
+// The badge prints the meaning, never the name of the ink. `nowrap` because one of the three is two
+// words and would otherwise read as two badges.
+.shelf-status {
     display: inline-block;
     vertical-align: middle;
-    font-size: 11px;
+    white-space: nowrap;
+    font-size: $fs-xs;
     font-weight: bold;
+    line-height: 1.4;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    padding: 2px 8px;
-    border: 1px solid $status-red;
-    border-radius: 3px;
-    color: $status-red;
+    padding: 1px 6px;
+    border-radius: 2px;
+    border: 1px solid;
 }
 
-@media screen and (max-width: 47.9em) {
-    .hide-xs { display: none; }
+.shelf-blurb {
+    margin-top: 0;
 }
 
-@media screen and (min-width: 48em) and (max-width: 63.9em) {
-    .hide-sm { display: none; }
+.shelf-empty {
+    font-style: italic;
 }
 
-@media screen and (min-width: 64em) and (max-width: 74.9em) {
-    .hide-md { display: none; }
+// Source order is prose-then-facts, so a phone and a screen reader get the name first; the grid
+// then puts facts in the left column. The one place source and visual order part, safely -- no
+// links in the stats. Left, because a 240px column beside 68ch of prose stranded them 945px from
+// the name they describe at 1280px.
+.crate {
+    border-top: 1px solid $rule;
+    padding-top: 12px;
+    margin-top: 24px;
 }
 
-@media screen and (min-width: 75em) {
-    .hide-lg { display: none; }
-    .hide-xs, .hide-sm, .hide-sm { display: flex; }
+.crate h3 {
+    margin: 0 0 4px;
+    font-size: $fs-md;
+}
+
+// The rule sits in the gutter `.shelf` reserves, so text stays flush with every other entry.
+// $provenance and never a verdict ink: signed-by-a-human is a claim about the crate, not the
+// problem space. Appearance alone carries nothing -- the heading has a hidden "Featured:" too.
+.crate-featured {
+    border-left: 3px solid $provenance;
+    margin-left: -16px;
+    padding-left: 13px;
+}
+
+// Forced colors repaint every border in the system foreground, making the featured rule identical
+// to the $rule above every entry; `Highlight` survives. The shelf rail is a background, so it goes
+// to Canvas and disappears.
+@media (forced-colors: active) {
+    .crate-featured {
+        border-left-color: Highlight;
+    }
+
+    .shelf-head::before {
+        background-color: CanvasText;
+    }
+}
+
+@media screen and (min-width: 48em) {
+    .crate {
+        display: grid;
+        grid-template-columns: minmax(0, 240px) minmax(0, 1fr);
+        column-gap: 32px;
+        align-items: start;
+    }
+
+    // Explicit, because auto-placement would follow the prose-then-facts source order.
+    .crate h3     { grid-column: 1 / -1; }
+    .crate-stats  { grid-column: 1; grid-row: 2; }
+    .crate-body   { grid-column: 2; grid-row: 2; }
+}
+
+.crate-links-inline {
+    font-size: $fs-xs;
+    font-weight: normal;
+    color: $ink-soft;
+    white-space: nowrap;
+}
+
+.crate-desc {
+    margin: 4px 0;
+}
+
+// `-phrasing` is the same list in phrasing content: a reference in prose sits inside a `<p>`,
+// which a `<dl>` would close, so `cratestats.liquid` prints spans instead.
+.crate-stats {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    column-gap: 12px;
+    margin: 4px 0;
+    font-size: $fs-xs;
+    line-height: 1.5;
+
+    dt,
+    &-phrasing > span:nth-child(odd) {
+        color: $ink-soft;
+        grid-column: 1;
+    }
+
+    dd,
+    &-phrasing > span:nth-child(even) {
+        margin: 0;
+        grid-column: 2;
+        color: $ink;
+    }
+}
+
+// -- the four curation bands on a hub page: featured, listed, watch, archive ----------------------
+
+.band {
+    margin-top: 8px;
+}
+
+// The provenance rule lives on each entry, never on the band: a band-level border claims
+// "everything below this line is featured" to a reader who cannot see its top edge.
+.band-featured {
+    .crate:first-child {
+        border-top: none;
+        padding-top: 0;
+    }
+}
+
+// The marker is a `::before` glyph because `::marker` silently drops `rotate`.
+.band-watch,
+.band-archive {
+    margin-top: 24px;
+
+    > summary {
+        cursor: pointer;
+        list-style: none;
+        font-size: $fs-sm;
+        text-transform: lowercase;
+        letter-spacing: 0.05em;
+        color: $ink-soft;
+        padding: 4px 0;
+
+        &::-webkit-details-marker { display: none; }
+
+        &::before {
+            content: "\25B8";
+            display: inline-block;
+            margin-right: 6px;
+            rotate: 0deg;
+            transition: rotate $t-state $ease;
+        }
+
+        &:hover { color: $ink; }
+    }
+
+    &[open] > summary::before { rotate: 90deg; }
+}
+
+.band-note {
+    font-size: $fs-xs;
+    font-style: italic;
+    color: $ink-soft;
+    margin: 4px 0 0;
+}
+
+// Archived entries are not dimmed: at 0.8 over $paper, $ink-soft and the link ink fall to 4.08:1
+// and 4.25:1. The collapsed drawer is the signal instead.
+
+// Nothing to measure -- the closed-source section on /showcase/. An empty 240px fact column reads
+// as a rendering fault, so the prose spans both. No media query needed: this outranks
+// `.crate-body`'s `grid-column: 2`, and below 48em there is no grid.
+.crate-unmeasured .crate-body {
+    grid-column: 1 / -1;
+}
+
+// A lapsed endorsement, deliberately loud: a stale judgment that looks fresh is the failure this
+// clock exists to prevent. Weight and a rule, never a verdict ink, which belongs to the shelf.
+.crate-stale {
+    font-size: $fs-xs;
+    font-style: italic;
+    font-weight: 600;
+    color: $ink;
+    border-left: 3px solid $ink-soft;
+    padding-left: 8px;
+    margin: 4px 0;
+}
+
+.crate-because,
+.crate-links {
+    margin: 4px 0;
+    font-size: $fs-xs;
+}
+
+.crate-link {
+    display: inline-block;
+    margin-right: 16px;
+}
+
+.crate-link-kind {
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: $ink-soft;
+    margin-right: 4px;
+}
+
+// Not on `.post-content`, which the catalog pages share and which wants the full width.
+.prose {
+    max-width: 68ch;
+    margin: 0 auto;
+}
+
+.feature-talk {
+    margin: 24px 0 32px;
+    padding: 16px 24px;
+    background-color: $night;
+    border-left: 6px solid $rust-night;
+    color: $ink-soft-night;
+
+    .feature-talk-title {
+        display: block;
+        font-size: $fs-lg;
+        line-height: $lh-heading;
+        font-weight: 500;
+        color: $ink-night;
+
+        &:hover { color: $rust-night; }
+    }
+
+    .feature-talk-meta {
+        display: block;
+        margin-top: 4px;
+        font-size: $fs-sm;
+    }
+
+    p {
+        margin: 12px 0 0;
+        font-size: $fs-sm;
+        line-height: 1.55;
+    }
+
+    b { color: $ink-night; }
+}
+
+// Date in a fixed gutter so the years scan vertically; wraps to stacked once it stops fitting.
+.timeline {
+    list-style: none;
+    margin: 0 0 32px;
+    padding: 0;
+
+    li {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px 16px;
+        padding: 12px 0;
+        border-bottom: 1px solid $rule;
+        line-height: 1.55;
+    }
+
+    .tl-date {
+        flex: 0 0 92px;
+        font-family: $mono-font-family;
+        font-size: $fs-xs;
+        color: $ink-soft;
+        padding-top: 4px;
+        white-space: nowrap;
+    }
+
+    .tl-body {
+        flex: 1 1 320px;
+        font-size: $fs-sm;
+    }
+}
+
+.tl-year {
+    margin-top: 48px;
+    padding-bottom: 4px;
+    border-bottom: 3px solid $primary-color;
+}
+
+// -- the three verdict inks, everywhere they land ------------------------------------------------
+//
+// Written out this was twenty-four rules in six places to miss when a hex is re-measured. It lives
+// here rather than beside each component because every rule overrides a shorthand that component
+// set, so it has to follow all of them -- and precede the print block, which must win.
+@each $v, $day, $dark in (green $status-green $night-green,
+                          yellow $status-yellow $night-yellow,
+                          red $status-red $night-red) {
+    .#{$v}             { color: $day; }
+    .swatch-#{$v}      { background-color: $day; }
+    .rail-chip-#{$v}   { border-bottom-color: $day; }
+    .shelf-head-#{$v}  { --verdict: #{$day}; }
+    .status-#{$v}      { color: $day; border-color: $day; }
+
+    .hub-card-#{$v}    { border-top-color: $dark; }
+    .hero .#{$v},
+    .hero .swatch-#{$v} { color: $dark; }
+    .hero .swatch-#{$v} { background-color: $dark; }
+}
+
+@media print {
+    body { background: #fff; color: #000; font-size: 11pt; }
+    .site-header, .site-footer, .github-corner, .rail, .followup { display: none; }
+    .hero, .feature-talk {
+        background: #fff;
+        color: #000;
+        border-left: none;
+        padding: 0;
+        h1, h2, h3, h4, .feature-talk-title, b { color: #000; }
+    }
+    .hub-card, .resource-card, .entry-point { border-color: #000; background: #fff; color: #000; }
+    // A collapsed band prints its contents. `display` on the <details> does nothing: the UA hides
+    // closed content on `::details-content`, which is the only thing that reopens it.
+    details::details-content {
+        content-visibility: visible;
+        block-size: auto;
+    }
+    details > summary::before { content: none; }
+    .shelf-status {
+        color: #000;
+        border: none;
+        border-bottom: 1px solid #000;
+        padding: 0;
+    }
+    a { color: #000; text-decoration: underline; }
 }

@@ -9,21 +9,27 @@ name: Build
 env:
   COBALT_VERSION: v0.20.4
 
+# Third-party actions are pinned to full commit SHAs, version in a trailing comment: a tag or a
+# branch is a mutable ref its owner can repoint at any commit, which would then run with this
+# job's token. Bump these deliberately, the way a dependency is bumped.
 jobs:
   check:
     name: Check & Lint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
+      # `toolchain` is explicit because dtolnay/rust-toolchain otherwise reads it from the calling
+      # ref, and a SHA is a hex string, not `stable`. Only the action is frozen, not the toolchain.
       - name: Install stable toolchain
-        uses: dtolnay/rust-toolchain@stable
+        uses: dtolnay/rust-toolchain@6bed0761d98439e5a578e2877258200ad565ba87 # stable branch, 2026-09-03
         with:
+          toolchain: stable
           components: rustfmt, clippy
 
       - name: Use cargo cache
-        uses: Swatinem/rust-cache@v2
+        uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6 # v2.9.2
         with:
           workspaces: _scraper
 
@@ -38,13 +44,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Install stable toolchain
-        uses: dtolnay/rust-toolchain@stable
+        uses: dtolnay/rust-toolchain@6bed0761d98439e5a578e2877258200ad565ba87 # stable branch, 2026-09-03
+        with:
+          toolchain: stable
 
       - name: Use cargo cache
-        uses: Swatinem/rust-cache@v2
+        uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6 # v2.9.2
         with:
           workspaces: _scraper
 
@@ -52,16 +60,63 @@ jobs:
         id: date
         run: echo "date=$(date +'%Y-%m-%d')" >> "$GITHUB_OUTPUT"
 
+      # Everything except owner lookups is refreshed daily -- that freshness is the point.
       - name: Use daily cache of scraper data
-        uses: actions/cache@v6
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
-          path: _tmp
+          path: |
+            _tmp
+            !_tmp/owners
           key: scraper-data-cache-${{ steps.date.outputs.date }}
+
+      # Ownership changes about never and crates.io asks for 1 req/s, so ~1000 daily owner lookups
+      # would cost ~30 minutes for data that did not move. restore-keys rolls it: each run restores
+      # the newest cache and saves a fresh one, so only owners never seen before are fetched.
+      - name: Use rolling cache of crate ownership
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: _tmp/owners
+          key: scraper-owners-cache-${{ steps.date.outputs.date }}
+          restore-keys: scraper-owners-cache-
+
+      # `Signals::or_previous` falls back to the previous run's _data/*_generated.yaml so a transient
+      # 500 cannot archive a live project. Those files are gitignored, so without this the rule is
+      # inert on every CI run. Keyed by run and not by date: actions/cache skips the save on an
+      # exact hit, so a date key would carry the morning's numbers all day.
+      - name: Carry the previous run's measurements forward
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: |
+            _data/crates_generated.yaml
+            _data/apps_generated.yaml
+          key: scraper-signals-cache-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: scraper-signals-cache-
+
+      # A first run, or one whose chain broke on GitHub's 7-day eviction, has no fallbacks. Not
+      # worth failing over, but worth saying where a surprising archive would be read.
+      - name: Note whether previous measurements were restored
+        run: |
+          missing=""
+          for f in _data/crates_generated.yaml _data/apps_generated.yaml; do
+            [ -f "$f" ] || missing="$missing $f"
+          done
+          if [ -n "$missing" ]; then
+            echo "::warning title=No previous measurements::Nothing was restored for:${missing}. A signal that fails to fetch in this run degrades to unknown instead of to its last value. Expected on a first run or after a cache eviction; treat tier changes in this run as unverified."
+          else
+            echo "Previous measurements restored; a failed fetch falls back to them."
+          fi
 
       - name: Run Scraper
         run: cargo run --release --manifest-path _scraper/Cargo.toml -- _data/crates.yaml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # The endorsements and automatic archives a human is meant to re-check. Reported every build
+      # rather than filed on a timer: nobody has to remember to turn it on, and it costs a second.
+      - name: Report what curation needs re-checking
+        run: |
+          cargo run --release --manifest-path _scraper/Cargo.toml -- \
+            --curation-report >> "$GITHUB_STEP_SUMMARY"
 
       - name: Install Cobalt
         run: |
@@ -74,7 +129,7 @@ jobs:
         run: cobalt build
 
       - name: Upload built site archive
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: site-archive
           path: _site

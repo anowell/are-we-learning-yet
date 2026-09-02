@@ -1,14 +1,18 @@
+{% comment %} The prose pages and nothing else: the rail (header.liquid) owns hub navigation. {% endcomment %}
 <footer class="site-footer">
   <div class="container">
-
-    <nav class="site-nav" style="text-align: center; font-size: smaller;">
-      <span style="padding: 15px;">
-        <a class="page-link" href="https://rust-ml.zulipchat.com" target="_blank">Chat</a>
-      </span>
-      <span style="padding: 15px;"><a class="page-link" href="/about">About</a></span>
+    <nav class="site-nav" aria-label="Pages">
+      <a href="/timeline/">Timeline</a>
+      <a href="/showcase/">Showcase</a>
+      <a href="/about/">About</a>
+      <a href="https://discord.gg/c5yQWcZTng">Rust-ML Discord</a>
     </nav>
 
-    <div style="text-align: center; font-size: small;">Are we learning yet? - Last updated: <a href="https://github.com/anowell/are-we-learning-yet/actions/workflows/pages/pages-build-deployment">{{ site.time | date: '%Y-%m-%d'}}</a> </div>
-
+    {%- comment -%} `site.time` is the BUILD time and the weekly cron re-runs the scraper, so this
+      says one honest thing: when the numbers were last fetched. "Last updated" would imply a person
+      read the page, and stay true-looking while the prose went stale. {%- endcomment -%}
+    <p class="site-updated">Crate data refreshed
+      <a href="https://github.com/anowell/are-we-learning-yet/actions/workflows/pages/pages-build-deployment">{{ site.time | date: '%Y-%m-%d' }}</a>.
+      <a href="https://github.com/anowell/are-we-learning-yet/issues/new?template=report.md">Report an issue or missing content</a>.</p>
   </div>
 </footer>

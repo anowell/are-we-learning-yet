@@ -1,25 +1,27 @@
 ---
 layout: default.liquid
-data: { skip_tiles: [] }
+title: Are we learning yet?
 ---
 
-<a href="https://github.com/anowell/are-we-learning-yet" class="github-corner"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<a href="https://github.com/anowell/are-we-learning-yet" class="github-corner"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
 
 
 <div>
   <div class="hero">
-    <div class="color-overlay"></div>
-    <div class="container" style="position:relative; max-width: 60rem;">
-      <div class="row">
-        <div class="col-xs-12 col-sm-3 col-md-4 last-sm last-md" style="text-align: center;">
-          <img src="/images/rust-9000.png" style="width:300px; margin-top: 20px;">
+    <div class="container" style="position:relative; max-width: min(60rem, 100%);">
+      {% comment %} The logo is first in source and last on screen from 48em up -- what flexboxgrid's
+        `last-sm`/`last-md` produced, now six lines of `.hero-row` in _sass/_base.scss, which is all
+        any of the 30 pages used that 12KB stylesheet for. {% endcomment %}
+      <div class="hero-row">
+        <div class="hero-art">
+          <img src="/images/rust-9000.png" width="300" height="300" alt="" style="margin-top: 16px;">
         </div>
-        <div class="col-xs-12 col-sm-9 col-md-8">
+        <div class="hero-copy">
           <h1>Are we <strong>learning</strong> yet?</h1>
           <p style="margin-top: 60px; position: relative;">
-            <span>A work-in-progress to catalog</span>
-            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            the state of <b style="color: #b7410e">machine learning in Rust</b>
+            <span>A curated guide to</span>
+            <br>
+            <b class="accent">AI &amp; machine learning in Rust</b>
           </p>
         </div>
       </div>
@@ -27,54 +29,124 @@ data: { skip_tiles: [] }
   </div>
 
 
-  <div class="container section">
+  <div class="container section" style="max-width: min(60rem, 100%);">
     <div class="tldr-headline">
-        It's ripe for experimentation,<br>
-        but the ecosystem isn't very complete yet.
+        Yes, for inference and infrastructure.<br>
+        Not yet for research or training at scale.
     </div>
 
-    <p>
-      Rust's performance, low-level control, and zero-cost high-level abstractions make it a compelling
-      alternative to more established ecosystems for Machine Learning.
-      While the Rust ML ecosystem is still young and best described as experimental,
-      several ambitious projects and building blocks have emerged.
+    <p class="lede">
+      Rust is the language the AI industry's infrastructure is written in &mdash; tokenizers, model
+      formats, dataframes, vector search, GPU runtimes, agent protocols, sandboxes &mdash; and it is
+      now a credible choice for inference and for training on a single machine. It is not where you
+      do research, large-scale training, or classical ML if you can use Python.
     </p>
 
-    <p>
-      In addition to the many wonderful projects that contain individual implementations of certain methods and algorithms (many of which are listed here),
-      there are also meta-crates like <a href="https://github.com/rust-ml/linfa">linfa</a> and <a href="https://smartcorelib.org/">smartcore</a>
-      that provide a convenient, bundled approach to many machine learning algorithms that may be of interest to developers looking 
-      for a practical solution
-    </p>
-
-
-    <p>
-      As a developing ecosystem, there are plenty of opportunities for contributors to fill in the gaps
-      by helping out existing projects or starting new ones.
-    </p>
-    <p>
-    An unofficial Working Group in the machine learning domain has been established <a href='https://github.com/rust-ml'>here</a>.
-
-    For help or questions with Rust ML, feel free to reach out on the <a href='https://rust-ml.zulipchat.com/'>Zulip chat</a>.
-    </p>
+    {% comment %} Six ways in, not one. Every card lands on the shelf that backs it. {% endcomment %}
+    <div class="entry-points">
+      <a class="entry-point" href="/inference/#model-plumbing">
+        <span class="entry-point-title">Rust is what the Python AI stack imports</span>
+        <span class="entry-point-sub">Every <code>AutoTokenizer</code> call in Python runs Rust.
+          <code>tokenizers</code>, <code>safetensors</code>, <code>hf-hub</code>,
+          <code>tiktoken-rs</code> &mdash; the plumbing under the whole industry.</span>
+      </a>
+      <a class="entry-point" href="/retrieval">
+        <span class="entry-point-title">Retrieval is the least-disputed win</span>
+        <span class="entry-point-sub">Meilisearch, Qdrant, tantivy, LanceDB and Chroma's core are
+          all Rust, and all publish usable Rust clients.</span>
+      </a>
+      <a class="entry-point" href="/agents/#agent-protocols">
+        <span class="entry-point-title">The agent protocols are Rust-first</span>
+        <span class="entry-point-sub"><code>rmcp</code> is one of MCP's five Tier&nbsp;1 official
+          SDKs; the Agent Client Protocol generates its canonical JSON schema from a Rust
+          crate.</span>
+      </a>
+      <a class="entry-point" href="/gpu">
+        <span class="entry-point-title">GPU stopped being a wish</span>
+        <span class="entry-point-sub">NVIDIA shipped two first-party Rust projects in 2026, rustc
+          carries GPU targets, and <code>std::autodiff</code> is on nightly.</span>
+      </a>
+      <a class="entry-point" href="/llms/#fine-tuning">
+        <span class="entry-point-title">What is still missing</span>
+        <span class="entry-point-sub">Fine-tuning and LoRA, training at scale, reinforcement
+          learning, evals and guardrails, video generation.</span>
+      </a>
+    </div>
   </div>
 
-  <div class="hero" style="background-position: center 70%;">
-    <div class="color-overlay"></div>
-    <div class="container" style="position:relative;">
+  <div class="hero">
+    <div class="container" style="position:relative; max-width: min(60rem, 100%);">
 
       <h3>Rust Machine Learning Ecosystem</h3>
-      <div class="row tiles">
-        {% for post in collections.posts.pages %}
-          {% if page.data.skip_tiles contains forloop.index %}
-            <div class="col-md-2 col-sm-4 hide-xs hide-sm">&nbsp;</div>
-          {% endif %}
-          <div class="col-md-2 col-sm-4 col-xs-6">
-            <a href="{{post.permalink}}">
-              <div class="tile tile-{{post.data.color}}">
-                {{ post.title }}
-              </div>
-            </a>
+
+      {% comment %}
+        Where the two vocabularies are tied together, once: everywhere else a badge prints the
+        meaning and never the name of the ink, because "green" tells a color-blind reader nothing.
+        The wording must match `_includes/verdict.liquid` and about.md exactly.
+      {% endcomment %}
+      <p class="legend-lede">Each color grades the <b>category</b>, not the crates on the shelf:
+        would you choose Rust for this problem, against any other language?</p>
+      <ul class="legend">
+        <li>
+          <span class="swatch swatch-green"></span><span class="legend-key green">green</span>
+          = <b>comprehensive</b> &mdash; covers the category, in production; you would not go wrong
+          choosing Rust
+        </li>
+        <li>
+          <span class="swatch swatch-yellow"></span><span class="legend-key yellow">yellow</span>
+          = <b>partial</b> &mdash; solid pieces to build on, but a sliver of the category; another
+          language covers it better
+        </li>
+        <li>
+          <span class="swatch swatch-red"></span><span class="legend-key red">red</span>
+          = <b>too early</b> &mdash; experimental or nonexistent; not a default choice yet
+        </li>
+      </ul>
+
+      {% comment %} Hubs, in the stack order _data/topics.yaml lists them. The stripe is the hub's
+        summary color; the bar at the foot is one mark per sub-section, because maturity varies
+        inside a hub. {% endcomment %}
+      <div class="hub-cards">
+        {% for hub in site.data.topics %}
+          {% assign n_green = 0 %}{% assign n_yellow = 0 %}{% assign n_red = 0 %}
+          {% for section in hub.sections %}
+            {% if section.color == 'green' %}{% assign n_green = n_green | plus: 1 %}
+            {% elsif section.color == 'yellow' %}{% assign n_yellow = n_yellow | plus: 1 %}
+            {% elsif section.color == 'red' %}{% assign n_red = n_red | plus: 1 %}{% endif %}
+          {% endfor %}
+          <div class="hub-card hub-card-{{ hub.color | escape }}">
+            <h4 class="hub-card-title"><a class="hub-card-link" href="/{{ hub.id | escape }}">{{ hub.title | escape }}</a></h4>
+            <p class="hub-card-tagline">{{ hub.tagline | escape | replace: "--", "—" }}</p>
+            {% comment %}
+              One segment per shelf, each a link: ten destinations become fifty-six. 24px tall
+              around a 6px mark (WCAG 2.5.8), the negative margin cancelling the padding so the
+              target costs no layout. Nested anchors are invalid, so the card is not one `<a>`: the
+              title stretches over it with `::after { inset: 0 }` and the segments sit above.
+            {% endcomment %}
+            <div class="hub-card-sections">
+              {% for section in hub.sections %}
+                {% assign color = section.color %}
+                <a class="seg-link" href="/{{ hub.id | escape }}/#{{ section.id | escape }}"
+                   aria-label="{{ section.title | escape }} — {% include "verdict.liquid" %}"><span class="seg swatch-{{ section.color | escape }}"></span></a>
+              {% endfor %}
+            </div>
+            {% comment %}
+              The counts row doubles as the bar's label: at rest how the shelves fall out, on hover
+              or focus which shelf a segment is and its verdict. A one-cell grid, so every string
+              stacks in the same box and nothing reflows when one changes.
+            {% endcomment %}
+            <div class="hub-card-counts">
+              <span class="counts-default">{{ hub.sections | size }} shelves:
+                {%- if n_green > 0 %} <span class="green">{{ n_green }} comprehensive</span>{% endif -%}
+                {%- if n_yellow > 0 %}{% if n_green > 0 %} &middot;{% endif %} <span class="yellow">{{ n_yellow }} partial</span>{% endif -%}
+                {%- if n_red > 0 %}{% if n_green > 0 or n_yellow > 0 %} &middot;{% endif %} <span class="red">{{ n_red }} too early</span>{% endif -%}
+              </span>
+              {% for section in hub.sections %}
+                {% assign color = section.color %}
+                <span class="counts-label">{{ section.title | escape }} &mdash;
+                  <span class="{{ section.color | escape }}">{% include "verdict.liquid" %}</span></span>
+              {% endfor %}
+            </div>
           </div>
         {% endfor %}
       </div>
@@ -82,19 +154,71 @@ data: { skip_tiles: [] }
   </div>
 
 
-  <div class="container section">
-    <h3>Additional resources</h3>
-    <p>See also some of these talks, tutorials, demos about machine learning in Rust:</p>
+  <div class="container section" style="max-width: min(60rem, 100%);">
+    <h3>Rust ML in the Rust project</h3>
+    <p>
+      Machine learning is now an accepted goal of the Rust project itself.
+      <a href="https://doc.rust-lang.org/nightly/std/autodiff/index.html"><code>std::autodiff</code></a>
+      is live on nightly today &mdash; <code>#![feature(autodiff)]</code>, forward and reverse mode,
+      Enzyme/LLVM-backed. <a href="https://github.com/rust-lang/rust/issues/131513"><code>std::offload</code></a>
+      has its host side upstreamed and its device side in review, waiting on a rustc bump to LLVM 22,
+      with AMD, NVIDIA and now Intel targets in scope. And the accepted 2026 project goal
+      <a href="https://github.com/rust-lang/rust-project-goals/blob/main/src/2026/high-level-ml.md">High-Level ML optimizations</a>
+      proposes an MLIR-based backend for rustc that recognizes tensor operations, aiming at &ldquo;a
+      shiny future where developers are able to develop full ML models in pure Rust.&rdquo;
+    </p>
 
-    <ul>
-      <li>
-        <a href="https://github.com/rust-community/rustbridge/tree/master/workshops/src/machine_learning">Spam or Ham?</a> -
-        End-to-end Rust ML tutorial aimed at Rust beginners (uses <a href="https://github.com/maciejkula/rustlearn">rustlearn</a>)
-      </li>
-      <li>
-        <a href="http://learning-machines.herokuapp.com/">Learning Machines</a> -
-        Interactive tutorials on machine learning powered by <a href="https://github.com/AtheMathmo/rusty-machine">rusty-machine</a>
-      <li>...<a href="https://github.com/anowell/are-we-learning-yet/issues/new">suggest additional resources</a> for getting started with ML in Rust</li>
+    <h3>Discuss Rust ML</h3>
+    <ul class="channels">
+        <li>
+          <a href="https://discord.gg/c5yQWcZTng">Rust-ML Discord</a> &mdash; the general-purpose
+          channel for Rust ML. Small and honest about it: 121 members as of 2026-08-31.
+        </li>
+        <li>
+          <a href="https://rust-lang.zulipchat.com/#narrow/channel/390790-wg-autodiff"><code>#wg-autodiff</code> on rust-lang.zulipchat.com</a>
+          &mdash; where the compiler-side autodiff and GPU-offload work is discussed.
+        </li>
+        <li>
+          <a href="https://burn.dev">Burn &amp; CubeCL</a> &mdash; their Discord, linked from the
+          project site.
+        </li>
+        <li>
+          <a href="https://scientificcomputing.rs/">Scientific Computing in Rust</a> &mdash; a free
+          annual online workshop out of UCL with a monthly newsletter and every talk on YouTube. This
+          is where the numerical and GPU work gets presented.
+        </li>
     </ul>
+  </div>
+
+  <div class="container section" style="max-width: min(60rem, 100%);">
+    <h3>Learn it, watch it, check the dates</h3>
+
+    <div class="feature-talk">
+      <a class="feature-talk-title" href="https://youtu.be/W4296t6hffs">How Rust helped us building and deploying Moshi, a state-of-the-art speech model</a>
+      <span class="feature-talk-meta">Laurent Mazare, Kyutai &middot; Rust Nation UK 2025</span>
+      <p>
+        Mazare is the primary author of candle, and Moshi is a real speech-text foundation model his
+        team moved off PyTorch onto a Rust inference stack and then ran at <b>500,000 sessions on a
+        low-cost GPU cluster</b>. A named engineer, a shipped model, production numbers, and an
+        honest account of what Rust bought them.
+      </p>
+    </div>
+
+    <div class="resource-cards">
+      <a class="resource-card" href="/timeline/">
+        <span class="resource-card-title">Timeline</span>
+        <span class="resource-card-sub">
+          A dated record, 2024&ndash;2026: releases, funding, NVIDIA's two Rust projects, the
+          acquisitions &mdash; and the projects that died.
+        </span>
+      </a>
+      <a class="resource-card" href="/showcase/">
+        <span class="resource-card-title">AI software written in Rust</span>
+        <span class="resource-card-sub">
+          Codex CLI, Zed, Warp, goose, Handy, koharu, OpenShell. Products with Rust cores, kept
+          separate from the crate catalog.
+        </span>
+      </a>
+    </div>
   </div>
 </div>

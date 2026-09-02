@@ -1,0 +1,12 @@
+{%- comment -%}
+  The verdict word for a shelf color: the meaning, not the name of the ink, which tells a
+  color-blind reader nothing -- and as bare text, because one call site is inside an `aria-label`
+  where markup would turn a curator's typo into tag injection. The `else` is loud because
+  `color: gren` used to fall through and publish "too early" for a shelf nobody had judged.
+{%- endcomment -%}
+{%- if color == 'green' -%}comprehensive
+{%- elsif color == 'yellow' -%}partial
+{%- elsif color == 'red' -%}too early
+{%- else -%}[no verdict: {{ color | escape }}]
+{%- endif -%}
+{%- assign color = "" -%}

@@ -1,0 +1,143 @@
+sections:
+  - id: agents-devtools
+    title: Agents and developer tools
+    catalog:
+      - url: "/agents/#agent-frameworks"
+        title: "agent frameworks"
+      - url: "/agents/#agent-protocols"
+        title: "agent protocols"
+      - url: "/agents/#sandboxing"
+        title: "sandboxing, browser & computer use"
+
+  - id: applications
+    title: Applications
+    catalog:
+      - url: "/modalities/#speech-audio"
+        title: "speech & audio"
+      - url: "/retrieval/#document-ai"
+        title: "OCR & document AI"
+      - url: "/deep-learning/#dl-frameworks"
+        title: "deep learning frameworks"
+
+  - id: models-inference
+    title: Models and inference stacks
+    catalog:
+      - url: "/llms/#llm-serving"
+        title: "LLM inference & serving"
+      - url: "/modalities/#speech-audio"
+        title: "speech & audio"
+
+apps:
+  - name: OpenAI Codex CLI
+    repository: https://github.com/openai/codex
+    topics: [agents-devtools]
+    rust: pure-rust
+    note: >
+      OpenAI's coding agent, rewritten from TypeScript and Node to Rust for zero-dependency
+      installs, native Linux sandboxing and no garbage collector.
+    links:
+      - kind: post
+        url: https://www.infoq.com/news/2025/06/codex-cli-rust-native-rewrite/
+        title: "InfoQ on the Rust-native rewrite"
+
+  - name: Zed
+    repository: https://github.com/zed-industries/zed
+    topics: [agents-devtools]
+    rust: pure-rust
+    note: >
+      An editor written in Rust down to its GPU renderer and its UI framework. It authored the
+      Agent Client Protocol, whose reference SDK is also Rust, and it ships Zeta, its own
+      open-weight, open-data edit-prediction model.
+    links:
+      - kind: post
+        url: https://zed.dev/blog/edit-prediction
+        title: "Zeta, an open-weight open-data edit-prediction model"
+
+  - name: Warp
+    repository: https://github.com/warpdotdev/warp
+    topics: [agents-devtools]
+    rust: pure-rust
+    note: >
+      "An agentic development environment, born out of the terminal" -- a custom Rust UI framework
+      with GPU rendering, shipping AI agents on top of it.
+
+  - name: goose
+    repository: https://github.com/aaif-goose/goose
+    topics: [agents-devtools]
+    rust: rust-core
+    note: >
+      A general-purpose desktop, CLI and API agent: a Rust core with a TypeScript desktop app over
+      it. Since December 2025 it has been governed by the Linux Foundation's Agentic AI
+      Foundation, alongside MCP itself, which is why a `block/goose` link now redirects.
+    links:
+      - kind: post
+        url: https://blog.modelcontextprotocol.io/posts/2025-12-09-mcp-joins-agentic-ai-foundation/
+        title: "MCP joins the Agentic AI Foundation"
+
+  - name: NVIDIA OpenShell
+    repository: https://github.com/NVIDIA/OpenShell
+    topics: [agents-devtools]
+    rust: pure-rust
+    note: >
+      "The safe, private runtime for autonomous AI agents" -- a policy-enforced Rust sandbox for
+      Claude Code, Codex and Copilot CLI, with a Rust SDK. Read its star count against its created
+      date: it is months old, not years.
+
+  - name: Tabby
+    repository: https://github.com/TabbyML/tabby
+    topics: [agents-devtools]
+    rust: pure-rust
+    note: >
+      A self-hosted AI coding assistant -- completion, an answer engine and a repository indexer
+      -- run on your own hardware against your own code. Rust throughout the server side.
+
+  - name: Handy
+    repository: https://github.com/cjpais/Handy
+    topics: [applications]
+    rust: rust-core
+    note: >
+      Offline push-to-talk speech-to-text: a Rust core in a Tauri shell. Its engine is a separate
+      crate, `transcribe-rs`, which covers Whisper, Parakeet, Moonshine and Voxtral among others,
+      and is usable without the app.
+    links:
+      - kind: docs
+        url: https://github.com/cjpais/transcribe-rs
+        title: "transcribe-rs, the engine underneath"
+
+  - name: screenpipe
+    repository: https://github.com/screenpipe/screenpipe
+    topics: [applications]
+    rust: rust-core
+    note: >
+      Continuous local screen and audio capture, piped into agent context. The capture and
+      indexing pipeline is Rust; the app surface around it is TypeScript. YC S26.
+
+  - name: koharu
+    repository: https://github.com/koharu-rs/koharu
+    topics: [applications]
+    rust: rust-core
+    note: >
+      A manga translator -- detection, OCR and translation. The frontend is TypeScript in Tauri
+      and the entire ML pipeline underneath it is Rust on candle, which makes it a complete ML
+      application in Rust end to end. The author's writeup is worth reading if you are considering
+      the same.
+    links:
+      - kind: post
+        url: https://old.reddit.com/r/rust/comments/1r5219g/technology_behind_koharu_building_a_purerust_ml/
+        title: "Building a pure-Rust ML application"
+
+  - name: Moshi
+    repository: https://github.com/kyutai-labs/moshi
+    topics: [models-inference]
+    rust: rust-core
+    note: >
+      Kyutai's speech-text foundation model. The research and training side is Python; the
+      production inference stack was moved from PyTorch to Rust on candle, and served 500,000
+      sessions from a low-cost GPU cluster. One of Moshi's authors is candle's primary author.
+
+closed_source:
+  - name: Cloudflare Infire
+    url: https://blog.cloudflare.com/cloudflares-most-efficient-ai-inference-engine/
+    note: >
+      The LLM inference engine behind Workers AI, written in Rust. Cloudflare published it as up to
+      7% faster than vLLM 0.10 on an H100 NVL.

@@ -1,6 +1,7 @@
 _site
 _tmp
 _data/crates_generated.yaml
+_data/apps_generated.yaml
 .sass-cache
 .jekyll-cache
 .jekyll-metadata
