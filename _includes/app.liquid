@@ -1,0 +1,48 @@
+{% comment %}
+  One showcase entry, in the catalog entry's markup and classes so both pages render the same card
+  with no new CSS. A separate file rather than a branch in `crate.liquid`: the heading is a product
+  name, not a repository slug, there is no featured tier here, and the facts are different facts.
+{% endcomment %}
+<div class="crate crate-{{ app.tier | escape }}">
+  <h3>
+    {{ app.name | escape }}
+    {%- if app.repo.url %} <span class="crate-links-inline">[<a href="{% assign href_url = app.repo.url %}{% include "href.liquid" %}">repo</a>]</span>{% endif -%}
+  </h3>
+
+  <div class="crate-body">
+    <p class="crate-featured-note">{% assign prose = app.note %}{% include "prose.liquid" %}</p>
+
+    {% if app.tier == 'archive' %}
+    <p class="crate-because">
+      <b>Archived</b>: {{ app.because | escape | replace: '_', ' ' }}{% if app.status_date %}, as of {{ app.status_date | escape }}{% endif %}.
+      {% if app.auto_archived %}Detected automatically, and it un-archives itself if that changes.{% endif %}
+      {% if app.replacement %}Use <b>{{ app.replacement | escape }}</b> instead.{% endif %}
+      {% if app.evidence %}<a href="{% assign href_url = app.evidence %}{% include "href.liquid" %}">Evidence</a>.{% endif %}
+    </p>
+    {% endif %}
+
+    {% if app.links %}
+    <div class="crate-links">
+      {% for link in app.links %}
+      <a class="crate-link" href="{% assign href_url = link.url %}{% include "href.liquid" %}"><span class="crate-link-kind">{{ link.kind | escape }}</span>{{ link.title | escape | replace: "--", "—" }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+
+  {% comment %}
+    `rust` first: the one a reader came for and the one no metric produced. `created` earns a row
+    here because a star count means something different at six months than at six years. The
+    contributor count is fetched and deliberately not printed: GitHub caps the endpoint at one page,
+    so ten large projects read 93, 95, 98, 98, 99, 100 -- a page size that looks like a measurement.
+  {% endcomment %}
+  <dl class="crate-stats">
+    <dt>rust</dt><dd>{% if app.rust == 'pure-rust' %}end to end{% else %}the core{% endif %}</dd>
+    {%- if app.signals.stars -%}{%- assign st = app.signals.stars -%}{%- unless st == 0 -%}
+      <dt>stars</dt><dd>{% if st >= 1000 %}{{ st | divided_by: 100.0 | round: 0 | divided_by: 10.0 }}k{% else %}{{ st }}{% endif %}</dd>
+    {%- endunless -%}{%- endif -%}
+    {%- if app.signals.last_real_commit %}<dt>last commit</dt><dd>{{ app.signals.last_real_commit | split: "T" | first | escape }}</dd>{% endif -%}
+    {%- if app.signals.first_published %}<dt>created</dt><dd>{{ app.signals.first_published | split: "T" | first | escape }}</dd>{% endif -%}
+    {%- if app.verified_by %}<dt>verified</dt><dd>{{ app.verified_by | escape }}</dd>{% endif -%}
+  </dl>
+</div>

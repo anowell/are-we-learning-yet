@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% comment %} Cobalt has no redirect support, so an old permalink is served as a stub. {% endcomment %}
+  <meta http-equiv="refresh" content="5; url={% assign href_url = page.data.redirect_to %}{% include "href.liquid" %}">
+  <meta name="robots" content="noindex, follow">
+  <title>{{ page.title | escape }} has moved</title>
+  <link rel="canonical" href="{{ page.data.redirect_to | prepend: site.base_url | escape }}">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+  {% include "header.liquid" %}
+
+  <article class="container post">
+
+    <header class="post-header">
+      <h1 class="post-title">{{ page.title | escape }} has moved</h1>
+    </header>
+
+    <div class="followup">
+      This page is now part of
+      <a href="{% assign href_url = page.data.redirect_to %}{% include "href.liquid" %}"><b>{{ page.data.redirect_title | escape }}</b></a>.
+      <br>
+      Your browser will go there in a few seconds.
+    </div>
+
+    <div class="post-content">
+      {{ page.content }}
+    </div>
+
+  </article>
+  {% include "footer.liquid" %}
+
+</body>
+
+</html>

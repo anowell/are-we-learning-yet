@@ -3,13 +3,29 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
-  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+  {%- comment -%} Cobalt derives a title from the filename when front matter has none, so the
+    homepage rendered as "Index" everywhere and no other page named the site. {%- endcomment -%}
+  {%- assign page_title = page.title | default: site.title -%}
+  <title>{% if page_title == site.title %}{{ site.title | escape }} &mdash; the state of machine learning in Rust{% else %}{{ page_title | escape }} &mdash; {{ site.title | escape }}{% endif %}</title>
+  {%- comment -%}
+    An excerpt carries the markdown source's line wraps, and `strip_newlines` joins them with no
+    separator -- /gpu/ shipped "Metal,DirectX 12" -- so the split and join below is that operation
+    with a space. Truncating before the escape keeps the 160 counting characters rather than the
+    middle of an entity. The site-wide fallback is not truncated: it was written to be a
+    description, and cutting it left every prose page ending mid-clause.
+  {%- endcomment -%}
+  {%- capture newline %}
+{% endcapture -%}
+  {%- if page.excerpt -%}
+    {%- assign meta_description = page.excerpt | strip_html | split: newline | join: " " | strip | truncate: 160 -%}
+  {%- else -%}
+    {%- assign meta_description = site.description | split: newline | join: " " | strip -%}
+  {%- endif %}
+  <meta name="description" content="{{ meta_description | escape }}">
 
-  <link rel="stylesheet" href="/css/flexboxgrid.min.css">
   <link rel="stylesheet" href="/css/main.css">
 
-  <link rel="canonical" href="{{ page.permalink | replace:'index.html','' | prepend: '/' | prepend: site.base_url }}">
+  <link rel="canonical" href="{{ page.permalink | replace:'index.html','' | prepend: '/' | prepend: site.base_url | escape }}">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">

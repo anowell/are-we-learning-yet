@@ -1,12 +1,489 @@
-- clustering
-- data-preprocessing
-- data-structures
-- decision-trees
-- gpu-computing
-- linear-classifiers
-- metaheuristics
-- mlops
-- nerual-networks
-- nlp
-- reinforcement-learning
-- scientific-computing
+# A color is a claim about the CATEGORY, not about the crates filed under it: would you choose
+# Rust for this problem, against any other language? A shelf full of excellent, production-ready
+# crates is still yellow if together they cover a sliver of what the category means.
+
+- id: llms
+  short: LLMs
+  title: LLMs & Foundation Models
+  tagline: Running, serving and adapting pretrained models.
+  color: yellow
+  sections:
+    - id: llm-serving
+      title: LLM inference & serving
+      color: yellow
+      verified: 2026-09-14
+      blurb: >-
+        Engines and OpenAI-compatible servers for open-weights models. Rust gets chosen here for
+        control over the low-level implementation details rather than for breadth of features --
+        Cloudflare's stated reason for writing its own inference engine in it.[1]
+      sources:
+        - src: "Cloudflare"
+          date: "2025-08-27"
+          url: "https://blog.cloudflare.com/cloudflares-most-efficient-ai-inference-engine/"
+          note: "the operator, explaining its own rewrite"
+    - id: structured-output
+      title: Structured output & constrained decoding
+      color: green
+      verified: 2026-09-14
+      blurb: >-
+        Forcing a model to emit valid JSON, a regex match or a grammar-conforming string. One Rust
+        engine does this job inside most of the Python inference servers you would otherwise reach
+        for.[1]
+      sources:
+        - src: "Guidance AI"
+          date: "2025-06-11"
+          url: "https://guidance-ai.github.io/llguidance/llg-go-brrr"
+          note: "the engine's maintainers, listing who embeds it"
+    - id: llm-clients
+      title: LLM clients & gateways
+      color: yellow
+      verified: 2026-09-14
+      blurb: >-
+        Talking to a model you did not host: provider SDKs, OpenAI-compatible clients, and the
+        gateways that sit in front of several providers at once. Every major provider is reachable
+        from Rust, but check who publishes the crate -- most of these are community efforts rather
+        than the vendor's own SDK.
+    - id: fine-tuning
+      title: Fine-tuning & post-training
+      color: red
+      verified: 2026-09-14
+      blurb: >-
+        Adapting a pretrained model to your data. Training and post-training still happen in Python,
+        and the common advice is to fine-tune elsewhere and serve the result from Rust.[1]
+      sources:
+        - src: "pzometa"
+          date: "2025-07-24"
+          url: "https://users.rust-lang.org/t/why-isn-t-rust-more-common-in-ai/132224"
+          note: "62 likes on the Rust users forum, an order of magnitude above that forum's norm"
+
+- id: agents
+  short: Agents
+  title: Agents, Tools & Context
+  tagline: Building applications on top of models.
+  color: yellow
+  sections:
+    - id: agent-frameworks
+      title: Agent frameworks
+      color: yellow
+      verified: 2026-09-14
+      blurb: >-
+        Libraries that wire a model to tools, memory and a control loop. The LangChain-port
+        generation has stopped, and one framework now carries most of the shelf.
+    - id: agent-protocols
+      title: Agent protocols (MCP & ACP)
+      color: green
+      verified: 2026-09-14
+      blurb: >-
+        Speaking MCP and ACP. Both protocols publish their official Rust SDK out of the protocol's
+        own organization, which makes Rust a reference implementation language here rather than a
+        port target.
+    - id: sandboxing
+      title: Sandboxing, browser & computer use
+      color: green
+      verified: 2026-09-14
+      blurb: >-
+        Running model-generated code, and driving a real browser or desktop. The isolation
+        primitives here are general-purpose Rust that the agent world adopted rather than built, and
+        the browser automation is drivers, not agents.
+    - id: agent-memory
+      title: Memory, state & durable execution
+      color: yellow
+      verified: 2026-09-14
+      blurb: >-
+        Keeping an agent's work alive across a crash, and keeping what it learned across a context
+        window. Durable execution is the part that works; memory is still a field of young
+        candidates rather than something you can default to.
+    - id: agent-observability
+      title: Observability & evaluation
+      color: red
+      verified: 2026-09-14
+      blurb: >-
+        Tracing an agent, scoring its output, and stopping it from saying something it should not --
+        a short shelf of young projects, none of which has become the obvious starting point.
+
+- id: retrieval
+  short: Retrieval
+  title: Retrieval, Embeddings & Search
+  tagline: Finding the right context.
+  color: green
+  sections:
+    - id: vector-search
+      title: Vector databases & ANN
+      color: green
+      verified: 2026-09-14
+      blurb: >-
+        Vector databases and the ANN index crates underneath them. Several of the best-known vector
+        databases are themselves written in Rust and publish first-party Rust clients.
+    - id: embeddings
+      title: Embeddings & rerankers
+      color: green
+      verified: 2026-09-14
+      blurb: >-
+        Turning text into vectors locally, and reordering the results afterwards. Well covered,
+        mostly by running an exported model through one of the inference runtimes.
+    - id: full-text-search
+      title: Full-text & hybrid search
+      color: green
+      verified: 2026-09-14
+      blurb: >-
+        Keyword search, and the lexical half of hybrid retrieval. Rust-native engines rather than
+        bindings, and mature enough that other search products are built on top of them.
+    - id: rag-pipelines
+      title: RAG pipelines
+      color: yellow
+      verified: 2026-09-14
+      blurb: >-
+        Chunking, ingesting and keeping a corpus in sync with an index. The chunking primitives are
+        solid; the pipeline frameworks above them are not, so most Rust RAG is assembled by hand out
+        of the shelves either side of this one.
+    - id: document-ai
+      title: OCR & document AI
+      color: yellow
+      verified: 2026-09-14
+      blurb: >-
+        Turning a PDF, an image or an Office file into text. Extraction and OCR are well covered,
+        including by company-backed Rust parsers; table structure, handwriting and non-Latin scripts
+        are not on this shelf.
+
+- id: deep-learning
+  short: Deep learning
+  title: Deep Learning & Training
+  tagline: Define a model, differentiate it, train it.
+  color: yellow
+  sections:
+    - id: dl-frameworks
+      title: Deep learning frameworks
+      color: yellow
+      verified: 2026-09-14
+      blurb: >-
+        Defining a model in Rust and training it there. The segment is one full-featured framework
+        deep, and that framework's own book is candid about the gaps that remain.[1]
+      sources:
+        - src: "Tracel AI"
+          url: "https://github.com/tracel-ai/burn/blob/main/burn-book/src/performance/quantization.md"
+          note: "the project admitting its own gap"
+    - id: tensors-autodiff
+      title: Tensors & autodiff
+      color: red
+      verified: 2026-09-14
+      blurb: >-
+        Standalone tensors and automatic differentiation outside a deep learning framework. The
+        framework-attached answer lives on the shelf above; the compiler-level one is still being
+        built inside rustc, and the two do not compose.
+    - id: training-infra
+      title: Training infrastructure
+      color: yellow
+      verified: 2026-09-14
+      blurb: >-
+        Dataloaders, mixed precision, checkpoints and distributed training. Most of what works here
+        belongs to the one training framework; outside it the shelf is thin.
+
+- id: inference
+  short: Inference
+  title: Model Inference & Runtimes
+  tagline: Run a model that was trained somewhere else.
+  color: green
+  sections:
+    - id: model-runtimes
+      title: ONNX & general runtimes
+      color: green
+      verified: 2026-09-14
+      blurb: >-
+        Loading a model somebody else trained and running it. This is the use the Rust community
+        most consistently recommends the language for,[1] though operator coverage varies between
+        engines, so check your model before committing.
+      sources:
+        - src: "pzometa"
+          date: "2025-07-24"
+          url: "https://users.rust-lang.org/t/why-isn-t-rust-more-common-in-ai/132224"
+          note: "62 likes on the Rust users forum, an order of magnitude above that forum's norm"
+    - id: model-plumbing
+      title: Tokenizers, formats & model plumbing
+      color: green
+      verified: 2026-09-14
+      blurb: >-
+        Tokenizers, weight formats, hub clients and the glue between them. Much of the Python
+        machine learning stack already runs on these crates without its users noticing.
+    - id: edge-inference
+      title: Edge, embedded & browser
+      color: red
+      verified: 2026-09-14
+      blurb: >-
+        tinyML on microcontrollers, WASM and WebGPU in the browser, and mobile runtimes. The browser
+        and microcontroller projects here have largely stalled; what still works is compiling a CPU
+        runtime to WASM.
+
+- id: classical-ml
+  short: Classical
+  title: Classical ML & Statistics
+  tagline: The scikit-learn shelf, plus what Rust is actually good at.
+  color: yellow
+  sections:
+    - id: ml-toolkits
+      title: ML toolkits & linear models
+      color: yellow
+      verified: 2026-09-14
+      blurb: >-
+        The scikit-learn-shaped shelf: the general-purpose toolkits you reach for first. What is
+        maintained here is real, but the generation of toolkits a 2016 tutorial would have
+        recommended is archived.
+    - id: gradient-boosting
+      title: Gradient boosting & trees
+      color: yellow
+      verified: 2026-09-14
+      blurb: >-
+        Decision trees, random forests and gradient-boosted ensembles. The capability is present in
+        both pure-Rust and binding form; the XGBoost-bindings generation before it is archived.
+    - id: clustering
+      title: Clustering, dim-reduction & nearest neighbors
+      color: green
+      verified: 2026-09-14
+      blurb: >-
+        k-means, DBSCAN and HDBSCAN, dimensionality reduction, and the k-d and ball trees underneath
+        them. Long-settled capability, and one of the few classical-ML shelves where you are spoiled
+        for choice.
+    - id: statistics
+      title: Statistics
+      color: yellow
+      verified: 2026-09-14
+      blurb: >-
+        Distributions, summary statistics, hypothesis tests and correlations. The first two are well
+        served in Rust; inferential statistics and regression diagnostics are not.
+    - id: bayesian
+      title: Bayesian & probabilistic modeling
+      color: yellow
+      verified: 2026-09-14
+      blurb: >-
+        Bayesian and probabilistic modeling. This is a shelf of pieces -- priors, samplers, filters,
+        processes, changepoints -- that you assemble yourself, rather than a framework you adopt.
+    - id: time-series
+      title: Time series & anomaly detection
+      color: yellow
+      verified: 2026-09-14
+      blurb: >-
+        Forecasting, decomposition and anomaly detection. Essentially one broad project, with a
+        scattering of single-algorithm crates around it.
+    - id: optimization
+      title: Optimization
+      color: green
+      verified: 2026-09-14
+      blurb: >-
+        Linear and mixed-integer programming, convex conic solvers, and derivative-free and
+        gradient-based optimizers. Rust is load-bearing outside Rust here: the standard Python
+        convex-optimization package made a Rust solver its default.[1]
+      sources:
+        - src: "CVXPY"
+          date: "2023-09-24"
+          url: "https://github.com/cvxpy/cvxpy/pull/2233"
+          note: "CVXPY's maintainers, on their own default solver"
+    - id: reinforcement-learning
+      title: Reinforcement learning
+      color: red
+      verified: 2026-09-14
+      blurb: >-
+        Agents, environments and algorithm implementations for reinforcement learning -- a short
+        shelf of mostly single-author projects, with no settled starting point on it.
+
+- id: data
+  short: Data
+  title: Data & Dataframes
+  tagline: The data layer -- mostly consumed from Python.
+  color: green
+  sections:
+    - id: dataframes
+      title: Dataframes & query engines
+      color: green
+      verified: 2026-09-14
+      blurb: >-
+        Dataframes and the query engines under them. Production-grade and Rust-native, though
+        several are Rust cores with Python-first APIs -- check that the Rust API is first-class
+        before you build on it.
+    - id: lakehouse
+      title: Lakehouse & columnar formats
+      color: green
+      verified: 2026-09-14
+      blurb: >-
+        Columnar formats and the table layers above them. Arrow is the interchange format that lets
+        everything else on this page talk to everything else, and its Rust implementation is one the
+        Apache project maintains itself.
+    - id: datasets
+      title: Datasets, formats & loading
+      color: yellow
+      verified: 2026-09-14
+      blurb: >-
+        Getting data into a model: file formats, array stores on object storage, and the Hugging
+        Face Hub. The ordinary formats are covered; dataloaders and data versioning are much
+        thinner.
+    - id: streaming
+      title: Pipelines & streaming
+      color: yellow
+      verified: 2026-09-14
+      blurb: >-
+        Stream processing engines and data pipelines. Several of the best-known streaming systems
+        are written in Rust, but they are servers you deploy rather than crates you build with.
+
+- id: scientific-computing
+  short: Numerical
+  title: Numerical & Scientific Computing
+  tagline: The foundations under machine learning.
+  color: yellow
+  sections:
+    - id: arrays-linalg
+      title: Arrays & linear algebra
+      color: yellow
+      verified: 2026-09-14
+      blurb: >-
+        Rust's NumPy-shaped shelf. There are several good array libraries and bridges between them,
+        but they do not share implementations,[1] and the Rust project has deliberately declined to
+        bless one.[2]
+      sources:
+        - src: "sarah-ek"
+          date: "2024-04-24"
+          url: "https://news.ycombinator.com/item?id=40143669"
+          note: "faer's author, on all three libraries"
+        - src: "rust-lang/rust-project-goals"
+          url: "https://github.com/rust-lang/rust-project-goals/blob/main/src/2026/high-level-ml.md"
+          note: "an accepted project goal, stating the reason"
+    - id: numerical-methods
+      title: Numerical methods & special functions
+      color: yellow
+      verified: 2026-09-14
+      blurb: >-
+        ODE solvers, transforms, quadrature, root finding and special functions. Real capability,
+        scattered across many small crates, plus a recent wave of one-person umbrella projects
+        trying to gather it up.
+    - id: domain-science
+      title: Domain science (bio & geo)
+      color: green
+      verified: 2026-09-14
+      blurb: >-
+        Bioinformatics, geospatial and computational chemistry. Genomics and geospatial each have a
+        broad, maintained, pure-Rust stack behind a long-running umbrella project.
+    - id: plotting
+      title: Plotting, visualization & notebooks
+      color: yellow
+      verified: 2026-09-14
+      blurb: >-
+        Charts, dashboards and notebook output. The crate most searches land on has been abandoned
+        by its own maintainer,[1] and what is alive here mostly wraps mature JavaScript charting.
+      sources:
+        - src: "@AaronErhardt"
+          date: "2025-08-18"
+          url: "https://github.com/plotters-rs/plotters/issues/702"
+          note: "the maintainer, on his own project"
+    - id: python-interop
+      title: Python interop
+      color: green
+      verified: 2026-09-14
+      blurb: >-
+        Crossing the Rust/Python boundary, and the zero-copy formats for moving tensors and tables
+        across it. Note the asymmetry: shipping a Rust library to Python is a well-trodden path, and
+        going the other way is not.
+
+- id: gpu
+  short: GPU
+  title: GPU & Accelerators
+  tagline: Can I write and run GPU code in Rust?
+  color: yellow
+  sections:
+    - id: gpu-kernels
+      title: Kernel languages & GPU compilers
+      color: yellow
+      verified: 2026-09-14
+      blurb: >-
+        Writing the kernel itself in Rust rather than driving one from it. Rust can now compile to
+        the GPU,[1] and NVIDIA ships Rust tracks inside CUDA while saying plainly that neither is
+        production-ready.[2]
+      sources:
+        - src: "Drehwald et al."
+          date: "2026-08-13"
+          url: "https://arxiv.org/abs/2608.13759"
+          note: "a compiler paper, 245 points on Hacker News"
+        - src: "NVIDIA"
+          date: "2026-09-08"
+          url: "https://developer.nvidia.com/blog/introducing-cuda-rust-two-tracks-for-writing-gpu-kernels/"
+          note: "the vendor, limiting its own product"
+    - id: gpu-runtimes
+      title: Vendor runtimes & portable compute
+      color: green
+      verified: 2026-09-14
+      blurb: >-
+        Driving a GPU from Rust: vendor runtimes, and the portable compute APIs layered over them.
+        The current generation is maintained and shipping inside production software; the pre-2022
+        generation of wrappers below it is not.
+    - id: distributed-gpu
+      title: Distributed & multi-GPU
+      color: red
+      verified: 2026-09-14
+      blurb: >-
+        Scaling past one device. Bindings to the collective-communication libraries exist and one
+        Rust framework has shipped differentiable collectives, but nothing above them is assembled
+        into a distributed-training stack.
+
+- id: modalities
+  short: Modalities
+  title: Modalities & Domains
+  tagline: Vertical applications -- vision, speech, text, robotics.
+  color: yellow
+  sections:
+    - id: computer-vision
+      title: Computer vision
+      color: yellow
+      verified: 2026-09-14
+      blurb: >-
+        Running vision models, and the classical image and geometry work around them. Inference and
+        image primitives are healthy; the geometric side has solvers, but no maintained end-to-end
+        pipeline built on them.
+    - id: speech-audio
+      title: Speech & audio
+      color: green
+      verified: 2026-09-14
+      blurb: >-
+        Speech recognition, synthesis, and the DSP layer beneath them. The main toolkit here ships
+        official Rust bindings across recognition and synthesis alike,[1] and the audio primitives
+        below it are Rust's home ground.
+      sources:
+        - src: "k2-fsa/sherpa-onnx"
+          url: "https://github.com/k2-fsa/sherpa-onnx/tree/master/rust-api-examples"
+          note: "the toolkit's own repository"
+    - id: text-processing
+      title: Text processing & tokenization
+      color: green
+      verified: 2026-09-14
+      blurb: >-
+        Tokenizers, segmenters, stemmers and language detectors -- for language models, see the LLM
+        and inference hubs. The infrastructure half of NLP is fast and maintained in Rust; the
+        pre-transformer modeling libraries are still listed, but dormant.
+    - id: generative-media
+      title: Generative media
+      color: red
+      verified: 2026-09-14
+      blurb: >-
+        Image, video and audio generation from a model. Generating an image from Rust means a
+        binding to a C++ engine or an example inside a general inference framework, and nothing on
+        this shelf generates video.
+    - id: robotics
+      title: Robotics & embodied AI
+      color: yellow
+      verified: 2026-09-14
+      blurb: >-
+        Middleware, drivers, simulation and visualization for robots. ROS 2's own documentation
+        lists Zenoh, a Rust protocol implementation, among its middleware options;[1] the learned
+        half of embodied AI is not on this shelf.
+      sources:
+        - src: "ROS 2"
+          url: "https://github.com/ros2/ros2_documentation/blob/rolling/source/ROS-Framework/client-libraries/About-Middleware-Implementations.rst"
+          note: "the ROS 2 project's own documentation"
+    - id: safety-privacy
+      title: Safety, privacy & supply chain
+      color: yellow
+      verified: 2026-09-14
+      blurb: >-
+        Keeping models and agents from leaking, lying or shipping malware. The supply-chain half is
+        adoptable today -- a Rust weights format took the pickle attack surface off the table, and
+        PyTorch has since changed its own default[1] -- while the model-facing half is gaps rather
+        than categories.
+      sources:
+        - src: "PyTorch"
+          url: "https://docs.pytorch.org/docs/2.14/generated/torch.load.html"
+          note: "the incumbent, conceding the point in its own docs"

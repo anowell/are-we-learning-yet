@@ -1,0 +1,130 @@
+{%- comment -%}
+  An inline crate reference in prose, and the card of scraped facts behind it. `xref` is the entry's
+  `id` in `_data/crates_generated.yaml` -- the crate name, or the repository URL for a repo-only
+  entry -- and `_scraper/src/xref.rs` fails the scrape on one that resolves to nothing. Every fact
+  here, maintenance notices included, comes from the scrape, so no sentence carries a number that
+  rots.
+
+  The crate name is in the DOM twice, one control per input modality with CSS showing exactly one
+  (_sass/_xref.scss). The unused control and the resting card are `display: none` rather than
+  invisible, which keeps them out of the tab order and the accessibility tree.
+
+  Cobalt errors on an unknown index in an `assign` or an output tag -- a repo-only entry has no
+  `meta` key at all -- where the same read inside `{% if %}` is merely falsey, so every optional
+  field below is tested first or read inside a `capture`.
+
+  LIQUID `assign` IS GLOBAL AND HAS NO SCOPES: a variable assigned inside an include leaks into
+  everything rendered afterwards. This is the canonical note; the other includes point here. Every
+  name below is prefixed `xref_` and cleared on the way out. `xref` used to survive, so a typo'd
+  assign built cleanly and rendered the PREVIOUS reference's crate, numbers and all -- which
+  xref.rs cannot catch, a stale value being a valid catalog id. `xref_seq` is the one deliberate
+  survivor: it makes each checkbox `id` unique, and a stale value is a larger number, never a wrong
+  one. It is initialized through `{% unless %}` because cobalt errors on an unknown variable in an
+  `assign`, which took /classical-ml/ down.
+{%- endcomment -%}
+{%- assign xref_found = false -%}
+{%- for xref_c in site.data.crates_generated -%}
+  {%- if xref_c.id == xref -%}{%- assign xref_found = true -%}{%- assign crate = xref_c -%}{%- endif -%}
+{%- endfor -%}
+{%- if xref_found -%}
+  {%- assign xref_topic = crate.topics | first -%}
+  {%- assign xref_href = "" -%}
+  {%- assign xref_where = "" -%}
+  {%- for xref_hub in site.data.topics -%}{%- for xref_section in xref_hub.sections -%}
+    {%- if xref_section.id == xref_topic -%}
+      {%- capture xref_href %}/{{ xref_hub.id }}/#{{ xref_section.id }}{% endcapture -%}
+      {%- assign xref_where = xref_section.title -%}
+    {%- endif -%}
+  {%- endfor -%}{%- endfor -%}
+  {%- capture xref_name -%}{% if crate.meta.name %}{{ crate.meta.name }}{% elsif crate.repo.name %}{{ crate.repo.name }}{% else %}{{ crate.id }}{% endif %}{%- endcapture -%}
+  {%- unless xref_seq -%}{%- assign xref_seq = 0 -%}{%- endunless -%}{%- assign xref_seq = xref_seq | plus: 1 -%}
+
+  {%- comment -%}
+    Derived, never authored: each notice is a scraped field read through a threshold tier.rs owns,
+    so a stable release or a human commit clears it on the next build with no page edited.
+
+    Whole months, because cobalt's `date` filter does not parse the RFC3339 stamps in
+    crates_generated.yaml (measured: it returns them unchanged), so there is no epoch to subtract.
+    `> 12` against ACTIVITY_DAYS rounds safe: a notice can fire a month late, never early.
+  {%- endcomment -%}
+  {%- assign xref_months = "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec" | split: "," -%}
+  {%- assign xref_now_m = site.time | date: "%m" | plus: 0 -%}
+  {%- assign xref_now_mo = site.time | date: "%Y" | plus: 0 | times: 12 | plus: xref_now_m -%}
+
+  {%- assign xref_pub_at = "" -%}
+  {%- if crate.signals.last_published -%}
+    {%- assign xref_bits = crate.signals.last_published | split: "-" -%}
+    {%- assign xref_y = xref_bits[0] | plus: 0 -%}
+    {%- assign xref_m = xref_bits[1] | plus: 0 -%}
+    {%- assign xref_age = xref_y | times: 12 | plus: xref_m -%}
+    {%- assign xref_age = xref_now_mo | minus: xref_age -%}
+    {%- if xref_age > 12 -%}
+      {%- assign xref_i = xref_m | minus: 1 -%}
+      {%- capture xref_pub_at %}{{ xref_months[xref_i] }} {{ xref_y }}{% endcapture -%}
+    {%- endif -%}
+  {%- endif -%}
+
+  {%- assign xref_com_at = "" -%}
+  {%- if crate.signals.last_real_commit -%}
+    {%- assign xref_bits = crate.signals.last_real_commit | split: "-" -%}
+    {%- assign xref_y = xref_bits[0] | plus: 0 -%}
+    {%- assign xref_m = xref_bits[1] | plus: 0 -%}
+    {%- assign xref_age = xref_y | times: 12 | plus: xref_m -%}
+    {%- assign xref_age = xref_now_mo | minus: xref_age -%}
+    {%- if xref_age > 12 -%}
+      {%- assign xref_i = xref_m | minus: 1 -%}
+      {%- capture xref_com_at %}{{ xref_months[xref_i] }} {{ xref_y }}{% endcapture -%}
+    {%- endif -%}
+  {%- endif -%}
+
+  {%- comment -%}
+    `max_stable_version` is the field, not a hunt for a hyphen in `max_version`: crates.io reports
+    it null when every published version is a pre-release, which is `ort` on 2.0.0-rc.13 since 2024.
+  {%- endcomment -%}
+  {%- capture xref_no_stable -%}{% if crate.meta.max_version %}{% unless crate.meta.max_stable_version %}{{ crate.meta.max_version | escape }}{% endunless %}{% endif %}{%- endcapture -%}
+
+  {%- comment -%} Only an archive reason no signal can produce: where a trigger fired, the signal itself is already above this in plainer words. {%- endcomment -%}
+  {%- capture xref_archived_as -%}{% if crate.tier == "archive" %}{% if crate.because == "superseded" or crate.because == "deprecated_upstream" or crate.because == "does_not_build" or crate.because == "no_longer_meets_criteria" %}{{ crate.because | escape | replace: "_", " " }}{% endif %}{% endif %}{%- endcapture -%}
+
+  {%- comment -%}
+    Descending consequence, cut to three: a fourth line stops being an advisory and becomes an
+    indictment, and the reference leads to the entry, which prints all of them. One notice per
+    `|`-separated field; the trailing separator's empty field is always last, so `limit: 3` counting
+    it can only displace a notice that does not exist.
+  {%- endcomment -%}
+  {%- capture xref_notice_src -%}
+  {%- if crate.signals.unreachable -%}Neither this crate nor its repository resolves any more.|
+  {%- elsif crate.signals.removed -%}No longer resolves on crates.io.|{%- endif -%}
+  {%- if crate.signals.yanked -%}The most recent release has been yanked.|{%- endif -%}
+  {%- if crate.signals.repo_archived -%}The repository is archived by its owner.|{%- endif -%}
+  {%- if crate.signals.rustsec_unmaintained -%}RustSec carries an <em>unmaintained</em> advisory for this crate.|{%- endif -%}
+  {%- unless xref_archived_as == "" -%}Archived in this catalog as {{ xref_archived_as }}.{% if crate.replacement %} Use <code>{{ crate.replacement | escape }}</code> instead.{% endif %}|{%- endunless -%}
+  {%- unless xref_no_stable == "" -%}No stable release: the newest version is <code>{{ xref_no_stable }}</code>.|{%- endunless -%}
+  {%- if crate.signals.finished -%}
+    {%- unless xref_pub_at == "" and xref_com_at == "" -%}Quiet on purpose: the catalog records this crate as finished, not abandoned.|{%- endunless -%}
+  {%- else -%}
+    {%- unless xref_pub_at == "" -%}Last shipped {{ xref_pub_at }}.|{%- endunless -%}
+    {%- unless xref_com_at == "" -%}Untouched since {{ xref_com_at }} &mdash; no commit by a human since then.|{%- endunless -%}
+  {%- endif -%}
+  {%- if crate.stale_since -%}Featured here on {{ crate.stale_since | escape }} and not re-verified since.|{%- endif -%}
+  {%- if crate.tier == "watch" -%}Filed as new &amp; experimental: it does not clear this site's listing bar.|{%- endif -%}
+  {%- endcapture -%}
+  {%- assign xref_notices = xref_notice_src | split: "|" -%}
+
+  {%- comment -%}
+    The checkbox `id` is the sequence number alone: a repo-only entry's catalog id is a URL, and
+    `id="xref-https://..."` is valid but reachable by no CSS selector. The label's clipped phrase
+    joins its accessible name, because "ort, checkbox" does not say what checking it does.
+  {%- endcomment -%}
+  <span class="xref"><a class="xref-link" href="{{ xref_href | escape }}"><code>{{ xref_name | escape }}</code></a><input class="xref-toggle" type="checkbox" id="xref-{{ xref_seq }}"><label class="xref-tap" for="xref-{{ xref_seq }}"><code>{{ xref_name | escape }}</code><span class="visually-hidden"> &mdash; show catalog details</span></label><span class="xref-card"><span class="xref-card-head">{{ xref_name | escape }} &middot; {{ xref_where | escape }}</span>{% if xref_notices.size > 0 %}<span class="xref-notices">{% for xref_note in xref_notices limit: 3 %}{% unless xref_note == "" %}<span class="xref-notice">{{ xref_note }}</span>{% endunless %}{% endfor %}</span>{% endif %}{% assign stats_phrasing = true %}{% include "cratestats.liquid" %}<a class="xref-card-link" href="{{ xref_href | escape }}">Open {{ xref_name | escape }} in the catalog</a><span class="xref-card-foot">Last scraped on {{ site.time | date: "%b %-d, %Y" }}</span></span></span>
+{%- else -%}
+  <strong class="xref-missing">[no catalog entry: {{ xref | escape }}]</strong>
+{%- endif -%}
+{%- assign xref = "" -%}{%- assign xref_found = false -%}{%- assign xref_name = "" -%}
+{%- assign xref_topic = "" -%}{%- assign xref_href = "" -%}{%- assign xref_where = "" -%}
+{%- assign xref_notice_src = "" -%}{%- assign xref_notices = "" -%}{%- assign xref_note = "" -%}
+{%- assign xref_pub_at = "" -%}{%- assign xref_com_at = "" -%}{%- assign xref_no_stable = "" -%}
+{%- assign xref_archived_as = "" -%}{%- assign xref_bits = "" -%}{%- assign xref_months = "" -%}
+{%- assign xref_y = 0 -%}{%- assign xref_m = 0 -%}{%- assign xref_i = 0 -%}{%- assign xref_age = 0 -%}
+{%- assign xref_now_m = 0 -%}{%- assign xref_now_mo = 0 -%}
+{%- assign crate = "" -%}{%- assign stats_phrasing = false -%}

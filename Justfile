@@ -5,6 +5,10 @@ set dotenv-load := true
 scrape:
   cargo run --release --manifest-path _scraper/Cargo.toml -- _data/crates.yaml
 
+# Resolve one repository URL through the forge layer (github / codeberg / gitlab) and print it
+probe url:
+  cargo run --release --manifest-path _scraper/Cargo.toml -- --probe {{url}}
+
 # Build the static site into _site
 build: scrape
   cobalt build
@@ -20,5 +24,5 @@ check:
 
 # Drop generated data and the scraper's HTTP response cache
 clean:
-  rm -f _data/crates_generated.yaml
+  rm -f _data/crates_generated.yaml _data/apps_generated.yaml
   rm -rf _tmp

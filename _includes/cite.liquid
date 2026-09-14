@@ -1,0 +1,17 @@
+{%- comment -%}
+  A source marker: the small link after a claim saying where the claim came from. `cite_date` is
+  optional by rule -- a dated source carries its date, a living document carries none, because a
+  date on one would be a claim that is not true. All three names are cleared on exit (Liquid
+  `assign` is global, see cratecard.liquid), which is what stops a dateless marker inheriting the
+  date above it. A page using this opens by assigning the three "": Liquid errors on an unassigned
+  name.
+{%- endcomment -%}
+{%- assign cite_url_len = cite_url | size -%}
+{%- assign cite_src_len = cite_src | size -%}
+{%- assign cite_date_len = cite_date | size -%}
+{%- if cite_url_len > 0 and cite_src_len > 0 -%}
+<a class="cite" href="{{ cite_url | escape }}">{{ cite_src | escape }}{% if cite_date_len > 0 %}, {{ cite_date | escape }}{% endif %}&#160;<span class="cite-mark" aria-hidden="true">&#8599;</span></a>
+{%- else -%}
+<strong class="cite-missing">[no source]</strong>
+{%- endif -%}
+{%- assign cite_url = "" -%}{%- assign cite_src = "" -%}{%- assign cite_date = "" -%}

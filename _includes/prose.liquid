@@ -1,0 +1,33 @@
+{%- comment -%}
+  One field of hand-written prose from _data/*.yaml. Plain YAML strings, not markdown: escaped
+  FIRST and transformed after, so the only markup an author can produce is <code> and a source
+  marker, and a Rust generic like Array3<u8> survives as text.
+
+  A shelf blurb is a YAML scalar and cannot include a template, so its sources hang off the section
+  as data and the blurb carries bare `[1]` markers. The caller passes `prose_sources` and
+  `prose_key`; both are cleared on the way out (Liquid `assign` is global -- see cratecard.liquid).
+  A marker is replaced only when its number names a real source, so `[a]` and a bare `[` are left
+  alone, and the pass runs per non-code chunk so a `[1]` inside `code` stays literal. It walks the
+  sources backwards, or `[1]` would eat the first two characters of `[10]`.
+{%- endcomment -%}
+{%- unless prose_sources -%}{%- assign prose_sources = "" -%}{%- endunless -%}
+{%- unless prose_key -%}{%- assign prose_key = "" -%}{%- endunless -%}
+{%- assign prose_nsrc = prose_sources | size -%}
+{%- assign _parts = prose | escape | replace: "--", "—" | split: "`" -%}
+{%- for _p in _parts -%}
+{%- assign _odd = forloop.index0 | modulo: 2 -%}
+{%- if _odd == 1 -%}<code>{{ _p }}</code>
+{%- elsif prose_nsrc == 0 -%}{{ _p }}
+{%- else -%}
+{%- assign _marked = _p -%}
+{%- assign _back = prose_sources | reverse -%}
+{%- for _s in _back -%}
+{%- assign _num = prose_nsrc | minus: forloop.index0 -%}
+{%- capture _from -%}[{{ _num }}]{%- endcapture -%}
+{%- capture _to -%}<a class="ref-mark" href="#src-{{ prose_key | escape }}-{{ _num }}"><span class="visually-hidden">Source </span><sup>{{ _num }}</sup><span class="visually-hidden">: {{ _s.src | escape }}</span></a>{%- endcapture -%}
+{%- assign _marked = _marked | replace: _from, _to -%}
+{%- endfor -%}
+{{ _marked }}
+{%- endif -%}
+{%- endfor -%}
+{%- assign prose_sources = "" -%}{%- assign prose_key = "" -%}

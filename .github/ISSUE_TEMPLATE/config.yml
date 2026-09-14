@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: How this site is maintained
+    url: https://arewelearningyet.com/about/
+    about: The four bands, the listing bar, the archive triggers, and why downloads and stars aren't in any of it.
+  - name: Rust ML Discord
+    url: https://discord.gg/c5yQWcZTng
+    about: Questions about which crate to use, or whether something exists yet. Faster than an issue.

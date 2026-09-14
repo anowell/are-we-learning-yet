@@ -1,507 +1,3280 @@
-# Crates listed in this file are used to generate crates_generated.yaml
+# Curation input. Everything measurable -- versions, downloads, stars, commits, the archived flag
+# -- is scraped on every build, so never type it here. The rubric: https://arewelearningyet.com/about/
 #
-# Notes:
-# - Entries are alphabetical by crate name
-# - Any value listed in this file will take precendence over the value retrieved from crates.io or the GitHub API
-#     This is especially useful for writing more complete descriptions
-# - Crates not published to crates.io can be added by 'repository', but will lack some generated data
-# - Crates with non-Github repos are fine, but will currently lack some generated data
-# - Topics are defined are defined in the _topics directory; new topics require new topic pages
+# An entry is a `name:` from crates.io and the `topics:` it belongs on, which are section ids from
+# topics.yaml. For a project that is not on crates.io, give `repository:` and `license:` instead of
+# `name:`. Every other field
+# OVERRIDES what the registry or the forge already publishes, so write one only when theirs is
+# missing or wrong -- and never put a maintenance claim or a statistic in a `description:`, because
+# the card renders those live from scraped data. `tier: featured` needs prose and a third-party
+# link; `tier: archive` is refused for anything a signal already detects on its own.
 
-- name: accel
-  topics: ["scientific-computing", "gpu-computing"]
+# ===== HUB 1 -- LLMs & Foundation Models =====
 
-- name: ai-dataloader
-  topics: ["data-preprocessing"]
+- name: async-openai
+  topics: ["llm-clients"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    The de-facto OpenAI API client. It is unofficial and one-maintainer, which is worth knowing,
+    because there is no official Rust SDK from OpenAI, Anthropic or Google -- AWS Bedrock is the
+    only first-party frontier-provider Rust client that exists. Its builder-heavy ergonomics are
+    the single most-complained-about thing in this corner of the ecosystem; if that grates,
+    `genai` is the thin multi-provider alternative.
+  links:
+    - kind: docs
+      url: "https://docs.rs/async-openai"
+      title: "async-openai API documentation"
+    - kind: post
+      url: "https://old.reddit.com/r/rust/comments/1rxz5dp/"
+      title: "r/rust on async-openai's ergonomics (161 upvotes, 2026-03-19)"
 
-- name: alumina
-  topics: ["neural-networks"]
+- name: anthropic-ai-sdk
+  topics: ["llm-clients"]
 
-- name: arff
-  topics: ["data-preprocessing"]
+- name: aws-sdk-bedrockruntime
+  topics: ["llm-clients"]
 
-- name: argmin
-  topics: ["scientific-computing", "metaheuristics"]
+- name: burn-lm
+  topics: ["llm-serving"]
 
-- name: arrayfire
-  topics: ["gpu-computing"]
+- repository: https://github.com/EricLBuehler/candle-lora
+  topics: ["fine-tuning"]
 
-- name: arrow
-  topics: ["data-preprocessing", "data-structures"]
+- name: candle-transformers
+  topics: ["llm-serving", "embeddings", "generative-media"]
+  description: >-
+    Reference model implementations for candle -- Llama, Qwen, Gemma, Mistral, Phi, RWKV, BERT/E5/GTE
+    for embeddings, plus Stable Diffusion and Flux -- with GGUF and GGML loading.
 
-- name: auto-diff
-  topics: ["neural-networks"]
+- name: dynamo-runtime
+  topics: ["llm-serving"]
 
-- name: autograd
-  topics: ["neural-networks"]
+- name: genai
+  topics: ["llm-clients"]
 
-- name: autograph
-  topics: ["neural-networks"]
+- name: github-copilot-sdk
+  topics: ["llm-clients"]
 
-- name: bacon-sci
-  topics: ["scientific-computing"]
+- name: llama-cpp-2
+  topics: ["llm-serving"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    The maintained llama.cpp binding, and the most-used LLM crate in Rust by a wide margin. It buys
+    you every GGUF quantization and every backend llama.cpp supports, at the cost of a C++ build in
+    your pipeline; it is the shortest path from zero to a running local model. Beware `llama_cpp`
+    (edgenai), an older deprecated crate with a confusingly similar name that people still find
+    first, and `llama-cpp-4`, a fork. If you want the same job done without linking C++, mistral.rs
+    is the pure-Rust path.
+  links:
+    - kind: production
+      url: "https://github.com/aaif-goose/goose/blob/main/crates/goose-local-inference/Cargo.toml"
+      title: "goose builds its local-inference crate on llama-cpp-2, with Metal, CUDA and Vulkan features"
+    - kind: production
+      url: "https://github.com/ente/ente/blob/main/rust/crates/ensu/Cargo.toml"
+      title: "Ente's ensu crate pins llama-cpp-2 exactly, per platform"
 
-- name: bio
-  topics: ["scientific-computing", "data-structures"]
+- name: llama_cpp
+  topics: ["llm-serving"]
+  description: "The llama.cpp binding people still find first -- use `llama-cpp-2` instead."
 
-- name: blas
-  topics: ["scientific-computing", "gpu-computing"]
+- name: llmfit
+  topics: ["llm-serving"]
 
-- name: burn
-  topics: ["neural-networks"]
+- name: liter-llm
+  topics: ["llm-clients"]
 
-- name: bvh
-  topics: ["data-structures"]
+- name: minijinja
+  topics: ["structured-output"]
 
-- name: candle-core
-  repository: https://github.com/huggingface/candle
-  description: "Minimalist ML framework with CUDA acceleration and quantization support"
-  topics: ["neural-networks"]
+- name: misanthropic
+  topics: ["llm-clients"]
 
-- name: cgmath
-  topics: ["scientific-computing"]
+- name: mistralrs
+  topics: ["llm-serving", "generative-media"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    The pure-Rust LLM and vision-language engine: built on candle, with PagedAttention, prefix
+    caching, speculative decoding, in-situ quantization and GGUF/GPTQ/AWQ/HQQ/FP8 weights, behind an
+    OpenAI- and Anthropic-compatible server. It has the broadest vision-model coverage in Rust --
+    Gemma 3, Idefics, Llama 4, Qwen-VL, Phi-4, Voxtral. Two caveats: its crates.io releases trail its
+    GitHub tags by months, so `cargo add mistralrs` gets older code than the repo; and its image
+    generation is Flux and only Flux, so it is not an answer to "generate an image from Rust".
+  links:
+    - kind: docs
+      url: "https://ericlbuehler.github.io/mistral.rs/"
+      title: "The mistral.rs book: quantization, PagedAttention, server API"
+    - kind: post
+      url: "https://simonwillison.net/2024/Oct/19/mistralrs/"
+      title: "Simon Willison writes up mistral.rs (2024-10-19)"
+    - kind: post
+      url: "https://old.reddit.com/r/rust/comments/1kb5wsf/thoughts_on_mistralrs/"
+      title: 'r/rust, "Thoughts on Mistral.rs?" -- the name confusion in its users'' own words (2025-04-30)'
 
-- name: clarabel
-  topics: ["scientific-computing"]
-  documentation: https://oxfordcontrol.github.io/ClarabelDocs/
+- name: llguidance
+  topics: ["structured-output"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    The clearest case anywhere of Rust being the substrate the Python AI stack runs on. llguidance
+    computes a token mask against a JSON Schema, regex or Lark grammar in roughly 50 microseconds on
+    a 128k-token vocabulary, and it is the constrained-decoding engine inside vLLM, SGLang,
+    llama.cpp, onnxruntime-genai, TensorRT-LLM, mistral.rs and Chromium. If you need a model to emit
+    something a parser will accept, this is the engine underneath most of the ways you could do it.
+  links:
+    - kind: post
+      url: "https://guidance-ai.github.io/llguidance/llg-go-brrr"
+      title: "Making Structured Outputs Go Brrr (2025-06-11)"
+    - kind: paper
+      url: "https://arxiv.org/abs/2501.10868"
+      title: "JSONSchemaBench / MaskBench: an independent constrained-decoding benchmark"
 
-- name: classifier
-  topics: ["linear-classifiers"]
+- name: ollama-rs
+  topics: ["llm-clients"]
 
-- name: clustering
-  topics: ["clustering"]
+- name: openai-api-rs
+  topics: ["llm-clients"]
 
-- name: coaster
-  topics: ["scientific-computing", "gpu-computing"]
+- name: outlines-core
+  topics: ["structured-output"]
 
-- name: cobyla
-  topics: ["scientific-computing", "metaheuristics"]
+- name: schemars
+  topics: ["structured-output"]
 
-- name: cogent
-  topics: ["neural-networks"]
+- name: xgrammar
+  topics: ["structured-output"]
 
-- name: cogset
-  topics: ["clustering"]
+- name: kbnf
+  topics: ["structured-output"]
 
-- name: collenchyma
-  topics: ["scientific-computing", "gpu-computing"]
+- name: llm-samplers
+  topics: ["structured-output"]
 
-- name: cntk
-  topics: ["neural-networks"]
+- name: crabml
+  topics: ["llm-serving"]
 
-- name: convolutions_rs
-  repository: https://github.com/Conzel/convolutions-rs
-  topics: ["neural-networks"]
-  description: "Torch-compatible convolutions crate implemented in pure rust."
+- name: web-rwkv
+  topics: ["llm-serving", "edge-inference"]
 
-- name: csv
-  topics: ["data-preprocessing"]
+- repository: https://github.com/graniet/llm
+  description: >-
+    Multi-backend LLM client and agent library, and the current owner of the crates.io name `llm`.
+    Not the rustformers project that name used to mean.
+  license: MIT
+  topics: ["llm-clients"]
 
-- name: cubecl
-  description: "Multi-platform high-performance compute language extension for Rust."
-  topics: ["gpu-computing"]
+- repository: https://github.com/openai/harmony
+  license: Apache-2.0
+  topics: ["structured-output", "llm-clients"]
 
-- name: cublas
-  description: "safe Rust wrapper for CUDA's cuBLAS"
-  topics: ["gpu-computing"]
+- repository: https://github.com/BoundaryML/baml
+  license: Apache-2.0
+  topics: ["structured-output"]
 
-- name: cuda
-  topics: ["gpu-computing"]
+- repository: https://github.com/katanemo/plano
+  license: Apache-2.0
+  topics: ["llm-clients"]
 
-- name: cuda-std
-  topics: ["gpu-computing"]
+- repository: https://github.com/agentgateway/agentgateway
+  license: Apache-2.0
+  topics: ["llm-clients", "agent-protocols"]
 
-- name: cudarc
-  topics: ["gpu-computing"]
+- repository: https://github.com/vllora/vllora
+  topics: ["llm-clients", "agent-observability"]
 
-- name: cudnn
-  topics: ["gpu-computing"]
+- repository: https://github.com/traceloop/hub
+  license: Apache-2.0
+  topics: ["llm-clients", "agent-observability"]
 
-- name: cumath
-  topics: ["gpu-computing"]
+- repository: https://github.com/smg-project/smg
+  license: Apache-2.0
+  topics: ["llm-clients"]
 
-- name: cuticula
-  topics: ["data-preprocessing"]
+- repository: https://github.com/Gilfeather/furnace
+  topics: ["llm-serving"]
 
-- name: daggy
-  documentation: http://mitchmindtree.github.io/daggy/daggy/
-  topics: ["data-structures"]
+- repository: https://github.com/intentee/paddler
+  topics: ["llm-serving"]
 
-- name: darwin-rs
-  topics: ["metaheuristics"]
+- repository: https://github.com/trymirai/uzu
+  topics: ["llm-serving"]
 
-- name: datafusion
-  topics: ["data-preprocessing"]
+- repository: https://github.com/pegainfer-project/pegainfer
+  topics: ["llm-serving"]
 
-- name: densearray
-  topics: ["data-structures"]
+- repository: https://github.com/warpfront/hipfire
+  topics: ["llm-serving"]
 
-- name: dfdx
-  topics:
-    [
-      "neural-networks",
-      "reinforcement",
-      "linear-classifiers",
-      "gpu-computing",
-      "scientific-computing",
-    ]
+- repository: https://github.com/lucasjinreal/Crane
+  topics: ["llm-serving"]
 
-- name: drug
-  topics: ["neural-networks"]
+- repository: https://github.com/EricLBuehler/candle-vllm
+  license: MIT
+  topics: ["llm-serving"]
 
-- name: egobox-ego
-  topics: ["scientific-computing", "metaheuristics"]
+- repository: https://github.com/Michael-A-Kuykendall/shimmy
+  license: MIT
+  topics: ["llm-serving"]
 
-- name: em
-  description: "A macro for executing a subset of Rust with OpenCL"
-  topics: ["gpu-computing", "scientific-computing"]
+- repository: https://github.com/flodl-labs/flodl
+  topics: ["dl-frameworks"]
 
-- name: emu_core
-  repository: https://github.com/calebwin/emu
-  description: "A low-level modular, extensible GPGPU compute library with cross-platform support"
-  documentation: https://calebwin.github.io/emu
-  topics: ["gpu-computing", "scientific-computing", "data-structures"]
+- repository: https://github.com/Avarok-Cybersecurity/atlas
+  topics: ["llm-serving"]
 
-- name: evo
-  topics: ["metaheuristics"]
-
-- name: euclid
-  topics: ["scientific-computing"]
-
-- name: faiss
-  topics: ["clustering", "data-structures"]
-
-- name: fann
-  topics: ["neural-networks"]
-
-- name: finalfusion
-  topics: ["nlp", "data-structures"]
-
-- name: forester
-  topics: ["decision-trees"]
-
-- name: GSL
-  topics: ["scientific-computing"]
-
-- name: hal-ml
-  topics: ["neural-networks"]
-
-- name: hdf5
-  topics: ["data-preprocessing"]
-
-- name: juice
-  topics: ["neural-networks"]
-
-- name: kddbscan
-  topics: ["clustering"]
-
-- name: kmeans-colors
-  topics: ["clustering", "scientific-computing"]
-
-- name: kmedoids
-  topics: ["clustering"]
-
-- name: lapack
-  topics: ["scientific-computing"]
-
-- name: leaf
-  topics: ["neural-networks"]
-
-- name: linfa
-  documentation: "https://rust-ml.github.io/linfa/"
-  topics: ["clustering", "decision-trees", "linear-classifiers"]
-
-- name: linxal
-  topics: ["scientific-computing"]
+- repository: https://github.com/Epistates/pmetal
+  topics: ["fine-tuning", "llm-serving"]
 
 - name: llm
-  topics: ["nlp"]
-
-- name: llm-chain
-  topics: ["nlp"]
-
-- name: matrixmultiply
-  topics: ["scientific-computing"]
-
-- name: metaheuristics
-  topics: ["metaheuristics"]
-
-- name: mininn
-  topics: ["neural-networks"]
-
-- name: nalgebra
-  topics: ["scientific-computing"]
-
-- name: ndarray
-  topics: ["data-structures"]
-
-- name: ndarray-glm
-  topics: ["scientific-computing"]
-
-- name: ndarray-linalg
-  topics: ["scientific-computing"]
-
-- name: ndarray-stats
-  topics: ["scientific-computing"]
-
-- name: neuroflow
-  topics: ["neural-networks"]
-
-- name: neuronika
-  topics: ["neural-networks", "scientific-computing"]
-
-- name: newton_rootfinder
-  topics: ["scientific-computing"]
-
-- name: ngt
-  topics: ["data-structures"]
-
-- name: nn
-  topics: ["neural-networks"]
-
-- name: num
-  topics: ["data-structures"]
-
-- name: numeric
-  topics: ["data-structures"]
-
-- name: numrs
-  topics: ["scientific-computing"]
-
-- name: ocl
-  topics: ["gpu-computing"]
-
-- name: openml
-  topics: ["data-preprocessing"]
-
-- name: oxigen
-  topics: ["metaheuristics"]
-
-- name: parenchyma
-  topics: ["scientific-computing", "gpu-computing"]
-
-- name: peroxide
-  topics: ["scientific-computing"]
-
-- name: petgraph
-  topics: ["data-structures"]
-
-- name: polars
-  topics: ["data-preprocessing", "data-structures"]
-
-- name: prophet
-  topics: ["neural-networks"]
-
-- name: qcgpu
-  repository: https://github.com/libtangle/qcgpu-version-0.1.0
-  topics: ["scientific-computing"]
-
-- name: rettle
-  topics: ["data-preprocessing"]
-
-- name: revonet
-  topics: ["metaheuristics", "neural-networks"]
-
-- name: roulette-wheel
-  topics: ["data-structures"]
-
-- name: rsgenetic
-  topics: ["metaheuristics"]
-
-- name: rsrl
-  topics: ["reinforcement"]
-
-- name: rstats
-  topics: ["scientific-computing"]
-
-- name: rulinalg
-  topics: ["scientific-computing"]
-
-- name: rurel
-  topics: ["reinforcement"]
-
-- name: rust2vec
-  topics: ["nlp", "data-structures"]
-
-- name: rustacuda
-  topics: ["scientific-computing", "gpu-computing"]
-
-- name: rustlearn
-  topics: ["linear-classifiers", "decision-trees"]
-
-- name: rusticsom
-  topics: ["clustering"]
-
-- name: rustml
-  topics: ["neural-networks", "clustering"]
-
-- name: rust-bert
-  topics: ["nlp"]
-
-- name: rusty-data
-  documentation: https://athemathmo.github.io/rusty-data/
-  topics: ["data-preprocessing"]
-
-- name: rusty-machine
-  topics: ["neural-networks", "linear-classifiers", "clustering"]
-
-- name: scirust
-  topics: ["scientific-computing"]
-
-- name: simplers_optimization
-  topics: ["metaheuristics"]
-
-- name: slsqp
-  topics: ["scientific-computing", "metaheuristics"]
-
-- name: smartcore
-  documentation: https://smartcorelib.org/
-  topics:
-    [
-      "data-structures",
-      "linear-classifiers",
-      "clustering",
-      "scientific-computing",
-      "decision-trees",
-    ]
-
-- name: statrs
-  topics: ["scientific-computing"]
-
-- name: sprs
-  topics: ["data-structures", "scientific-computing"]
-
-- name: tch
-  topics: ["neural-networks"]
-
-- name: tokenizers
-  topics: ["data-preprocessing"]
-
-- name: tensorflow
-  topics: ["neural-networks"]
-
-- name: timely
-  topics: ["data-preprocessing"]
-
-- name: tflite
-  topics: ["neural-networks"]
-
-- name: tract
-  topics: ["neural-networks"]
+  repository: https://github.com/rustformers/llm
+  topics: ["llm-serving"]
 
 - name: transformrs
-  topics: ["nlp"]
+  topics: ["llm-clients"]
 
-- name: tvm
-  topics: ["neural-networks"]
+- repository: https://github.com/tensorzero/tensorzero
+  description: >-
+    LLM gateway, observability and evaluation. The company wound down voluntarily and returned
+    unspent capital; the `tensorzero` crate was never more than a v0.0.0 placeholder. Its closest
+    live successors are agentgateway and Plano.
+  license: Apache-2.0
+  topics: ["llm-clients", "agent-observability"]
 
-- name: utah
-  repository: https://github.com/kernelmachine/utah
-  topics: ["data-structures"]
+# ===== HUB 2 -- Agents, Tools & Context =====
 
-- name: vulkano
-  topics: ["gpu-computing"]
+- name: adk-rust
+  topics: ["agent-frameworks"]
 
-- name: xgboost
-  topics: ["decision-trees"]
-  description: "Rust bindings for the XGBoost gradient boosted trees library."
+- name: agent-client-protocol
+  topics: ["agent-protocols"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    The official Rust SDK for the Agent Client Protocol, the editor-to-agent standard that came out
+    of Zed. Together with rmcp it means Rust is the reference implementation language for two of the
+    agent ecosystem's protocols -- which is the strongest single thing that can be said about Rust in
+    this hub. It ships a bridge crate into rmcp, so an ACP agent can speak MCP without a second
+    stack.
+  links:
+    - kind: docs
+      url: "https://agentclientprotocol.com/"
+      title: "Agent Client Protocol: specification and SDK documentation"
+    - kind: production
+      url: "https://www.apple.com/newsroom/2026/06/apple-aids-app-development-with-new-intelligence-frameworks-and-advanced-tools/"
+      title: "Apple: Xcode 27 ships MCP and Agent Client Protocol support (WWDC 2026)"
 
-- name: wgpu
-  topics: ["gpu-computing"]
+- name: aimdb-core
+  topics: ["agent-memory"]
 
-- name: wonnx
-  topics: ["neural-networks", "gpu-computing"]
+- name: anda_brain
+  topics: ["agent-memory"]
+
+- name: autoagents
+  topics: ["agent-frameworks"]
+
+- name: bashkit
+  topics: ["agent-protocols", "sandboxing"]
+
+- name: basemind
+  topics: ["agent-protocols"]
+
+- name: cap-std
+  topics: ["sandboxing"]
+
+- name: chromiumoxide
+  topics: ["sandboxing"]
+
+- name: codanna
+  topics: ["agent-protocols"]
+
+- name: enigo
+  topics: ["sandboxing"]
+
+- name: extism
+  topics: ["sandboxing"]
+
+- name: extrasafe
+  topics: ["sandboxing"]
+
+- name: fantoccini
+  topics: ["sandboxing"]
+
+- name: golem-rust
+  # crates.io points at golemcloud/golem-rust, archived by its owner while the crate went on
+  # shipping from the golemcloud/golem monorepo. Unpinned, the archived-repo trigger buries it.
+  repository: https://github.com/golemcloud/golem
+  topics: ["agent-memory"]
+
+- name: headless_chrome
+  topics: ["sandboxing"]
+
+- name: kalosm
+  topics: ["agent-frameworks", "llm-serving"]
+
+- name: landlock
+  topics: ["sandboxing"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    Unprivileged filesystem and network confinement using the Linux Landlock LSM, applied by a
+    process to itself. It is the cheapest real sandbox available to a Rust program that runs model-generated
+    code or an untrusted tool: no container, no VM, no root. Linux only, and the kernel decides
+    which restrictions it actually enforces, so check the ABI level you get at runtime.
+  links:
+    - kind: production
+      url: "https://github.com/openai/codex/blob/main/codex-rs/linux-sandbox/Cargo.toml"
+      title: "OpenAI's Codex CLI builds its Linux sandbox on the landlock crate"
+    - kind: production
+      url: "https://mise.jdx.dev/sandboxing.html"
+      title: "mise confines the commands it runs with Landlock, and fails closed if the kernel will not apply it"
+    - kind: production
+      url: "https://github.com/cloud-hypervisor/cloud-hypervisor/blob/main/docs/landlock.md"
+      title: "Cloud Hypervisor's note on sandboxing the VMM itself at vm_create"
+
+- name: mempal
+  topics: ["agent-memory"]
+
+- name: mentisdb
+  topics: ["agent-memory"]
+
+- name: microsandbox
+  topics: ["sandboxing"]
+
+- name: obelisk
+  topics: ["agent-memory"]
+
+- name: openinference-semantic-conventions
+  topics: ["agent-observability"]
+
+- name: oxidized-agentic-audit
+  topics: ["agent-observability", "safety-privacy"]
+
+- name: pctx
+  topics: ["agent-protocols"]
+
+- name: rdev
+  topics: ["sandboxing"]
+
+- name: remem-ai
+  topics: ["agent-memory"]
+
+- name: restate-sdk
+  topics: ["agent-memory"]
+
+- name: rig-core
+  topics: ["agent-frameworks"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    The one agent framework that consolidated this space, and the reason "which Rust agent
+    framework?" stopped being an open question: 20+ model providers, 18 vector-store integrations,
+    tool calling, structured extraction, streaming, memory, OpenTelemetry GenAI tracing, and a
+    portable core that builds for wasm32. Everything it competed with -- llm-chain, langchain-rust,
+    rustformers/llm -- has stopped. The cost is churn: its own README carries a breaking-change
+    warning and `rig-core` has shipped 62 versions, so pin it.
+  links:
+    - kind: docs
+      url: "https://rig.rs/docs"
+      title: "Rig documentation: providers, agents, tools, RAG, observability"
+    - kind: production
+      url: "https://github.com/0xPlaygrounds/awesome-rig"
+      title: "awesome-rig: named production users and community projects"
+
+- name: rig-retrieval-evals
+  topics: ["agent-observability"]
+
+- name: rig-tap
+  topics: ["agent-observability"]
+
+- name: rmcp
+  topics: ["agent-protocols"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    The official Model Context Protocol SDK, from the protocol's own organization, and the
+    most-depended-on AI crate in the language -- ahead of every third-party Rust MCP SDK combined.
+    It tracks the current spec revision with OAuth, streamable HTTP, elicitation, sampling, roots
+    and long-running tasks, and is at a stable 3.x with a published migration guide. If you are
+    writing an MCP server, this is the answer; the pre-rmcp attempts (`mcp-core`, `mcpr`,
+    `mcp-sdk`) are superseded.
+  links:
+    - kind: production
+      url: "https://github.com/rerun-io/rerun/blob/main/crates/viewer/re_viewer_mcp/Cargo.toml"
+      title: "Rerun's re_viewer_mcp, an MCP server for the Rerun Viewer, is built on rmcp"
+    - kind: production
+      url: "https://github.com/aaif-goose/goose/blob/main/Cargo.toml"
+      title: "goose pins rmcp 3.2 as its Model Context Protocol layer"
+
+- name: rust-mcp-sdk
+  topics: ["agent-protocols"]
+
+- name: rust-mcp-schema
+  topics: ["agent-protocols"]
+
+- name: seccompiler
+  repository: https://github.com/rust-vmm/rust-vmm
+  topics: ["sandboxing"]
+
+- name: spider
+  topics: ["sandboxing", "rag-pipelines"]
+
+- name: swiftide
+  topics: ["agent-frameworks", "rag-pipelines"]
+
+- name: temporalio-client
+  topics: ["agent-memory"]
+
+- name: terminator-rs
+  topics: ["sandboxing"]
+
+- name: thirtyfour
+  topics: ["sandboxing"]
+
+- name: turbomcp
+  topics: ["agent-protocols"]
+
+- name: uiautomation
+  topics: ["sandboxing"]
+
+- name: wasmer
+  topics: ["sandboxing"]
+
+- name: wasmedge-sdk
+  topics: ["sandboxing"]
+
+- name: wasmtime
+  topics: ["sandboxing"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    The default way to run untrusted code in your own process. WebAssembly gives you a memory-safe
+    boundary with an explicit capability list instead of a syscall surface, which is the property
+    you want when the code was written by a model. It is what Extism wraps to make sandboxing one
+    tool ergonomic, and part of the reason Rust is the isolation layer the rest of the 2026 agent
+    stack is built on -- even where the product around it is Go or TypeScript.
+  links:
+    - kind: production
+      url: "https://docs.singlestore.com/cloud/reference/code-engine-powered-by-wasm/"
+      title: "SingleStore's Code Engine runs every Wasm function in its own in-process wasmtime sandbox"
+    - kind: post
+      url: "https://dylibso.com/blog/how-does-extism-work/"
+      title: "Dylibso on how Extism is built over wasmtime's Linker"
+    - kind: production
+      url: "https://github.com/Shopify/function-runner/blob/main/Cargo.toml"
+      title: "Shopify's function-runner, which executes Shopify Functions, embeds wasmtime"
+
+- name: xcap
+  topics: ["sandboxing"]
+
+- name: youki
+  topics: ["sandboxing"]
+
+- repository: https://github.com/aaif-goose/goose
+  license: Apache-2.0
+  topics: ["agent-frameworks"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    The reference answer to "what does a serious agent written in Rust look like": a desktop, CLI
+    and API agent with fifteen-plus model providers and seventy-plus MCP extensions, shipping as a
+    single binary. It is listed as a product rather than a library -- you run it, you do not depend
+    on it -- and it is here because it is the largest piece of evidence that the Rust agent stack is
+    something people actually use rather than something people benchmark. It moved from `block/goose`
+    to neutral foundation governance in 2026.
+  links:
+    - kind: production
+      url: "https://aaif.io/"
+      title: "The Agentic AI Foundation (Linux Foundation), which now governs goose"
+
+- repository: https://github.com/firecracker-microvm/firecracker
+  license: Apache-2.0
+  topics: ["sandboxing"]
+
+- repository: https://github.com/NVIDIA/OpenShell
+  topics: ["sandboxing"]
+
+- repository: https://github.com/cloud-hypervisor/cloud-hypervisor
+  license: Apache-2.0
+  topics: ["sandboxing"]
+
+- repository: https://github.com/containerd/runwasi
+  license: Apache-2.0
+  topics: ["sandboxing"]
+
+- repository: https://github.com/kuasar-io/kuasar
+  license: Apache-2.0
+  topics: ["sandboxing"]
+
+- repository: https://github.com/multikernel/sandlock
+  topics: ["sandboxing"]
+
+- repository: https://github.com/pullrun/pullrun
+  topics: ["sandboxing"]
+
+- repository: https://github.com/screenpipe/screenpipe
+  license: MIT
+  topics: ["sandboxing", "computer-vision"]
+
+- repository: https://github.com/hyper-mcp-rs/hyper-mcp
+  topics: ["agent-protocols"]
+
+- repository: https://github.com/JordyZomer/lemmalog
+  topics: ["agent-memory"]
+
+- repository: https://github.com/lmnr-ai/lmnr
+  license: Apache-2.0
+  topics: ["agent-observability"]
+
+- repository: https://github.com/ldclabs/anda
+  topics: ["agent-frameworks"]
+
+- repository: https://github.com/ThousandBirdsInc/chidori
+  topics: ["agent-frameworks", "agent-memory"]
+
+- repository: https://github.com/Abraxas-365/langchain-rust
+  license: MIT
+  topics: ["agent-frameworks"]
+
+- name: llm-chain
+  topics: ["agent-frameworks"]
+
+# ===== HUB 3 -- Retrieval, Embeddings & Search =====
+
+- name: anydoc
+  topics: ["document-ai"]
+
+- name: arroy
+  topics: ["vector-search"]
+
+- name: charabia
+  topics: ["full-text-search", "text-processing"]
+
+- name: fastembed
+  topics: ["embeddings"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    The default answer to "how do I embed text from Rust". It bundles a model zoo, batching and
+    rerankers over ONNX Runtime, so you get an embedding without assembling a tokenizer, a runtime
+    and a pooling strategy yourself. It is `ort` underneath, which means a native library
+    alongside your binary; if you want that in a server instead, Hugging Face's
+    text-embeddings-inference is the Rust one.
+  links:
+    - kind: post
+      url: "https://blog.bosun.ai/ollama-and-telemetry/"
+      title: "Bosun on indexing a codebase in Rust with Swiftide, fastembed, Qdrant and Ollama"
+    - kind: post
+      url: "https://dev.to/joshmo_dev/local-embeddings-with-fastembed-rig-rust-3581"
+      title: 'Josh Mo, "Local Embeddings with Fastembed, Rig & Rust" (2025-03-05)'
+
+- name: hdbscan
+  topics: ["clustering"]
+
+- name: hnsw_rs
+  topics: ["vector-search"]
+
+- name: instant-distance
+  topics: ["vector-search"]
+
+- name: kreuzberg
+  topics: ["document-ai"]
+  description: >-
+    The v4 LTS line of the project that is now Xberg. Explicitly legacy -- new work should use
+    `xberg`.
+
+- name: lance
+  topics: ["lakehouse", "vector-search"]
+
+- name: lancedb
+  topics: ["vector-search"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    An embedded multimodal retrieval database -- the one on this shelf you link into your own
+    process rather than deploy next to it, which makes it the natural choice for a Rust service that
+    wants vectors without another server. It sits on the Lance columnar format, so the same data is
+    a table you can scan and a vector index you can search. Rust is a first-class API here, though
+    still 0.x.
+  links:
+    - kind: post
+      url: "https://lancedb.com/blog"
+      title: "LanceDB engineering blog on multimodal retrieval and the Lance format"
+
+- name: liteparse
+  topics: ["document-ai"]
+
+- name: lopdf
+  topics: ["document-ai"]
+
+- name: meilisearch-sdk
+  topics: ["full-text-search", "vector-search"]
+
+- name: model2vec-rs
+  topics: ["embeddings"]
+
+- name: mupdf
+  topics: ["document-ai"]
+
+- name: oar-ocr
+  topics: ["document-ai"]
+
+- name: ocrs
+  topics: ["document-ai"]
+
+- name: office_oxide
+  topics: ["document-ai"]
+
+- name: pdf-extract
+  topics: ["document-ai"]
+
+- name: pdf_oxide
+  topics: ["document-ai"]
+
+- name: pdfium-render
+  topics: ["document-ai"]
+
+- name: pgvector
+  topics: ["vector-search"]
+
+- name: qdrant-client
+  topics: ["vector-search"]
+
+- name: ocr-rs
+  topics: ["document-ai"]
+
+- name: simsimd
+  topics: ["embeddings", "arrays-linalg"]
+
+- name: sqlite-vec
+  topics: ["vector-search"]
+
+- name: tantivy
+  topics: ["full-text-search"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    The Lucene alternative, and the keyword half of hybrid search -- which matters because hybrid
+    (BM25 plus vector) is now the default recommendation from the people who build these engines,
+    not pure vector. It is a library, not a server: you get an inverted index, a query parser and
+    fast segment merging, and you decide what to build around them. Quickwit and Meilisearch's
+    lineage come from here.
+  links:
+    - kind: docs
+      url: "https://docs.rs/tantivy"
+      title: "tantivy API documentation"
+    - kind: post
+      url: "https://www.meilisearch.com/blog/fixing-hybrid-search"
+      title: "Meilisearch on why hybrid search beats pure vector (2025-06-19)"
+
+- name: tesseract-rs
+  topics: ["document-ai"]
+
+- name: text-splitter
+  topics: ["rag-pipelines", "text-processing"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    Semantic chunking to a token budget, and the one piece of the RAG pipeline where Rust has a
+    best-in-class answer rather than a catch-up one. It splits on the largest semantic unit that
+    fits -- section, paragraph, sentence, word -- and takes the length function from `tiktoken-rs`
+    or `tokenizers`, so the budget is the model's, not an approximation. Most Rust RAG is assembled
+    by hand out of the shelves either side of this one; this is the part you do not have to write.
+  links:
+    - kind: post
+      url: "https://www.linkedin.com/pulse/improving-text-chunking-rag-rust-shelby-jenkins--bgj5c"
+      title: 'Shelby Jenkins, writing a rival chunker, on text-splitter as "the major Rust chunking crate"'
+    - kind: production
+      url: "https://github.com/SilasMarvin/lsp-ai/blob/main/crates/lsp-ai/Cargo.toml"
+      title: "lsp-ai, an LLM-backed language server, depends on text-splitter"
+
+- name: tree-sitter-language-pack
+  topics: ["document-ai"]
+
+- name: turbovec
+  topics: ["vector-search"]
+
+- name: usearch
+  topics: ["vector-search"]
+
+- name: xberg
+  topics: ["document-ai"]
+
+- repository: https://github.com/qdrant/qdrant
+  license: Apache-2.0
+  topics: ["vector-search"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    The dedicated vector database of this shelf, and the one to reach for when the index is the
+    workload rather than a feature of something else. It is one of the few projects here that is
+    Rust all the way down and still keeps a first-class Rust client, which is unusual for a
+    database whose users are mostly writing Python. It is a server you deploy. If you would rather
+    link the index into your own process, LanceDB is the embedded answer; for vectors beside data
+    you already have, sqlite-vec or pgvector.
+  links:
+    - kind: paper
+      url: "https://arxiv.org/abs/2509.12384"
+      title: "Argonne and UW-Madison characterize Qdrant on the Polaris supercomputer (2025)"
+    - kind: paper
+      url: "https://arxiv.org/abs/2608.12812"
+      title: "An independent evaluation of seven vector stores: Qdrant has the best median latency of the full databases"
+
+- repository: https://github.com/meilisearch/meilisearch
+  license: MIT
+  topics: ["full-text-search", "vector-search"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    A search engine you can point at a dataset and get relevance from in an afternoon -- typo
+    tolerance, faceting, and since 2024 hybrid search with embedders built in, so the keyword and
+    vector halves are one query rather than two systems you reconcile. It is worth reading their own
+    engineering account of building `arroy`, their LMDB-backed ANN store: it is the clearest public
+    explanation of why hybrid retrieval beats pure vector, and it is a Rust project explaining its
+    own internals.
+  links:
+    - kind: post
+      url: "https://www.meilisearch.com/blog/fixing-hybrid-search"
+      title: 'Meilisearch, "Fixing hybrid search" -- how arroy and hybrid retrieval work'
+
+- repository: https://github.com/chroma-core/chroma
+  license: Apache-2.0
+  topics: ["vector-search"]
+
+- repository: https://github.com/HelixDB/helix-db
+  license: AGPL-3.0
+  topics: ["vector-search", "agent-memory"]
+
+- repository: https://github.com/supervc-stack/VectorChord
+  license: AGPL-3.0
+  topics: ["vector-search"]
+
+- repository: https://github.com/tensorchord/pgvecto.rs
+  description: "Postgres vector extension, superseded by VectorChord."
+  license: Apache-2.0
+  topics: ["vector-search"]
+
+- repository: https://github.com/lightonai/next-plaid
+  topics: ["vector-search"]
+
+- repository: https://github.com/huggingface/text-embeddings-inference
+  license: Apache-2.0
+  topics: ["embeddings"]
+
+- repository: https://github.com/StarlightSearch/EmbedAnything
+  license: Apache-2.0
+  topics: ["embeddings"]
+
+- repository: https://github.com/cocoindex-io/cocoindex
+  license: Apache-2.0
+  topics: ["rag-pipelines", "streaming"]
+
+- repository: https://github.com/devflowinc/trieve
+  topics: ["rag-pipelines"]
+
+- repository: https://github.com/run-llama/semtools
+  license: MIT
+  topics: ["rag-pipelines"]
+
+- repository: https://github.com/0xMassi/webclaw
+  topics: ["rag-pipelines"]
+
+- repository: https://github.com/TimmyOVO/deepseek-ocr.rs
+  topics: ["document-ai"]
+
+- repository: https://github.com/bzsanti/oxidizePdf
+  topics: ["document-ai"]
+
+- repository: https://github.com/aminediro/ferrules
+  license: GPL-3.0
+  topics: ["document-ai"]
+
+- name: faiss
+  topics: ["vector-search"]
+
+- name: ngt
+  topics: ["vector-search"]
+
+# ===== HUB 4 -- Deep Learning & Training =====
+
+- name: ad_trait
+  topics: ["tensors-autodiff"]
+
+- name: ai-dataloader
+  topics: ["datasets", "training-infra"]
+
+- name: alumina
+  topics: ["dl-frameworks"]
+
+- name: auto-diff
+  topics: ["tensors-autodiff"]
+
+- name: autograd
+  topics: ["tensors-autodiff"]
+
+- name: autograph
+  topics: ["dl-frameworks"]
+
+- name: burn
+  topics: ["dl-frameworks"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    The only pure-Rust framework that trains as well as it infers, and the one place a Rust-first
+    training story exists at all: one model definition compiled to CUDA, ROCm, Metal, Vulkan,
+    WebGPU or CPU through CubeCL, with no Python runtime in the deployed artifact. It is the right
+    starting point if you want to train in Rust, or if single-binary deployment and non-NVIDIA
+    hardware matter more to you than ecosystem breadth. It is the wrong one if you need pretrained
+    weights, PEFT or multi-node training, none of which exist here yet -- for those, train in
+    Python and run the result through ort or tract. No end-to-end training benchmark against
+    PyTorch has been published; the numbers Tracel publishes are op-level against LibTorch.
+  links:
+    - kind: post
+      url: "https://burn.dev/blog/a-case-for-rust-in-deep-learning"
+      title: "A Case for Rust in Deep Learning"
+    - kind: benchmark
+      url: "https://burn.dev/blog/sota-multiplatform-matmul"
+      title: "Multiplatform matrix-multiplication kernels, benchmarked across six backends"
+    - kind: post
+      url: "https://old.reddit.com/r/rust/comments/1oiexhr/burn_0190_release_quantization_distributed/"
+      title: "Burn 0.19.0 on r/rust: the creator on production readiness"
+
+- name: burn-collective
+  topics: ["training-infra", "distributed-gpu"]
+
+- name: burn-dataset
+  topics: ["datasets", "training-infra"]
+
+- name: burn-store
+  topics: ["training-infra", "model-plumbing"]
+
+- name: burn-train
+  topics: ["training-infra"]
+
+- name: candle-core
+  topics: ["dl-frameworks"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    Hugging Face's minimalist framework, and the one most Rust model code is actually written
+    against -- well over a hundred model examples, CUDA and Metal kernels, GGUF and safetensors loading, and
+    a small enough surface that reading it is a reasonable way to learn it. It is strongest at
+    inference: mistral.rs, Kyutai's Moshi, kalosm, Crane and koharu are all built on it, and its own
+    examples are almost entirely inference rather than training. If you need a training loop with
+    metrics and checkpointing, that is Burn; if you need to write the decode loop yourself and want
+    it small, this is the one.
+  links:
+    - kind: docs
+      url: "https://github.com/huggingface/candle/tree/main/candle-examples/examples"
+      title: "candle examples -- in practice, candle's documentation"
+    - kind: production
+      url: "https://github.com/kyutai-labs/moshi"
+      title: "Kyutai's Moshi ships a candle-based Rust inference server for its speech model"
+
+- name: cntk
+  topics: ["dl-frameworks"]
+
+- name: cogent
+  topics: ["dl-frameworks"]
+
+- name: convolutions_rs
+  topics: ["dl-frameworks"]
+
+- name: custos
+  topics: ["tensors-autodiff"]
+
+- name: dfdx
+  topics: ["dl-frameworks", "tensors-autodiff"]
+
+- name: drug
+  topics: ["dl-frameworks"]
+
+- name: echidna
+  topics: ["tensors-autodiff"]
+
+- name: fann
+  topics: ["dl-frameworks"]
+
+- name: float4
+  topics: ["training-infra", "model-plumbing"]
+
+- name: float8
+  topics: ["training-infra", "model-plumbing"]
+
+- name: half
+  topics: ["training-infra", "model-plumbing", "arrays-linalg"]
+
+- name: hal-ml
+  topics: ["dl-frameworks"]
+
+- name: hyperjet
+  topics: ["tensors-autodiff"]
+
+- name: juice
+  topics: ["dl-frameworks"]
+
+- name: leaf
+  topics: ["dl-frameworks"]
+
+- name: mdarray
+  topics: ["tensors-autodiff", "arrays-linalg"]
+
+- name: mininn
+  topics: ["dl-frameworks"]
+
+- name: mlx-rs
+  topics: ["dl-frameworks", "model-runtimes", "gpu-runtimes"]
+
+- name: mpsgraph
+  topics: ["training-infra", "gpu-runtimes"]
+
+- name: neuroflow
+  topics: ["dl-frameworks"]
+
+- name: neuronika
+  topics: ["dl-frameworks"]
+
+- name: nn
+  topics: ["dl-frameworks"]
+
+- name: numdiff
+  topics: ["tensors-autodiff", "numerical-methods"]
+
+- name: numr
+  topics: ["tensors-autodiff"]
+
+- name: prophet
+  topics: ["dl-frameworks"]
+  description: >-
+    A 2017 neural-network crate. NOT Facebook Prophet, despite the name -- the Prophet port in Rust
+    is `augurs-prophet`. Listed here so the confusion has somewhere to land.
+
+- name: rustml
+  topics: ["ml-toolkits", "dl-frameworks"]
+
+- name: tch
+  topics: ["dl-frameworks", "python-interop"]
+
+- name: tracel
+  topics: ["training-infra"]
+
+- name: trs-mlflow
+  topics: ["training-infra"]
+
+- name: tensorboard-rs
+  topics: ["training-infra"]
+
+- name: ug
+  topics: ["tensors-autodiff", "gpu-kernels"]
+
+- name: zyx
+  topics: ["dl-frameworks", "tensors-autodiff"]
+
+- repository: https://github.com/torchrs/torchrs
+  license: BSD-2-Clause
+  topics: ["dl-frameworks"]
+
+- repository: https://github.com/tedsta/deeplearn-rs
+  license: MIT
+  topics: ["dl-frameworks"]
+
+- repository: https://github.com/blackportal-ai/delta
+  license: BSD-3-Clause
+  topics: ["dl-frameworks"]
+
+- repository: https://github.com/DragonflyRobotics/Neuroxide
+  topics: ["dl-frameworks"]
+
+- repository: https://github.com/tensor4all/tenferro-rs
+  topics: ["tensors-autodiff"]
+
+- repository: https://github.com/nicksenger/Glowstick
+  topics: ["tensors-autodiff"]
+
+- repository: https://github.com/sercanatalik/xad-rs
+  description: "Exact forward- and reverse-mode automatic differentiation, a port of XAD."
+  topics: ["tensors-autodiff"]
+
+- repository: https://github.com/zspacelabs/bimm
+  topics: ["training-infra"]
+
+- repository: https://github.com/paiml/aprender
+  topics: ["ml-toolkits", "dl-frameworks"]
+
+- name: tensorflow
+  topics: ["dl-frameworks", "model-runtimes"]
+
+# ===== HUB 5 -- Model Inference & Runtimes =====
+
+- name: bpe
+  topics: ["model-plumbing", "text-processing"]
+
+- name: bpe-openai
+  topics: ["model-plumbing", "text-processing"]
+
+- name: burn-import
+  topics: ["model-runtimes", "model-plumbing"]
+
+- name: candle-onnx
+  topics: ["model-runtimes"]
+
+- name: executorch
+  topics: ["edge-inference", "model-runtimes"]
+
+- name: fastokens
+  topics: ["model-plumbing", "text-processing"]
+
+- name: ggus
+  topics: ["model-plumbing"]
+
+- name: gguf-rs
+  topics: ["model-plumbing"]
+
+- name: gguf-rs-lib
+  topics: ["model-plumbing"]
+
+- name: hf-hub
+  topics: ["model-plumbing", "datasets"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    How Rust reaches the Hugging Face Hub: resolve a repo and revision, download weights and
+    tokenizers with caching, and get Xet-accelerated transfer for free because `hf-xet` is an
+    unconditional dependency. It reached 1.0 in July 2026, and tokenizers, candle, mistral.rs,
+    fastembed and lancedb all depend on it. If your program loads a model by name rather than by
+    path, this is the crate doing it.
+  links:
+    - kind: production
+      url: "https://github.com/lancedb/lancedb/blob/main/rust/lancedb/Cargo.toml"
+      title: "LanceDB depends on hf-hub to resolve models by name"
+    - kind: production
+      url: "https://github.com/EricLBuehler/mistral.rs/blob/master/Cargo.toml"
+      title: "mistral.rs depends on hf-hub across its workspace"
+
+- name: hf-xet
+  topics: ["model-plumbing"]
+
+- name: Kyanite
+  repository: https://github.com/KarelPeeters/Kyanite
+  topics: ["model-runtimes"]
+  description: >-
+    ONNX inference with a CUDA backend, published as `kn-graph` and `kn-cuda-eval`. Name collision:
+    crates.io `Kyanite` is an unrelated gallery collector on GitLab.
+
+- name: liboxen
+  topics: ["datasets", "model-plumbing"]
 
 - name: luminal
   repository: https://github.com/luminal-ai/luminal
-  topics: ["neural-networks"]
+  topics: ["model-runtimes"]
 
-- name: custos
-  topics: ["neural-networks"]
+- name: microflow
+  topics: ["edge-inference"]
 
-- name: zyx
-  topics: ["neural-networks"]
+- name: mnn
+  topics: ["edge-inference", "model-runtimes"]
+
+- name: modelexpress-common
+  topics: ["model-plumbing"]
+
+- name: onnxruntime
+  topics: ["model-runtimes"]
+  description: >-
+    The predecessor of `ort`, pinned to ONNX Runtime 1.8. Listed so people who find it first know
+    what replaced it.
+
+- name: openvino
+  topics: ["model-runtimes", "gpu-runtimes"]
 
 - name: ort
-  topics: ["neural-networks"]
+  topics: ["model-runtimes"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    The default answer to "I trained something in Python, how do I run it from Rust?" -- a safe
+    wrapper over Microsoft's ONNX Runtime with every execution provider (CUDA, TensorRT, CoreML,
+    DirectML, ROCm, WebGPU, QNN, CANN, RKNPU and more) reachable from Rust. That is the widest
+    accelerator reach available from this language by a wide margin, and it covers scikit-learn and
+    XGBoost models exported through sklearn2onnx as well as neural networks. It is bindings, not a
+    Rust implementation, so you ship a native library alongside your binary; if that is
+    unacceptable, tract and rten are pure Rust at the cost of narrower operator and hardware
+    coverage. Note that 2.0 has been in release candidates since 2024 with no stable version on
+    crates.io at all, so pin an exact one -- `ort = "=2.0.0-rc.13"`.
+  links:
+    - kind: docs
+      url: "https://ort.pyke.io/"
+      title: "ort user guide"
+    - kind: production
+      url: "https://news.ycombinator.com/item?id=40052961"
+      title: "Supabase runs ONNX Runtime in Edge Functions through ort (CEO, 2024-04)"
 
-- name: Kyanite
-  topics: ["neural-networks"]
+- name: rten
+  topics: ["model-runtimes", "edge-inference"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    A pure-Rust ONNX runtime with no C++ dependency at all: AVX-512, NEON and WASM-SIMD kernels,
+    CPU only. It is the honest answer to "I want ONNX without linking ONNX Runtime", it compiles to
+    WebAssembly, and it is what `ocrs` runs on -- so it has a real end-to-end workload behind it
+    rather than only benchmarks. The trade is explicit: no GPU, and narrower operator coverage than
+    `ort`, so check your model first. Its `rten-examples` crate is the most complete worked corpus
+    of loading an ONNX model and doing the pre- and post-processing in Rust.
+  links:
+    - kind: docs
+      url: "https://docs.rs/rten"
+      title: "rten API documentation"
+    - kind: production
+      url: "https://github.com/robertknight/ocrs"
+      title: "ocrs, a complete OCR engine, runs on rten"
 
-- name: krnl
-  topics: ["gpu-computing"]
+- name: safetensors
+  topics: ["model-plumbing", "safety-privacy"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    The de-facto model weight format, and Rust is its reference implementation. Its contribution is
+    structural rather than performance: the format is a JSON header plus raw tensor bytes with no
+    code path, which is what removed the pickle deserialization attack surface that the entire
+    Python model-scanning industry exists to inspect. Loading is zero-copy and memory-mappable, and
+    every Rust framework here reads it. Repository moved from `huggingface/safetensors`.
+  links:
+    - kind: docs
+      url: "https://huggingface.co/docs/safetensors/index"
+      title: "safetensors format documentation, including the design rationale"
+    - kind: production
+      url: "https://pytorch.org/blog/pytorch-foundation-announces-safetensors-as-newest-contributed-project-to-secure-ai-model-execution/"
+      title: "The PyTorch Foundation takes safetensors on as a hosted project (2026-04-08)"
 
-- repository: https://github.com/torchrs/torchrs
-  description: "Torch.rs (torturous) is a set of Rust bindings for torch intended to provide an API very close to that of PyTorch."
-  license: BSD-2-Clause
-  topics: ["neural-networks"]
+- name: sentencepiece
+  topics: ["model-plumbing", "text-processing"]
 
-- repository: https://github.com/luqmana/rust-opencl
-  description: "OpenCL bindings for Rust."
-  license: MIT/Apache-2.0
-  topics: ["gpu-computing"]
+- name: shimmytok
+  topics: ["model-plumbing"]
 
-- repository: https://github.com/pengowen123/eant2
-  description: "EANT2 is an metaheuristicsary algorithm that uses the Common Genetic Encoding (CGE) to encode neural networks and CMA-ES as a weight optimizer. EANT2 evolves the topology of the Neural Network and CMA-ES tries to find the optimal weights for each topology."
-  documentation: https://pengowen123.github.io/eant2/eant2/index.html
-  license: GPL-3.0
-  topics: ["metaheuristics"]
+- name: splintr
+  topics: ["model-plumbing", "text-processing"]
 
-- repository: https://github.com/tedsta/deeplearn-rs
-  description: "Deep neural networks in Rust"
+- name: tflite
+  topics: ["edge-inference", "model-runtimes"]
+  description: "TFLite C++ bindings. `tflitec` is the maintained one."
+
+- name: tflitec
+  topics: ["edge-inference", "model-runtimes"]
+
+- name: tiktoken-rs
+  topics: ["model-plumbing", "text-processing"]
+
+- name: tokenizers
+  topics: ["model-plumbing", "text-processing"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    Hugging Face's tokenizer library, written in Rust, and one of the highest-volume machine
+    learning crates there is. Every `AutoTokenizer` call in Python runs this code -- which makes it
+    the clearest example of the pattern this site keeps running into: much of the machine learning
+    world already depends on Rust without knowing it. From Rust you get the same training and
+    encoding pipeline (BPE, WordPiece, Unigram, normalizers, pre-tokenizers, post-processors) that
+    the Python API exposes, loadable straight from a Hub `tokenizer.json`.
+  links:
+    - kind: docs
+      url: "https://huggingface.co/docs/tokenizers/index"
+      title: "Hugging Face tokenizers documentation"
+    - kind: production
+      url: "https://pypi.org/project/tokenizers/"
+      title: "The PyPI package every Python transformers install pulls in is this crate"
+
+- name: tract
+  topics: ["model-runtimes", "edge-inference"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    Sonos's self-contained inference engine, in production on their devices for wake-word and
+    streaming speech recognition -- which is a stronger claim than most crates here can make. It
+    loads ONNX, NNEF and TFLite, and it is no longer the CPU-only embedded curiosity it was: it now
+    ships Metal and CUDA runtimes and `causal_llm` and `stable-diffusion` examples. It targets the
+    neural-network operator set, so do not treat it as a drop-in for scikit-learn models exported
+    to ONNX -- that is `ort`'s `ai.onnx.ml` support, not this.
+  links:
+    - kind: docs
+      url: "https://docs.rs/tract-onnx"
+      title: "tract-onnx API documentation"
+    - kind: production
+      url: "https://github.com/sonos/tract#readme"
+      title: "tract README: Sonos's own account of running it on-device"
+
+- name: wasi-nn
+  topics: ["edge-inference", "model-runtimes"]
+
+- name: wonnx
+  topics: ["edge-inference"]
+  status_date: "2026-09-01"
+  because: repo_archived
+  evidence: "https://github.com/webonnx/wonnx"
+  replacement: rten
+  verified_by: anowell
+
+- repository: https://github.com/huggingface/ratchet
   license: MIT
-  topics: ["neural-networks"]
+  topics: ["edge-inference"]
 
-- repository: https://github.com/NivenT/REnforce
-  description: "Reinforcement library written in Rust"
-  topics: ["reinforcement"]
+- repository: https://github.com/SimpleTinyML/oneliner
+  topics: ["edge-inference"]
 
-- repository: https://github.com/opendifferentialprivacy/whitenoise-core
-  description: "Differential privacy validator and runtime"
-  license: MIT
-  topics: ["data-preprocessing"]
-
-- repository: https://github.com/outbrain/fwumious_wabbit
-  description: "Fast logistic regression and field-aware factorization machines in Rust"
-  license: BSD-3-Clause
-  topics: ["neural-networks", "linear-classifiers"]
-
-- repository: https://github.com/tensorzero/tensorzero
-  description: "data & learning flywheel for LLMs that unifies inference, observability, optimization, and experimentation"
-  license: Apache-2.0
-  topics: ["mlops"]
-
-- repository: https://github.com/evilsocket/cake
-  description: "Distributed LLM and StableDiffusion inference for mobile, desktop and server."
-  license: GPL-3.0
-  topics: ["mlops"]
-
-- repository: https://github.com/qdrant/qdrant
-  description: "High-performance, massive-scale Vector Database for the next generation of AI."
-  license: Apache-2.0
-  topics: ["mlops"]
-
-- repository: https://github.com/EricLBuehler/mistral.rs
-  description: "Blazingly fast LLM inference."
-  license: MIT
-  topics: ["neural-networks"]
+- repository: https://github.com/marcelroed/gigatoken
+  topics: ["model-plumbing", "text-processing"]
 
 - repository: https://github.com/InfiniTensor/InfiniLM
   description: "A handwriting transformer model project developed from YdrMaster/llama2.rs"
   license: MIT
-  topics: ["neural-networks"]
+  topics: ["llm-serving"]
 
 - repository: https://github.com/YdrMaster/operators-rs
   description: "Multi-hardware support operator library"
   license: MIT
-  topics: ["neural-networks"]
+  topics: ["llm-serving"]
+
+- repository: https://github.com/evilsocket/cake
+  license: FAIR-1.0
+  topics: ["llm-serving"]
+
+# ===== HUB 6 -- Classical ML & Statistics =====
+
+- name: adskalman
+  topics: ["bayesian"]
+
+- name: annembed
+  topics: ["clustering"]
+
+- name: anomaly_detection
+  topics: ["time-series"]
+
+- name: argmin
+  topics: ["optimization"]
+
+- name: arima
+  topics: ["time-series"]
+
+- name: augurs
+  topics: ["time-series"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    Time series in Rust is essentially this one project, and it is a good one: automatic exponential
+    smoothing, MSTL decomposition, a real port of Prophet, dynamic time warping, seasonality
+    detection, clustering, outlier detection and changepoints, across ten crates with Python and
+    WASM bindings. It comes out of Grafana Labs, though its README notes it is not an official
+    Grafana project. What it does not give you is a `statsforecast`-style model zoo or any deep
+    forecasting model; outside augurs the shelf thins to dormant technical-indicator crates.
+  links:
+    - kind: talk
+      url: "https://this-week-in-rust.org/blog/2024/12/04/this-week-in-rust-576/"
+      title: "augurs, This Week in Rust Crate of the Week (2024-12-04)"
+    - kind: docs
+      url: "https://docs.rs/augurs"
+      title: "augurs API documentation"
+
+- name: automl
+  topics: ["ml-toolkits"]
+
+- name: average
+  topics: ["statistics"]
+
+- name: bevy_rl
+  topics: ["reinforcement-learning"]
+
+- name: bhtsne
+  topics: ["clustering"]
+
+- name: border
+  topics: ["reinforcement-learning"]
+
+- name: bosk
+  topics: ["gradient-boosting"]
+
+- name: burn-rl
+  topics: ["reinforcement-learning"]
+
+- name: catboost-rs
+  topics: ["gradient-boosting"]
+
+- name: catboost-rust
+  topics: ["gradient-boosting"]
+
+- name: cervo
+  topics: ["reinforcement-learning"]
+
+- name: changepoint
+  topics: ["bayesian", "time-series"]
+
+- name: clarabel
+  documentation: https://oxfordcontrol.github.io/ClarabelDocs/
+  topics: ["optimization"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    A pure-Rust interior-point solver for convex conic programs, from Oxford Control. It is the piece that
+    makes "Rust can do convex optimization" true without shelling out to a C++ solver, and it is one
+    of the backends `good_lp` can dispatch to. Together with good_lp, HiGHS and argmin this is the
+    strongest ML-adjacent corner of the Rust numerical stack, and it is the one this site marked red
+    for a decade.
+  links:
+    - kind: production
+      url: "https://www.cvxpy.org/updates/index.html"
+      title: "CVXPY 1.5 switches its default solver from ECOS to Clarabel, and 1.6 removes ECOS as a dependency"
+    - kind: post
+      url: "https://github.com/cvxpy/cvxpy/discussions/2178"
+      title: "The CVXPY discussion proposing the ECOS-to-Clarabel move (2023-07)"
+
+- name: clustering
+  topics: ["clustering"]
+
+- name: cmaes
+  topics: ["optimization"]
+
+- name: cobyla
+  topics: ["optimization"]
+
+- name: cogset
+  topics: ["clustering"]
+
+- name: coin_cbc
+  topics: ["optimization"]
+
+- name: deep_causality
+  topics: ["time-series"]
+
+- name: distrs
+  topics: ["statistics"]
+
+- name: darwin-rs
+  topics: ["optimization"]
+
+- name: egobox-ego
+  topics: ["optimization", "bayesian"]
+
+- name: egobox-gp
+  topics: ["bayesian"]
+
+- name: evo
+  topics: ["optimization"]
+
+- name: extended-isolation-forest
+  topics: ["time-series"]
+
+- name: ferric
+  topics: ["bayesian"]
+
+- name: finitediff
+  topics: ["optimization", "numerical-methods"]
+
+- name: forester
+  topics: ["gradient-boosting"]
+
+- name: friedrich
+  topics: ["bayesian"]
+
+- name: ganesh
+  topics: ["bayesian", "optimization"]
+
+- name: gbdt
+  topics: ["gradient-boosting"]
+
+- name: genetic_algorithm
+  topics: ["optimization"]
+
+- name: genevo
+  topics: ["optimization"]
+
+- name: globalsearch
+  topics: ["optimization"]
+
+- name: good_lp
+  topics: ["optimization"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    An ergonomic linear- and mixed-integer-programming API that dispatches to whichever solver you
+    have: CBC, HiGHS, SCIP, Clarabel or the pure-Rust minilp. You write the model once in Rust
+    expressions and change the backend with a Cargo feature, which is the thing that was missing
+    when every solver had its own bindings and its own matrix layout. If you want the algebraic
+    modeling layer above it -- JuMP or Pyomo shaped -- that arrived in 2026 as `oximo`.
+  links:
+    - kind: benchmark
+      url: "https://github.com/naev/naev/blob/main/utils/linopt-bench/README.md"
+      title: 'Naev benchmarks candidate LP solvers through good_lp, "since that is the API a replacement would use"'
+    - kind: production
+      url: "https://github.com/coin-or/Cbc"
+      title: "COIN-OR Cbc lists good_lp as its Rust interface"
+
+- name: highs
+  topics: ["optimization"]
+
+- name: hypors
+  topics: ["statistics"]
+
+- name: incr_stats
+  topics: ["statistics"]
+
+- name: kalmanfilt
+  topics: ["bayesian"]
+
+- name: kd-tree
+  topics: ["clustering"]
+
+- name: kddbscan
+  topics: ["clustering"]
+
+- name: kdtree
+  topics: ["clustering"]
+
+- name: kiddo
+  topics: ["clustering"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    A k-d tree that is fast enough and general enough to be infrastructure: float and fixed-point
+    coordinates, arbitrary dimensionality, and immutable memory-mapped trees for indexes larger
+    than RAM. It moves more downloads a quarter than any dedicated machine
+    learning crate on this site. Use it for exact nearest neighbors in low dimensions -- geometry,
+    point clouds, spatial joins; for high-dimensional embedding search you want the approximate
+    indexes on the retrieval hub instead.
+  links:
+    - kind: benchmark
+      url: "https://github.com/cavemanloverboy/bosque"
+      title: "Bosque, a rival k-d tree, drops its kiddo comparison and recommends kiddo v2 instead"
+    - kind: production
+      url: "https://github.com/lsst-ts/ts_mtm2_controller/blob/develop/Cargo.toml"
+      title: "The LSST/Rubin telescope-site M2 mirror controller depends on kiddo"
+
+- name: kmeans
+  topics: ["clustering"]
+
+- name: kmeans-colors
+  topics: ["clustering"]
+
+- name: kmedoids
+  topics: ["clustering"]
+
+- name: krcf
+  topics: ["time-series"]
+
+- name: lace
+  topics: ["bayesian"]
+
+- name: lbfgs
+  topics: ["optimization"]
+
+- name: lightgbm3
+  topics: ["gradient-boosting"]
+
+- name: linfa
+  documentation: "https://rust-ml.github.io/linfa/"
+  topics: ["ml-toolkits", "clustering", "gradient-boosting"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    The modular scikit-learn-shaped toolkit: twenty `linfa-*` crates covering linear and logistic
+    regression, elastic net, SVMs, decision trees, the new bagging/random-forest/AdaBoost
+    ensembles, naive Bayes, k-means, DBSCAN, OPTICS, GMM, PCA, t-SNE, ICA and PLS. It was rescued
+    from dormancy in January 2025 and has shipped 0.7 through 0.8.1 with outside contributors
+    since. Be realistic about the pace: dozens of open issues and pull requests, and three offers
+    of maintainership still unanswered on the tracker. Neither it nor smartcore replaces
+    scikit-learn -- there is no pipeline abstraction and no grid search anywhere in Rust.
+  links:
+    - kind: docs
+      url: "https://rust-ml.github.io/linfa/"
+      title: "linfa documentation"
+    - kind: post
+      url: "https://github.com/rust-ml/linfa/issues/367"
+      title: "linfa #367, Maintainership Discussion -- open since 2025-01, and the honest status"
+
+- name: linfa-clustering
+  topics: ["clustering"]
+
+- name: linfa-ensemble
+  topics: ["gradient-boosting"]
+
+- name: linfa-linalg
+  topics: ["ml-toolkits", "arrays-linalg"]
+
+- name: linfa-nn
+  topics: ["clustering"]
+
+- name: linfa-reduction
+  topics: ["clustering"]
+
+- name: linfa-trees
+  topics: ["gradient-boosting"]
+
+- name: linfa-tsne
+  topics: ["clustering"]
+
+- name: linfa-ica
+  topics: ["clustering"]
+
+- name: linfa-pls
+  topics: ["clustering"]
+
+- name: linregress
+  topics: ["ml-toolkits", "statistics"]
+
+- name: mahf
+  topics: ["optimization"]
+
+- name: medians
+  topics: ["statistics"]
+
+- name: metaheuristics
+  topics: ["optimization"]
+
+- name: metaheuristics-nature
+  topics: ["optimization"]
+
+- name: minikalman
+  topics: ["bayesian"]
+
+- name: minilp
+  topics: ["optimization"]
+
+- name: modppl
+  topics: ["bayesian"]
+
+- name: motif-rs
+  topics: ["time-series"]
+
+- name: ndarray-stats
+  topics: ["statistics"]
+
+- name: ndarray-glm
+  topics: ["ml-toolkits", "statistics"]
+
+- name: nlopt
+  topics: ["optimization"]
+
+- name: optimization-engine
+  topics: ["optimization", "robotics"]
+
+- name: optirustic
+  repository: https://github.com/s-simoncelli/nsga-rs
+  topics: ["optimization"]
+  description: >-
+    NSGA-II and NSGA-III multi-objective optimization. The crates.io record is a tombstone -- its
+    own description says the crate moved -- so the repository here points at where the work went.
+
+- name: osqp
+  topics: ["optimization"]
+
+- name: oxigen
+  topics: ["optimization"]
+
+- name: oximo
+  topics: ["optimization"]
+
+- name: perpetual
+  topics: ["gradient-boosting"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    Hyperparameter-free gradient boosting: one `budget` knob instead of a search over learning rate,
+    depth and estimators. It has a Rust core with Python and R bindings, and it ships the things
+    that usually send people back to Python -- SHAP values, ONNX and XGBoost export, monotonic
+    constraints and drift monitoring. It is also the only working SHAP implementation in the Rust
+    ecosystem, which is a comment on the interpretability shelf rather than on this crate.
+  links:
+    - kind: talk
+      url: "https://scientificcomputing.rs/2024/talklist"
+      title: "Perpetual: a hyperparameter-free gradient boosting machine (Scientific Computing in Rust 2024)"
+    - kind: post
+      url: "https://this-week-in-rust.org/blog/2024/09/25/this-week-in-rust-566/"
+      title: "perpetual, This Week in Rust Crate of the Week (2024-09-25)"
+
+- name: petal-clustering
+  topics: ["clustering"]
+
+- name: petal-decomposition
+  topics: ["clustering"]
+
+- name: petal-neighbors
+  topics: ["clustering"]
+
+- name: polya-gamma
+  topics: ["bayesian"]
+
+- name: puruspe
+  topics: ["statistics", "numerical-methods"]
+
+- name: r2l-core
+  topics: ["reinforcement-learning"]
+
+- name: radiate
+  topics: ["optimization"]
+
+- name: randomforest
+  topics: ["gradient-boosting"]
+
+- name: rstar
+  topics: ["clustering"]
+
+- name: rstats
+  topics: ["statistics"]
+
+- name: rsgenetic
+  topics: ["optimization"]
+
+- name: rsrl
+  topics: ["reinforcement-learning"]
+
+- name: rurel
+  topics: ["reinforcement-learning"]
+
+- name: russcip
+  topics: ["optimization"]
+
+- name: rusticsom
+  topics: ["clustering"]
+
+- name: rustlearn
+  topics: ["ml-toolkits"]
+
+- name: rusty-machine
+  topics: ["ml-toolkits"]
+
+- name: rv
+  topics: ["bayesian", "statistics"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    Random variables done properly: distributions with conjugate priors and Bayesian updating, which
+    is what separates it from `statrs` and makes it the base of most Bayesian work in Rust. It is
+    the anchor of a shelf you assemble rather than adopt -- pair it with `changepoint` for online
+    changepoints, `ganesh` for MCMC, `friedrich` or `egobox-gp` for Gaussian processes, `adskalman`
+    for filtering. What does not exist anywhere in Rust is a probabilistic programming language you
+    would build a project on: every attempt is a solo project under fifty stars.
+  links:
+    - kind: production
+      url: "https://github.com/grafana/augurs/blob/main/crates/augurs-outlier/Cargo.toml"
+      title: "Grafana's augurs builds its time-series outlier detection on rv"
+
+- name: RustyML
+  topics: ["ml-toolkits"]
+
+- name: simplers_optimization
+  topics: ["optimization"]
+
+- name: slsqp
+  topics: ["optimization"]
+
+- name: smartcore
+  documentation: https://smartcorelib.org/
+  topics: ["ml-toolkits", "clustering", "gradient-boosting"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    The single-crate classical toolkit -- linear and logistic regression, decision trees,
+    ensembles, SVM, naive Bayes, k-nearest neighbors, clustering, decomposition, model selection
+    -- and, as of 2026, the faster-moving of Rust's two. After eighteen dead months it went 0.4.0
+    to 0.6.14 in 2026 with contributors beyond its maintainers, zero open pull requests, and a
+    user guide that is actually kept current, which is the biggest status correction on this site.
+    Pick it over linfa if you want one dependency and a working tutorial; pick linfa if you want
+    to depend on one algorithm crate rather than all of them.
+  links:
+    - kind: docs
+      url: "https://smartcorelib.github.io/"
+      title: "The smartcore User Guide -- the best classical-ML tutorial in Rust"
+    - kind: paper
+      url: "https://doi.org/10.5281/zenodo.17219259"
+      title: "smartcore archived release with a citable DOI"
+
+- name: special
+  topics: ["statistics", "numerical-methods"]
+
+- name: statest
+  topics: ["statistics"]
+
+- name: statrs
+  topics: ["statistics"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    The foundation crate of statistics in Rust: distributions with pdf, cdf, inverse cdf and
+    sampling, plus the statistical functions around them. It is the reason "do statistics in Rust"
+    is not a caveat. For descriptive statistics over arrays reach for `ndarray-stats`, for
+    streaming summaries `average`, and for Bayesian updating `rv` -- statrs is the layer all three
+    assume.
+  links:
+    - kind: production
+      url: "https://github.com/huggingface/xet-core/blob/main/Cargo.toml"
+      title: "Hugging Face's xet-core, the Xet transfer client, depends on statrs"
+    - kind: production
+      url: "https://github.com/zama-ai/tfhe-rs/blob/main/tfhe/Cargo.toml"
+      title: "Zama's tfhe-rs homomorphic encryption library depends on statrs"
+
+- name: ta
+  topics: ["time-series"]
+
+- name: watermill
+  topics: ["statistics"]
+
+- name: xgboost
+  topics: ["gradient-boosting"]
+
+- name: yata
+  topics: ["time-series"]
+
+- repository: https://github.com/outbrain-inc/fwumious_wabbit
+  license: BSD-3-Clause
+  topics: ["ml-toolkits"]
+
+- repository: https://github.com/pengowen123/eant2
+  documentation: https://pengowen123.github.io/eant2/eant2/index.html
+  license: GPL-3.0
+  topics: ["optimization"]
+
+- repository: https://github.com/NivenT/REnforce
+  topics: ["reinforcement-learning"]
+
+- repository: https://github.com/benbaarber/rl
+  topics: ["reinforcement-learning"]
+
+- repository: https://github.com/Pushp-Kharat1/PkBoost
+  topics: ["gradient-boosting"]
+
+- name: classifier
+  topics: ["ml-toolkits"]
+
+- name: revonet
+  topics: ["optimization"]
+
+# ===== HUB 7 -- Data & Dataframes =====
+
+- name: arff
+  topics: ["datasets"]
+
+- name: arrow
+  topics: ["lakehouse"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    Apache Arrow in Rust, on a stable semver train in the fifties -- and the interchange format that
+    lets everything else on this hub talk to everything else. Polars, DataFusion, Lance, Vortex,
+    delta-rs, iceberg-rust and the Python bindings all speak it, which means a column you produce in
+    one can be read by another without a copy. `parquet` from the same repository is the on-disk
+    half. If you are moving tabular data across a boundary in Rust, the answer is almost always
+    Arrow.
+  links:
+    - kind: docs
+      url: "https://arrow.apache.org/rust/arrow/"
+      title: "arrow-rs API documentation"
+    - kind: production
+      url: "https://old.reddit.com/r/rust/comments/16v13l5/influxdb_officially_made_the_switch_from_go_rust/"
+      title: "InfluxDB completes its move from Go to Rust, onto Arrow and DataFusion (505 points, r/rust, 2023-09-29)"
+    - kind: post
+      url: "https://github.com/Eventual-Inc/Daft/discussions/5741"
+      title: "Daft on abandoning the unmaintained arrow2 for arrow-rs (2025-12-03)"
+
+- name: arrow2
+  topics: ["lakehouse"]
+
+- name: connectorx
+  topics: ["dataframes"]
+
+- name: csv
+  topics: ["datasets"]
+
+- name: cuticula
+  topics: ["datasets"]
+
+- name: datafusion
+  topics: ["dataframes"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    An extensible SQL and DataFrame query engine, an Apache top-level project, and the clearest
+    counter-example to the pattern on the rest of this hub: it treats Rust callers as the customer
+    and writes down what it promises them in a published API-health policy, with per-version upgrade
+    guides. That is why it is embedded in InfluxDB 3, Cloudflare's R2 query engine, dbt's Fusion
+    engine and Rerun rather than only used as a server. If you need to run SQL over Arrow data
+    inside your own Rust process, this is it.
+  links:
+    - kind: docs
+      url: "https://datafusion.apache.org/contributor-guide/api-health.html"
+      title: "DataFusion's API health policy -- what it promises Rust callers"
+    - kind: production
+      url: "https://datafusion.apache.org/user-guide/introduction.html#known-users"
+      title: "DataFusion's list of named production users"
+
+- name: deltalake
+  topics: ["lakehouse"]
+
+- name: differential-dataflow
+  topics: ["streaming"]
+
+- name: duckdb
+  topics: ["dataframes"]
+
+- name: hdf5-metno
+  topics: ["datasets"]
+  description: >-
+    The live HDF5 bindings: a fork of `aldanor/hdf5-rust` renamed so it can publish. Use this rather
+    than the `hdf5` crate.
+
+- name: hdf5
+  topics: ["datasets"]
+  description: >-
+    The original HDF5 bindings -- `hdf5-metno` is the fork that publishes current versions.
+
+- name: hudi
+  topics: ["lakehouse"]
+
+- name: icechunk
+  topics: ["datasets"]
+
+- name: iceberg
+  topics: ["lakehouse"]
+
+- name: iggy
+  topics: ["streaming"]
+
+- name: image
+  topics: ["datasets", "computer-vision"]
+
+- name: minarrow
+  topics: ["lakehouse"]
+
+- name: ndarray-npy
+  topics: ["datasets", "python-interop"]
+
+- name: ndatafusion
+  topics: ["dataframes"]
+
+- name: netcdf
+  topics: ["datasets"]
+
+- name: npyz
+  topics: ["datasets", "python-interop"]
+
+- name: openml
+  topics: ["datasets"]
+
+- name: parquet
+  topics: ["lakehouse"]
+
+- name: polars
+  topics: ["dataframes"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    The dataframe engine, with a funded company behind it and a lazy query optimizer that is
+    genuinely good. It is filed here as a Rust core with a Python API, and that is not a slight --
+    it is what the project's own artifacts say. Python Polars is 1.44 with a written versioning
+    policy and a 2.0 upgrade guide; the Rust crate is 0.55, has no stability guarantee documented
+    anywhere, and the 65 KB upgrade guide contains the words "rust", "crate" and "cargo" exactly
+    zero times. You can absolutely build on it from Rust -- plenty do -- but expect every minor bump
+    to break you and expect the docs to be written for someone else. If you want a Rust-first engine
+    with a policy attached, that is DataFusion.
+  links:
+    - kind: docs
+      url: "https://docs.pola.rs/development/versioning/"
+      title: "Polars' versioning policy -- which describes the Python package only"
+    - kind: post
+      url: "https://github.com/pola-rs/polars/issues/25959"
+      title: "polars #25959: a maintainer proposing to rename the fundamental Rust constructors"
+
+- name: probminhash
+  topics: ["datasets"]
+
+- name: rdkafka
+  topics: ["streaming"]
+
+- name: rettle
+  topics: ["streaming"]
+
+- name: rusty-data
+  documentation: https://athemathmo.github.io/rusty-data/
+  topics: ["datasets"]
+
+- name: tfrecord
+  topics: ["datasets"]
+
+- name: timely
+  topics: ["streaming"]
+
+- name: utah
+  repository: https://github.com/kernelmachine/utah
+  topics: ["dataframes"]
+
+- name: vortex
+  topics: ["lakehouse"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    A columnar format built for the shapes Parquet handles badly -- random access, wide multimodal
+    rows, cascading compression chosen per chunk -- and, unusually for this hub, one that treats
+    Rust as the customer: the README leads with `cargo add vortex`, the file format has been stable
+    since 0.36, and it publishes a formal MSRV policy. It was donated to LF AI & Data, so it is not
+    one vendor's format. Moved from `spiraldb/vortex`.
+  links:
+    - kind: docs
+      url: "https://vortex.dev"
+      title: "Vortex documentation and format specification"
+    - kind: production
+      url: "https://github.com/spiceai/spiceai"
+      title: "Spice AI, whose Cayenne engine ships Vortex in production"
+
+- name: xvc
+  topics: ["datasets"]
+
+- name: zarrs
+  topics: ["datasets"]
+
+- repository: https://github.com/Eventual-Inc/Daft
+  license: Apache-2.0
+  topics: ["dataframes", "streaming"]
+
+- repository: https://github.com/lakehq/sail
+  license: Apache-2.0
+  topics: ["streaming", "dataframes"]
+
+- repository: https://github.com/ArroyoSystems/arroyo
+  license: Apache-2.0
+  topics: ["streaming"]
+
+- repository: https://github.com/risingwavelabs/risingwave
+  license: Apache-2.0
+  topics: ["streaming"]
+
+- repository: https://github.com/MaterializeInc/materialize
+  topics: ["streaming"]
+
+- repository: https://github.com/feldera/feldera
+  license: MIT
+  topics: ["streaming"]
+
+- repository: https://github.com/vectordotdev/vector
+  license: MPL-2.0
+  topics: ["streaming"]
+
+- repository: https://github.com/fluvio-community/fluvio
+  license: Apache-2.0
+  topics: ["streaming"]
+
+- repository: https://github.com/arkflow-rs/arkflow
+  license: Apache-2.0
+  topics: ["streaming"]
+
+- repository: https://github.com/beowolx/rensa
+  license: MIT
+  topics: ["datasets"]
+
+# ===== HUB 8 -- Numerical & Scientific Computing =====
+
+- name: bacon-sci
+  topics: ["numerical-methods"]
+
+- name: bio
+  topics: ["domain-science"]
+
+- name: blas
+  topics: ["arrays-linalg"]
+  finished: true
+  status_date: "2026-09-01"
+  verified_by: anowell
+  verified_version: "0.23.0"
+
+- name: blas-src
+  topics: ["arrays-linalg"]
+
+- name: chemcore
+  topics: ["domain-science"]
+
+- name: chematic
+  topics: ["domain-science"]
+
+- name: chemfiles
+  topics: ["domain-science"]
+
+- name: charming
+  topics: ["plotting"]
+
+- name: charton
+  topics: ["plotting"]
+
+- name: densearray
+  topics: ["arrays-linalg"]
+
+- name: differential-equations
+  topics: ["numerical-methods"]
+
+- name: diffsol
+  topics: ["numerical-methods"]
+
+- name: dlpark
+  topics: ["python-interop"]
+
+- name: egui_plot
+  topics: ["plotting"]
+
+- name: enterpolation
+  topics: ["numerical-methods"]
+
+- name: evcxr
+  topics: ["plotting"]
+
+- name: evcxr_jupyter
+  topics: ["plotting"]
+
+- name: faer
+  topics: ["arrays-linalg"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    The fastest Rust option for dense and sparse decompositions, and the one that is credible
+    against OpenBLAS and MKL rather than merely present. It brings its own SIMD abstraction
+    (`pulp`) and GEMM kernels, and `faer-ext` converts to and from ndarray and nalgebra so it can be
+    the compute layer under code written against either. Two things to know: its primary host is now
+    Codeberg, with GitHub as a live mirror; and it has no GPU story at all -- nothing in the tree,
+    the changelog or the paper.
+  links:
+    - kind: docs
+      url: "https://faer.veganb.tw"
+      title: "faer documentation and benchmarks"
+    - kind: post
+      url: "https://github.com/rust-ndarray/ndarray/issues/1272"
+      title: "ndarray #1272: faer's author reporting an unsoundness in ndarray, and a user explaining why they moved"
+
+- name: faer-ext
+  topics: ["arrays-linalg"]
+
+- name: gauss-quad
+  topics: ["numerical-methods"]
+
+- name: gdal
+  topics: ["domain-science"]
+
+- name: gemm
+  topics: ["arrays-linalg"]
+
+- name: geo
+  topics: ["domain-science"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    Geospatial primitives and algorithms, and the center of the GeoRust umbrella -- `gdal` for raster
+    and vector I/O, `geozero` for format conversion, `proj` for coordinate transforms, `h3o` for hex
+    indexing. It is the healthiest domain-science corner in Rust after genomics. The machine
+    learning connection runs through `geoarrow-rs`: Arrow-native geometry is what lets spatial
+    features travel through a Polars or DataFusion pipeline into a model without leaving Rust.
+  links:
+    - kind: post
+      url: "https://sedona.apache.org/latest/blog/2025/09/24/introducing-sedonadb-a-single-node-analytical-database-engine-with-geospatial-as-a-first-class-citizen/"
+      title: "Apache Sedona builds SedonaDB on DataFusion, GeoArrow and georust/geo (2025-09-24)"
+    - kind: production
+      url: "https://github.com/maplibre/martin/blob/main/Cargo.toml"
+      title: "MapLibre's Martin tile server depends on geo"
+
+- name: geozero
+  topics: ["domain-science"]
+
+- name: GSL
+  topics: ["numerical-methods"]
+
+- name: h3o
+  topics: ["domain-science"]
+
+- name: interp
+  topics: ["numerical-methods"]
+
+- name: irust
+  topics: ["plotting"]
+
+- name: kuva
+  topics: ["plotting"]
+
+- name: lapack
+  topics: ["arrays-linalg"]
+  finished: true
+  status_date: "2026-09-01"
+  verified_by: anowell
+  verified_version: "0.19.0"
+
+- name: libm
+  topics: ["numerical-methods"]
+
+- name: linxal
+  topics: ["arrays-linalg"]
+
+- name: matrixmultiply
+  topics: ["arrays-linalg"]
+
+- name: maturin
+  topics: ["python-interop"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    Builds and publishes a Python wheel from a Rust crate, including the manylinux and cross-compile
+    parts that make that miserable by hand. Paired with pyo3 it is the whole distribution story for
+    Rust in machine learning: `pip install` is how tokenizers, safetensors, polars, ruff, uv and
+    pydantic-core actually reach people. If you write a Rust library that a data scientist should
+    use, this is how they get it.
+  links:
+    - kind: talk
+      url: "https://talkpython.fm/episodes/show/487/building-rust-extensions-for-python"
+      title: 'Talk Python #487, "Building Rust Extensions for Python", with Samuel Colvin (2024-12-01)'
+    - kind: production
+      url: "https://github.com/astral-sh/ruff/blob/main/pyproject.toml"
+      title: 'ruff builds its wheels with build-backend = "maturin"'
+    - kind: production
+      url: "https://github.com/pydantic/pydantic-core/blob/main/pyproject.toml"
+      title: 'pydantic-core builds its wheels with build-backend = "maturin"'
+
+- name: mdarray-linalg
+  topics: ["arrays-linalg"]
+
+- name: nalgebra
+  topics: ["arrays-linalg"]
+
+- name: nalgebra-sparse
+  topics: ["arrays-linalg"]
+
+- name: ndarray
+  topics: ["arrays-linalg"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    The de-facto n-dimensional array, NumPy's closest analogue, and what most Rust machine learning
+    code is written against -- linfa, smartcore, ndarray-stats, ndarray-linalg and rust-numpy all
+    assume it. Rust has no blessed array type and the Rust project has said out loud that it will
+    not pick one, so the honest framing is: ndarray for machine learning, nalgebra for
+    statically-sized geometry, faer for decomposition speed, and they do not interoperate without
+    conversion crates. Know the maintenance position before you build on it: roughly 21 commits in
+    2026 under a single active maintainer, no 1.0 roadmap, and 0.17.0 was yanked two days after
+    release for a use-after-free reachable without `unsafe`.
+  links:
+    - kind: post
+      url: "https://github.com/rust-ndarray/ndarray/issues/1272"
+      title: "ndarray #1272, Maintainership roundtable -- open since 2023, and where the 0.17.0 yank was explained"
+    - kind: post
+      url: "https://github.com/rust-lang/rust-project-goals/blob/main/src/2026/high-level-ml.md"
+      title: "The Rust project's 2026 ML goal on why it declines to bless one matrix type"
+
+- name: ndarray-einsum
+  topics: ["arrays-linalg"]
+
+- name: ndarray-linalg
+  topics: ["arrays-linalg"]
+
+- name: ndhistogram
+  topics: ["numerical-methods"]
+
+- name: needletail
+  topics: ["domain-science"]
+
+- name: newton_rootfinder
+  topics: ["numerical-methods"]
+
+- name: noodles
+  topics: ["domain-science"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    A pure-Rust reimplementation of the whole bioinformatics I/O stack -- BAM, CRAM, VCF, BCF,
+    FASTQ, GFF, SAM, tabix -- with no htslib to link. It is the strongest "Rust replaced a C library
+    and won" story in domain science, it releases continuously, and it pairs with `rust-bio` for
+    algorithms and `needletail` for k-mers. Note the boundary honestly: these crates read, index and
+    transform genomic data; the modeling still happens in Python.
+  links:
+    - kind: paper
+      url: "https://academic.oup.com/bioinformatics/article/38/6/1497/6499262"
+      title: "CRAM 3.1 (Bonfield, Wellcome Sanger Institute) names noodles as the Rust implementation of CRAM"
+    - kind: paper
+      url: "https://academic.oup.com/bioinformatics/article/41/12/btaf640/8362264"
+      title: "polars-bio (Bioinformatics, 2025) builds its VCF and BED table providers on noodles"
+
+- name: nshare
+  topics: ["arrays-linalg"]
+
+- name: num
+  topics: ["numerical-methods"]
+
+- name: numeric
+  topics: ["arrays-linalg"]
+
+- name: numpy
+  topics: ["python-interop"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    PyO3 bindings to the NumPy C API, published on crates.io as `numpy`. It is the crate that makes
+    the Rust-for-Python story work for numerical code specifically: an `ArrayView` over a NumPy
+    buffer with no copy in either direction, so a Rust function can be the fast path inside an
+    otherwise NumPy workflow without anyone paying for serialization. For tensors rather than
+    arrays, `dlpark` does the same job over DLPack for PyTorch and JAX.
+  links:
+    - kind: post
+      url: "https://ohadravid.github.io/posts/2023-03-rusty-python/"
+      title: '"Making Python 100x faster with less than 100 lines of Rust", written against this crate (2023-03-28)'
+    - kind: production
+      url: "https://github.com/Qiskit/qiskit/blob/main/Cargo.toml"
+      title: "Qiskit's Rust core reaches Python arrays through the numpy crate"
+
+- name: numrs
+  topics: ["arrays-linalg"]
+
+- name: ode_solvers
+  topics: ["numerical-methods"]
+
+- name: openblas-src
+  topics: ["arrays-linalg"]
+
+- name: peroxide
+  topics: ["numerical-methods", "statistics"]
+
+- name: plotly
+  topics: ["plotting"]
+
+- name: plotlars
+  topics: ["plotting"]
+
+- name: plotters
+  topics: ["plotting"]
+
+- name: poloto
+  topics: ["plotting"]
+
+- name: proj
+  topics: ["domain-science"]
+
+- name: pulp
+  topics: ["arrays-linalg"]
+
+- name: pyo3
+  topics: ["python-interop"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    The reason most Rust that reaches machine learning practitioners reaches them at all: it is how a Rust library becomes a Python module.
+    pydantic-core, cryptography, jiter, ruff, uv, tiktoken, tokenizers, safetensors, polars and
+    fastembed all cross this boundary. Note the asymmetry the rest of this hub does not: shipping
+    Rust to Python is a solved, industrial-scale problem, and calling Python from Rust is the
+    awkward direction.
+  links:
+    - kind: docs
+      url: "https://pyo3.rs/"
+      title: "The PyO3 user guide"
+    - kind: post
+      url: "https://github.com/rust-lang/rust-project-goals/blob/main/src/2024h2/Rust-for-SciComp.md"
+      title: 'The Rust project''s 2024h2 SciComp goal: "Thanks to PyO3, Rust has excellent interoperability with Python"'
+    - kind: post
+      url: "https://old.reddit.com/r/rust/comments/1jjf96y/why_isnt_rust_used_more_for_scientific_computing/"
+      title: 'r/rust: "The best way to get scientists to use Rust is to make compelling libraries and release them with PyO3" (207 points, 2025-03-25)'
+
+- name: pyo3-arrow
+  topics: ["python-interop"]
+
+- name: pyo3-polars
+  repository: https://github.com/pola-rs/polars
+  topics: ["python-interop"]
+
+- name: realfft
+  topics: ["numerical-methods", "speech-audio"]
+
+- name: rerun
+  topics: ["plotting", "robotics"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    Not a chart library -- a viewer and time-series store for multimodal data, and the most mature
+    visualization tool in the Rust ecosystem by a wide margin. You log images, point clouds,
+    tensors, transforms and scalars over time and scrub through them, which is what debugging a
+    perception or robotics system actually needs. The viewer is the Rust application and the Python
+    SDK is a PyO3 wrapper over it, so the Rust API is first-class -- with the caveat that Python is
+    the default funnel: three times as many Python examples, and only the Python SDK bundles the
+    viewer. `kornia-rs`, copper-rs and LeRobot all log to it.
+  links:
+    - kind: post
+      url: "https://rerun.io/blog/why-rust"
+      title: "Rerun on why they chose Rust -- including the downsides"
+    - kind: production
+      url: "https://github.com/copper-project/copper-rs"
+      title: "copper-rs depends on rerun for visualization"
+
+- name: roots
+  topics: ["numerical-methods"]
+
+- name: rstsr
+  topics: ["arrays-linalg"]
+
+- name: rulinalg
+  topics: ["arrays-linalg"]
+
+- name: russell_lab
+  topics: ["numerical-methods"]
+
+- name: sprocket
+  topics: ["domain-science"]
+
+- name: rust-htslib
+  topics: ["domain-science"]
+
+- name: rust-script
+  topics: ["plotting"]
+
+- name: rustfft
+  topics: ["numerical-methods", "speech-audio"]
+
+- name: scirust
+  topics: ["numerical-methods"]
+
+- name: simba
+  topics: ["arrays-linalg"]
+
+- name: splines
+  topics: ["numerical-methods"]
+
+- name: sprs
+  topics: ["arrays-linalg"]
+
+- name: symbolica
+  topics: ["numerical-methods"]
+  # crates.io reports no license because the crate uses `license-file`; `LicenseRef-` is SPDX's
+  # own form for a license outside the registry, so the field stays machine-readable.
+  license: "LicenseRef-Symbolica"
+  description: >-
+    Computer algebra system. Listed with its license stated plainly, because a catalog has to: it is
+    source-available, NOT open source. Its own License.md forbids copying or distributing any part
+    of the code without prior permission; one core and one instance per device is free for
+    non-commercial use, academic licenses run into thousands a year, and multi-threaded, server or
+    CI use is paid. It cannot be vendored, forked or packaged in a distribution. Its spin-offs
+    `numerica`, `graphica` and `symbolica-integrate` are separately open source.
+
+- name: textplots
+  topics: ["plotting"]
+
+- name: vega_lite_4
+  topics: ["plotting"]
+
+- name: wide
+  topics: ["arrays-linalg"]
+
+- repository: https://github.com/geoarrow/geoarrow-rs
+  license: Apache-2.0
+  topics: ["domain-science"]
+
+- repository: https://github.com/microBioRust/microBioRust
+  topics: ["domain-science"]
+
+- repository: https://github.com/opendifferentialprivacy/whitenoise-core
+  license: MIT
+  topics: ["safety-privacy"]
+
+# ===== HUB 9 -- GPU & Accelerators =====
+
+- name: accel
+  topics: ["gpu-kernels"]
+
+- name: all-smi
+  topics: ["gpu-runtimes"]
+
+- name: arrayfire
+  topics: ["gpu-runtimes"]
+
+- name: ash
+  topics: ["gpu-runtimes"]
+
+- name: coaster
+  repository: https://github.com/fff-rs/juice
+  topics: ["gpu-runtimes"]
+
+- name: collenchyma
+  topics: ["gpu-runtimes"]
+
+- name: cublas
+  description: "safe Rust wrapper for CUDA's cuBLAS"
+  topics: ["gpu-runtimes"]
+
+- name: cuda
+  topics: ["gpu-runtimes"]
+
+- name: cuda-oxide
+  repository: https://github.com/NVlabs/cuda-oxide
+  topics: ["gpu-kernels"]
+  tier: featured
+  status_date: "2026-09-13"
+  verified_by: anowell
+  featured_note: >
+    NVIDIA Labs compiling standard Rust to PTX -- not a DSL and not a macro: a rustc codegen backend
+    routes `#[kernel]` functions through MIR, the third-party pliron IR framework and LLVM, so the
+    kernel is ordinary Rust that rustc understands, and the GPU dialects NVIDIA wrote on top of
+    pliron live in this repository. Together with cuTile it is the first first-party vendor
+    investment in Rust for GPUs, which is a different kind of signal from a community project
+    reaching the same place -- but NVIDIA's own announcement puts cuTile first and this second, as
+    the track you drop to when you want to manage threads and memory yourself. It is early alpha by
+    NVIDIA's own description, pins a specific nightly, still needs `unsafe` for shared memory, is
+    driven by a `cargo oxide` subcommand you install from the repository, and is not on crates.io --
+    the crates.io name `cuda-oxide` is an unrelated dead 2021 driver wrapper by someone else.
+  links:
+    - kind: docs
+      url: "https://nvlabs.github.io/cuda-oxide/"
+      title: "The cuda-oxide book, NVIDIA's own Rust GPU documentation"
+    - kind: post
+      url: "https://news.ycombinator.com/item?id=48096692"
+      title: "cuda-oxide on Hacker News (424 points, 118 comments, 2026-05-11)"
+    - kind: post
+      url: "https://old.reddit.com/r/rust/comments/1t7a5s7/nvidia_releases_cudaoxide_01_for_experimental/"
+      title: '"NVIDIA releases cuda-oxide 0.1" (488 points, r/rust, 2026-05-08)'
+    - kind: post
+      url: "https://developer.nvidia.com/blog/introducing-cuda-rust-two-tracks-for-writing-gpu-kernels/"
+      title: "NVIDIA's own announcement of the SIMT and Tile tracks (2026-09-08)"
+
+- name: cuda_builder
+  topics: ["gpu-kernels"]
+
+- name: cuda-std
+  topics: ["gpu-kernels"]
+
+- name: cudarc
+  topics: ["gpu-runtimes", "distributed-gpu"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    Safe, minimal CUDA from Rust: driver API, NVRTC, cuBLAS and cuBLASLt, cuDNN, cuRAND, cuFFT,
+    cuSOLVER, cuSPARSE, cuTENSOR, NCCL, cuFILE and CUPTI. The property that makes it the default is
+    dynamic loading: you do not need the CUDA toolkit at build time. Rust-CUDA's own maintainer has
+    said publicly they have been "seriously discussing just killing" their `cust` host crate in
+    favor of it, which is as clear a statement of where this settled as you will get. Its `nccl` feature is also the working
+    multi-GPU path in Rust; note the crates.io name `nccl` is a configuration language by someone
+    else. Repository moved from `coreylowman/cudarc`.
+  links:
+    - kind: docs
+      url: "https://docs.rs/cudarc"
+      title: "cudarc API documentation and feature list"
+    - kind: production
+      url: "https://news.ycombinator.com/item?id=43654881"
+      title: 'Copper Robotics on Hacker News: "finally with cudarc we have some hope" (2025-04-11)'
+    - kind: production
+      url: "https://news.ycombinator.com/item?id=44824676"
+      title: "Mixlayer, an inference engine built on candle and cudarc, upstreaming fp8/fp4 to both (2025-08-07)"
+    - kind: post
+      url: "https://news.ycombinator.com/item?id=45683153"
+      title: "Rust-CUDA's maintainer on Hacker News, on dropping `cust` in favour of cudarc (2025-10-23)"
+
+- name: cudnn
+  topics: ["gpu-runtimes"]
+
+- name: cumath
+  topics: ["gpu-runtimes"]
+
+- name: cubecl
+  topics: ["gpu-kernels"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    Write a kernel once in Rust and compile it to CUDA, ROCm/HIP, Metal, Vulkan, WebGPU or SIMD CPU.
+    Nothing in Python does this -- Triton is NVIDIA and AMD only -- and it is what makes Burn
+    portable across vendors from one codebase, which is the single strongest argument for Rust on
+    the GPU. It runs on stable Rust, unlike rust-gpu, Rust-CUDA and cuda-oxide, which each pin a
+    different nightly. Two caveats it states itself: the public API is alpha with breaking changes
+    between minor versions, and WebGPU has no tensor-core acceleration.
+  links:
+    - kind: benchmark
+      url: "https://burn.dev/blog/sota-multiplatform-matmul"
+      title: "Multiplatform matmul kernels benchmarked on CUDA, Vulkan, ROCm and Metal"
+    - kind: docs
+      url: "https://burn.dev/books/cubecl/"
+      title: "The CubeCL Book -- the only book-length Rust GPU-kernel tutorial"
+
+- name: cust
+  topics: ["gpu-runtimes"]
+
+- name: cutile
+  topics: ["gpu-kernels"]
+  tier: featured
+  status_date: "2026-09-13"
+  verified_by: anowell
+  verified_version: "0.3.1"
+  featured_note: >
+    NVIDIA Labs' tile-based kernel DSL on CUDA Tile IR -- and the strongest vendor endorsement any
+    part of the Rust ML stack has ever received. You say what one tile of data does and the compiler
+    decides how many real threads back it, so there is no thread indexing and no shared memory to
+    get wrong; ownership is what makes that safe, because a mutable tensor has to be partitioned
+    into disjoint pieces before it can be launched at all, and the classic aliasing mistake is a
+    borrow error on the host rather than a race on the device. It runs on stable Rust with no
+    nightly and no LLVM of your own, which is the practical difference from cuda-oxide, NVIDIA's
+    other track. Its authors report 7 TB/s element-wise throughput and 2 PFlop/s GEMM on B200,
+    roughly 96% of cuBLAS. Treat those as the project's own numbers; the accompanying paper is
+    where the methodology is; the README carries the hardware and toolkit it needs. It is new,
+    NVIDIA-only, and calls itself early and API-unstable. The reception is worth knowing before you
+    invest: the paper drew real interest, but NVIDIA's own announcement of the two tracks landed on
+    almost nobody -- four Hacker News submissions, twelve points at best, not one comment between
+    them, against the 424 points and 118 comments the cuda-oxide repository drew in May. The loudest
+    reaction is a reservation rather than enthusiasm: that a Rust GPU story tied to one vendor's
+    hardware is not the one people were waiting for. Outside NVIDIA the usage is narrow and not
+    arm's length -- mistral.rs carries a directory of cuTile kernels behind an optional feature, and
+    its maintainer co-authored the cuTile paper.
+  links:
+    - kind: paper
+      url: "https://arxiv.org/abs/2606.15991"
+      title: "Fearless Concurrency on the GPU (Elibol et al., 2026-06-14)"
+    - kind: post
+      url: "https://old.reddit.com/r/rust/comments/1u82fpy/fearless_concurrency_on_the_gpu/"
+      title: "r/rust on cuTile Rust (254 points)"
+    - kind: production
+      url: "https://github.com/EricLBuehler/mistral.rs/blob/master/docs/src/content/docs/reference/hardware-support.md"
+      title: "mistral.rs documents which of its CUDA release lanes are cuTile-capable"
+    - kind: production
+      url: "https://github.com/EricLBuehler/mistral.rs/tree/master/mistralrs-quant/src/cutile"
+      title: "mistral.rs's cuTile kernels: FP8 GEMM, NVFP4, fused MoE, routed LoRA"
+    - kind: post
+      url: "https://developer.nvidia.com/blog/introducing-cuda-rust-two-tracks-for-writing-gpu-kernels/"
+      title: "NVIDIA's own announcement: Tile is the track it says to reach for first (2026-09-08)"
+
+- name: decuda
+  topics: ["gpu-runtimes"]
+
+- name: descend
+  repository: https://github.com/descend-lang/descend
+  topics: ["gpu-kernels"]
+  description: >-
+    Research language putting borrow-checking on GPU execution resources. Name collision: the
+    crates.io `descend` is an unrelated squat.
+
+- name: em
+  topics: ["gpu-kernels"]
+
+- name: emu_core
+  documentation: https://calebwin.github.io/emu
+  topics: ["gpu-kernels"]
+
+- name: gpu-allocator
+  topics: ["gpu-runtimes"]
+
+- name: hip-sys
+  topics: ["gpu-runtimes"]
+
+- name: kaio
+  topics: ["gpu-kernels"]
+  description: >-
+    Rust-syntax kernel DSL compiled to PTX at build time, needing only the NVIDIA driver. Two things
+    to know before believing the README: it is not Rust compiled to the GPU -- the kernel body never
+    reaches rustc's backend, it is parsed into KAIO's own IR -- and its performance claim escalated
+    from 92.5% of cuBLAS in its April 2026 announcement to 115% in the README, with no independent
+    reproduction of either. NVIDIA-only, single-device.
+
+- name: khal
+  topics: ["gpu-kernels"]
+
+- name: krnl
+  topics: ["gpu-kernels"]
+
+- name: lamellar
+  topics: ["distributed-gpu"]
+
+- name: metal
+  topics: ["gpu-runtimes"]
+  description: "Metal bindings -- its own README says to use `objc2-metal`."
+
+- name: mpi
+  topics: ["distributed-gpu"]
+
+- name: naga
+  topics: ["gpu-kernels", "gpu-runtimes"]
+
+- name: nixl-sys
+  topics: ["distributed-gpu"]
+
+- name: nvml-wrapper
+  topics: ["gpu-runtimes"]
+
+- name: objc2-metal
+  topics: ["gpu-runtimes"]
+
+- name: ocl
+  topics: ["gpu-runtimes"]
+
+- name: opencl3
+  topics: ["gpu-runtimes"]
+
+- name: parenchyma
+  topics: ["gpu-runtimes"]
+
+- name: qcgpu
+  repository: https://github.com/libtangle/qcgpu-version-0.1.0
+  topics: ["gpu-runtimes"]
+
+- name: rocm-rs
+  topics: ["gpu-runtimes"]
+
+- name: rspirv
+  topics: ["gpu-kernels"]
+
+- name: rustacuda
+  topics: ["gpu-runtimes"]
+
+- name: spirv-std
+  topics: ["gpu-kernels"]
+
+- name: spirv-tools
+  topics: ["gpu-kernels"]
+
+- name: vulkano
+  topics: ["gpu-runtimes"]
+
+- name: wgpu
+  topics: ["gpu-runtimes"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    One compute and graphics API across Vulkan, Metal, DirectX 12, OpenGL and the browser, and by
+    download volume the most-used GPU crate in this catalog. For machine learning it is the portable
+    floor: if you write WGSL against wgpu, it runs on NVIDIA, AMD, Intel, Apple and in a browser
+    without a vendor SDK -- which is why Burn's WebGPU backend and Brush's in-browser Gaussian-splat
+    training exist. The ceiling is real too: no tensor cores through WebGPU, and Firefox still ships
+    it disabled by default.
+  links:
+    - kind: docs
+      url: "https://sotrh.github.io/learn-wgpu/"
+      title: "learn-wgpu, the community's standard tutorial"
+    - kind: post
+      url: "https://rust-gpu.github.io/blog/2025/07/25/rust-on-every-gpu/"
+      title: "Rust running on every GPU (605 points on Hacker News)"
+
+- name: wgsl-bindgen
+  topics: ["gpu-kernels"]
 
 - repository: https://github.com/rust-gpu/rust-gpu
-  description: "Making Rust a first-class language and ecosystem for GPU graphics & compute shaders"
   license: MIT OR Apache-2.0
-  topics: ["gpu-computing"]
+  topics: ["gpu-kernels"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    A rustc codegen backend that compiles ordinary Rust to SPIR-V, so a compute kernel is a Rust
+    function you can also run and test on the CPU -- which is the property no shading language
+    gives you. Through SPIR-V it reaches Vulkan, and through naga, Metal and WebGPU. The costs are
+    real and stated by its own maintainers: it pins a specific nightly, debugging across the
+    compilation layers is hard, and its project blog has been quiet since 2025-08 while the writing
+    moved to VectorWare. Use CubeCL if you want the same portability on stable Rust.
+  links:
+    - kind: post
+      url: "https://rust-gpu.github.io/blog/2025/07/25/rust-on-every-gpu/"
+      title: "Rust running on every GPU -- one codebase, six targets, and its own failure modes"
+    - kind: docs
+      url: "https://rust-gpu.github.io/ecosystem/"
+      title: "The rust-gpu ecosystem map, including rustc's own nvptx64 and amdgcn targets"
 
-- repository: https://github.com/blackportal-ai/delta
-  description: "An open-source machine learning framework in Rust"
-  license: BSD-3-Clause
-  topics: ["neural-networks"]
+- repository: https://github.com/luqmana/rust-opencl
+  license: MIT/Apache-2.0
+  topics: ["gpu-runtimes"]
+
+- repository: https://github.com/vosen/ZLUDA
+  license: Apache-2.0
+  topics: ["gpu-runtimes"]
+
+- repository: https://github.com/neelsomani/vericuda
+  topics: ["gpu-kernels"]
+
+- repository: https://github.com/RayMarch/shame
+  topics: ["gpu-kernels"]
+
+- repository: https://github.com/ArthurBrussee/brush
+  license: Apache-2.0
+  topics: ["gpu-kernels", "computer-vision"]
+
+- repository: https://github.com/LegNeato/rust-gpu-chimera
+  topics: ["gpu-kernels"]
+
+# ===== HUB 10 -- Modalities & Domains =====
+
+- name: apex-solver
+  topics: ["computer-vision"]
+
+- name: aubio-rs
+  topics: ["speech-audio"]
+  description: "Onset, pitch, beat and MFCC extraction. The live fork is `bliss-audio-aubio-rs`."
+
+- name: azure-speech
+  topics: ["speech-audio"]
+
+- name: bevy
+  topics: ["robotics"]
+
+- name: bevy_gaussian_splatting
+  topics: ["computer-vision"]
+
+- name: bm25
+  topics: ["text-processing", "full-text-search"]
+
+- name: bonsai-bt
+  topics: ["robotics"]
+
+- name: box-image-pyramid
+  topics: ["computer-vision"]
+
+- name: cam-geom
+  topics: ["computer-vision"]
+
+- name: cpal
+  topics: ["speech-audio"]
+
+- name: cu29
+  topics: ["robotics"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    A deterministic "operating system for robots": the task graph is written in RON and compiled,
+    the hot path allocates nothing, and every run is recorded and can be replayed exactly. That
+    determinism is the thing you cannot get from ROS 2 or from Python, and it is the reason to reach
+    for Rust here rather than a reason to tolerate it. It reached 1.0 in 2026-07 after more than a
+    thousand pull requests, with a semver commitment and named pilot users. Note the crate is `cu29`
+    -- the crates.io name `copper-rs` is an unrelated 2023 crate.
+  links:
+    - kind: post
+      url: "https://www.codethink.co.uk/articles/2026/copper-rs-real-time-robotics.html"
+      title: "Codethink's hexapod case study: copper-rs latency, jitter and logging throughput against ROS 2 (2026-08-20)"
+    - kind: paper
+      url: "https://arxiv.org/abs/2505.12425"
+      title: "Kornia-rs (2025) shows a cu29 CuTask as its route into real-time robotics"
+
+- name: darknet
+  topics: ["computer-vision"]
+  replacement: usls
+
+- name: deep_filter
+  topics: ["speech-audio"]
+  description: "Deep-learning noise suppression. `nnnoiseless` is the maintained option."
+
+- name: deepgram
+  topics: ["speech-audio"]
+
+- name: diffusion-rs
+  repository: https://github.com/newfla/diffusion-rs
+  topics: ["generative-media"]
+
+- name: dlib-face-recognition
+  topics: ["computer-vision"]
+
+- name: dora-node-api
+  topics: ["robotics"]
+
+- name: e57
+  topics: ["computer-vision"]
+
+- name: earshot
+  topics: ["speech-audio"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    Streaming voice-activity detection in about 40 KiB of pure Rust with no model to download and no
+    runtime to link -- which is the whole point, because every other VAD option drags in ONNX
+    Runtime for a job that is smaller than the runtime. From the maintainer of `ort`, who is in a
+    good position to know that. Its headline speed figures are still the project's own; the nearest
+    thing to an outside check is wavekat-vad, which measures it beside four other VAD backends.
+  links:
+    - kind: benchmark
+      url: "https://github.com/wavekat/wavekat-vad"
+      title: "wavekat-vad's comparison of five VAD backends, earshot among them"
+    - kind: production
+      url: "https://github.com/block/buzz/blob/main/desktop/src-tauri/Cargo.toml"
+      title: "Block's buzz desktop app ships earshot"
+
+- name: elevenlabs_rs
+  topics: ["speech-audio"]
+
+- name: espeak-ng
+  topics: ["speech-audio"]
+
+- name: espeak-rs
+  topics: ["speech-audio"]
+
+- name: fast-vad
+  topics: ["speech-audio"]
+
+- name: fast_image_resize
+  topics: ["computer-vision"]
+
+- name: fasttext
+  topics: ["text-processing"]
+  description: "fastText bindings."
+
+- name: ffmpeg-next
+  topics: ["computer-vision"]
+
+- name: ffmpeg-sidecar
+  topics: ["computer-vision"]
+
+- name: finalfusion
+  topics: ["text-processing", "embeddings"]
+
+- name: finalfrontier
+  topics: ["text-processing"]
+
+- name: gline-rs
+  topics: ["safety-privacy"]
+
+- name: gstreamer
+  topics: ["computer-vision"]
+
+- name: hound
+  topics: ["speech-audio"]
+  finished: true
+  status_date: "2026-09-01"
+  verified_by: anowell
+
+- name: imageproc
+  topics: ["computer-vision"]
+
+- name: jieba-rs
+  topics: ["text-processing"]
+
+- name: kalman-rust
+  topics: ["computer-vision"]
+
+- name: kaudio
+  repository: https://github.com/kyutai-labs/kaudio
+  topics: ["speech-audio"]
+
+- name: kokoro-tts
+  topics: ["speech-audio"]
+  description: >-
+    Kokoro TTS, actually published to crates.io -- unlike `Kokoros`, whose crate names do not
+    resolve.
+
+- name: kornia-image
+  topics: ["computer-vision"]
+
+- name: kornia-imgproc
+  topics: ["computer-vision"]
+
+- name: las
+  topics: ["computer-vision"]
+
+- name: leptess
+  topics: ["document-ai"]
+
+- name: lindera
+  topics: ["text-processing"]
+
+- name: lingua
+  topics: ["text-processing"]
+
+- name: mavlink
+  topics: ["robotics"]
+
+- name: mcap
+  topics: ["robotics"]
+
+- name: mel_spec
+  topics: ["speech-audio"]
+
+- name: moshi
+  topics: ["speech-audio"]
+
+- name: mot-rs
+  topics: ["computer-vision"]
+
+- name: nlprule
+  topics: ["text-processing"]
+
+- name: nnnoiseless
+  topics: ["speech-audio"]
+
+- name: nokhwa
+  topics: ["computer-vision"]
+
+- name: opencv
+  topics: ["computer-vision"]
+
+- name: opendp
+  topics: ["safety-privacy"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    Differential privacy from the Harvard-originated OpenDP project: a framework of measurements and
+    transformations that carry their own privacy proofs, so a composed analysis has an accounted
+    privacy loss rather than an asserted one. Unusually for a "Rust core, Python product" project, the Rust API
+    is documented and first-class. It is the live successor to `whitenoise-core`, which this site
+    linked for six years after it died, and it is the only differential-privacy answer in Rust.
+  links:
+    - kind: paper
+      url: "https://arxiv.org/abs/2202.09587"
+      title: "An academic evaluation of five open-source differential privacy tools, OpenDP among them (2022)"
+    - kind: post
+      url: "https://openmined.org/blog/a-survey-of-differential-privacy-frameworks/"
+      title: "OpenMined's survey of differential privacy frameworks, on the OpenDP library"
+
+- name: openrr
+  topics: ["robotics"]
+
+- name: optical-flow-lk
+  topics: ["computer-vision"]
+
+- name: oww-rs
+  topics: ["speech-audio"]
+
+- name: parakeet-rs
+  topics: ["speech-audio"]
+
+- name: pcd-rs
+  topics: ["computer-vision"]
+
+- name: piper-rs
+  topics: ["speech-audio"]
+
+- name: ply-rs
+  topics: ["computer-vision"]
+
+- name: polyvoice
+  topics: ["speech-audio"]
+
+- name: pyannote-rs
+  topics: ["speech-audio"]
+
+- name: qwen3-tts-rs
+  topics: ["speech-audio"]
+
+- name: r2r
+  topics: ["robotics"]
+
+- name: rapier3d
+  topics: ["robotics"]
+
+- name: rav1d
+  topics: ["computer-vision"]
+
+- name: rav1e
+  topics: ["computer-vision"]
+
+- name: rclrs
+  repository: https://github.com/ros2-rust/ros2_rust
+  topics: ["robotics"]
+
+- name: reductstore
+  topics: ["robotics"]
+
+- name: rubato
+  topics: ["speech-audio"]
+
+- name: rust-bert
+  topics: ["text-processing"]
+
+- name: rust-stemmers
+  topics: ["text-processing"]
+  finished: true
+  status_date: "2026-09-01"
+  verified_by: anowell
+
+- name: rust2vec
+  topics: ["text-processing", "embeddings"]
+
+- name: rust_tokenizers
+  topics: ["text-processing"]
+
+- name: rustface
+  topics: ["computer-vision"]
+
+- name: rustfst
+  topics: ["text-processing", "speech-audio"]
+
+- name: sentencex
+  topics: ["text-processing"]
+
+- name: sherpa-onnx
+  topics: ["speech-audio"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    Official Rust bindings, maintained by sherpa-onnx's own lead, covering speech recognition,
+    text-to-speech, voice-activity detection, diarization, keyword spotting, speaker identification,
+    punctuation and speech enhancement from one crate. The thing that makes it the default is
+    unglamorous: prebuilt native libraries are downloaded automatically, so there is no C++
+    toolchain to fight -- which is what made this whole area miserable for years. First published in
+    2026-02 and the fastest adoption in the segment. It is also why `sherpa-rs`, the community
+    binding, archived itself. Gap worth knowing: the C++ core has source separation and the Rust API
+    does not.
+  links:
+    - kind: docs
+      url: "https://k2-fsa.github.io/sherpa/onnx/index.html"
+      title: "sherpa-onnx documentation"
+    - kind: post
+      url: "https://github.com/thewh1teagle/sherpa-rs"
+      title: "sherpa-rs archived itself and points at these bindings"
+
+- name: sherpa-rs
+  topics: ["speech-audio"]
+  because: superseded
+  replacement: sherpa-onnx
+  evidence: "https://github.com/thewh1teagle/sherpa-rs"
+  status_date: "2026-09-02"
+  verified_by: anowell
+
+- name: shap-rs
+  topics: ["safety-privacy"]
+
+- name: sigstore
+  topics: ["safety-privacy"]
+
+- name: similari
+  topics: ["computer-vision"]
+
+- name: spiffe
+  topics: ["safety-privacy"]
+
+- name: speakrs
+  topics: ["speech-audio"]
+
+- name: symphonia
+  topics: ["speech-audio"]
+
+- name: tesseract
+  topics: ["document-ai"]
+
+- name: trackforge
+  topics: ["computer-vision"]
+
+- name: transcribe-rs
+  topics: ["speech-audio"]
+
+- name: ultralytics-inference
+  topics: ["computer-vision"]
+
+- name: unicode-segmentation
+  topics: ["text-processing"]
+
+- name: urdf-rs
+  topics: ["robotics"]
+
+- name: usls
+  topics: ["computer-vision"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    The breadth leader in Rust vision by a very wide margin: roughly ninety model families over ONNX
+    Runtime -- YOLO v5 through v26, RT-DETR, D-FINE, SAM 1/2/3, GroundingDINO, OWLv2, Florence2,
+    Moondream2, SmolVLM, CLIP, SigLIP, DINOv2 and v3, Depth-Anything, RTMPose, PaddleOCR with tables
+    and layout, ByteTrack -- across CPU, CUDA, TensorRT, CoreML, OpenVINO and DirectML. It is
+    flagged here with an equally large warning: its README calls it "a personal project maintained
+    in spare time", commits fell to zero in August 2026, and crates.io has only alpha releases. It
+    is the most load-bearing and the most fragile crate in Rust computer vision at the same time.
+  links:
+    - kind: production
+      url: "https://github.com/ultralytics/ultralytics/tree/main/examples/YOLO-Series-ONNXRuntime-Rust"
+      title: "Ultralytics ships a usls-based Rust ONNX Runtime example in its own repository"
+    - kind: production
+      url: "https://github.com/camthink-ai/NeoMind-Extensions/blob/main/Cargo.toml"
+      title: "CamThink's NeoMind edge platform ships usls, with a local patch for dynamically loaded CUDA"
+
+- name: vader_sentiment
+  topics: ["text-processing"]
+
+- name: vaporetto
+  topics: ["text-processing"]
+
+- name: vibrato
+  topics: ["text-processing"]
+
+- name: video-rs
+  topics: ["computer-vision"]
+
+- name: visioncortex
+  topics: ["computer-vision"]
+
+- name: voice_activity_detector
+  topics: ["speech-audio"]
+
+- name: webrtc-vad
+  topics: ["speech-audio"]
+
+- name: whatlang
+  topics: ["text-processing"]
+
+- name: whisper-rs
+  topics: ["speech-audio"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    Still the most-downloaded speech recognition crate in Rust, and the one most projects reach
+    for first: whisper.cpp bindings with a small API and every GGML quantization. Two things a
+    reader has to know. It moved to Codeberg in 2025-07 in a declared anti-generative-AI
+    migration, so the GitHub mirror shows as archived and is not evidence of death. And it is
+    pinned to whisper.cpp v1.8.3 while upstream has moved on, with open issues stacking up and no
+    recent commits -- so it is no longer the automatic default. For a maintained multi-model
+    engine look at `transcribe-rs` or `sherpa-onnx`.
+  links:
+    - kind: production
+      url: "https://github.com/sdroege/gst-plugin-rs/blob/main/audio/whisper/Cargo.toml"
+      title: "GStreamer's gst-plugin-whisper is a whisper-rs element"
+    - kind: production
+      url: "https://github.com/spacedriveapp/spacedrive/blob/main/core/Cargo.toml"
+      title: "Spacedrive takes its speech-to-text from whisper-rs"
+
+- name: word2vec
+  topics: ["text-processing"]
+
+- name: xaynet-core
+  topics: ["safety-privacy"]
+
+- name: yolo-rs
+  topics: ["computer-vision"]
+
+- name: zedbar
+  topics: ["computer-vision"]
+
+- name: zenoh
+  topics: ["robotics"]
+  tier: featured
+  status_date: "2026-09-01"
+  verified_by: anowell
+  featured_note: >
+    Eclipse Zenoh is a pub/sub, store and query protocol that unifies data in motion, data at rest
+    and computations, and it is quietly the most consequential Rust code in the ROS 2 world: its RMW
+    binding lives under the official `ros2` organization and ships binaries for supported distros,
+    and it does roughly a hundred times the download volume of the Rust ROS 2 client library. It is
+    also the transport both dora and copper use to reach ROS 2. This is a case where Rust is not
+    catching up to Python but competing on determinism and latency directly.
+  links:
+    - kind: production
+      url: "https://github.com/ros2/rmw_zenoh"
+      title: "rmw_zenoh, the ROS 2 middleware binding, under the official ros2 organization"
+
+- repository: https://github.com/rust-cv/cv
+  license: MIT
+  topics: ["computer-vision"]
+
+- repository: https://github.com/rsasaki0109/visloc-rs
+  topics: ["computer-vision"]
+
+- repository: https://github.com/koharu-rs/koharu
+  topics: ["computer-vision"]
+
+- repository: https://github.com/boquila/boquilahub
+  topics: ["computer-vision"]
+
+- repository: https://github.com/cjpais/Handy
+  license: MIT
+  topics: ["speech-audio"]
+
+- repository: https://github.com/nikhilunni/demucs-rs
+  topics: ["speech-audio"]
+
+- repository: https://github.com/TrevorS/voxtral-mini-realtime-rs
+  topics: ["speech-audio"]
+
+- repository: https://github.com/lucasjinreal/Kokoros
+  topics: ["speech-audio"]
+
+- repository: https://github.com/cartesia-one/csm.rs
+  description: >-
+    Sesame CSM conversational speech model. Note the organization is `cartesia-one`, which is not
+    Cartesia AI. AGPL-3.0.
+  license: AGPL-3.0
+  topics: ["speech-audio"]
+
+- repository: https://github.com/mush42/sonata
+  topics: ["speech-audio"]
+
+- repository: https://github.com/EndlessReform/fish-speech.rs
+  topics: ["speech-audio"]
+
+- repository: https://github.com/izwi-ai/izwi
+  topics: ["speech-audio"]
+
+- repository: https://github.com/WorksApplications/sudachi.rs
+  license: Apache-2.0
+  topics: ["text-processing"]
+
+- repository: https://github.com/utensils/mold
+  topics: ["generative-media"]
+
+- repository: https://github.com/Dstack-TEE/dstack
+  license: Apache-2.0
+  topics: ["safety-privacy"]
+
+- repository: https://github.com/occlum/occlum
+  license: Apache-2.0
+  topics: ["safety-privacy"]
+
+- repository: https://github.com/apache/teaclave-sgx-sdk
+  license: Apache-2.0
+  topics: ["safety-privacy"]
+
+- repository: https://github.com/enarx/enarx
+  license: Apache-2.0
+  topics: ["safety-privacy"]
+
+- repository: https://github.com/veracruz-project/veracruz
+  license: MIT
+  topics: ["safety-privacy"]
+
+- repository: https://github.com/vaporif/parry-guard
+  topics: ["safety-privacy"]
+
+- repository: https://github.com/mi-for-the-rust-of-us/candle-mi
+  topics: ["safety-privacy"]
+
+- repository: https://github.com/davidhozic/mujoco-rs
+  topics: ["robotics"]
+
+- repository: https://github.com/makeecat/Peng
+  topics: ["robotics"]
+
+- repository: https://github.com/softmata/horus
+  topics: ["robotics"]
+
+- repository: https://github.com/Equim-chan/Mortal
+  license: AGPL-3.0
+  topics: ["reinforcement-learning"]

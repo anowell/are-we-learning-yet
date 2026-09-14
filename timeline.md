@@ -1,0 +1,332 @@
+---
+layout: page.liquid
+title: Timeline, 2024–2026
+permalink: /timeline/
+---
+
+<div class="prose">
+
+Releases, launches, funding rounds, papers, acquisitions and the discussions <strong>that moved the
+most people</strong>. That is the same standard this site uses for a featured crate: demonstrated
+impact, not a well-marketed launch.
+
+Most recent first. Compiled 2026-08-31.
+
+<h2 class="tl-year">2026 — NVIDIA arrives, and so does the slop</h2>
+
+<ul class="timeline">
+<li><span class="tl-date">2026-09-08</span><span class="tl-body">
+<b>RustConf 2026 opens</b> (Sept 8&ndash;11, Montreal) &mdash; still ahead of us as this page is
+written, and carrying <b>six</b> ML, AI and GPU sessions, including an NVIDIA research scientist on
+GPU concurrency. Two years after a RustConf with none.
+</span></li>
+<li><span class="tl-date">2026-08-27</span><span class="tl-body">
+<b><a href="https://news.ycombinator.com/item?id=49458161">NVIDIA agrees to acquire Hugging Face for $13B</a></b>
+— 1,973 points, 910 comments on Hacker News, the largest discussion in this survey. Hugging Face
+maintains <code>tokenizers</code>, <code>safetensors</code>, <code>hf-hub</code>,
+<code>candle</code> and <code>xet-core</code> — much of the Rust the Python AI stack imports. What
+happens to those crates is now the biggest open question on this site.
+</span></li>
+<li><span class="tl-date">2026-08-25</span><span class="tl-body">
+<b><a href="https://rustfoundation.org/media/jetbrains-partners-with-the-rust-foundation-for-an-ai-livestream-series/">JetBrains and the Rust Foundation launch an AI livestream series</a></b>,
+opening on 2026-08-27 with rig's lead maintainer. The Foundation's framing: <i>"Rust is rapidly
+becoming a serious platform for building AI-powered systems."</i>
+</span></li>
+<li><span class="tl-date">2026-08</span><span class="tl-body">
+<b><a href="https://docs.litellm.ai/blog/litellm-rust-launch">LiteLLM announces a Rust core</a></b>.
+Read it carefully: a staged migration running August to December 2026, and Rust is about 0.7% of
+that repository today. A roadmap and an endorsement, not a shipped Rust gateway — but a
+57k&#9733; Python project publishing that roadmap is itself the signal.
+</span></li>
+<li><span class="tl-date">2026-08-17</span><span class="tl-body">
+<b><a href="https://arxiv.org/abs/2608.13759">"GPU Offload in Rust: Portable, Safe, and Fast"</a></b>
+(245 points Hacker News, 369 r/rust) — the paper behind <code>std::offload</code>, whose host side
+is upstreamed and whose device side is in review pending a rustc bump to LLVM 22.
+</span></li>
+<li><span class="tl-date">2026-08-07</span><span class="tl-body">
+<b><a href="https://datafusion.apache.org/blog/2026/08/07/datafusion-comet-1.0.0">DataFusion Comet 1.0</a></b>
+— a Rust accelerator for Spark, at 1.0.
+</span></li>
+<li><span class="tl-date">2026-08-05</span><span class="tl-body">
+<b><a href="https://blog.rust-lang.org/inside-rust/2026/08/05/rust-langrust-is-adopting-an-llm-policy/">rust-lang/rust adopts an LLM policy</a></b>:
+<i>"It's fine to use LLMs to answer questions, analyze, distill, refine, check, suggest, review.
+But not to create."</i>
+</span></li>
+<li><span class="tl-date">2026-06-17</span><span class="tl-body">
+<b><a href="https://rustfoundation.org/media/rust-foundation-welcomes-openai-as-platinum-member-announces-donation-to-rust-project/">OpenAI joins the Rust Foundation as a Platinum member</a></b>
+with a $600K donation — 861 points on r/rust. In March, OpenAI had also
+<a href="https://old.reddit.com/r/rust/comments/1ry4qh1/">agreed to acquire Astral</a>, the makers
+of <code>uv</code> and <code>ruff</code>.
+</span></li>
+<li><span class="tl-date">2026-06</span><span class="tl-body">
+<b>TensorZero winds down.</b> The repository is archived and tensorzero.com states it <i>"remains
+available on GitHub but is no longer maintained"</i> — 11.7k&#9733;, a $7.3M seed in August 2025,
+last release 2026-06-04.
+</span></li>
+<li><span class="tl-date">2026-05-11</span><span class="tl-body">
+<b><a href="https://news.ycombinator.com/item?id=48100433">"If AI writes your code, why use Python?"</a></b>
+— 919 points, 980 comments. The Rust-versus-Python-for-ML argument, restated for a world where
+neither is typed by hand.
+</span></li>
+<li><span class="tl-date">2026-05-11</span><span class="tl-body">
+<b><a href="https://nvlabs.github.io/cuda-oxide/">NVIDIA Labs releases cuda-oxide</a></b>, a
+Rust-to-CUDA compiler (424 points Hacker News, 488 r/rust). Nine days later
+<a href="https://github.com/nvlabs/cutile-rs">cutile-rs</a> ships its first release, with the paper
+<a href="https://old.reddit.com/r/rust/comments/1u82fpy/fearless_concurrency_on_the_gpu/">"Fearless
+Concurrency on the GPU"</a> (arXiv 2606.15991, 2026-06) claiming GEMM at roughly 96% of cuBLAS on
+B200 — on stable Rust. Two first-party NVIDIA Rust projects in one quarter.
+</span></li>
+<li><span class="tl-date">2026-05-07</span><span class="tl-body">
+<b><a href="https://burn.dev/blog/release-0.21.0">Burn 0.21</a></b> — up to 8× lower framework
+overhead, differentiable collectives; <a href="https://burn.dev/blog/release-burn-onnx-0.21.0">burn-onnx
+0.21</a> follows on 2026-05-14 with build-time ONNX import checked against 27 real models.
+</span></li>
+<li><span class="tl-date">2026-03-22</span><span class="tl-body">
+<b><a href="https://nikomatsakis.github.io/rust-project-perspectives-on-ai/feb27-summary.html">"Diverse perspectives on AI from Rust contributors and maintainers"</a></b>
+— Niko Matsakis summarises where the project's own people stand.
+</span></li>
+<li><span class="tl-date">2026-03-21</span><span class="tl-body">
+<b>Hugging Face's <code>text-generation-inference</code> is archived.</b> Its README now carries a
+caution banner: TGI is in maintenance mode, and Hugging Face recommends vLLM, SGLang, llama.cpp or
+MLX instead. For years it was the headline Rust-in-production-ML project.
+</span></li>
+<li><span class="tl-date">2026-03-02</span><span class="tl-body">
+<b><a href="https://old.reddit.com/r/rust/comments/1riokwl/kuva_a_scientific_plotting_library_for_rust/">kuva, a scientific plotting library</a></b>
+— <b>1,540 points on r/rust</b>, the highest-scoring r/rust post in this survey. It is a plotting
+library. Two months later
+<a href="https://old.reddit.com/r/rust/comments/1t1pet4/charton_grammar_of_graphics_in_rust/">Charton</a>
+takes 440. The funding on this page went elsewhere.
+</span></li>
+<li><span class="tl-date">2026-02-24</span><span class="tl-body">
+<b><a href="https://github.com/NVIDIA/OpenShell">NVIDIA publishes OpenShell</a></b>, a Rust
+policy-enforced sandbox runtime for coding agents. It reaches 8,439&#9733; in six months.
+</span></li>
+<li><span class="tl-date">2026-01-20</span><span class="tl-body">
+<b><a href="https://www.vectorware.com/blog/rust-std-on-gpu/">"Rust's Standard Library on the GPU"</a></b>
+(255 points Hacker News, 482 r/rust), and the series that follows it:
+<a href="https://www.vectorware.com/blog/async-on-gpu/">async/await on the GPU</a> (2026-02-17),
+<a href="https://www.vectorware.com/blog/threads-on-gpu/">threads on the GPU</a> (2026-03-24),
+<a href="https://www.vectorware.com/blog/simd-on-gpu/">SIMD on the GPU</a> (2026-08-10).
+</span></li>
+<li><span class="tl-date">2026-01-16</span><span class="tl-body">
+<b><a href="https://old.reddit.com/r/rust/comments/1qej05j/the_amount_of_rust_ai_slop_being_advertised_is/">"The amount of Rust AI slop being advertised is killing me and my motivation"</a></b>
+— 923 points, 235 comments, followed on <b>2026-01-29</b> by
+<a href="https://old.reddit.com/r/rust/comments/1qptoes/request_for_comments_moderating_aigenerated/">a
+formal RFC on moderating AI-generated content in r/rust</a> (531 points). Read them for the
+<a href="/about/">curation rubric</a> &mdash; commit history, tests, maintainer identity, age.
+</span></li>
+<li><span class="tl-date">2026-01-15</span><span class="tl-body">
+<b><a href="https://burn.dev/blog/release-0.20.0">Burn 0.20</a></b> unifies CPU and GPU kernels
+through CubeCL. The new LLVM CPU backend requires <code>std</code>, which costs Burn its
+<code>no_std</code> and WASM story on that path — the maintainers say so in the thread.
+</span></li>
+</ul>
+
+<h2 class="tl-year">2025 — GPUs, production claims, and money</h2>
+
+<ul class="timeline">
+<li><span class="tl-date">2025-12-19</span><span class="tl-body">
+<b><a href="https://burn.dev/blog/burn-end-of-the-year-review">Burn's end-of-year review</a></b>,
+announcing Burn Central — the most complete state-of-the-framework write-up in this survey. On
+<b>2025-12-31</b> <a href="https://robertknight.me.uk/posts/rten-2025/">"RTen in 2025"</a> does the
+same job for a one-maintainer ONNX runtime.
+</span></li>
+<li><span class="tl-date">2025-12-09</span><span class="tl-body">
+<b><a href="https://blog.modelcontextprotocol.io/posts/2025-12-09-mcp-joins-agentic-ai-foundation/">MCP is donated to the Agentic AI Foundation</a></b>,
+a Linux Foundation directed fund. Founding projects are MCP, <b>goose</b> — a Rust agent — and
+AGENTS.md.
+</span></li>
+<li><span class="tl-date">2025-10-28</span><span class="tl-body">
+<b><a href="https://burn.dev/blog/release-0.19.0">Burn 0.19</a></b> — quantization, distributed
+training, an LLVM backend.
+</span></li>
+<li><span class="tl-date">2025-10-27</span><span class="tl-body">
+<b><a href="https://old.reddit.com/r/rust/comments/1ohq25k/">r/rust's second AI-generated-book PSA</a></b>
+takes 1,186 points, after <a href="https://old.reddit.com/r/rust/comments/1mhp0s2/">the first</a>
+took 1,149 on 2025-08-04 — this survey's two highest-scoring r/rust posts of 2025, both warnings
+about generated Rust books on sale.
+</span></li>
+<li><span class="tl-date">2025-10-25</span><span class="tl-body">
+<b><a href="https://old.reddit.com/r/LocalLLaMA/comments/1ofu15a/i_rebuilt_deepseeks_ocr_model_in_rust_so_anyone/">"I rebuilt DeepSeek's OCR model in Rust (no Python!)"</a></b>
+— <b>1,145 points on r/LocalLLaMA</b>, 119 comments. The top comment is the whole value proposition
+in one line: <i>"vibe or not, releasing us from docker hell and compiling torch is a win in my
+book."</i> Not a framework, not a benchmark — a deployment story.
+</span></li>
+<li><span class="tl-date">2025-10-23</span><span class="tl-body">
+<b><a href="https://www.vectorware.com/blog/announcing-vectorware/">VectorWare launches</a></b> (505
+points, r/rust) — founded by the rust-gpu and Rust-CUDA maintainers with former Rust compiler-team
+members, to build GPU-native software in Rust.
+</span></li>
+<li><span class="tl-date">2025-09-29</span><span class="tl-body">
+<b><a href="https://pola.rs/posts/series_a">Polars raises an €18M Series A</a></b>, weeks after
+launching <a href="https://pola.rs/posts/polars-cloud-launch">Polars Cloud</a>.
+</span></li>
+<li><span class="tl-date">2025-09-14</span><span class="tl-body">
+<b><a href="https://old.reddit.com/r/rust/comments/1nguv1a/i_built_an_llm_from_scratch_in_rust_just_ndarray/">"I built an LLM from scratch in Rust (just ndarray and rand)"</a></b>
+— 634 points, r/rust, outscoring every framework release on this page. See
+learning resources.
+</span></li>
+<li><span class="tl-date">2025-09-05</span><span class="tl-body">
+<b><a href="https://signalsandthreads.com/why-ml-needs-a-new-programming-language/">Chris Lattner: "ML needs a new programming language"</a></b>
+(311 points, Hacker News). The Mojo framing Rust gets measured against.
+</span></li>
+<li><span class="tl-date">2025-08-27</span><span class="tl-body">
+<b><a href="https://blog.cloudflare.com/cloudflares-most-efficient-ai-inference-engine/">Cloudflare ships Infire</a></b>,
+an LLM inference engine in Rust serving Workers AI — up to 7% faster than vLLM 0.10 on H100 NVL,
+with granular CUDA graphs cutting CPU overhead by 82%. Their stated reason: <i>"to maximize
+efficiency we need to control the low-level implementation details."</i> Closed source, and the
+clearest datacenter-scale answer this survey found to "why not just use vLLM".
+</span></li>
+<li><span class="tl-date">2025-08-12</span><span class="tl-body">
+<b><a href="https://burn.dev/blog/funding-announcement">Tracel AI raises $3M</a></b> for Burn and
+CubeCL &mdash; the first venture round for a Rust deep-learning framework that this survey turned up.
+</span></li>
+<li><span class="tl-date">2025-08-04</span><span class="tl-body">
+<b><a href="https://burn.dev/blog/burn-lm-announcement">Burn-LM alpha</a></b> — Burn enters LLM
+inference. On <b>2025-08-08</b> <a href="https://old.reddit.com/r/rust/comments/1ml5ogd/">Paddler</a>,
+a Rust rewrite of the llama.cpp server, takes 494 points on r/rust.
+</span></li>
+<li><span class="tl-date">2025-07-26</span><span class="tl-body">
+<b><a href="https://rust-gpu.github.io/blog/2025/07/25/rust-on-every-gpu/">"Rust running on every GPU"</a></b>
+— one codebase compiled to CUDA, SPIR-V/Vulkan, Metal, DX12, WebGPU and CPU. <b>605 points on Hacker
+News, 586 on r/rust.</b>
+</span></li>
+<li><span class="tl-date">2025-07-18</span><span class="tl-body">
+<b><a href="https://burn.dev/blog/sota-multiplatform-matmul">CubeCL claims state-of-the-art multiplatform matmul</a></b>
+and <a href="https://old.reddit.com/r/rust/comments/1m37b0d/burn_0180_important_performance_milestones/">Burn
+0.18 reports matmul rivaling cuBLAS and CUTLASS</a> (385 points, r/rust).
+</span></li>
+<li><span class="tl-date">2025-06</span><span class="tl-body">
+<b><a href="https://www.infoq.com/news/2025/06/codex-cli-rust-native-rewrite/">OpenAI rewrites Codex CLI from TypeScript to Rust</a></b>
+(427 points, r/rust): zero-dependency install, native Linux sandboxing, no garbage collector.
+<a href="https://github.com/openai/codex">The repository</a> is the most-starred Rust AI application
+in this survey. Also this month:
+<a href="https://lancedb.com/blog/">LanceDB raises $30M</a>,
+<a href="https://guidance-ai.github.io/llguidance/llg-go-brrr">llguidance publishes "Making Structured Outputs Go Brrr"</a>,
+<a href="https://www.meilisearch.com/blog/fixing-hybrid-search">Meilisearch explains its bespoke Rust vector store</a>,
+and <a href="https://old.reddit.com/r/LocalLLaMA/comments/1ldvosh/">Handy</a>, an offline
+speech-to-text app, lands at 254 points on r/LocalLLaMA.
+</span></li>
+<li><span class="tl-date">2025-05-28</span><span class="tl-body">
+<b><a href="https://news.ycombinator.com/item?id=44118023">Desktop Docs rewrites from Electron to Rust</a></b>,
+shipping ONNX Runtime through the <code>ort</code> crate — 597 points on Hacker News. A commercial
+Mac app, not a demo.
+</span></li>
+<li><span class="tl-date">2025-04-23</span><span class="tl-body">
+<b><a href="https://burn.dev/blog/">Burn 0.17</a></b> — up to 5× faster, new Metal compiler (347
+points, r/rust). <a href="https://news.ycombinator.com/item?id=43777731">CubeCL</a> reaches the
+Hacker News front page the same month.
+</span></li>
+<li><span class="tl-date">2025-04-03</span><span class="tl-body">
+<b><a href="https://www.trychroma.com/project/1.0.0">Chroma 1.0 ships a Rust core</a></b> —
+"local Chroma is 4× faster… thanks to a new core written in Rust". The repository is now 11.7 MB of
+Rust to 2.6 MB of Python.
+</span></li>
+<li><span class="tl-date">2025-03-18</span><span class="tl-body">
+<b><a href="https://huggingface.co/blog/xet-on-the-hub">Hugging Face puts Xet on the Hub</a></b> —
+content-defined chunking, in Rust, replacing Git-LFS. By
+<a href="https://huggingface.co/blog/migrating-the-hub-to-xet">2025-07-15</a> the migration covers
+500,000+ repositories and 20 PB. A 5 GB SQLite update went from thirteen minutes to a tenth of a
+second.
+</span></li>
+<li><span class="tl-date">2025-02-13</span><span class="tl-body">
+<b><a href="https://zed.dev/blog/edit-prediction">Zed ships Zeta</a></b>, its open-weight,
+open-data edit-prediction model. A Rust editor that trains and serves its own model.
+</span></li>
+<li><span class="tl-date">2025-01-27</span><span class="tl-body">
+<b><a href="https://rust-gpu.github.io/blog/2025/01/27/rust-cuda-reboot/">The Rust-CUDA project is rebooted</a></b>
+(420 points, r/rust). Community-run, with Christian Legnitto as maintainer.
+</span></li>
+<li><span class="tl-date">2025-01</span><span class="tl-body">
+<b>linfa finds a new maintainer</b> and ships again — 0.7.0 in January, 0.8.0 on 2025-09-30, 0.8.1
+on 2025-12-23, with new ensemble crates.
+</span></li>
+</ul>
+
+<h2 class="tl-year">2024 — the plumbing wins</h2>
+
+<ul class="timeline">
+<li><span class="tl-date">2024-11-30</span><span class="tl-body">
+<b><a href="https://rust-gpu.github.io/blog/optimizing-matmul/">"Optimizing a Rust GPU matmul kernel"</a></b>
+— the most detailed Rust GPU-kernel walkthrough this survey found.
+</span></li>
+<li><span class="tl-date">2024-10-24</span><span class="tl-body">
+<b><a href="https://old.reddit.com/r/rust/comments/1gbg5i1/">Brush</a></b> — Gaussian splatting on
+Burn, wgpu and Rerun (224 points, r/rust). An application built <i>on</i> a Rust ML framework rather
+than around one.
+</span></li>
+<li><span class="tl-date">2024-10-11</span><span class="tl-body">
+<b><a href="https://github.com/samuel-vitorino/lm.rs">lm.rs</a></b>, minimal CPU LLM inference (310
+points, Hacker News), and on <b>2024-10-19</b> <a href="https://simonwillison.net/2024/Oct/19/mistralrs/">Simon
+Willison writes up mistral.rs</a> — local Rust inference drawing attention from outside the Rust
+community.
+</span></li>
+<li><span class="tl-date">2024-10-08</span><span class="tl-body">
+<b><a href="https://old.reddit.com/r/rust/comments/1fyown4/rust_gpu_the_future_of_gpu_programming/">"Rust GPU: the future of GPU programming"</a></b>
+— 559 points, r/rust.
+</span></li>
+<li><span class="tl-date">2024-09-18</span><span class="tl-body">
+<b><a href="https://news.ycombinator.com/item?id=41583478">Kyutai open-sources Moshi, with a Rust inference server built on candle</a></b>.
+One of Moshi's authors is candle's primary author. This is the model behind the
+talk we lead with.
+</span></li>
+<li><span class="tl-date">2024-09-10</span><span class="tl-body">
+<b>RustConf 2024 runs with zero ML, AI or GPU talks</b> on the main program — schedule and the full
+36-video playlist checked.
+</span></li>
+<li><span class="tl-date">2024-08-27</span><span class="tl-body">
+<b><a href="https://burn.dev/blog/release-0.14.0">Burn 0.14</a></b> — "the first fully Rust-native
+deep learning framework", debuting the CubeCL integration and an experimental CUDA backend (365
+points, r/rust).
+</span></li>
+<li><span class="tl-date">2024-08-15</span><span class="tl-body">
+<b><a href="https://old.reddit.com/r/rust/comments/1esp2u8/compiler_based_autodiff_backpropagation_for/">Compiler-based autodiff lands on nightly Rust</a></b>
+(218 points, r/rust). The start of <code>std::autodiff</code> — ML work carried inside the Rust
+project itself, not only in crates.
+</span></li>
+<li><span class="tl-date">2024-08-12</span><span class="tl-body">
+<b><a href="https://rust-gpu.github.io/blog/transition-announcement/">rust-gpu transitions from Embark to community ownership</a></b>,
+followed on <b>2024-11-07</b> by <a href="https://old.reddit.com/r/rust/comments/1gloxdw/welcoming_two_new_rust_gpu_maintainers_rust_gpu/">two
+new maintainers</a> (435 points, r/rust). The seed of the GPU work on this page.
+</span></li>
+<li><span class="tl-date">2024-07-01</span><span class="tl-body">
+<b><a href="https://pola.rs/posts/announcing-polars-1">Polars 1.0</a></b> (455 points, r/rust).
+</span></li>
+<li><span class="tl-date">2024-05-07</span><span class="tl-body">
+<b><a href="https://datafusion.apache.org/blog/2024/05/07/datafusion-tlp">DataFusion becomes a top-level Apache project</a></b>.
+A Rust query engine graduating to TLP status is a governance signal, not a benchmark.
+</span></li>
+<li><span class="tl-date">2024-01-23</span><span class="tl-body">
+<b><a href="https://qdrant.tech/blog/series-a-funding-round/">Qdrant raises a $28M Series A</a></b>
+— the first funding round in this timeline. Vector search took the money first.
+</span></li>
+<li><span class="tl-date">2024-01-08</span><span class="tl-body">
+<b><a href="https://news.ycombinator.com/item?id=38920043">Polars reaches the Hacker News front page</a></b>
+— 981 points, 386 comments. The highest-scoring Rust data-project post in this survey, and the shape
+most entries here share: a Rust core, consumed almost entirely from Python.
+</span></li>
+</ul>
+
+<h2 class="tl-year">2023</h2>
+
+<ul class="timeline">
+<li><span class="tl-date">2023-09-29</span><span class="tl-body">
+<b><a href="https://old.reddit.com/r/rust/comments/16v13l5/influxdb_officially_made_the_switch_from_go_rust/">InfluxDB completes its move from Go to Rust</a></b>,
+onto Arrow and DataFusion (505 points, r/rust). A large, boring, production database saying out loud
+that the Rust data stack was the one to build on.
+</span></li>
+<li><span class="tl-date">2023-02-11</span><span class="tl-body">
+<b><a href="https://burn.dev/blog/a-case-for-rust-in-deep-learning">"A Case for Rust in Deep Learning"</a></b> —
+Burn's argument for why any of this should exist, and the essay we still hand anyone who asks why
+Rust.
+</span></li>
+</ul>
+
+<p class="fineprint">
+Scores are Hacker News or Reddit points as rendered, with the venue named; Reddit fuzzes its scores
+slightly. Dates are the publication or announcement date given by the source. Scores were read on
+2026-08-31 and drift afterwards. Where something died, it is here too — an ecosystem timeline that
+only records launches is marketing.
+</p>
+
+</div>
