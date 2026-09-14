@@ -4,13 +4,9 @@
   <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><title>Are we learning yet? &mdash; the state of machine learning in Rust</title>
+  <meta name="description" content="A curated guide to AI and machine learning in Rust, with dead entries labeled rather than dropped. Rust is where the AI industry&#39;s infrastructure is written -- tokenizers, model formats, vector search, GPU runtimes, agent protocols -- and a credible choice for inference and single-machine training. This site says where it is not.">
 
-  <title>Index</title>
-  <meta name="description" content="The comprehensive guide to the state of machine learning in Rust. This site catalogs ML frameworks, data structures, data cleaning and analysis, and other tools and libraries that are essential to machine learning ecosystems.
-">
-
-  <link rel="stylesheet" href="/css/flexboxgrid.min.css">
   <link rel="stylesheet" href="/css/main.css">
 
   <link rel="canonical" href="https://arewelearningyet.com/">
@@ -28,23 +24,23 @@
 
     
     <div class="page-content">
-      <a href="https://github.com/anowell/are-we-learning-yet" class="github-corner"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+      <a href="https://github.com/anowell/are-we-learning-yet" class="github-corner"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
 
 
 <div>
   <div class="hero">
-    <div class="color-overlay"></div>
-    <div class="container" style="position:relative; max-width: 60rem;">
-      <div class="row">
-        <div class="col-xs-12 col-sm-3 col-md-4 last-sm last-md" style="text-align: center;">
-          <img src="/images/rust-9000.png" style="width:300px; margin-top: 20px;">
+    <div class="container" style="position:relative; max-width: min(60rem, 100%);">
+      
+      <div class="hero-row">
+        <div class="hero-art">
+          <img src="/images/rust-9000.png" width="300" height="300" alt="" style="margin-top: 16px;">
         </div>
-        <div class="col-xs-12 col-sm-9 col-md-8">
+        <div class="hero-copy">
           <h1>Are we <strong>learning</strong> yet?</h1>
           <p style="margin-top: 60px; position: relative;">
-            <span>A work-in-progress to catalog</span>
-            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            the state of <b style="color: #b7410e">machine learning in Rust</b>
+            <span>A curated guide to</span>
+            <br>
+            <b class="accent">AI &amp; machine learning in Rust</b>
           </p>
         </div>
       </div>
@@ -52,151 +48,736 @@
   </div>
 
 
-  <div class="container section">
+  <div class="container section" style="max-width: min(60rem, 100%);">
     <div class="tldr-headline">
-        It's ripe for experimentation,<br>
-        but the ecosystem isn't very complete yet.
+        Yes, for inference and infrastructure.<br>
+        Not yet for research or training at scale.
     </div>
 
-    <p>
-      Rust's performance, low-level control, and zero-cost high-level abstractions make it a compelling
-      alternative to more established ecosystems for Machine Learning.
-      While the Rust ML ecosystem is still young and best described as experimental,
-      several ambitious projects and building blocks have emerged.
+    <p class="lede">
+      Rust is the language the AI industry's infrastructure is written in &mdash; tokenizers, model
+      formats, dataframes, vector search, GPU runtimes, agent protocols, sandboxes &mdash; and it is
+      now a credible choice for inference and for training on a single machine. It is not where you
+      do research, large-scale training, or classical ML if you can use Python.
     </p>
 
-    <p>
-      In addition to the many wonderful projects that contain individual implementations of certain methods and algorithms (many of which are listed here),
-      there are also meta-crates like <a href="https://github.com/rust-ml/linfa">linfa</a> and <a href="https://smartcorelib.org/">smartcore</a>
-      that provide a convenient, bundled approach to many machine learning algorithms that may be of interest to developers looking 
-      for a practical solution
-    </p>
-
-
-    <p>
-      As a developing ecosystem, there are plenty of opportunities for contributors to fill in the gaps
-      by helping out existing projects or starting new ones.
-    </p>
-    <p>
-    An unofficial Working Group in the machine learning domain has been established <a href='https://github.com/rust-ml'>here</a>.
-
-    For help or questions with Rust ML, feel free to reach out on the <a href='https://rust-ml.zulipchat.com/'>Zulip chat</a>.
-    </p>
+    
+    <div class="entry-points">
+      <a class="entry-point" href="/inference/#model-plumbing">
+        <span class="entry-point-title">Rust is what the Python AI stack imports</span>
+        <span class="entry-point-sub">Every <code>AutoTokenizer</code> call in Python runs Rust.
+          <code>tokenizers</code>, <code>safetensors</code>, <code>hf-hub</code>,
+          <code>tiktoken-rs</code> &mdash; the plumbing under the whole industry.</span>
+      </a>
+      <a class="entry-point" href="/retrieval">
+        <span class="entry-point-title">Retrieval is the least-disputed win</span>
+        <span class="entry-point-sub">Meilisearch, Qdrant, tantivy, LanceDB and Chroma's core are
+          all Rust, and all publish usable Rust clients.</span>
+      </a>
+      <a class="entry-point" href="/agents/#agent-protocols">
+        <span class="entry-point-title">The agent protocols are Rust-first</span>
+        <span class="entry-point-sub"><code>rmcp</code> is one of MCP's five Tier&nbsp;1 official
+          SDKs; the Agent Client Protocol generates its canonical JSON schema from a Rust
+          crate.</span>
+      </a>
+      <a class="entry-point" href="/gpu">
+        <span class="entry-point-title">GPU stopped being a wish</span>
+        <span class="entry-point-sub">NVIDIA shipped two first-party Rust projects in 2026, rustc
+          carries GPU targets, and <code>std::autodiff</code> is on nightly.</span>
+      </a>
+      <a class="entry-point" href="/llms/#fine-tuning">
+        <span class="entry-point-title">What is still missing</span>
+        <span class="entry-point-sub">Fine-tuning and LoRA, training at scale, reinforcement
+          learning, evals and guardrails, video generation.</span>
+      </a>
+    </div>
   </div>
 
-  <div class="hero" style="background-position: center 70%;">
-    <div class="color-overlay"></div>
-    <div class="container" style="position:relative;">
+  <div class="hero">
+    <div class="container" style="position:relative; max-width: min(60rem, 100%);">
 
       <h3>Rust Machine Learning Ecosystem</h3>
-      <div class="row tiles">
+
+      
+      <p class="legend-lede">Each color grades the <b>category</b>, not the crates on the shelf:
+        would you choose Rust for this problem, against any other language?</p>
+      <ul class="legend">
+        <li>
+          <span class="swatch swatch-green"></span><span class="legend-key green">green</span>
+          = <b>comprehensive</b> &mdash; covers the category, in production; you would not go wrong
+          choosing Rust
+        </li>
+        <li>
+          <span class="swatch swatch-yellow"></span><span class="legend-key yellow">yellow</span>
+          = <b>partial</b> &mdash; solid pieces to build on, but a sliver of the category; another
+          language covers it better
+        </li>
+        <li>
+          <span class="swatch swatch-red"></span><span class="legend-key red">red</span>
+          = <b>too early</b> &mdash; experimental or nonexistent; not a default choice yet
+        </li>
+      </ul>
+
+      
+      <div class="hub-cards">
         
           
-          <div class="col-md-2 col-sm-4 col-xs-6">
-            <a href="clustering">
-              <div class="tile tile-green">
-                Clustering
-              </div>
-            </a>
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+          
+          <div class="hub-card hub-card-yellow">
+            <h4 class="hub-card-title"><a class="hub-card-link" href="/llms">LLMs &amp; Foundation Models</a></h4>
+            <p class="hub-card-tagline">Running, serving and adapting pretrained models.</p>
+            
+            <div class="hub-card-sections">
+              
+                
+                <a class="seg-link" href="/llms/#llm-serving"
+                   aria-label="LLM inference &amp; serving — partial"><span class="seg swatch-yellow"></span></a>
+              
+                
+                <a class="seg-link" href="/llms/#structured-output"
+                   aria-label="Structured output &amp; constrained decoding — comprehensive"><span class="seg swatch-green"></span></a>
+              
+                
+                <a class="seg-link" href="/llms/#llm-clients"
+                   aria-label="LLM clients &amp; gateways — partial"><span class="seg swatch-yellow"></span></a>
+              
+                
+                <a class="seg-link" href="/llms/#fine-tuning"
+                   aria-label="Fine-tuning &amp; post-training — too early"><span class="seg swatch-red"></span></a>
+              
+            </div>
+            
+            <div class="hub-card-counts">
+              <span class="counts-default">4 shelves: <span class="green">1 comprehensive</span> &middot; <span class="yellow">2 partial</span> &middot; <span class="red">1 too early</span></span>
+              
+                
+                <span class="counts-label">LLM inference &amp; serving &mdash;
+                  <span class="yellow">partial</span></span>
+              
+                
+                <span class="counts-label">Structured output &amp; constrained decoding &mdash;
+                  <span class="green">comprehensive</span></span>
+              
+                
+                <span class="counts-label">LLM clients &amp; gateways &mdash;
+                  <span class="yellow">partial</span></span>
+              
+                
+                <span class="counts-label">Fine-tuning &amp; post-training &mdash;
+                  <span class="red">too early</span></span>
+              
+            </div>
           </div>
         
           
-          <div class="col-md-2 col-sm-4 col-xs-6">
-            <a href="data-preprocessing">
-              <div class="tile tile-yellow">
-                Data Processing
-              </div>
-            </a>
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+          
+          <div class="hub-card hub-card-yellow">
+            <h4 class="hub-card-title"><a class="hub-card-link" href="/agents">Agents, Tools &amp; Context</a></h4>
+            <p class="hub-card-tagline">Building applications on top of models.</p>
+            
+            <div class="hub-card-sections">
+              
+                
+                <a class="seg-link" href="/agents/#agent-frameworks"
+                   aria-label="Agent frameworks — partial"><span class="seg swatch-yellow"></span></a>
+              
+                
+                <a class="seg-link" href="/agents/#agent-protocols"
+                   aria-label="Agent protocols (MCP &amp; ACP) — comprehensive"><span class="seg swatch-green"></span></a>
+              
+                
+                <a class="seg-link" href="/agents/#sandboxing"
+                   aria-label="Sandboxing, browser &amp; computer use — comprehensive"><span class="seg swatch-green"></span></a>
+              
+                
+                <a class="seg-link" href="/agents/#agent-memory"
+                   aria-label="Memory, state &amp; durable execution — partial"><span class="seg swatch-yellow"></span></a>
+              
+                
+                <a class="seg-link" href="/agents/#agent-observability"
+                   aria-label="Observability &amp; evaluation — too early"><span class="seg swatch-red"></span></a>
+              
+            </div>
+            
+            <div class="hub-card-counts">
+              <span class="counts-default">5 shelves: <span class="green">2 comprehensive</span> &middot; <span class="yellow">2 partial</span> &middot; <span class="red">1 too early</span></span>
+              
+                
+                <span class="counts-label">Agent frameworks &mdash;
+                  <span class="yellow">partial</span></span>
+              
+                
+                <span class="counts-label">Agent protocols (MCP &amp; ACP) &mdash;
+                  <span class="green">comprehensive</span></span>
+              
+                
+                <span class="counts-label">Sandboxing, browser &amp; computer use &mdash;
+                  <span class="green">comprehensive</span></span>
+              
+                
+                <span class="counts-label">Memory, state &amp; durable execution &mdash;
+                  <span class="yellow">partial</span></span>
+              
+                
+                <span class="counts-label">Observability &amp; evaluation &mdash;
+                  <span class="red">too early</span></span>
+              
+            </div>
           </div>
         
           
-          <div class="col-md-2 col-sm-4 col-xs-6">
-            <a href="data-structures">
-              <div class="tile tile-yellow">
-                Data Structures
-              </div>
-            </a>
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+          <div class="hub-card hub-card-green">
+            <h4 class="hub-card-title"><a class="hub-card-link" href="/retrieval">Retrieval, Embeddings &amp; Search</a></h4>
+            <p class="hub-card-tagline">Finding the right context.</p>
+            
+            <div class="hub-card-sections">
+              
+                
+                <a class="seg-link" href="/retrieval/#vector-search"
+                   aria-label="Vector databases &amp; ANN — comprehensive"><span class="seg swatch-green"></span></a>
+              
+                
+                <a class="seg-link" href="/retrieval/#embeddings"
+                   aria-label="Embeddings &amp; rerankers — comprehensive"><span class="seg swatch-green"></span></a>
+              
+                
+                <a class="seg-link" href="/retrieval/#full-text-search"
+                   aria-label="Full-text &amp; hybrid search — comprehensive"><span class="seg swatch-green"></span></a>
+              
+                
+                <a class="seg-link" href="/retrieval/#rag-pipelines"
+                   aria-label="RAG pipelines — partial"><span class="seg swatch-yellow"></span></a>
+              
+                
+                <a class="seg-link" href="/retrieval/#document-ai"
+                   aria-label="OCR &amp; document AI — partial"><span class="seg swatch-yellow"></span></a>
+              
+            </div>
+            
+            <div class="hub-card-counts">
+              <span class="counts-default">5 shelves: <span class="green">3 comprehensive</span> &middot; <span class="yellow">2 partial</span></span>
+              
+                
+                <span class="counts-label">Vector databases &amp; ANN &mdash;
+                  <span class="green">comprehensive</span></span>
+              
+                
+                <span class="counts-label">Embeddings &amp; rerankers &mdash;
+                  <span class="green">comprehensive</span></span>
+              
+                
+                <span class="counts-label">Full-text &amp; hybrid search &mdash;
+                  <span class="green">comprehensive</span></span>
+              
+                
+                <span class="counts-label">RAG pipelines &mdash;
+                  <span class="yellow">partial</span></span>
+              
+                
+                <span class="counts-label">OCR &amp; document AI &mdash;
+                  <span class="yellow">partial</span></span>
+              
+            </div>
           </div>
         
           
-          <div class="col-md-2 col-sm-4 col-xs-6">
-            <a href="decision-trees">
-              <div class="tile tile-green">
-                Decision Trees
-              </div>
-            </a>
+          
+            
+            
+          
+            
+          
+            
+            
+          
+          <div class="hub-card hub-card-yellow">
+            <h4 class="hub-card-title"><a class="hub-card-link" href="/deep-learning">Deep Learning &amp; Training</a></h4>
+            <p class="hub-card-tagline">Define a model, differentiate it, train it.</p>
+            
+            <div class="hub-card-sections">
+              
+                
+                <a class="seg-link" href="/deep-learning/#dl-frameworks"
+                   aria-label="Deep learning frameworks — partial"><span class="seg swatch-yellow"></span></a>
+              
+                
+                <a class="seg-link" href="/deep-learning/#tensors-autodiff"
+                   aria-label="Tensors &amp; autodiff — too early"><span class="seg swatch-red"></span></a>
+              
+                
+                <a class="seg-link" href="/deep-learning/#training-infra"
+                   aria-label="Training infrastructure — partial"><span class="seg swatch-yellow"></span></a>
+              
+            </div>
+            
+            <div class="hub-card-counts">
+              <span class="counts-default">3 shelves: <span class="yellow">2 partial</span> &middot; <span class="red">1 too early</span></span>
+              
+                
+                <span class="counts-label">Deep learning frameworks &mdash;
+                  <span class="yellow">partial</span></span>
+              
+                
+                <span class="counts-label">Tensors &amp; autodiff &mdash;
+                  <span class="red">too early</span></span>
+              
+                
+                <span class="counts-label">Training infrastructure &mdash;
+                  <span class="yellow">partial</span></span>
+              
+            </div>
           </div>
         
           
-          <div class="col-md-2 col-sm-4 col-xs-6">
-            <a href="gpu-computing">
-              <div class="tile tile-red">
-                GPU Computing
-              </div>
-            </a>
+          
+            
+            
+          
+            
+            
+          
+            
+          
+          <div class="hub-card hub-card-green">
+            <h4 class="hub-card-title"><a class="hub-card-link" href="/inference">Model Inference &amp; Runtimes</a></h4>
+            <p class="hub-card-tagline">Run a model that was trained somewhere else.</p>
+            
+            <div class="hub-card-sections">
+              
+                
+                <a class="seg-link" href="/inference/#model-runtimes"
+                   aria-label="ONNX &amp; general runtimes — comprehensive"><span class="seg swatch-green"></span></a>
+              
+                
+                <a class="seg-link" href="/inference/#model-plumbing"
+                   aria-label="Tokenizers, formats &amp; model plumbing — comprehensive"><span class="seg swatch-green"></span></a>
+              
+                
+                <a class="seg-link" href="/inference/#edge-inference"
+                   aria-label="Edge, embedded &amp; browser — too early"><span class="seg swatch-red"></span></a>
+              
+            </div>
+            
+            <div class="hub-card-counts">
+              <span class="counts-default">3 shelves: <span class="green">2 comprehensive</span> &middot; <span class="red">1 too early</span></span>
+              
+                
+                <span class="counts-label">ONNX &amp; general runtimes &mdash;
+                  <span class="green">comprehensive</span></span>
+              
+                
+                <span class="counts-label">Tokenizers, formats &amp; model plumbing &mdash;
+                  <span class="green">comprehensive</span></span>
+              
+                
+                <span class="counts-label">Edge, embedded &amp; browser &mdash;
+                  <span class="red">too early</span></span>
+              
+            </div>
           </div>
         
           
-          <div class="col-md-2 col-sm-4 col-xs-6">
-            <a href="linear-classifiers">
-              <div class="tile tile-green">
-                Linear Classifiers
-              </div>
-            </a>
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+          
+          <div class="hub-card hub-card-yellow">
+            <h4 class="hub-card-title"><a class="hub-card-link" href="/classical-ml">Classical ML &amp; Statistics</a></h4>
+            <p class="hub-card-tagline">The scikit-learn shelf, plus what Rust is actually good at.</p>
+            
+            <div class="hub-card-sections">
+              
+                
+                <a class="seg-link" href="/classical-ml/#ml-toolkits"
+                   aria-label="ML toolkits &amp; linear models — partial"><span class="seg swatch-yellow"></span></a>
+              
+                
+                <a class="seg-link" href="/classical-ml/#gradient-boosting"
+                   aria-label="Gradient boosting &amp; trees — partial"><span class="seg swatch-yellow"></span></a>
+              
+                
+                <a class="seg-link" href="/classical-ml/#clustering"
+                   aria-label="Clustering, dim-reduction &amp; nearest neighbors — comprehensive"><span class="seg swatch-green"></span></a>
+              
+                
+                <a class="seg-link" href="/classical-ml/#statistics"
+                   aria-label="Statistics — partial"><span class="seg swatch-yellow"></span></a>
+              
+                
+                <a class="seg-link" href="/classical-ml/#bayesian"
+                   aria-label="Bayesian &amp; probabilistic modeling — partial"><span class="seg swatch-yellow"></span></a>
+              
+                
+                <a class="seg-link" href="/classical-ml/#time-series"
+                   aria-label="Time series &amp; anomaly detection — partial"><span class="seg swatch-yellow"></span></a>
+              
+                
+                <a class="seg-link" href="/classical-ml/#optimization"
+                   aria-label="Optimization — comprehensive"><span class="seg swatch-green"></span></a>
+              
+                
+                <a class="seg-link" href="/classical-ml/#reinforcement-learning"
+                   aria-label="Reinforcement learning — too early"><span class="seg swatch-red"></span></a>
+              
+            </div>
+            
+            <div class="hub-card-counts">
+              <span class="counts-default">8 shelves: <span class="green">2 comprehensive</span> &middot; <span class="yellow">5 partial</span> &middot; <span class="red">1 too early</span></span>
+              
+                
+                <span class="counts-label">ML toolkits &amp; linear models &mdash;
+                  <span class="yellow">partial</span></span>
+              
+                
+                <span class="counts-label">Gradient boosting &amp; trees &mdash;
+                  <span class="yellow">partial</span></span>
+              
+                
+                <span class="counts-label">Clustering, dim-reduction &amp; nearest neighbors &mdash;
+                  <span class="green">comprehensive</span></span>
+              
+                
+                <span class="counts-label">Statistics &mdash;
+                  <span class="yellow">partial</span></span>
+              
+                
+                <span class="counts-label">Bayesian &amp; probabilistic modeling &mdash;
+                  <span class="yellow">partial</span></span>
+              
+                
+                <span class="counts-label">Time series &amp; anomaly detection &mdash;
+                  <span class="yellow">partial</span></span>
+              
+                
+                <span class="counts-label">Optimization &mdash;
+                  <span class="green">comprehensive</span></span>
+              
+                
+                <span class="counts-label">Reinforcement learning &mdash;
+                  <span class="red">too early</span></span>
+              
+            </div>
           </div>
         
           
-          <div class="col-md-2 col-sm-4 col-xs-6">
-            <a href="metaheuristics">
-              <div class="tile tile-red">
-                Metaheuristics
-              </div>
-            </a>
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+          <div class="hub-card hub-card-green">
+            <h4 class="hub-card-title"><a class="hub-card-link" href="/data">Data &amp; Dataframes</a></h4>
+            <p class="hub-card-tagline">The data layer — mostly consumed from Python.</p>
+            
+            <div class="hub-card-sections">
+              
+                
+                <a class="seg-link" href="/data/#dataframes"
+                   aria-label="Dataframes &amp; query engines — comprehensive"><span class="seg swatch-green"></span></a>
+              
+                
+                <a class="seg-link" href="/data/#lakehouse"
+                   aria-label="Lakehouse &amp; columnar formats — comprehensive"><span class="seg swatch-green"></span></a>
+              
+                
+                <a class="seg-link" href="/data/#datasets"
+                   aria-label="Datasets, formats &amp; loading — partial"><span class="seg swatch-yellow"></span></a>
+              
+                
+                <a class="seg-link" href="/data/#streaming"
+                   aria-label="Pipelines &amp; streaming — partial"><span class="seg swatch-yellow"></span></a>
+              
+            </div>
+            
+            <div class="hub-card-counts">
+              <span class="counts-default">4 shelves: <span class="green">2 comprehensive</span> &middot; <span class="yellow">2 partial</span></span>
+              
+                
+                <span class="counts-label">Dataframes &amp; query engines &mdash;
+                  <span class="green">comprehensive</span></span>
+              
+                
+                <span class="counts-label">Lakehouse &amp; columnar formats &mdash;
+                  <span class="green">comprehensive</span></span>
+              
+                
+                <span class="counts-label">Datasets, formats &amp; loading &mdash;
+                  <span class="yellow">partial</span></span>
+              
+                
+                <span class="counts-label">Pipelines &amp; streaming &mdash;
+                  <span class="yellow">partial</span></span>
+              
+            </div>
           </div>
         
           
-          <div class="col-md-2 col-sm-4 col-xs-6">
-            <a href="mlops">
-              <div class="tile tile-yellow">
-                MLOps
-              </div>
-            </a>
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+          <div class="hub-card hub-card-yellow">
+            <h4 class="hub-card-title"><a class="hub-card-link" href="/scientific-computing">Numerical &amp; Scientific Computing</a></h4>
+            <p class="hub-card-tagline">The foundations under machine learning.</p>
+            
+            <div class="hub-card-sections">
+              
+                
+                <a class="seg-link" href="/scientific-computing/#arrays-linalg"
+                   aria-label="Arrays &amp; linear algebra — partial"><span class="seg swatch-yellow"></span></a>
+              
+                
+                <a class="seg-link" href="/scientific-computing/#numerical-methods"
+                   aria-label="Numerical methods &amp; special functions — partial"><span class="seg swatch-yellow"></span></a>
+              
+                
+                <a class="seg-link" href="/scientific-computing/#domain-science"
+                   aria-label="Domain science (bio &amp; geo) — comprehensive"><span class="seg swatch-green"></span></a>
+              
+                
+                <a class="seg-link" href="/scientific-computing/#plotting"
+                   aria-label="Plotting, visualization &amp; notebooks — partial"><span class="seg swatch-yellow"></span></a>
+              
+                
+                <a class="seg-link" href="/scientific-computing/#python-interop"
+                   aria-label="Python interop — comprehensive"><span class="seg swatch-green"></span></a>
+              
+            </div>
+            
+            <div class="hub-card-counts">
+              <span class="counts-default">5 shelves: <span class="green">2 comprehensive</span> &middot; <span class="yellow">3 partial</span></span>
+              
+                
+                <span class="counts-label">Arrays &amp; linear algebra &mdash;
+                  <span class="yellow">partial</span></span>
+              
+                
+                <span class="counts-label">Numerical methods &amp; special functions &mdash;
+                  <span class="yellow">partial</span></span>
+              
+                
+                <span class="counts-label">Domain science (bio &amp; geo) &mdash;
+                  <span class="green">comprehensive</span></span>
+              
+                
+                <span class="counts-label">Plotting, visualization &amp; notebooks &mdash;
+                  <span class="yellow">partial</span></span>
+              
+                
+                <span class="counts-label">Python interop &mdash;
+                  <span class="green">comprehensive</span></span>
+              
+            </div>
           </div>
         
           
-          <div class="col-md-2 col-sm-4 col-xs-6">
-            <a href="neural-networks">
-              <div class="tile tile-yellow">
-                Neural Networks
-              </div>
-            </a>
+          
+            
+            
+          
+            
+            
+          
+            
+          
+          <div class="hub-card hub-card-yellow">
+            <h4 class="hub-card-title"><a class="hub-card-link" href="/gpu">GPU &amp; Accelerators</a></h4>
+            <p class="hub-card-tagline">Can I write and run GPU code in Rust?</p>
+            
+            <div class="hub-card-sections">
+              
+                
+                <a class="seg-link" href="/gpu/#gpu-kernels"
+                   aria-label="Kernel languages &amp; GPU compilers — partial"><span class="seg swatch-yellow"></span></a>
+              
+                
+                <a class="seg-link" href="/gpu/#gpu-runtimes"
+                   aria-label="Vendor runtimes &amp; portable compute — comprehensive"><span class="seg swatch-green"></span></a>
+              
+                
+                <a class="seg-link" href="/gpu/#distributed-gpu"
+                   aria-label="Distributed &amp; multi-GPU — too early"><span class="seg swatch-red"></span></a>
+              
+            </div>
+            
+            <div class="hub-card-counts">
+              <span class="counts-default">3 shelves: <span class="green">1 comprehensive</span> &middot; <span class="yellow">1 partial</span> &middot; <span class="red">1 too early</span></span>
+              
+                
+                <span class="counts-label">Kernel languages &amp; GPU compilers &mdash;
+                  <span class="yellow">partial</span></span>
+              
+                
+                <span class="counts-label">Vendor runtimes &amp; portable compute &mdash;
+                  <span class="green">comprehensive</span></span>
+              
+                
+                <span class="counts-label">Distributed &amp; multi-GPU &mdash;
+                  <span class="red">too early</span></span>
+              
+            </div>
           </div>
         
           
-          <div class="col-md-2 col-sm-4 col-xs-6">
-            <a href="nlp">
-              <div class="tile tile-yellow">
-                Natural Language Processing
-              </div>
-            </a>
-          </div>
-        
           
-          <div class="col-md-2 col-sm-4 col-xs-6">
-            <a href="reinforcement">
-              <div class="tile tile-red">
-                Reinforcement Learning
-              </div>
-            </a>
-          </div>
-        
+            
+            
           
-          <div class="col-md-2 col-sm-4 col-xs-6">
-            <a href="scientific-computing">
-              <div class="tile tile-yellow">
-                Scientific Computing
-              </div>
-            </a>
+            
+            
+          
+            
+            
+          
+            
+          
+            
+            
+          
+            
+            
+          
+          <div class="hub-card hub-card-yellow">
+            <h4 class="hub-card-title"><a class="hub-card-link" href="/modalities">Modalities &amp; Domains</a></h4>
+            <p class="hub-card-tagline">Vertical applications — vision, speech, text, robotics.</p>
+            
+            <div class="hub-card-sections">
+              
+                
+                <a class="seg-link" href="/modalities/#computer-vision"
+                   aria-label="Computer vision — partial"><span class="seg swatch-yellow"></span></a>
+              
+                
+                <a class="seg-link" href="/modalities/#speech-audio"
+                   aria-label="Speech &amp; audio — comprehensive"><span class="seg swatch-green"></span></a>
+              
+                
+                <a class="seg-link" href="/modalities/#text-processing"
+                   aria-label="Text processing &amp; tokenization — comprehensive"><span class="seg swatch-green"></span></a>
+              
+                
+                <a class="seg-link" href="/modalities/#generative-media"
+                   aria-label="Generative media — too early"><span class="seg swatch-red"></span></a>
+              
+                
+                <a class="seg-link" href="/modalities/#robotics"
+                   aria-label="Robotics &amp; embodied AI — partial"><span class="seg swatch-yellow"></span></a>
+              
+                
+                <a class="seg-link" href="/modalities/#safety-privacy"
+                   aria-label="Safety, privacy &amp; supply chain — partial"><span class="seg swatch-yellow"></span></a>
+              
+            </div>
+            
+            <div class="hub-card-counts">
+              <span class="counts-default">6 shelves: <span class="green">2 comprehensive</span> &middot; <span class="yellow">3 partial</span> &middot; <span class="red">1 too early</span></span>
+              
+                
+                <span class="counts-label">Computer vision &mdash;
+                  <span class="yellow">partial</span></span>
+              
+                
+                <span class="counts-label">Speech &amp; audio &mdash;
+                  <span class="green">comprehensive</span></span>
+              
+                
+                <span class="counts-label">Text processing &amp; tokenization &mdash;
+                  <span class="green">comprehensive</span></span>
+              
+                
+                <span class="counts-label">Generative media &mdash;
+                  <span class="red">too early</span></span>
+              
+                
+                <span class="counts-label">Robotics &amp; embodied AI &mdash;
+                  <span class="yellow">partial</span></span>
+              
+                
+                <span class="counts-label">Safety, privacy &amp; supply chain &mdash;
+                  <span class="yellow">partial</span></span>
+              
+            </div>
           </div>
         
       </div>
@@ -204,37 +785,88 @@
   </div>
 
 
-  <div class="container section">
-    <h3>Additional resources</h3>
-    <p>See also some of these talks, tutorials, demos about machine learning in Rust:</p>
+  <div class="container section" style="max-width: min(60rem, 100%);">
+    <h3>Rust ML in the Rust project</h3>
+    <p>
+      Machine learning is now an accepted goal of the Rust project itself.
+      <a href="https://doc.rust-lang.org/nightly/std/autodiff/index.html"><code>std::autodiff</code></a>
+      is live on nightly today &mdash; <code>#![feature(autodiff)]</code>, forward and reverse mode,
+      Enzyme/LLVM-backed. <a href="https://github.com/rust-lang/rust/issues/131513"><code>std::offload</code></a>
+      has its host side upstreamed and its device side in review, waiting on a rustc bump to LLVM 22,
+      with AMD, NVIDIA and now Intel targets in scope. And the accepted 2026 project goal
+      <a href="https://github.com/rust-lang/rust-project-goals/blob/main/src/2026/high-level-ml.md">High-Level ML optimizations</a>
+      proposes an MLIR-based backend for rustc that recognizes tensor operations, aiming at &ldquo;a
+      shiny future where developers are able to develop full ML models in pure Rust.&rdquo;
+    </p>
 
-    <ul>
-      <li>
-        <a href="https://github.com/rust-community/rustbridge/tree/master/workshops/src/machine_learning">Spam or Ham?</a> -
-        End-to-end Rust ML tutorial aimed at Rust beginners (uses <a href="https://github.com/maciejkula/rustlearn">rustlearn</a>)
-      </li>
-      <li>
-        <a href="http://learning-machines.herokuapp.com/">Learning Machines</a> -
-        Interactive tutorials on machine learning powered by <a href="https://github.com/AtheMathmo/rusty-machine">rusty-machine</a>
-      <li>...<a href="https://github.com/anowell/are-we-learning-yet/issues/new">suggest additional resources</a> for getting started with ML in Rust</li>
+    <h3>Discuss Rust ML</h3>
+    <ul class="channels">
+        <li>
+          <a href="https://discord.gg/c5yQWcZTng">Rust-ML Discord</a> &mdash; the general-purpose
+          channel for Rust ML. Small and honest about it: 121 members as of 2026-08-31.
+        </li>
+        <li>
+          <a href="https://rust-lang.zulipchat.com/#narrow/channel/390790-wg-autodiff"><code>#wg-autodiff</code> on rust-lang.zulipchat.com</a>
+          &mdash; where the compiler-side autodiff and GPU-offload work is discussed.
+        </li>
+        <li>
+          <a href="https://burn.dev">Burn &amp; CubeCL</a> &mdash; their Discord, linked from the
+          project site.
+        </li>
+        <li>
+          <a href="https://scientificcomputing.rs/">Scientific Computing in Rust</a> &mdash; a free
+          annual online workshop out of UCL with a monthly newsletter and every talk on YouTube. This
+          is where the numerical and GPU work gets presented.
+        </li>
     </ul>
+  </div>
+
+  <div class="container section" style="max-width: min(60rem, 100%);">
+    <h3>Learn it, watch it, check the dates</h3>
+
+    <div class="feature-talk">
+      <a class="feature-talk-title" href="https://youtu.be/W4296t6hffs">How Rust helped us building and deploying Moshi, a state-of-the-art speech model</a>
+      <span class="feature-talk-meta">Laurent Mazare, Kyutai &middot; Rust Nation UK 2025</span>
+      <p>
+        Mazare is the primary author of candle, and Moshi is a real speech-text foundation model his
+        team moved off PyTorch onto a Rust inference stack and then ran at <b>500,000 sessions on a
+        low-cost GPU cluster</b>. A named engineer, a shipped model, production numbers, and an
+        honest account of what Rust bought them.
+      </p>
+    </div>
+
+    <div class="resource-cards">
+      <a class="resource-card" href="/timeline/">
+        <span class="resource-card-title">Timeline</span>
+        <span class="resource-card-sub">
+          A dated record, 2024&ndash;2026: releases, funding, NVIDIA's two Rust projects, the
+          acquisitions &mdash; and the projects that died.
+        </span>
+      </a>
+      <a class="resource-card" href="/showcase/">
+        <span class="resource-card-title">AI software written in Rust</span>
+        <span class="resource-card-sub">
+          Codex CLI, Zed, Warp, goose, Handy, koharu, OpenShell. Products with Rust cores, kept
+          separate from the crate catalog.
+        </span>
+      </a>
+    </div>
   </div>
 </div>
 
     </div>
 
-    <footer class="site-footer">
+    
+<footer class="site-footer">
   <div class="container">
-
-    <nav class="site-nav" style="text-align: center; font-size: smaller;">
-      <span style="padding: 15px;">
-        <a class="page-link" href="https://rust-ml.zulipchat.com" target="_blank">Chat</a>
-      </span>
-      <span style="padding: 15px;"><a class="page-link" href="/about">About</a></span>
-    </nav>
-
-    <div style="text-align: center; font-size: small;">Are we learning yet? - Last updated: <a href="https://github.com/anowell/are-we-learning-yet/actions/workflows/pages/pages-build-deployment">2026-09-14</a> </div>
-
+    <nav class="site-nav" aria-label="Pages">
+      <a href="/timeline/">Timeline</a>
+      <a href="/showcase/">Showcase</a>
+      <a href="/about/">About</a>
+      <a href="https://discord.gg/c5yQWcZTng">Rust-ML Discord</a>
+    </nav><p class="site-updated">Crate data refreshed
+      <a href="https://github.com/anowell/are-we-learning-yet/actions/workflows/pages/pages-build-deployment">2026-09-14</a>.
+      <a href="https://github.com/anowell/are-we-learning-yet/issues/new?template=report.md">Report an issue or missing content</a>.</p>
   </div>
 </footer>
 

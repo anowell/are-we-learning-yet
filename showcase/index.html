@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><title>AI software written in Rust &mdash; Are we learning yet?</title>
+  <meta name="description" content="A curated guide to AI and machine learning in Rust, with dead entries labeled rather than dropped. Rust is where the AI industry&#39;s infrastructure is written -- tokenizers, model formats, vector search, GPU runtimes, agent protocols -- and a credible choice for inference and single-machine training. This site says where it is not.">
+
+  <link rel="stylesheet" href="/css/main.css">
+
+  <link rel="canonical" href="https://arewelearningyet.com/showcase/">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#b7410e">
+  <meta name="theme-color" content="#b7410e">
+</head>
+
+
+<body>
+  <header class="site-header">
+  <div class="container">
+    <a class="site-title" href="https://arewelearningyet.com/">
+      <img src="/images/rust-9000-48.png" width="24" height="24" alt="">
+      Are we learning yet?
+    </a>
+  </div>
+</header>
+
+
+
+<nav class="rail" aria-label="Topic hubs">
+  <div class="container rail-inner">
+    
+    <a class="rail-chip rail-chip-yellow"
+       href="/llms">LLMs</a>
+    
+    <a class="rail-chip rail-chip-yellow"
+       href="/agents">Agents</a>
+    
+    <a class="rail-chip rail-chip-green"
+       href="/retrieval">Retrieval</a>
+    
+    <a class="rail-chip rail-chip-yellow"
+       href="/deep-learning">Deep learning</a>
+    
+    <a class="rail-chip rail-chip-green"
+       href="/inference">Inference</a>
+    
+    <a class="rail-chip rail-chip-yellow"
+       href="/classical-ml">Classical</a>
+    
+    <a class="rail-chip rail-chip-green"
+       href="/data">Data</a>
+    
+    <a class="rail-chip rail-chip-yellow"
+       href="/scientific-computing">Numerical</a>
+    
+    <a class="rail-chip rail-chip-yellow"
+       href="/gpu">GPU</a>
+    
+    <a class="rail-chip rail-chip-yellow"
+       href="/modalities">Modalities</a>
+    
+  </div>
+</nav>
+
+
+  <article class="container post">
+
+    <header class="post-header">
+      <h1 class="post-title">AI software written in Rust</h1>
+    </header>
+
+    <div class="post-content">
+      <p>Everything else on this site is a catalog of things you can <code>cargo add</code>. This page is not. These
+are significant products and projects with Rust cores — an agent, an editor, a terminal, a dictation app, a manga
+translator — and they are here because "who actually ships AI software in Rust?" is a fair question.</p>
+<p><strong>AI that generates Rust is a different subject.</strong> Much of the "AI and Rust" writing in circulation
+is about coding agents, proof generation and vibe-coded UIs. This site is about machine learning
+<em>implemented</em> in Rust. Conflating the two is how a Rust ML list ends up recommending a code
+assistant as a tensor library — Codex CLI is below as a large Rust application, not as a tool to
+write Rust with.</p>
+
+    </div>
+
+    
+    
+    
+
+    
+    
+    
+
+    <section class="shelf" id="agents-devtools">
+      <div class="shelf-head">
+        <h2 class="shelf-title"><a href="#agents-devtools">Agents and developer tools</a></h2>
+      </div>
+
+      
+      
+
+      
+      <div class="band band-listed">
+        
+        
+        
+<div class="crate crate-listed">
+  <h3>
+    OpenAI Codex CLI <span class="crate-links-inline">[<a href="https://github.com/openai/codex">repo</a>]</span></h3>
+
+  <div class="crate-body">
+    <p class="crate-featured-note">OpenAI&#39;s coding agent, rewritten from TypeScript and Node to Rust for zero-dependency installs, native Linux sandboxing and no garbage collector.
+</p>
+
+    
+
+    
+    <div class="crate-links">
+      
+      <a class="crate-link" href="https://www.infoq.com/news/2025/06/codex-cli-rust-native-rewrite/"><span class="crate-link-kind">post</span>InfoQ on the Rust-native rewrite</a>
+      
+    </div>
+    
+  </div>
+
+  
+  <dl class="crate-stats">
+    <dt>rust</dt><dd>end to end</dd><dt>stars</dt><dd>124k</dd><dt>last commit</dt><dd>2026-09-14</dd><dt>created</dt><dd>2025-04-13</dd></dl>
+</div>
+
+        
+        
+        
+        
+<div class="crate crate-listed">
+  <h3>
+    Zed <span class="crate-links-inline">[<a href="https://github.com/zed-industries/zed">repo</a>]</span></h3>
+
+  <div class="crate-body">
+    <p class="crate-featured-note">An editor written in Rust down to its GPU renderer and its UI framework. It authored the Agent Client Protocol, whose reference SDK is also Rust, and it ships Zeta, its own open-weight, open-data edit-prediction model.
+</p>
+
+    
+
+    
+    <div class="crate-links">
+      
+      <a class="crate-link" href="https://zed.dev/blog/edit-prediction"><span class="crate-link-kind">post</span>Zeta, an open-weight open-data edit-prediction model</a>
+      
+    </div>
+    
+  </div>
+
+  
+  <dl class="crate-stats">
+    <dt>rust</dt><dd>end to end</dd><dt>stars</dt><dd>90.2k</dd><dt>last commit</dt><dd>2026-09-14</dd><dt>created</dt><dd>2021-02-20</dd></dl>
+</div>
+
+        
+        
+        
+        
+<div class="crate crate-listed">
+  <h3>
+    Warp <span class="crate-links-inline">[<a href="https://github.com/warpdotdev/warp">repo</a>]</span></h3>
+
+  <div class="crate-body">
+    <p class="crate-featured-note">&quot;An agentic development environment, born out of the terminal&quot; — a custom Rust UI framework with GPU rendering, shipping AI agents on top of it.
+</p>
+
+    
+
+    
+  </div>
+
+  
+  <dl class="crate-stats">
+    <dt>rust</dt><dd>end to end</dd><dt>stars</dt><dd>65k</dd><dt>last commit</dt><dd>2026-09-12</dd><dt>created</dt><dd>2021-07-08</dd></dl>
+</div>
+
+        
+        
+        
+        
+<div class="crate crate-listed">
+  <h3>
+    goose <span class="crate-links-inline">[<a href="https://github.com/aaif-goose/goose">repo</a>]</span></h3>
+
+  <div class="crate-body">
+    <p class="crate-featured-note">A general-purpose desktop, CLI and API agent: a Rust core with a TypeScript desktop app over it. Since December 2025 it has been governed by the Linux Foundation&#39;s Agentic AI Foundation, alongside MCP itself, which is why a <code>block/goose</code> link now redirects.
+</p>
+
+    
+
+    
+    <div class="crate-links">
+      
+      <a class="crate-link" href="https://blog.modelcontextprotocol.io/posts/2025-12-09-mcp-joins-agentic-ai-foundation/"><span class="crate-link-kind">post</span>MCP joins the Agentic AI Foundation</a>
+      
+    </div>
+    
+  </div>
+
+  
+  <dl class="crate-stats">
+    <dt>rust</dt><dd>the core</dd><dt>stars</dt><dd>54.2k</dd><dt>last commit</dt><dd>2026-09-11</dd><dt>created</dt><dd>2024-08-23</dd></dl>
+</div>
+
+        
+        
+        
+        
+<div class="crate crate-listed">
+  <h3>
+    Tabby <span class="crate-links-inline">[<a href="https://github.com/TabbyML/tabby">repo</a>]</span></h3>
+
+  <div class="crate-body">
+    <p class="crate-featured-note">A self-hosted AI coding assistant — completion, an answer engine and a repository indexer — run on your own hardware against your own code. Rust throughout the server side.
+</p>
+
+    
+
+    
+  </div>
+
+  
+  <dl class="crate-stats">
+    <dt>rust</dt><dd>end to end</dd><dt>stars</dt><dd>33.9k</dd><dt>last commit</dt><dd>2026-06-30</dd><dt>created</dt><dd>2023-03-16</dd></dl>
+</div>
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+<div class="crate crate-listed">
+  <h3>
+    NVIDIA OpenShell <span class="crate-links-inline">[<a href="https://github.com/NVIDIA/OpenShell">repo</a>]</span></h3>
+
+  <div class="crate-body">
+    <p class="crate-featured-note">&quot;The safe, private runtime for autonomous AI agents&quot; — a policy-enforced Rust sandbox for Claude Code, Codex and Copilot CLI, with a Rust SDK. Read its star count against its created date: it is months old, not years.
+</p>
+
+    
+
+    
+  </div>
+
+  
+  <dl class="crate-stats">
+    <dt>rust</dt><dd>end to end</dd><dt>stars</dt><dd>8.6k</dd><dt>last commit</dt><dd>2026-09-12</dd><dt>created</dt><dd>2026-02-24</dd></dl>
+</div>
+
+        
+        
+        
+        
+      </div>
+      
+
+      
+
+      
+
+      
+      <p class="catalog-xref">The crates these are built from:
+        <a href="/agents/#agent-frameworks">agent frameworks</a> &middot; <a href="/agents/#agent-protocols">agent protocols</a> &middot; <a href="/agents/#sandboxing">sandboxing, browser &amp; computer use</a></p>
+      
+    </section>
+    
+    
+    
+
+    <section class="shelf" id="applications">
+      <div class="shelf-head">
+        <h2 class="shelf-title"><a href="#applications">Applications</a></h2>
+      </div>
+
+      
+      
+
+      
+      <div class="band band-listed">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+<div class="crate crate-listed">
+  <h3>
+    Handy <span class="crate-links-inline">[<a href="https://github.com/cjpais/Handy">repo</a>]</span></h3>
+
+  <div class="crate-body">
+    <p class="crate-featured-note">Offline push-to-talk speech-to-text: a Rust core in a Tauri shell. Its engine is a separate crate, <code>transcribe-rs</code>, which covers Whisper, Parakeet, Moonshine and Voxtral among others, and is usable without the app.
+</p>
+
+    
+
+    
+    <div class="crate-links">
+      
+      <a class="crate-link" href="https://github.com/cjpais/transcribe-rs"><span class="crate-link-kind">docs</span>transcribe-rs, the engine underneath</a>
+      
+    </div>
+    
+  </div>
+
+  
+  <dl class="crate-stats">
+    <dt>rust</dt><dd>the core</dd><dt>stars</dt><dd>31.5k</dd><dt>last commit</dt><dd>2026-09-14</dd><dt>created</dt><dd>2025-02-13</dd></dl>
+</div>
+
+        
+        
+        
+        
+<div class="crate crate-listed">
+  <h3>
+    screenpipe <span class="crate-links-inline">[<a href="https://github.com/screenpipe/screenpipe">repo</a>]</span></h3>
+
+  <div class="crate-body">
+    <p class="crate-featured-note">Continuous local screen and audio capture, piped into agent context. The capture and indexing pipeline is Rust; the app surface around it is TypeScript. YC S26.
+</p>
+
+    
+
+    
+  </div>
+
+  
+  <dl class="crate-stats">
+    <dt>rust</dt><dd>the core</dd><dt>stars</dt><dd>21.6k</dd><dt>last commit</dt><dd>2026-09-13</dd><dt>created</dt><dd>2024-06-19</dd></dl>
+</div>
+
+        
+        
+        
+        
+        
+        
+        
+        
+<div class="crate crate-listed">
+  <h3>
+    koharu <span class="crate-links-inline">[<a href="https://github.com/koharu-rs/koharu">repo</a>]</span></h3>
+
+  <div class="crate-body">
+    <p class="crate-featured-note">A manga translator — detection, OCR and translation. The frontend is TypeScript in Tauri and the entire ML pipeline underneath it is Rust on candle, which makes it a complete ML application in Rust end to end. The author&#39;s writeup is worth reading if you are considering the same.
+</p>
+
+    
+
+    
+    <div class="crate-links">
+      
+      <a class="crate-link" href="https://old.reddit.com/r/rust/comments/1r5219g/technology_behind_koharu_building_a_purerust_ml/"><span class="crate-link-kind">post</span>Building a pure-Rust ML application</a>
+      
+    </div>
+    
+  </div>
+
+  
+  <dl class="crate-stats">
+    <dt>rust</dt><dd>the core</dd><dt>stars</dt><dd>5.6k</dd><dt>last commit</dt><dd>2026-09-13</dd><dt>created</dt><dd>2025-04-09</dd></dl>
+</div>
+
+        
+        
+      </div>
+      
+
+      
+
+      
+
+      
+      <p class="catalog-xref">The crates these are built from:
+        <a href="/modalities/#speech-audio">speech &amp; audio</a> &middot; <a href="/retrieval/#document-ai">OCR &amp; document AI</a> &middot; <a href="/deep-learning/#dl-frameworks">deep learning frameworks</a></p>
+      
+    </section>
+    
+    
+    
+
+    <section class="shelf" id="models-inference">
+      <div class="shelf-head">
+        <h2 class="shelf-title"><a href="#models-inference">Models and inference stacks</a></h2>
+      </div>
+
+      
+      
+
+      
+      <div class="band band-listed">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+<div class="crate crate-listed">
+  <h3>
+    Moshi <span class="crate-links-inline">[<a href="https://github.com/kyutai-labs/moshi">repo</a>]</span></h3>
+
+  <div class="crate-body">
+    <p class="crate-featured-note">Kyutai&#39;s speech-text foundation model. The research and training side is Python; the production inference stack was moved from PyTorch to Rust on candle, and served 500,000 sessions from a low-cost GPU cluster. One of Moshi&#39;s authors is candle&#39;s primary author.
+</p>
+
+    
+
+    
+  </div>
+
+  
+  <dl class="crate-stats">
+    <dt>rust</dt><dd>the core</dd><dt>stars</dt><dd>11.1k</dd><dt>last commit</dt><dd>2026-05-16</dd><dt>created</dt><dd>2024-08-07</dd></dl>
+</div>
+
+        
+        
+        
+        
+        
+        
+      </div>
+      
+
+      
+
+      
+
+      
+      <p class="catalog-xref">The crates these are built from:
+        <a href="/llms/#llm-serving">LLM inference &amp; serving</a> &middot; <a href="/modalities/#speech-audio">speech &amp; audio</a></p>
+      
+    </section>
+    
+
+    
+    
+    <section class="shelf" id="closed-source">
+      <div class="shelf-head">
+        <h2 class="shelf-title"><a href="#closed-source">Significant closed source</a></h2>
+        <p class="shelf-blurb">Rust AI software with no public repository. Written by hand and not
+          measured: nothing here refreshes with the rest of the page.</p>
+      </div>
+      
+      <div class="crate crate-unmeasured">
+        <h3><a href="https://blog.cloudflare.com/cloudflares-most-efficient-ai-inference-engine/">Cloudflare Infire</a></h3>
+        <div class="crate-body">
+          <p class="crate-featured-note">The LLM inference engine behind Workers AI, written in Rust. Cloudflare published it as up to 7% faster than vLLM 0.10 on an H100 NVL.
+</p>
+        </div>
+      </div>
+      
+    </section>
+    
+
+  </article>
+  
+<footer class="site-footer">
+  <div class="container">
+    <nav class="site-nav" aria-label="Pages">
+      <a href="/timeline/">Timeline</a>
+      <a href="/showcase/">Showcase</a>
+      <a href="/about/">About</a>
+      <a href="https://discord.gg/c5yQWcZTng">Rust-ML Discord</a>
+    </nav><p class="site-updated">Crate data refreshed
+      <a href="https://github.com/anowell/are-we-learning-yet/actions/workflows/pages/pages-build-deployment">2026-09-14</a>.
+      <a href="https://github.com/anowell/are-we-learning-yet/issues/new?template=report.md">Report an issue or missing content</a>.</p>
+  </div>
+</footer>
+
+
+</body>
+
+</html>
