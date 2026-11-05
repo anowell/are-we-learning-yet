@@ -341,6 +341,8 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
         
         
         
+        
+        
 <div class="crate crate-featured">
   <h3><span class="visually-hidden">Featured: </span>Rust-GPU/rust-gpu
       <span class="crate-links-inline">[<a href="https://github.com/Rust-GPU/rust-gpu">repo</a>]</span></h3>
@@ -515,20 +517,6 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
         
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
 <div class="crate crate-featured">
   <h3><span class="visually-hidden">Featured: </span>NVIDIA/cuda-rust
       <span class="crate-links-inline">[<a href="https://github.com/NVIDIA/cuda-rust">repo</a>]</span></h3>
@@ -565,10 +553,24 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>stars</dt><dd>3.9k</dd><dt>last commit</dt><dd>2026-11-01</dd></dl>
+  <dl class="crate-stats"><dt>stars</dt><dd>4k</dd><dt>last commit</dt><dd>2026-11-05</dd></dl>
 
 </div>
 
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -861,7 +863,7 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>0.12.0-pre.1</dd><dt>downloads</dt><dd>885k / 90d</dd><dt>stars</dt><dd>2.5k</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-10-30</dd><dt>published</dt><dd>2026-10-28</dd><dt>dependents</dt><dd>7 owners</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>0.12.0-pre.1</dd><dt>downloads</dt><dd>946k / 90d</dd><dt>stars</dt><dd>2.5k</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-11-05</dd><dt>published</dt><dd>2026-10-28</dd><dt>dependents</dt><dd>7 owners</dd></dl>
 
 </div>
 
@@ -883,6 +885,50 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
         
         
         
+        
+        
+<div class="crate crate-featured">
+  <h3><span class="visually-hidden">Featured: </span>cutile
+      <span class="crate-links-inline">[<a href="https://crates.io/crates/cutile">crate</a> &middot; <a href="https://github.com/NVIDIA/cuda-rust">repo</a> &middot; <a href="https://docs.rs/crate/cutile">docs</a>]</span></h3>
+
+  <div class="crate-body">
+    
+    <p class="crate-featured-note">NVIDIA Labs&#39; tile-based kernel DSL on CUDA Tile IR — and the strongest vendor endorsement any part of the Rust ML stack has ever received. You say what one tile of data does and the compiler decides how many real threads back it, so there is no thread indexing and no shared memory to get wrong; ownership is what makes that safe, because a mutable tensor has to be partitioned into disjoint pieces before it can be launched at all, and the classic aliasing mistake is a borrow error on the host rather than a race on the device. It runs on stable Rust with no nightly and no LLVM of your own, which is the practical difference from cuda-oxide, NVIDIA&#39;s other track. Its authors report 7 TB/s element-wise throughput and 2 PFlop/s GEMM on B200, roughly 96% of cuBLAS. Treat those as the project&#39;s own numbers; the accompanying paper is where the methodology is; the README carries the hardware and toolkit it needs. It is new, NVIDIA-only, and calls itself early and API-unstable. The reception is worth knowing before you invest: the paper drew real interest, but NVIDIA&#39;s own announcement of the two tracks landed on almost nobody — four Hacker News submissions, twelve points at best, not one comment between them, against the 424 points and 118 comments the cuda-oxide repository drew in May. The loudest reaction is a reservation rather than enthusiasm: that a Rust GPU story tied to one vendor&#39;s hardware is not the one people were waiting for. Outside NVIDIA the usage is narrow and not arm&#39;s length — mistral.rs carries a directory of cuTile kernels behind an optional feature, and its maintainer co-authored the cuTile paper.
+</p>
+    
+
+    
+    
+
+    
+
+    
+    
+    <p class="crate-desc">cuTile Rust lets programmers safely author and execute tile kernels directly in Rust.</p>
+    
+
+    
+    <div class="crate-links">
+      
+      <a class="crate-link" href="https://arxiv.org/abs/2606.15991"><span class="crate-link-kind">paper</span>Fearless Concurrency on the GPU (Elibol et al., 2026-06-14)</a>
+      
+      <a class="crate-link" href="https://old.reddit.com/r/rust/comments/1u82fpy/fearless_concurrency_on_the_gpu/"><span class="crate-link-kind">post</span>r/rust on cuTile Rust (254 points)</a>
+      
+      <a class="crate-link" href="https://github.com/EricLBuehler/mistral.rs/blob/master/docs/src/content/docs/reference/hardware-support.md"><span class="crate-link-kind">production</span>mistral.rs documents which of its CUDA release lanes are cuTile-capable</a>
+      
+      <a class="crate-link" href="https://github.com/EricLBuehler/mistral.rs/tree/master/mistralrs-quant/src/cutile"><span class="crate-link-kind">production</span>mistral.rs&#39;s cuTile kernels: FP8 GEMM, NVFP4, fused MoE, routed LoRA</a>
+      
+      <a class="crate-link" href="https://developer.nvidia.com/blog/introducing-cuda-rust-two-tracks-for-writing-gpu-kernels/"><span class="crate-link-kind">post</span>NVIDIA&#39;s own announcement: Tile is the track it says to reach for first (2026-09-08)</a>
+      
+    </div>
+    
+  </div>
+
+  
+  <dl class="crate-stats"><dt>version</dt><dd>0.5.0</dd><dt>downloads</dt><dd>16k / 90d</dd><dt>stars</dt><dd>4k</dd><dt>license</dt><dd>Apache-2.0</dd><dt>last commit</dt><dd>2026-11-05</dd><dt>published</dt><dd>2026-11-05</dd><dt>dependents</dt><dd>10 owners</dd></dl>
+
+</div>
+
         
         
         
@@ -1756,10 +1802,12 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>30.0.1</dd><dt>downloads</dt><dd>18.3M / 90d</dd><dt>stars</dt><dd>18.4k</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-10-31</dd><dt>published</dt><dd>2026-08-22</dd><dt>dependents</dt><dd>35 owners &middot; 3715 repos</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>30.0.1</dd><dt>downloads</dt><dd>19.3M / 90d</dd><dt>stars</dt><dd>18.5k</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-11-05</dd><dt>published</dt><dd>2026-08-22</dd><dt>dependents</dt><dd>35 owners &middot; 3715 repos</dd></dl>
 
 </div>
 
+        
+        
         
         
         
@@ -1921,12 +1969,10 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>0.13.0+sdk-1.4.341.0</dd><dt>downloads</dt><dd>371k / 90d</dd><dt>stars</dt><dd>506</dd><dt>license</dt><dd>Apache-2.0</dd><dt>last commit</dt><dd>2026-08-28</dd><dt>published</dt><dd>2026-04-10</dd><dt>dependents</dt><dd>26 owners &middot; 75 repos</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>0.13.0+sdk-1.4.341.0</dd><dt>downloads</dt><dd>381k / 90d</dd><dt>stars</dt><dd>506</dd><dt>license</dt><dd>Apache-2.0</dd><dt>last commit</dt><dd>2026-08-28</dd><dt>published</dt><dd>2026-04-10</dd><dt>dependents</dt><dd>26 owners &middot; 75 repos</dd></dl>
 
 </div>
 
-        
-        
         
         
         
@@ -2076,10 +2122,12 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>0.11.0</dd><dt>downloads</dt><dd>45k / 90d</dd><dt>stars</dt><dd>3.4k</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-10-27</dd><dt>published</dt><dd>2026-10-13</dd><dt>dependents</dt><dd>17 owners &middot; 148 repos</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>0.11.0</dd><dt>downloads</dt><dd>47k / 90d</dd><dt>stars</dt><dd>3.4k</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-10-27</dd><dt>published</dt><dd>2026-10-13</dd><dt>dependents</dt><dd>17 owners &middot; 148 repos</dd></dl>
 
 </div>
 
+        
+        
         
         
         
@@ -2239,12 +2287,10 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>stars</dt><dd>5.2k</dd><dt>license</dt><dd>Apache-2.0</dd><dt>last commit</dt><dd>2026-10-03</dd></dl>
+  <dl class="crate-stats"><dt>stars</dt><dd>5.3k</dd><dt>license</dt><dd>Apache-2.0</dd><dt>last commit</dt><dd>2026-10-03</dd></dl>
 
 </div>
 
-        
-        
         
         
         
@@ -2312,6 +2358,10 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
 
 </div>
 
+        
+        
+        
+        
         
         
         
@@ -2485,8 +2535,6 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
         
         
         
-        
-        
 <div class="crate crate-listed">
   <h3>spirv-tools
       <span class="crate-links-inline">[<a href="https://crates.io/crates/spirv-tools">crate</a> &middot; <a href="https://github.com/rust-gpu/spirv-tools-rs">repo</a> &middot; <a href="https://docs.rs/spirv-tools">docs</a>]</span></h3>
@@ -2508,12 +2556,10 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>0.13.3</dd><dt>downloads</dt><dd>133k / 90d</dd><dt>stars</dt><dd>5</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-04-10</dd><dt>published</dt><dd>2026-04-10</dd><dt>dependents</dt><dd>6 owners &middot; 33 repos</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>0.13.3</dd><dt>downloads</dt><dd>137k / 90d</dd><dt>stars</dt><dd>5</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-04-10</dd><dt>published</dt><dd>2026-04-10</dd><dt>dependents</dt><dd>6 owners &middot; 33 repos</dd></dl>
 
 </div>
 
-        
-        
         
         
         
@@ -2689,7 +2735,7 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>0.3.0</dd><dt>downloads</dt><dd>943 / 90d</dd><dt>stars</dt><dd>5.4k</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-09-30</dd><dt>published</dt><dd>2022-02-07</dd><dt>dependents</dt><dd>1 owner &middot; 2 repos</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>0.3.0</dd><dt>downloads</dt><dd>1k / 90d</dd><dt>stars</dt><dd>5.4k</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-09-30</dd><dt>published</dt><dd>2022-02-07</dd><dt>dependents</dt><dd>1 owner &middot; 2 repos</dd></dl>
 
 </div>
 
@@ -2820,10 +2866,12 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>0.23.3</dd><dt>downloads</dt><dd>21k / 90d</dd><dt>stars</dt><dd>82</dd><dt>license</dt><dd>MIT</dd><dt>last commit</dt><dd>2026-08-18</dd><dt>published</dt><dd>2026-08-11</dd><dt>dependents</dt><dd>1 owner</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>0.23.3</dd><dt>downloads</dt><dd>23k / 90d</dd><dt>stars</dt><dd>82</dd><dt>license</dt><dd>MIT</dd><dt>last commit</dt><dd>2026-08-18</dd><dt>published</dt><dd>2026-08-11</dd><dt>dependents</dt><dd>1 owner</dd></dl>
 
 </div>
 
+        
+        
         
         
         
@@ -4229,6 +4277,8 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
         
         
         
+        
+        
 <div class="crate crate-watch">
   <h3>neelsomani/vericuda
       <span class="crate-links-inline">[<a href="https://github.com/neelsomani/vericuda">repo</a>]</span></h3>
@@ -4384,10 +4434,12 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>0.4.0</dd><dt>downloads</dt><dd>1k / 90d</dd><dt>stars</dt><dd>60</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-10-10</dd><dt>published</dt><dd>2026-10-04</dd><dt>dependents</dt><dd>1 owner</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>0.4.0</dd><dt>downloads</dt><dd>1k / 90d</dd><dt>stars</dt><dd>61</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-10-10</dd><dt>published</dt><dd>2026-10-04</dd><dt>dependents</dt><dd>1 owner</dd></dl>
 
 </div>
 
+        
+        
         
         
         
@@ -4437,7 +4489,7 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>0.5.0</dd><dt>downloads</dt><dd>134 / 90d</dd><dt>stars</dt><dd>44</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-06-12</dd><dt>published</dt><dd>2026-06-12</dd><dt>dependents</dt><dd>1 owner</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>0.5.0</dd><dt>downloads</dt><dd>130 / 90d</dd><dt>stars</dt><dd>45</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-06-12</dd><dt>published</dt><dd>2026-06-12</dd><dt>dependents</dt><dd>1 owner</dd></dl>
 
 </div>
 
@@ -4582,10 +4634,6 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
         
         
         
-        
-        
-        
-        
 <div class="crate crate-watch">
   <h3>krnl
       <span class="crate-links-inline">[<a href="https://crates.io/crates/krnl">crate</a> &middot; <a href="https://github.com/charles-r-earp/krnl">repo</a> &middot; <a href="https://docs.rs/krnl">docs</a>]</span></h3>
@@ -4607,7 +4655,7 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>0.1.1</dd><dt>downloads</dt><dd>448 / 90d</dd><dt>stars</dt><dd>263</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2025-10-20</dd><dt>published</dt><dd>2024-05-28</dd><dt>dependents</dt><dd>1 owner</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>0.1.1</dd><dt>downloads</dt><dd>446 / 90d</dd><dt>stars</dt><dd>263</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2025-10-20</dd><dt>published</dt><dd>2024-05-28</dd><dt>dependents</dt><dd>1 owner</dd></dl>
 
 </div>
 
@@ -4848,12 +4896,14 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
         
         
         
+        
+        
       </details>
       
 
       
       <details class="band band-archive">
-        <summary>Archive (4)</summary>
+        <summary>Archive (3)</summary>
         <p class="band-note">Kept so you stop looking for them. Archives are computed on every
           build and reverse themselves if the reason clears. Where a human has named the reason
           or a replacement, it cites the public issue behind that.</p>
@@ -5468,52 +5518,6 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
         
         
         
-<div class="crate crate-archive">
-  <h3>cutile
-      <span class="crate-links-inline">[<a href="https://crates.io/crates/cutile">crate</a> &middot; <a href="https://github.com/nvlabs/cutile-rs">repo</a> &middot; <a href="https://docs.rs/crate/cutile">docs</a>]</span></h3>
-
-  <div class="crate-body">
-    
-
-    
-    
-
-    
-    <p class="crate-because">
-      <b>Archived</b>: repo archived, as of 2026-09-13.
-      Detected automatically, and it un-archives itself if that changes.
-      
-      
-    </p>
-    
-
-    
-    
-    <p class="crate-desc">cuTile Rust lets programmers safely author and execute tile kernels directly in Rust.</p>
-    
-
-    
-    <div class="crate-links">
-      
-      <a class="crate-link" href="https://arxiv.org/abs/2606.15991"><span class="crate-link-kind">paper</span>Fearless Concurrency on the GPU (Elibol et al., 2026-06-14)</a>
-      
-      <a class="crate-link" href="https://old.reddit.com/r/rust/comments/1u82fpy/fearless_concurrency_on_the_gpu/"><span class="crate-link-kind">post</span>r/rust on cuTile Rust (254 points)</a>
-      
-      <a class="crate-link" href="https://github.com/EricLBuehler/mistral.rs/blob/master/docs/src/content/docs/reference/hardware-support.md"><span class="crate-link-kind">production</span>mistral.rs documents which of its CUDA release lanes are cuTile-capable</a>
-      
-      <a class="crate-link" href="https://github.com/EricLBuehler/mistral.rs/tree/master/mistralrs-quant/src/cutile"><span class="crate-link-kind">production</span>mistral.rs&#39;s cuTile kernels: FP8 GEMM, NVFP4, fused MoE, routed LoRA</a>
-      
-      <a class="crate-link" href="https://developer.nvidia.com/blog/introducing-cuda-rust-two-tracks-for-writing-gpu-kernels/"><span class="crate-link-kind">post</span>NVIDIA&#39;s own announcement: Tile is the track it says to reach for first (2026-09-08)</a>
-      
-    </div>
-    
-  </div>
-
-  
-  <dl class="crate-stats"><dt>version</dt><dd>0.4.0</dd><dt>downloads</dt><dd>15k / 90d</dd><dt>stars</dt><dd>1.1k</dd><dt>license</dt><dd>Apache-2.0</dd><dt>last commit</dt><dd>2026-10-08</dd><dt>published</dt><dd>2026-09-25</dd><dt>dependents</dt><dd>9 owners</dd></dl>
-
-</div>
-
         
         
         
@@ -6158,7 +6162,7 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>0.3.1</dd><dt>downloads</dt><dd>181 / 90d</dd><dt>stars</dt><dd>26</dd><dt>license</dt><dd>MIT/Apache-2.0</dd><dt>last commit</dt><dd>2020-07-03</dd><dt>published</dt><dd>2020-05-24</dd><dt>dependents</dt><dd>1 owner &middot; 3 repos</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>0.3.1</dd><dt>downloads</dt><dd>182 / 90d</dd><dt>stars</dt><dd>26</dd><dt>license</dt><dd>MIT/Apache-2.0</dd><dt>last commit</dt><dd>2020-07-03</dd><dt>published</dt><dd>2020-05-24</dd><dt>dependents</dt><dd>1 owner &middot; 3 repos</dd></dl>
 
 </div>
 
@@ -6216,7 +6220,7 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>0.3.0</dd><dt>downloads</dt><dd>120 / 90d</dd><dt>stars</dt><dd>1.6k</dd><dt>license</dt><dd>MIT</dd><dt>last commit</dt><dd>2021-03-26</dd><dt>published</dt><dd>2019-10-21</dd><dt>dependents</dt><dd>1 owner &middot; 1 repo</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>0.3.0</dd><dt>downloads</dt><dd>121 / 90d</dd><dt>stars</dt><dd>1.6k</dd><dt>license</dt><dd>MIT</dd><dt>last commit</dt><dd>2021-03-26</dd><dt>published</dt><dd>2019-10-21</dd><dt>dependents</dt><dd>1 owner &middot; 1 repo</dd></dl>
 
 </div>
 
@@ -6334,7 +6338,7 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>0.1.1</dd><dt>downloads</dt><dd>187 / 90d</dd><dt>stars</dt><dd>1.6k</dd><dt>license</dt><dd>MIT</dd><dt>last commit</dt><dd>2021-03-26</dd><dt>published</dt><dd>2020-04-09</dd><dt>dependents</dt><dd>2 repos</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>0.1.1</dd><dt>downloads</dt><dd>188 / 90d</dd><dt>stars</dt><dd>1.6k</dd><dt>license</dt><dd>MIT</dd><dt>last commit</dt><dd>2021-03-26</dd><dt>published</dt><dd>2020-04-09</dd><dt>dependents</dt><dd>2 repos</dd></dl>
 
 </div>
 
@@ -6518,10 +6522,14 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>30.0.1</dd><dt>downloads</dt><dd>16.1M / 90d</dd><dt>stars</dt><dd>18.4k</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-10-31</dd><dt>published</dt><dd>2026-08-22</dd><dt>dependents</dt><dd>33 owners &middot; 3872 repos</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>30.0.1</dd><dt>downloads</dt><dd>17.1M / 90d</dd><dt>stars</dt><dd>18.5k</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-11-05</dd><dt>published</dt><dd>2026-08-22</dd><dt>dependents</dt><dd>33 owners &middot; 3872 repos</dd></dl>
 
 </div>
 
+        
+        
+        
+        
         
         
         
@@ -6686,12 +6694,10 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>0.19.10</dd><dt>downloads</dt><dd>4.5M / 90d</dd><dt>stars</dt><dd>1.2k</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-09-24</dd><dt>published</dt><dd>2026-09-24</dd><dt>dependents</dt><dd>30 owners &middot; 7 repos</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>0.19.10</dd><dt>downloads</dt><dd>4.6M / 90d</dd><dt>stars</dt><dd>1.2k</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-09-24</dd><dt>published</dt><dd>2026-09-24</dd><dt>dependents</dt><dd>30 owners &middot; 7 repos</dd></dl>
 
 </div>
 
-        
-        
         
         
         
@@ -7911,7 +7917,7 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>0.38.0+1.3.281</dd><dt>downloads</dt><dd>16.6M / 90d</dd><dt>stars</dt><dd>2.4k</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-10-28</dd><dt>published</dt><dd>2024-04-01</dd><dt>dependents</dt><dd>44 owners &middot; 4568 repos</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>0.38.0+1.3.281</dd><dt>downloads</dt><dd>17.5M / 90d</dd><dt>stars</dt><dd>2.4k</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-10-28</dd><dt>published</dt><dd>2024-04-01</dd><dt>dependents</dt><dd>44 owners &middot; 4568 repos</dd></dl>
 
 </div>
 
@@ -7950,7 +7956,7 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>0.13.0</dd><dt>downloads</dt><dd>2.3M / 90d</dd><dt>stars</dt><dd>215</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-08-31</dd><dt>published</dt><dd>2026-08-31</dd><dt>dependents</dt><dd>40 owners &middot; 27 repos</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>0.13.0</dd><dt>downloads</dt><dd>2.4M / 90d</dd><dt>stars</dt><dd>215</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-08-31</dd><dt>published</dt><dd>2026-08-31</dd><dt>dependents</dt><dd>40 owners &middot; 27 repos</dd></dl>
 
 </div>
 
@@ -7991,26 +7997,10 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>30.0.1</dd><dt>downloads</dt><dd>18.3M / 90d</dd><dt>stars</dt><dd>18.4k</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-10-31</dd><dt>published</dt><dd>2026-08-22</dd><dt>dependents</dt><dd>35 owners &middot; 3715 repos</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>30.0.1</dd><dt>downloads</dt><dd>19.3M / 90d</dd><dt>stars</dt><dd>18.5k</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-11-05</dd><dt>published</dt><dd>2026-08-22</dd><dt>dependents</dt><dd>35 owners &middot; 3715 repos</dd></dl>
 
 </div>
 
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         
         
@@ -8062,10 +8052,26 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>0.33.0</dd><dt>downloads</dt><dd>8.4M / 90d</dd><dt>stars</dt><dd>694</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-09-15</dd><dt>published</dt><dd>2025-12-17</dd><dt>dependents</dt><dd>32 owners &middot; 4321 repos</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>0.33.0</dd><dt>downloads</dt><dd>8.5M / 90d</dd><dt>stars</dt><dd>694</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-09-15</dd><dt>published</dt><dd>2025-12-17</dd><dt>dependents</dt><dd>33 owners &middot; 4321 repos</dd></dl>
 
 </div>
 
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -8091,10 +8097,12 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>0.12.4</dd><dt>downloads</dt><dd>73k / 90d</dd><dt>stars</dt><dd>134</dd><dt>license</dt><dd>Apache-2.0</dd><dt>last commit</dt><dd>2026-10-24</dd><dt>published</dt><dd>2026-10-24</dd><dt>dependents</dt><dd>32 owners &middot; 43 repos</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>0.12.4</dd><dt>downloads</dt><dd>72k / 90d</dd><dt>stars</dt><dd>134</dd><dt>license</dt><dd>Apache-2.0</dd><dt>last commit</dt><dd>2026-10-24</dd><dt>published</dt><dd>2026-10-24</dd><dt>dependents</dt><dd>32 owners &middot; 43 repos</dd></dl>
 
 </div>
 
+        
+        
         
         
         
@@ -8154,7 +8162,7 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>0.35.2</dd><dt>downloads</dt><dd>1.2M / 90d</dd><dt>stars</dt><dd>5.2k</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-10-27</dd><dt>published</dt><dd>2025-08-16</dd><dt>dependents</dt><dd>29 owners &middot; 128 repos</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>0.35.2</dd><dt>downloads</dt><dd>1.4M / 90d</dd><dt>stars</dt><dd>5.2k</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-11-04</dd><dt>published</dt><dd>2025-08-16</dd><dt>dependents</dt><dd>29 owners &middot; 128 repos</dd></dl>
 
 </div>
 
@@ -8201,12 +8209,10 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>0.28.0</dd><dt>downloads</dt><dd>12.8M / 90d</dd><dt>stars</dt><dd>504</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-09-14</dd><dt>published</dt><dd>2025-09-26</dd><dt>dependents</dt><dd>28 owners &middot; 2242 repos</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>0.28.0</dd><dt>downloads</dt><dd>13.5M / 90d</dd><dt>stars</dt><dd>505</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-09-14</dd><dt>published</dt><dd>2025-09-26</dd><dt>dependents</dt><dd>28 owners &middot; 2242 repos</dd></dl>
 
 </div>
 
-        
-        
         
         
         
@@ -8350,10 +8356,14 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>0.3.2</dd><dt>downloads</dt><dd>19.9M / 90d</dd><dt>stars</dt><dd>1.1k</dd><dt>license</dt><dd>Zlib OR Apache-2.0 OR MIT</dd><dt>last commit</dt><dd>2026-10-17</dd><dt>published</dt><dd>2025-10-04</dd><dt>dependents</dt><dd>31 owners</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>0.3.2</dd><dt>downloads</dt><dd>20.8M / 90d</dd><dt>stars</dt><dd>1.1k</dd><dt>license</dt><dd>Zlib OR Apache-2.0 OR MIT</dd><dt>last commit</dt><dd>2026-10-17</dd><dt>published</dt><dd>2025-10-04</dd><dt>dependents</dt><dd>31 owners</dd></dl>
 
 </div>
 
+        
+        
+        
+        
         
         
         
@@ -8389,16 +8399,10 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>0.3.2</dd><dt>downloads</dt><dd>45k / 90d</dd><dt>stars</dt><dd>5.4k</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-09-30</dd><dt>published</dt><dd>2022-02-16</dd><dt>dependents</dt><dd>19 owners &middot; 6 repos</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>0.3.2</dd><dt>downloads</dt><dd>46k / 90d</dd><dt>stars</dt><dd>5.4k</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-09-30</dd><dt>published</dt><dd>2022-02-16</dd><dt>dependents</dt><dd>19 owners &middot; 6 repos</dd></dl>
 
 </div>
 
-        
-        
-        
-        
-        
-        
         
         
         
@@ -8520,10 +8524,12 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>0.19.7</dd><dt>downloads</dt><dd>56k / 90d</dd><dt>stars</dt><dd>783</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-02-23</dd><dt>published</dt><dd>2024-03-27</dd><dt>dependents</dt><dd>22 owners &middot; 53 repos</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>0.19.7</dd><dt>downloads</dt><dd>55k / 90d</dd><dt>stars</dt><dd>783</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-02-23</dd><dt>published</dt><dd>2024-03-27</dd><dt>dependents</dt><dd>22 owners &middot; 53 repos</dd></dl>
 
 </div>
 
+        
+        
         
         
         
@@ -8549,7 +8555,7 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>0.33.0</dd><dt>downloads</dt><dd>116k / 90d</dd><dt>stars</dt><dd>386</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-11-01</dd><dt>published</dt><dd>2026-10-28</dd><dt>dependents</dt><dd>19 owners</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>0.34.0</dd><dt>downloads</dt><dd>112k / 90d</dd><dt>stars</dt><dd>387</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-11-05</dd><dt>published</dt><dd>2026-11-04</dd><dt>dependents</dt><dd>19 owners</dd></dl>
 
 </div>
 
@@ -8586,10 +8592,12 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>stars</dt><dd>15.2k</dd><dt>license</dt><dd>Apache-2.0</dd><dt>last commit</dt><dd>2026-10-26</dd></dl>
+  <dl class="crate-stats"><dt>stars</dt><dd>15.2k</dd><dt>license</dt><dd>Apache-2.0</dd><dt>last commit</dt><dd>2026-11-03</dd></dl>
 
 </div>
 
+        
+        
         
         
         
@@ -8691,12 +8699,10 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>0.11.1</dd><dt>downloads</dt><dd>490k / 90d</dd><dt>stars</dt><dd>141</dd><dt>license</dt><dd>Apache-2.0</dd><dt>last commit</dt><dd>2026-10-09</dd><dt>published</dt><dd>2026-10-09</dd><dt>dependents</dt><dd>7 owners &middot; 29 repos</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>0.11.1</dd><dt>downloads</dt><dd>517k / 90d</dd><dt>stars</dt><dd>143</dd><dt>license</dt><dd>Apache-2.0</dd><dt>last commit</dt><dd>2026-10-09</dd><dt>published</dt><dd>2026-10-09</dd><dt>dependents</dt><dd>7 owners &middot; 29 repos</dd></dl>
 
 </div>
 
-        
-        
         
         
         
@@ -9442,10 +9448,12 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>0.28.1</dd><dt>downloads</dt><dd>2k / 90d</dd><dt>stars</dt><dd>346</dd><dt>license</dt><dd>Apache-2.0</dd><dt>last commit</dt><dd>2026-11-01</dd><dt>published</dt><dd>2026-10-20</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>0.28.1</dd><dt>downloads</dt><dd>2k / 90d</dd><dt>stars</dt><dd>347</dd><dt>license</dt><dd>Apache-2.0</dd><dt>last commit</dt><dd>2026-11-05</dd><dt>published</dt><dd>2026-10-20</dd></dl>
 
 </div>
 
+        
+        
         
         
         
@@ -11083,6 +11091,8 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
         
         
         
+        
+        
       </details>
       
 
@@ -11092,6 +11102,12 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
         <p class="band-note">Kept so you stop looking for them. Archives are computed on every
           build and reverse themselves if the reason clears. Where a human has named the reason
           or a replacement, it cites the public issue behind that.</p>
+        
+        
+        
+        
+        
+        
         
         
         
@@ -11839,10 +11855,6 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
         
         
         
-        
-        
-        
-        
 <div class="crate crate-archive">
   <h3>luqmana/rust-opencl
       <span class="crate-links-inline">[<a href="https://github.com/luqmana/rust-opencl">repo</a>]</span></h3>
@@ -11875,8 +11887,6 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
 
 </div>
 
-        
-        
         
         
         
@@ -12219,6 +12229,8 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
         
         
         
+        
+        
 <div class="crate crate-archive">
   <h3>coaster
       <span class="crate-links-inline">[<a href="https://crates.io/crates/coaster">crate</a> &middot; <a href="https://github.com/fff-rs/juice">repo</a> &middot; <a href="https://spearow.github.io/coaster">docs</a>]</span></h3>
@@ -12247,7 +12259,7 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>0.2.0</dd><dt>downloads</dt><dd>374 / 90d</dd><dt>stars</dt><dd>1.1k</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2024-02-12</dd><dt>published</dt><dd>2021-11-21</dd><dt>dependents</dt><dd>2 owners &middot; 7 repos</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>0.2.0</dd><dt>downloads</dt><dd>384 / 90d</dd><dt>stars</dt><dd>1.1k</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2024-02-12</dd><dt>published</dt><dd>2021-11-21</dd><dt>dependents</dt><dd>2 owners &middot; 7 repos</dd></dl>
 
 </div>
 
@@ -12345,7 +12357,7 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>0.2.0</dd><dt>downloads</dt><dd>534 / 90d</dd><dt>stars</dt><dd>32</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2018-01-14</dd><dt>published</dt><dd>2016-02-04</dd><dt>dependents</dt><dd>3 owners &middot; 1 repo</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>0.2.0</dd><dt>downloads</dt><dd>546 / 90d</dd><dt>stars</dt><dd>32</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2018-01-14</dd><dt>published</dt><dd>2016-02-04</dd><dt>dependents</dt><dd>3 owners &middot; 1 repo</dd></dl>
 
 </div>
 
@@ -12393,12 +12405,10 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>0.0.8</dd><dt>downloads</dt><dd>909 / 90d</dd><dt>stars</dt><dd>483</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2016-04-10</dd><dt>published</dt><dd>2016-02-21</dd><dt>dependents</dt><dd>4 owners &middot; 7 repos</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>0.0.8</dd><dt>downloads</dt><dd>929 / 90d</dd><dt>stars</dt><dd>483</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2016-04-10</dd><dt>published</dt><dd>2016-02-21</dd><dt>dependents</dt><dd>4 owners &middot; 7 repos</dd></dl>
 
 </div>
 
-        
-        
         
         
         
@@ -12527,10 +12537,12 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>0.4.0-pre.2</dd><dt>downloads</dt><dd>238 / 90d</dd><dt>stars</dt><dd>16</dd><dt>license</dt><dd>BSD-2-Clause</dd><dt>last commit</dt><dd>2019-12-27</dd><dt>published</dt><dd>2019-06-18</dd><dt>dependents</dt><dd>1 owner &middot; 1 repo</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>0.4.0-pre.2</dd><dt>downloads</dt><dd>237 / 90d</dd><dt>stars</dt><dd>16</dd><dt>license</dt><dd>BSD-2-Clause</dd><dt>last commit</dt><dd>2019-12-27</dd><dt>published</dt><dd>2019-06-18</dd><dt>dependents</dt><dd>1 owner &middot; 1 repo</dd></dl>
 
 </div>
 
+        
+        
         
         
         
@@ -12589,7 +12601,7 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>1.3.1</dd><dt>downloads</dt><dd>728 / 90d</dd><dt>stars</dt><dd>68</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2016-04-13</dd><dt>published</dt><dd>2016-03-02</dd><dt>dependents</dt><dd>2 owners &middot; 1 repo</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>1.3.1</dd><dt>downloads</dt><dd>759 / 90d</dd><dt>stars</dt><dd>68</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2016-04-13</dd><dt>published</dt><dd>2016-03-02</dd><dt>dependents</dt><dd>2 owners &middot; 1 repo</dd></dl>
 
 </div>
 
@@ -12751,7 +12763,7 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>0.0.33</dd><dt>downloads</dt><dd>3 / 90d</dd><dt>stars</dt><dd>76</dd><dt>license</dt><dd>MIT/Apache-2.0</dd><dt>last commit</dt><dd>2018-08-23</dd><dt>published</dt><dd>2017-03-18</dd><dt>dependents</dt><dd>1 repo</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>0.0.33</dd><dt>downloads</dt><dd>4 / 90d</dd><dt>stars</dt><dd>76</dd><dt>license</dt><dd>MIT/Apache-2.0</dd><dt>last commit</dt><dd>2018-08-23</dd><dt>published</dt><dd>2017-03-18</dd><dt>dependents</dt><dd>1 repo</dd></dl>
 
 </div>
 
@@ -13071,6 +13083,10 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
         
         
         
+        
+        
+        
+        
 <div class="crate crate-featured">
   <h3><span class="visually-hidden">Featured: </span>cudarc
       <span class="crate-links-inline">[<a href="https://crates.io/crates/cudarc">crate</a> &middot; <a href="https://github.com/chelsea0x3b/cudarc">repo</a> &middot; <a href="https://docs.rs/cudarc">docs</a>]</span></h3>
@@ -13107,12 +13123,10 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>0.19.10</dd><dt>downloads</dt><dd>4.5M / 90d</dd><dt>stars</dt><dd>1.2k</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-09-24</dd><dt>published</dt><dd>2026-09-24</dd><dt>dependents</dt><dd>30 owners &middot; 7 repos</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>0.19.10</dd><dt>downloads</dt><dd>4.6M / 90d</dd><dt>stars</dt><dd>1.2k</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-09-24</dd><dt>published</dt><dd>2026-09-24</dd><dt>dependents</dt><dd>30 owners &middot; 7 repos</dd></dl>
 
 </div>
 
-        
-        
         
         
         
@@ -14531,6 +14545,8 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
         
         
         
+        
+        
 <div class="crate crate-listed">
   <h3>mpi
       <span class="crate-links-inline">[<a href="https://crates.io/crates/mpi">crate</a> &middot; <a href="https://github.com/rsmpi/rsmpi">repo</a> &middot; <a href="https://docs.rs/mpi">docs</a>]</span></h3>
@@ -14552,10 +14568,14 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>0.8.2</dd><dt>downloads</dt><dd>102k / 90d</dd><dt>stars</dt><dd>600</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-07-09</dd><dt>published</dt><dd>2026-07-09</dd><dt>dependents</dt><dd>21 owners &middot; 6 repos</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>0.8.2</dd><dt>downloads</dt><dd>109k / 90d</dd><dt>stars</dt><dd>602</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-07-09</dd><dt>published</dt><dd>2026-07-09</dd><dt>dependents</dt><dd>21 owners &middot; 6 repos</dd></dl>
 
 </div>
 
+        
+        
+        
+        
         
         
         
@@ -14923,14 +14943,10 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>1.5.2</dd><dt>downloads</dt><dd>452k / 90d</dd><dt>stars</dt><dd>1.4k</dd><dt>license</dt><dd>MIT AND Apache-2.0</dd><dt>last commit</dt><dd>2026-10-30</dd><dt>published</dt><dd>2026-10-29</dd><dt>dependents</dt><dd>8 owners</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>1.5.2</dd><dt>downloads</dt><dd>463k / 90d</dd><dt>stars</dt><dd>1.4k</dd><dt>license</dt><dd>MIT AND Apache-2.0</dd><dt>last commit</dt><dd>2026-11-05</dd><dt>published</dt><dd>2026-10-29</dd><dt>dependents</dt><dd>8 owners</dd></dl>
 
 </div>
 
-        
-        
-        
-        
         
         
         
@@ -15322,7 +15338,7 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>0.8.1</dd><dt>downloads</dt><dd>159 / 90d</dd><dt>stars</dt><dd>32</dd><dt>license</dt><dd>non-standard</dd><dt>last commit</dt><dd>2026-10-23</dd><dt>published</dt><dd>2026-07-30</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>0.8.1</dd><dt>downloads</dt><dd>161 / 90d</dd><dt>stars</dt><dd>32</dd><dt>license</dt><dd>non-standard</dd><dt>last commit</dt><dd>2026-11-05</dd><dt>published</dt><dd>2026-07-30</dd></dl>
 
 </div>
 
@@ -15367,7 +15383,7 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
   </div>
 
   
-  <dl class="crate-stats"><dt>version</dt><dd>0.21.0</dd><dt>downloads</dt><dd>416k / 90d</dd><dt>stars</dt><dd>16.2k</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-10-30</dd><dt>published</dt><dd>2026-05-07</dd><dt>dependents</dt><dd>1 owner</dd></dl>
+  <dl class="crate-stats"><dt>version</dt><dd>0.21.0</dd><dt>downloads</dt><dd>462k / 90d</dd><dt>stars</dt><dd>16.2k</dd><dt>license</dt><dd>MIT OR Apache-2.0</dd><dt>last commit</dt><dd>2026-11-05</dd><dt>published</dt><dd>2026-05-07</dd><dt>dependents</dt><dd>1 owner</dd></dl>
 
 </div>
 
@@ -15772,7 +15788,7 @@ early-stage and neither is production-ready<a class="ref-mark" id="refmark-2" hr
       <a href="/about/">About</a>
       <a href="https://discord.gg/c5yQWcZTng">Rust-ML Discord</a>
     </nav><p class="site-updated">Crate data refreshed
-      <a href="https://github.com/anowell/are-we-learning-yet/actions/workflows/pages/pages-build-deployment">2026-11-02</a>.
+      <a href="https://github.com/anowell/are-we-learning-yet/actions/workflows/pages/pages-build-deployment">2026-11-05</a>.
       <a href="https://github.com/anowell/are-we-learning-yet/issues/new?template=report.md">Report an issue or missing content</a>.</p>
   </div>
 </footer>
