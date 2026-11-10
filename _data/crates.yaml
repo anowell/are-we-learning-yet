@@ -1265,6 +1265,9 @@
   license: FAIR-1.0
   topics: ["llm-serving"]
 
+- name: cortiq-engine
+  topics: ["model-runtimes", "edge-inference"]
+
 # ===== HUB 6 -- Classical ML & Statistics =====
 
 - name: adskalman
